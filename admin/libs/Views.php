@@ -9,10 +9,10 @@ class Views{
 		if($hasHeader == true){
 			require $link;
 		} else {
+		
 			require 'views/header.php';
 			require $link;
 			require 'views/footer.php';
-		
 		}
 	}
 }
