@@ -1,6 +1,7 @@
 <?php
 
 	define('URL','/capture_memories/admin/');
+	define('MAIN_URL','/capture_memories/');
 	
 	date_default_timezone_set('Asia/Taipei');
 	
