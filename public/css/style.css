@@ -1,0 +1,86 @@
+.transparent {
+	background-color: transparent;
+}
+section {
+	min-height: 100vh;
+	position: relative;
+}
+section .overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.1);
+}
+section.header{
+	background-image: url('../images/tour/du4.jpg');
+	background-size: cover;
+}
+.custom-card .card {
+	border: 0px;
+}
+.custom-card .card .card-body {
+	padding-left: 0;
+	padding-right: 0;
+}
+.custom-card .card .card-title,
+.custom-card .card .card-sub-title
+{
+	font-size: 1rem;
+	font-weight: 800;
+}
+.custom-card .card .card-sub-title {
+	font-size: .8rem;
+	color: rgb(118, 118, 118);
+}
+.custom-card .card .card-price-holder {
+	font-size: .8rem;
+	color: rgb(118, 118, 118);
+}
+.custom-card .card img {
+	border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
+.container-xl {
+	padding-right: 15px;
+	padding-left: 15px;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+@media (min-width: 576px) {
+	.container-xl {
+		width: 540px;
+		max-width: 100%;
+	}
+}
+@media (min-width: 768px) {
+	.container-xl {
+		width: 720px;
+		max-width: 100%;
+	}
+}
+@media (min-width: 992px) {
+	.container-xl {
+		width: 960px;
+		max-width: 100%;
+	}
+}
+@media (min-width: 1200px) {
+	.container-xl {
+		width: 1140px;
+		max-width: 100%;
+	}
+}
+@media (min-width: 1400px) {
+	.container-xl {
+		width: 1360px;
+		max-width: 100%;
+	}
+}
+@media (min-width: 1700px) {
+	.container-xl {
+		width: 1660px;
+		max-width: 100%;
+	}
+}
+
