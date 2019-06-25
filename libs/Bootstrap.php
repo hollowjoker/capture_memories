@@ -14,11 +14,11 @@ class Bootstrap {
         $function = isset($arrayLink[1]) ? $arrayLink[1] : 'index';
         $file = isset($arrayLink[2]) ? $arrayLink[2] : 'index';
 
-		if(Session::getSession('user') == '' && $class != 'user')
-		{
-			$function = $class;
-			$class = 'home';
-		}
+		// if(Session::getSession('user') == '' && $class != 'user')
+		// {
+		// 	$function = $class;
+		// 	$class = 'home';
+		// }
 		
         $path = 'controllers/' . $class . '.php';
 		

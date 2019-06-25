@@ -1,6 +1,6 @@
 <?php
 
-class User extends Controller
+class UserController extends Controller
 {
 
 	function __construct()
@@ -15,6 +15,7 @@ class User extends Controller
 	
 	public function logout()
 	{
+		echo 1;
 		session::destroy();
 		header('Location:'.URL);
 	}

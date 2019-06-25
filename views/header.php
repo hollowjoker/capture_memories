@@ -30,10 +30,13 @@
 							<a class="nav-link" href="#">Services</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Sign up</a>
+							<a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">Sign up</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Log in</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?= URL.'user/logout'?>">Log out</a>
 						</li>
 					</ul>
 				</div>
