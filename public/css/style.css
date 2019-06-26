@@ -47,6 +47,14 @@ section.header{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/* Banner */
+.inner_holder {
+	background-color: #fff;
+	width: 100%;
+	height: 100%;
+}
+
 @media (min-width: 576px) {
 	.container-xl {
 		width: 540px;

@@ -19,7 +19,9 @@
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand" href="#">CM</a>
+				<a class="navbar-brand" href="#">
+					<img src="/capture_memories/public/images/tour/captured_memories_new.png" class="img-fluid" alt="logo" style="width: 50px;">
+				</a>
 
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 					<ul class="navbar-nav mt-2 mt-lg-0 ml-auto small">
@@ -36,6 +38,12 @@
 							<a class="nav-link" href="#">Log in</a>
 						</li>
 					</ul>
+				</div>
+
+				<div class="main_holder">
+					<div class="inner_holder">
+						dkjfksdfksjfk
+					</div>
 				</div>
 			</nav>
 		</section>
