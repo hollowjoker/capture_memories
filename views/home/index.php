@@ -10,7 +10,7 @@
 				<?php foreach($tours as $k => $v): ?>
 					<div class="col-lg-3 custom-card">
 						<div class="card">
-							<a href="">
+							<a href="<?= URL.'tour?id='.$v['id']?>">
 								<img src="<?= $v['image_path'] ?>" class="card-img-top" alt="...">
 							</a>
 							<div class="card-body">

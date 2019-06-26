@@ -3,7 +3,7 @@
 	 * Object represents table 'tbl_tour_package'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2019-06-25 15:01	 
+     	 * @date: 2019-06-25 16:29	 
 	 */
 	class TblTourPackage{
 		

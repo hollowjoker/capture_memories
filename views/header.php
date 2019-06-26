@@ -1,5 +1,5 @@
 <?php
-
+	$userSession = Session::getSession('user');
 ?>
 
 <!DOCTYPE html>
@@ -26,18 +26,39 @@
 						<li class="nav-item active">
 							<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Services</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Services
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#">Tour Package</a>
+								<a class="dropdown-item" href="#">Airline Ticketing</a>
+								<a class="dropdown-item" href="#">Travel Insurance</a>
+								<a class="dropdown-item" href="#">Wifi Rental</a>
+								<a class="dropdown-item" href="#">Visa Processing</a>
+							</div>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">Sign up</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Log in</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="<?= URL.'user/logout'?>">Log out</a>
-						</li>
+						<?php if(!isset($userSession['id'])) : ?>
+							<li class="nav-item">
+								<a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">Sign up</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log in</a>
+							</li>
+						<?php else: ?>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Welcome <?= isset($userSession['firstName']) ? $userSession['firstName'] : ""?>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="#">Profile</a>
+									<a class="dropdown-item" href="#">Cart</a>
+									<a class="dropdown-item" href="#">Messages</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="<?= URL.'user/logout'?>">Log out</a>
+								</div>
+							</li>
+						<?php endif;?>
 					</ul>
 				</div>
 			</nav>

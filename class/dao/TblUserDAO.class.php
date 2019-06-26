@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-06-25 15:01
+ * @date: 2019-06-25 16:29
  */
 interface TblUserDAO{
 
@@ -61,7 +61,7 @@ interface TblUserDAO{
 
 	public function queryByPhone($value);
 
-	public function queryByAddress($value);
+	public function queryByBirthDate($value);
 
 	public function queryByType($value);
 
@@ -84,7 +84,7 @@ interface TblUserDAO{
 
 	public function deleteByPhone($value);
 
-	public function deleteByAddress($value);
+	public function deleteByBirthDate($value);
 
 	public function deleteByType($value);
 

@@ -10,30 +10,98 @@ class user_model extends Model
 	
 	function login()
 	{
-		$username = $_POST['username'];
+		$email = $_POST['email'];
 		$password = $_POST['password'];
 		
 		
-		$acc = DAOFactory::getTblUserDAO()->queryByUsername($username);
+		$acc = DAOFactory::getTblUserDAO()->queryByEmail($email);
 		
+		$result = [
+			'status' => 'error',
+			'messages' => []
+		];
 		if(!empty($acc))
 		{
-			
 			foreach($acc as $each)
 			{
 				if($each->password == $password)
 				{
 					$user = Controller::objToArray($each);
 					Session::setSession('user',$user);
-					header('Location: '.URL);
-					exit;
+					$result = [
+						'status' => 'success',
+						'messages' => 'Login Success!'
+					];
+					return $result;
 				}
 			}
 		}
-		else
-		{
-			header('Location: '.URL);
+		$result['messages'] = array_merge($result['messages'],
+		[
+			'email' => 'Invalid Email',
+			'password' => 'Invalid Password'
+		]);
+
+		return $result;
+	}
+
+	public static function register() {
+		$birthDate = $_POST['year'].'-'.$_POST['month'].'-'.$_POST['day'];
+		$formatedDate = date('Y-m-d',strtotime($birthDate));
+
+		$emailExist = DAOFactory::getTblUserDAO()->queryByEmail($_POST['email']);
+
+		$pass = true;
+		$result = [
+			'status' => 'error',
+			'messages' => []
+		];
+		if(strlen($_POST['password']) < 8) {
+			$result['messages'] = array_merge($result['messages'],
+			[
+				'password' => 'Must be 8 letters'
+			]);
 		}
+		if((date('Y-m-d') - $formatedDate) < 18) {
+			$result['messages'] = array_merge($result['messages'],
+			[
+				'month' => 'Must be 18 Years old and above',
+				'day' => '',
+				'year' => '',
+			]);
+		}
+		if(count($emailExist)) {
+			$result['messages'] = array_merge($result['messages'],['email' =>'Email Exists']);
+		}
+		
+		if(count($result['messages'])) {
+			$pass = false;
+		}
+		
+		if($pass) {
+			$newUser = new TblUser;
+			$newUser->firstName = $_POST['firstName'];
+			$newUser->lastName = $_POST['lastName'];
+			$newUser->email = $_POST['email'];
+			$newUser->password = $_POST['password'];
+			$newUser->phone = $_POST['phone'];
+			$newUser->birthDate = $formatedDate;
+			$newUser->type = "user";
+			$newUser->active = "active";
+			$insertData = Controller::insertDate($newUser);
+	
+			$result = [
+				'id' => DAOFactory::getTblUserDAO()->insert($insertData),
+				'status' => 'success',
+				'messages' => 'Sign up success!'
+			];
+
+			$userData = DAOFactory::getTblUserDAO()->load($result['id']);
+			$userData = Controller::objToArray($userData);
+
+			$userSession = Session::setSession('user',$userData);
+		}
+		return $result;
 	}
 	
 

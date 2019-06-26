@@ -3,7 +3,7 @@
 	 * Object represents table 'tbl_user'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2019-06-25 15:01	 
+     	 * @date: 2019-06-25 16:29	 
 	 */
 	class TblUser{
 		
@@ -13,7 +13,7 @@
 		var $email;
 		var $password;
 		var $phone;
-		var $address;
+		var $birthDate;
 		var $type;
 		var $active;
 		var $createdAt;
