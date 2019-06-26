@@ -65,5 +65,24 @@ class Controller{
 			return number_format($int,2);
 		}
 	}
+
+	static function getMonths() {
+		$months = [];
+		for($i=1;$i<=12;$i++) {
+			$months[] = [
+				'number' => $i,
+				'name' => date('F', mktime(0, 0, 0, $i, 10))
+			];
+		}
+		return $months;
+	}
+
+	static function insertDate($data) {
+		$data->createdAt = date('Y-m-d H:i:s');
+		$data->updatedAt = date('Y-m-d H:i:s');
+		$data->deletedAt = null;
+
+		return $data;
+	}
 	
 }
