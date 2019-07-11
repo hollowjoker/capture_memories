@@ -113,11 +113,11 @@
 		<script src="<?= URL ?>public/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script> -->
 		<!-- <script src="https://kit.fontawesome.com/725d374b4a.js"></script> -->
 		<script>
-		var scene = document.getElementById('scene');
-		var parallaxInstance = new Parallax(scene);
+		// var scene = document.getElementById('scene');
+		// var parallaxInstance = new Parallax(scene);
 			var doc = $(document)
 			var main = {}
 

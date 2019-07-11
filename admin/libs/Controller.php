@@ -10,6 +10,16 @@ class Controller{
 		}
 		return $array;
 	}
+
+	static function reConstArray($array) {
+		$arr = [];
+		foreach($array as $k => $v) {
+			if(!is_numeric($k)) {
+				$arr[$k] = $v;
+			}
+		}
+		return $arr;
+	}
 	
 	public function loadModel($name){
 		$path = 'models/' . $name . '_model.php';
@@ -64,6 +74,14 @@ class Controller{
 		} else {
 			return number_format($int,2);
 		}
+	}
+
+	static function insertDate($data) {
+		$data->createdAt = date('Y-m-d H:i:s');
+		$data->updatedAt = date('Y-m-d H:i:s');
+		$data->deletedAt = null;
+
+		return $data;
 	}
 	
 }

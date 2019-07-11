@@ -1,6 +1,6 @@
 <?php
 
-class User extends Controller
+class Admin extends Controller
 {
 
 	function __construct()
@@ -10,7 +10,9 @@ class User extends Controller
 	
 	public function login()
 	{
-		$this->model->login();
+		$modelResult = $this->model->login();
+		echo json_encode($modelResult);
+		exit;
 	}
 	
 	public function logout()

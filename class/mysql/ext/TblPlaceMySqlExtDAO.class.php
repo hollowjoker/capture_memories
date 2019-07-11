@@ -7,6 +7,5 @@
  */
 class TblPlaceMySqlExtDAO extends TblPlaceMySqlDAO{
 
-	
 }
 ?>

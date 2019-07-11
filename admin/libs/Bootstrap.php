@@ -18,7 +18,7 @@ class Bootstrap {
 		{
             $function = $class;
 			$class = 'home';
-		}
+        }
 		
         $path = 'controllers/' . $class . '.php';
 		

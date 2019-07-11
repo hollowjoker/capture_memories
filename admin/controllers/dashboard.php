@@ -11,7 +11,7 @@ class Dashboard extends Controller
 	
 	public function index()
 	{
-		$this->view->render('views/'.$this->module.'/index.php', false);
+		$this->view->render('views/'.$this->module.'/index.php');
 	}
 
 }

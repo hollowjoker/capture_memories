@@ -13,12 +13,16 @@
 			Admin
 		</title>
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-		<!--     Fonts and icons     -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<!-- CSS Files -->
 		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/bootstrap.min.css" rel="stylesheet" />
-  		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet" />
+		<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
+		<link href="<?= URL ?>public/css/style.css" rel="stylesheet" />
+		<script>
+			let initiateModule = "";
+		</script>  
 	</head>
 	<body>
 		<div class="wrapper">
@@ -29,9 +33,19 @@
 				</div>
 				<div class="sidebar-wrapper" id="sidebar-wrapper">
 					<ul class="nav">
-						<li class="active ">
-							<a href="./dashboard.html">
+						<li class="<?= $module == 'dashboard' ? 'active' : ''?>">
+							<a href="<?= URL.'dashboard'?>">
 								<i class="now-ui-icons design_app"></i><p>Dashboard</p>
+							</a>
+						</li>
+						<li class="<?= $module == 'destination' ? 'active' : ''?> ">
+							<a href="<?= URL.'destination'?>">
+								<i class="now-ui-icons transportation_air-baloon"></i><p>Destinations</p>
+							</a>
+						</li>
+						<li class="<?= $module == 'tour' ? 'active' : ''?> ">
+							<a href="<?= URL.'tour'?>">
+								<i class="now-ui-icons transportation_air-baloon"></i><p>Tours</p>
 							</a>
 						</li>
 						<li>
@@ -65,20 +79,13 @@
 							<ul class="navbar-nav">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<i class="now-ui-icons location_world"></i>
-										<p><span class="d-lg-none d-md-block">Some Actions</span></p>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-										<a class="dropdown-item" href="#">Action</a>
-										<a class="dropdown-item" href="#">Another action</a>
-										<a class="dropdown-item" href="#">Something else here</a>
-									</div>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#pablo">
 										<i class="now-ui-icons users_single-02"></i>
 										<p><span class="d-lg-none d-md-block">Account</span></p>
 									</a>
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+										<a class="dropdown-item" href="#">Profile</a>
+										<a class="dropdown-item" href="<?= URL.'admin/logout'?>">Logout</a>
+									</div>
 								</li>
 							</ul>
 						</div>
