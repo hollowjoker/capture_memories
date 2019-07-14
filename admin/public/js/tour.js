@@ -36,15 +36,14 @@ tour = {
 				processData: false,
 				dataType:'json',
 			}).done( resultData => {
-				console.log(resultData);
-				// Swal.fire({
-				// 	type: resultData.type,
-				// 	title: resultData.messages
-				// }).then((result) => {
-				// 	if(result.value && resultData.type == 'success') {
-				// 		location.href = redirectUrl;
-				// 	}
-				// });
+				Swal.fire({
+					type: resultData.type,
+					title: resultData.messages
+				}).then((result) => {
+					if(result.value && resultData.type == 'success') {
+						location.href = redirectUrl;
+					}
+				});
 			});
 		});
 	},

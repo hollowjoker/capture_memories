@@ -80,7 +80,7 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="form-group">
-									<input type="text" class="form-control" name="id" placeholder="id" value="0">
+									<input type="hidden" class="form-control" name="id" placeholder="id" value="0">
 									<input type="text" class="form-control" name="name" placeholder="name">
 									<div class="feedback"></div>
 								</div>

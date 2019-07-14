@@ -11,19 +11,23 @@ class Tour_model extends Model
 	public function store() {
 		$uploadOk = 1;
 		$target_dir = getcwd().DIRECTORY_SEPARATOR."../public/images/tour/";
-		$target_file = $target_dir . basename($_FILES["imagePath"]["name"]);
-		$target_public_dir = MAIN_URL."public/images/tour/";
-		$public_file = $target_public_dir . basename($_FILES["imagePath"]["name"]);
-		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+		$target_file = null;
+		$public_file = null;
+		if($_FILES["imagePath"]["size"] > 0) {
+			$target_file = $target_dir . basename($_FILES["imagePath"]["name"]);
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			$target_public_dir = MAIN_URL."public/images/tour/";
+			$public_file = $target_public_dir . basename($_FILES["imagePath"]["name"]);
+		}
 		$check = getimagesize($_FILES["imagePath"]["tmp_name"]);
 		$result = [];
 		$result['type'] = 'error';
-		if($check === false) {
+		if($check === false && $_FILES["imagePath"]["size"] > 0) {
 			$result['messages'] = "File is not an image.";
 			$uploadOk = 0;
 			return $result;
 		}
-		if(file_exists($target_file)) {
+		if(file_exists($target_file) && $_FILES["imagePath"]["size"] > 0) {
 			$result['messages'] = "Sorry, file already exists.";
 			$uploadOk = 0;
 			return $result;
@@ -33,50 +37,73 @@ class Tour_model extends Model
 			$uploadOk = 0;
 			return $result;
 		}
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $_FILES["imagePath"]["size"] > 0) {
 			$result['messages'] = "Sorry, only JPG, JPEG & PNG files are allowed.";
 			$uploadOk = 0;
 			return $result;
 		}
-		if($uploadOk == 0) {
+		if($uploadOk == 0 && $_FILES["imagePath"]["size"] > 0) {
 			$result['messages'] = "Sorry, your file was not uploaded.";
 			return $result;
 		} else {
-			if(move_uploaded_file($_FILES["imagePath"]["tmp_name"], $target_file)) {
+			if($_FILES["imagePath"]["size"] > 0) {
+				if(move_uploaded_file($_FILES["imagePath"]["tmp_name"], $target_file)) {
+				} else {
+					$result['messsages'] = "Sorry, there was an error uploading your file.";
+					return $tour;
+				}
+			}
+			if($_POST['id']) {
+				$tour = DAOFactory::getTblTourPackageDAO()->load($_POST['id']);
+				$tour = Controller::insertDateUpdate($tour);
+			} else {
 				$tour = new TblTourPackage;
-				$tour->name = $_POST['name'];
-				$tour->placeId = $_POST['placeId'];
-				$tour->travelPeriodFromAt = date('Y-m-d',strtotime($_POST['travelPeriodFromAt']));
-				$tour->travelPeriodToAt = date('Y-m-d',strtotime($_POST['travelPeriodToAt']));
-				$tour->sellingPeriod = $_POST['sellingPeriod'];
-				$tour->description = $_POST['description'];
-				$tour->status = isset($_POST['status']) ? 'active' : 'inactive';
 				$tour->imagePath = $target_file;
 				$tour->imagePublicPath = $public_file;
 				$tour = Controller::insertDate($tour);
+			}
+			$tour->name = $_POST['name'];
+			$tour->placeId = $_POST['placeId'];
+			$tour->travelPeriodFromAt = $_POST['travelPeriodFromAt'];
+			$tour->travelPeriodToAt = $_POST['travelPeriodToAt'];
+			$tour->sellingPeriod = $_POST['sellingPeriod'];
+			$tour->description = $_POST['description'];
+			$tour->status = isset($_POST['status']) ? 'active' : 'inactive';
 
+			$tourId = 0;
+			if($_POST['id']) {
+				$insertResult = DAOFactory::getTblTourPackageDAO()->update($tour);
+				$tourId = $tour->id;
+			} else {
 				$insertResult = DAOFactory::getTblTourPackageDAO()->insert($tour);
+				$tourId = $insertResult;
+			}
 
-				foreach($_POST['price'] as $k => $v) {
+
+			foreach($_POST['price'] as $k => $v) {
+				if($_POST['metaId'][$k]){
+					$tourMeta = DAOFactory::getTblTourPackageMetaDAO()->load($_POST['metaId'][$k]);
+				} else {
 					$tourMeta = new TblTourPackageMeta;
-					$tourMeta->price = $v;
-					$tourMeta->status = isset($_POST['metaStatus'][$k]) ? 'active' : 'inactive';
-					$tourMeta->quantity = $_POST['quantity'][$k];
-					$tourMeta->tblTourPackageId = $insertResult;
-					$tourMeta = Controller::insertDate($tourMeta);
+				}
+				$tourMeta->price = $v;
+				$tourMeta->status = isset($_POST['metaStatus'][$k]) ? 'active' : 'inactive';
+				$tourMeta->quantity = $_POST['quantity'][$k];
+				$tourMeta->tblTourPackageId = $tourId;
+				$tourMeta = Controller::insertDate($tourMeta);
+				if($_POST['metaId'][$k]) {	
+					$insertMetaResult = DAOFactory::getTblTourPackageMetaDAO()->update($tourMeta);
+				} else {
 					$insertMetaResult = DAOFactory::getTblTourPackageMetaDAO()->insert($tourMeta);
 				}
-				$result = [
-					'type' => 'success',
-					'messages' => 'Submit Successful'
-				];
-
-				return $result;
-
-			} else {
-				$result['messsages'] = "Sorry, there was an error uploading your file.";
-				return $result;
 			}
+			$result = [
+				'type' => 'success',
+				'messages' => 'Submit Successful'
+			];
+
+			return $result;
+
 		}
 
 	}

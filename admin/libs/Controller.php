@@ -83,5 +83,15 @@ class Controller{
 
 		return $data;
 	}
+
+	static function insertDateUpdate($data) {
+		$data->updatedAt = date('Y-m-d H:i:s');
+		return $data;
+	}
+
+	static function deleteDate($data) {
+		$data->deletedAt = date('Y-m-d H:i:s');
+		return $data;
+	}
 	
 }
