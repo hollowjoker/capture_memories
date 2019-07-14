@@ -5,7 +5,7 @@ class Views{
 	}
 	
 	
-	public function render($link,$hasHeader = false){ 
+	public function render($link,$hasHeader = false){
 		if($hasHeader == true){
 			require $link;
 		} else {

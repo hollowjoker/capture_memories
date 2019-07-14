@@ -1,0 +1,105 @@
+.card__table .card-header .card-title {
+	display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+.card__table .card-header .card-title span {
+	flex-grow: 1;
+}
+.btn__circle {
+	border-radius: 100%;
+    padding: 22px;
+    line-height: 0.035em;
+}
+.input-group .btn {
+	margin: 0px;
+}
+.input-group .input-group-append .btn {
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+	border: 1px solid #E3E3E3;
+}
+.table-custom thead tr th
+{
+	font-size: 1em;
+}
+form input[type=file]{
+	cursor: pointer;
+}
+form img {
+	border: 1px solid #E3E3E3;
+}
+form select {
+    border-radius: 30px !important;
+    font-size: 0.8571em !important;
+    padding: 10px 18px 10px 18px !important;
+}
+.badge-custombg {
+    color: #fff;
+    font-size: 1em;
+}
+.badge-custombg-0 {
+    background-color: #8acac7;
+}
+.badge-custombg-1 {
+    background-color: #edc7bf;
+}
+.badge-custombg-2 {
+    background-color: #f5ac83;
+}
+.badge-custombg-3 {
+    background-color: #3c2e3e;
+}
+.fw-100{
+    width: 100px;
+}
+
+
+
+.onoffswitch {
+    position: relative; width: 76px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #E3E3E3; border-radius: 50px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 17px; padding: 0; line-height: 17px;
+    font-size: 10px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "active";
+    padding-left: 5px;
+    background-color: #2CA8FF; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "inactive";
+    padding-right: 5px;
+    background-color: #EEEEEE; color: #6E6E6E;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 9px; margin: 4px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 55px;
+    border: 2px solid #E3E3E3; border-radius: 50px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
