@@ -42,40 +42,43 @@ class Home extends Controller
 			]
 		];
 
-		$international = [
-			[
-				'id' => 1,
-				'bg_image' => URL.'public/images/tour/bali.jpg',
-				'title' => 'Bali',
-				'package' => '₱14,979/night average'
-			],
-			[
-				'id' => 2,
-				'bg_image' => URL.'public/images/tour/bangkok.jpg',
-				'title' => 'Bangkok',
-				'package' => '₱14,979/night average'
-			],
-			[
-				'id' => 3,
-				'bg_image' => URL.'public/images/tour/kuala_lumpur.jpg',
-				'title' => 'kuala Lumpur',
-				'package' => '₱14,979/night average'
-			],
-			[
-				'id' => 4,
-				'bg_image' => URL.'public/images/tour/beijing.jpg',
-				'title' => 'Beijing',
-				'package' => '₱14,979/night average'
-			],
-			[
-				'id' => 5,
-				'bg_image' => URL.'public/images/tour/dubai.jpg',
-				'title' => 'Dubai',
-				'package' => '₱14,979/night average'
-			]
-		];
+		// $international = [
+		// 	[
+		// 		'id' => 1,
+		// 		'bg_image' => URL.'public/images/tour/bali.jpg',
+		// 		'title' => 'Bali',
+		// 		'package' => '₱14,979/night average'
+		// 	],
+		// 	[
+		// 		'id' => 2,
+		// 		'bg_image' => URL.'public/images/tour/bangkok.jpg',
+		// 		'title' => 'Bangkok',
+		// 		'package' => '₱14,979/night average'
+		// 	],
+		// 	[
+		// 		'id' => 3,
+		// 		'bg_image' => URL.'public/images/tour/kuala_lumpur.jpg',
+		// 		'title' => 'kuala Lumpur',
+		// 		'package' => '₱14,979/night average'
+		// 	],
+		// 	[
+		// 		'id' => 4,
+		// 		'bg_image' => URL.'public/images/tour/beijing.jpg',
+		// 		'title' => 'Beijing',
+		// 		'package' => '₱14,979/night average'
+		// 	],
+		// 	[
+		// 		'id' => 5,
+		// 		'bg_image' => URL.'public/images/tour/dubai.jpg',
+		// 		'title' => 'Dubai',
+		// 		'package' => '₱14,979/night average'
+		// 	]
+		// ];
 		$this->view->tours = $tours;
-		$this->view->international = $international;
+		$this->view->international = $this->model->getTourData('international');
+		// echo '<pre>';
+		// print_r($this->view->international);
+		// exit;
 		$this->view->render('views/home/index.php');
 	}
 
