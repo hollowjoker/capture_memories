@@ -86,7 +86,7 @@
 					<div class="col-lg col-md-6 col-sm-12">
 						<a href="<?= URL.'tour/international?id='.$value_international['id']?>">
 							<div class="card">
-								<div class="overlay"></div>
+								<div class="overlay-gradient"></div>
 								<div class="card-img" alt="Card image">
 									<div class="card-content">
 										<div>

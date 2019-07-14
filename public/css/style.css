@@ -40,10 +40,16 @@ section {
 	position: relative;
 }
 section .overlay {
+	background-color: rgba(0,0,0,.1);
+	height: 100%;
 	position: absolute;
 	width: 100%;
+}
+section .overlay-gradient {
+	background-image: linear-gradient(to bottom, transparent , rgba(0,0,0,.5));
 	height: 100%;
-	background-color: rgba(0,0,0,.1);
+	position: absolute;
+	width: 100%;
 }
 section.header{
 	background-image: url('../images/tour/du4.jpg');
