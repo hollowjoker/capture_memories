@@ -6,6 +6,7 @@ class Home extends Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->module = "home";
 	}
 	
 	public function index()
@@ -40,7 +41,41 @@ class Home extends Controller
 				'price' => '2999'
 			]
 		];
+
+		$international = [
+			[
+				'id' => 1,
+				'bg_image' => URL.'public/images/tour/bali.jpg',
+				'title' => 'Bali',
+				'package' => '₱14,979/night average'
+			],
+			[
+				'id' => 2,
+				'bg_image' => URL.'public/images/tour/bangkok.jpg',
+				'title' => 'Bangkok',
+				'package' => '₱14,979/night average'
+			],
+			[
+				'id' => 3,
+				'bg_image' => URL.'public/images/tour/kuala_lumpur.jpg',
+				'title' => 'kuala Lumpur',
+				'package' => '₱14,979/night average'
+			],
+			[
+				'id' => 4,
+				'bg_image' => URL.'public/images/tour/beijing.jpg',
+				'title' => 'Beijing',
+				'package' => '₱14,979/night average'
+			],
+			[
+				'id' => 5,
+				'bg_image' => URL.'public/images/tour/dubai.jpg',
+				'title' => 'Dubai',
+				'package' => '₱14,979/night average'
+			]
+		];
 		$this->view->tours = $tours;
+		$this->view->international = $international;
 		$this->view->render('views/home/index.php');
 	}
 

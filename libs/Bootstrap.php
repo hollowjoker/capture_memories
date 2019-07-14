@@ -9,16 +9,18 @@ class Bootstrap {
         $link = isset($_GET['url']) ? $_GET['url'] : null;
 
         $arrayLink = explode('/', trim($link, '/'));
-
+        
         $class = strtolower(isset($arrayLink[0]) && $arrayLink[0] != ''  ? $arrayLink[0] : 'home');
         $function = isset($arrayLink[1]) ? $arrayLink[1] : 'index';
         $file = isset($arrayLink[2]) ? $arrayLink[2] : 'index';
-
+        
 		// if(Session::getSession('user') == '' && $class != 'user')
 		// {
-			// $function = $class;
+            // $function = $class;
 			// $class = 'home';
-		// }
+            // }
+        // print_r($function);
+        // exit;
 		
         $path = 'controllers/' . $class . '.php';
 		

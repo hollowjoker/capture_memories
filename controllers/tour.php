@@ -12,4 +12,9 @@ class Tour extends Controller
 	{
 		$this->view->render('views/tour/index.php');
 	}
+
+	public function international()
+	{
+		$this->view->render('views/international/index.php');
+	}
 }
