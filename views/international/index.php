@@ -114,6 +114,40 @@
                     </p>
                 </div>
             </div>
+            
+            <div class="col-lg-5">
+				<div class="main_holder">
+					<div class="inner_holder">
+						<h1>Book unique places to stay and things to do.</h1>
+						<div class="pt-3">
+							<h6>WHERE</h6>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Anywhere">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col">
+								<h6>DEPARTING ON</h6>
+								<input type="text" class="form-control" placeholder="First name">
+							</div>
+							<div class="col">
+								<h6>RETURNING ON</h6>
+								<input type="text" class="form-control" placeholder="Last name">
+							</div>
+						</div>
+						<div class="form-group pt-3">
+							<H6>GUESTS</H6>
+							<select id="inputState" class="form-control">
+								<option selected>Choose...</option>
+								<option>...</option>
+							</select>
+						</div>
+						<div class="pt-4">
+							<button class="btn btn-danger">SUBMIT</button>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 </section>
