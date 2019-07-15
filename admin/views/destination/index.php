@@ -35,7 +35,7 @@
 												<span class="badge badge-pill badge-info"><?= $v->airlineStatus == 'yes' ? 'airline' : '' ?></span>
 												<span class="badge badge-pill badge-danger"><?= $v->visaStatus == 'yes' ? 'visa' : '' ?></span>
 												<span class="badge badge-pill badge-dark"><?= $v->wifiStatus == 'yes' ? 'wifi' : '' ?></span>
-												<span class="badge badge-pill badge-violet"><?= $v->tourStatus == 'yes' ? 'tour' : '' ?></span>
+												<span class="badge badge-pill badge-warning text-white"><?= $v->tourStatus == 'yes' ? 'tour' : '' ?></span>
 											</td>
 											<td><span class="<?= $v->status == 'active' ? 'text-success' : 'text-danger'?>"><?= $v->status ?></span></td>
 											<td>
