@@ -1,6 +1,9 @@
 <?php 
 	$tours = $this->tours;
 	$international = $this->international;
+	// echo '<pre>';
+	// print_r($international);
+	// exit;
 ?>
 <section class="header">
 	<div class="overlay"></div>
@@ -58,7 +61,7 @@
 								<h5 class="card-sub-title"><?= strtoupper($v['place']) ?></h5>
 								<h5 class="card-title"><?= $v['name'] ?></h5>
 								<h5 class="card-price-holder">
-									<span class="formater">Php. <?= number_format($v['price']) ?></span>
+									<span class="formater">Php <?= number_format($v['price']) ?></span>
 								</h5>
 								<p class="card-text">
 									<span class="badge"> </span>
@@ -90,10 +93,12 @@
 								<div class="card-img" alt="Card image">
 									<div class="card-content">
 										<div>
-											<?= $value_international['title'] ?>
+											<?= $value_international['destination_name'] ?>
 										</div>	
 										<div>
-											<?= $value_international['package'] ?>
+											<?php foreach($value_international['meta'] as $key_meta => $value_meta): ?>
+												Php <?= number_format($value_meta['price']) ?>
+											<?php endforeach; ?>
 										</div>
 									</div>
 								</div>

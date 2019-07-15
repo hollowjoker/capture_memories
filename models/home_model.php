@@ -16,7 +16,7 @@ class home_model extends Model
 			'limit' => 1
 		];
 		foreach($tour as $k => $v) {
-			$tour[$k]['meta'][] = DAOFactory::getTblTourPackageMetaDAO()->getTourMeta($v['id'], $option);
+			$tour[$k]['meta'] = DAOFactory::getTblTourPackageMetaDAO()->getTourMeta($v['id'], $option);
 		}
 		return $tour;
 	}
