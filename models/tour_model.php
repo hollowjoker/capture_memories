@@ -1,6 +1,6 @@
 <?php
 
-class home_model extends Model
+class tour_model extends Model
 {
 
 	function __construct()
@@ -8,14 +8,13 @@ class home_model extends Model
 		parent::__construct();
 	}
 
-	public function getTourData($tourType) {
+	public function getTourData() {
 		$option = [
-			'column' => 'tour.created_at',
-			'orderBy' => 'desc',
-			'limit' => 5
+			'id' => $_GET['id']
 		];
+		$tourType = "";
 		$tour = DAOFactory::getTblTourPackageDAO()->getTourPlaceByType($tourType, $option);
-
+		return $tour;
 		$optionMeta = [
 			'column' => 'price',
 			'orderBy' => 'asc',
@@ -25,9 +24,6 @@ class home_model extends Model
 			$tour[$k]['meta'] = DAOFactory::getTblTourPackageMetaDAO()->getTourMeta($v['id'], $optionMeta);
 		}
 		return $tour;
-
-		// echo '<pre>';
-		// print_r($tour);
 	}
 }
 

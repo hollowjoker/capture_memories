@@ -36,8 +36,8 @@
 								<option>...</option>
 							</select>
 						</div>
-						<div class="pt-4">
-							<button class="btn btn-danger">SUBMIT</button>
+						<div class="pt-4 submit-btn">
+							<button class="btn btn-custom-danger">SUBMIT</button>
 						</div>
 					</div>
 				</div>
@@ -86,11 +86,11 @@
 		<div class="row mt-4">
 			<?php if(count($international)): ?>
 				<?php foreach($international as $key_international => $value_international): ?>
-					<div class="col-lg col-md-6 col-sm-12">
+					<div class="col-md-6 col-sm-12 <?= count($international) < 5 ? 'col-lg-3' : 'col-lg' ?>">
 						<a href="<?= URL.'tour/international?id='.$value_international['id']?>">
 							<div class="card">
 								<div class="overlay-gradient"></div>
-								<div class="card-img" alt="Card image">
+								<div class="card-img" alt="Card image" style="background-image: url('<?= $value_international['image_public_path'] ?>') ">
 									<div class="card-content">
 										<div>
 											<?= $value_international['destination_name'] ?>

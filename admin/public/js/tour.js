@@ -82,7 +82,6 @@ tour = {
 				type: "GET"
 			}).done(result => {
 				let parsedResult = JSON.parse(result);
-				console.log(parsedResult);
 				$('#tourFormModal').modal('toggle');
 				let cloner = $('.appendCloner').find('tbody').html();
 				let tableBody = $('[data-table="form"]').find('tbody');
@@ -104,6 +103,8 @@ tour = {
 						inputCheck.val(v);
 					} else if(k == 'imagePublicPath') {
 						$('[data-render="image"]').prop('src',v);
+					} else if(k == 'imagePath') {
+						$('[name="'+k+'"]').prop('required',false);
 					}
 				});
 			});

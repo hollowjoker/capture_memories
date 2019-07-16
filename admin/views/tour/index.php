@@ -49,7 +49,7 @@
 												<button type="button" class="btn btn-info btn-sm" data-action="edit_tour" data-url="<?= URL.'tour/update?id='.$v['id']?>">
 													<i class="now-ui-icons design-2_ruler-pencil"></i>
 												</button>
-												<button type="button" class="btn btn-danger btn-sm">
+												<button type="button" class="btn btn-danger btn-sm" data-action="delete_tour" data-url="<?= URL.'tour/delete?id='.$v['id']?>">
 													<i class="now-ui-icons ui-1_simple-delete"></i>
 												</button>
 											</td>
@@ -81,12 +81,12 @@
 							<div class="col-lg-6">
 								<div class="form-group">
 									<input type="hidden" class="form-control" name="id" placeholder="id" value="0">
-									<input type="text" class="form-control" name="name" placeholder="name">
+									<input type="text" class="form-control" name="name" placeholder="name" required>
 									<div class="feedback"></div>
 								</div>
 								<div class="form-group">
-									<select name="placeId" id="placeId" class="custom-select">
-										<option disabled selected>Destination</option>
+									<select name="placeId" id="placeId" class="custom-select" required>
+										<option disabled selected value="">Destination</option>
 										<?php if(count($place)): ?>
 											<?php foreach($place as $k => $v): ?>
 												<option value="<?= $v['id'] ?>"><?= $v['name'] ?></option>
@@ -97,22 +97,22 @@
 								<div class="form-group">
 									<div class="row">
 										<div class="col">
-											<input type="text" class="form-control datepicker" autocomplete="off" name="travelPeriodFromAt" placeholder="travelPeriodFromAt">
+											<input type="text" class="form-control datepicker" autocomplete="off" name="travelPeriodFromAt" placeholder="Travel Period From" required>
 											<div class="feedback"></div>
 										</div>
 										<div class="col">
-											<input type="text" class="form-control datepicker" autocomplete="off" name="travelPeriodToAt" placeholder="travelPeriodToAt">
+											<input type="text" class="form-control datepicker" autocomplete="off" name="travelPeriodToAt" placeholder="Travel Period To" required>
 											<div class="feedback"></div>
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control" autocomplete="off" name="sellingPeriod" placeholder="sellingPeriod">
+									<input type="text" class="form-control" autocomplete="off" name="sellingPeriod" placeholder="Selling Period (ex. August 20 2019)">
 									<div class="feedback"></div>
 								</div>
 								<div class="form-group">
 									<img src="<?= MAIN_URL.'public/images/placeholder-600x400.png'?>" class="img-fluid shadow" alt="" data-render="image">
-									<input type="file" name="imagePath" class="form-control" data-file="image_upload">
+									<input type="file" name="imagePath" class="form-control" data-file="image_upload" required>
 								</div>
 								<div class="form-group">
 									<table class="table small table-custom" data-table="form">
@@ -134,10 +134,10 @@
 												</td>
 												<td>
 													<input type="hidden" name="metaId[]" class="form-control" placeholder="metaId" value="0">
-													<input type="text" name="quantity[]" class="form-control" placeholder="quantity">
+													<input type="text" name="quantity[]" class="form-control" placeholder="quantity" required>
 												</td>
 												<td>
-													<input type="text" name="price[]" class="form-control" placeholder="price">
+													<input type="text" name="price[]" class="form-control" placeholder="price" required>
 												</td>
 												<td>
 												<div class="onoffswitch">
@@ -196,10 +196,10 @@
 					</td>
 					<td>
 						<input type="hidden" name="metaId[]" class="form-control" placeholder="metaId" value="0">
-						<input type="text" name="quantity[]" class="form-control" placeholder="quantity">
+						<input type="text" name="quantity[]" class="form-control" placeholder="quantity" required>
 					</td>
 					<td>
-						<input type="text" name="price[]" class="form-control" placeholder="price">
+						<input type="text" name="price[]" class="form-control" placeholder="price" required>
 					</td>
 					<td>
 					<div class="onoffswitch">

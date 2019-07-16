@@ -15,6 +15,7 @@ class Tour extends Controller
 
 	public function international()
 	{
-		$this->view->render('views/international/index.php');
+		$this->view->tour = $this->model->getTourData();
+		$this->view->render('views/tour/index.php');
 	}
 }

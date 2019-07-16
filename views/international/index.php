@@ -1,10 +1,10 @@
-<?php 
-	$tours = $this->tours;
-	$international = $this->international;
+<?php
+    // $tour = $this->tour;
 ?>
 <section>
     <div class="container">
-        <div class="mt-5 mb-4">
+   
+        <!-- <div class="mt-5 mb-4">
             <h2>International: BALI</h2>
         </div>
         <div class="row">
@@ -114,6 +114,7 @@
                     </p>
                 </div>
             </div>
+  
             
             <div class="col-lg-5">
 				<div class="main_holder">
@@ -147,7 +148,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
+            </div> -->
+            
         </div>
     </div>
 </section>

@@ -56,6 +56,10 @@ class Tour_model extends Model
 			if($_POST['id']) {
 				$tour = DAOFactory::getTblTourPackageDAO()->load($_POST['id']);
 				$tour = Controller::insertDateUpdate($tour);
+				if($_FILES["imagePath"]["size"] > 0) {
+					$tour->imagePath = $target_file;
+					$tour->imagePublicPath = $public_file;
+				}
 			} else {
 				$tour = new TblTourPackage;
 				$tour->imagePath = $target_file;
