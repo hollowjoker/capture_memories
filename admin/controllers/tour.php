@@ -30,6 +30,12 @@ class Tour extends Controller
 		exit;
 	}
 
+	public function delete() {
+		$modelResult = $this->model->delete();
+		echo json_encode($modelResult);
+		exit;
+	}
+
 }
 
 ?>

@@ -131,4 +131,16 @@ class Tour_model extends Model
 		$result->meta = DAOFactory::getTblTourPackageMetaDAO()->queryByTblTourPackageId($result->id);
 		return $result;
 	}
+
+	public function delete() {
+		$id = $_GET['id'];
+		$tour = DAOFactory::getTblTourPackageDAO()->load($id);
+		$tour = Controller::deleteDate($tour);
+		$tourResult = DAOFactory::getTblTourPackageDAO()->update($tour);
+
+		$result = [
+			'type' => 'success'
+		];
+		return $result;
+	}
 }

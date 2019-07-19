@@ -1,7 +1,9 @@
 
 
 		<footer>
-			
+			<div class="container-fluid">
+
+			</div>
 		</footer>
 		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
@@ -23,7 +25,7 @@
 								<div class="feedback"></div>
 							</div>
 							<div class="form-group">
-								<input type="text" id="lastName" class="form-control" name="lastName" placeholder="Last Name" required>
+								<input type="text" id`="lastName" class="form-control" name="lastName" placeholder="Last Name" required>
 								<div class="feedback"></div>
 							</div>
 							<div class="form-group">

@@ -29,16 +29,9 @@
 						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="nav-link" href="<?= URL.'services'?>">
 						Services
 						</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Tour Package</a>
-							<a class="dropdown-item" href="#">Airline Ticketing</a>
-							<a class="dropdown-item" href="#">Travel Insurance</a>
-							<a class="dropdown-item" href="#">Wifi Rental</a>
-							<a class="dropdown-item" href="#">Visa Processing</a>
-						</div>
 					</li>
 					<?php if(!isset($userSession['id'])) : ?>
 						<li class="nav-item">
@@ -50,7 +43,7 @@
 					<?php else: ?>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Welcome <?= isset($userSession['firstName']) ? $userSession['firstName'] : ""?>
+							Welcome <?= isset($userSession['first_name']) ? $userSession['first_name'] : ""?>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="#">Profile</a>
