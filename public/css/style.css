@@ -83,8 +83,10 @@ section.header{
 	color: rgb(118, 118, 118);
 }
 .custom-card .card img {
-	border-top-left-radius: calc(.25rem - 1px);
-    border-top-right-radius: calc(.25rem - 1px);
+	border-bottom-left-radius: calc(.25rem - 1px);
+    border-bottom-right-radius: calc(.25rem - 1px);
+	height: 200px;
+    object-fit: cover;
 }
 .container-xl {
 	padding-right: 15px;
@@ -101,12 +103,41 @@ section.header{
 	color: #ffffff;
 	width: 100%;
 }
+.border-radius-8 {
+	border-radius: 8px;
+}
+.paddingLR {
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+.marginNegLR {
+	margin-left: -10px !important;
+	margin-right: -10px !important;
+}
+/*!
+* Global
+*/
+.dropdown-menu > .dropdown-item {
+	font-size: 13px;
+}
+.img-radius {
+	border-radius: 50%;
+    height: 52px;
+    object-fit: cover;
+    width: 52px;
+}
 
 /*!
 * Button
 */
 .btn-custom-danger {
 	background-color: rgb(255, 90, 95);
+}
+.btn-transparent {
+	background-color: transparent;
+}
+.d-block-important {
+	display: flex !important;
 }
 /*!
 * Banner
@@ -139,7 +170,7 @@ section.header{
 	display: flex;
 	flex-direction: column;
 	font-weight: 600;
-	height: 260px;
+	height: 300px;
 	justify-content: flex-end;
 }
 .card-content {
@@ -149,6 +180,10 @@ section.header{
 }
 .international .card {
 	border: 0;
+}
+.card-img-bottom {
+	border-bottom-left-radius: calc(.25rem - 1px);
+    border-bottom-right-radius: calc(.25rem - 1px);
 }
 /* .main_holder_gradient {
 	background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 3%, rgb(0, 0, 0) 100%) !important;
@@ -214,6 +249,30 @@ section.header{
 .service-holder .service-list li .service-list-content{
 	width: calc(100% - 50px);
 }
+.main_holder__pickGuest {
+    background-color: #fff;
+	box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1) !important;
+	display: none;
+	flex-direction: column;
+	position: absolute;
+    width: 100%;
+}
+.pickGuest_item {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	width: 100%;
+}
+.pickGuest_item > div > button {
+	border-radius: 50px;
+}
+.pickGuest_title,
+.pickGuest_item i {
+	color: #495057;
+}
+.guest_main {
+	position: relative;
+}
 /*!
 * Color
 */
@@ -233,6 +292,12 @@ section.header{
 }
 .weight-100 {
 	font-weight: 100;
+}
+/*!
+* Message
+*/
+.message_section td {
+	font-size: 13px;
 }
 
 @media (min-width: 576px) {

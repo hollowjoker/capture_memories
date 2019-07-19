@@ -18,8 +18,6 @@
 		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet" />
 		<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
-		<link href="<?= URL ?>public/css/style.css" rel="stylesheet" />
 		<script>
 			let initiateModule = "";
 		</script>  

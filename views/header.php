@@ -13,6 +13,9 @@
 		<link rel="stylesheet" href="<?= URL ?>public/css/style.css">
 		<link rel="stylesheet" href="<?= URL ?>public/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet" />
+		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
+		<link href="<?= URL ?>public/css/style.css" rel="stylesheet" />
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark transparent <?= $module != '' ? "text-black border-bottom" : "nav_fixed" ?>">
@@ -48,7 +51,7 @@
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="#">Profile</a>
 								<a class="dropdown-item" href="#">Cart</a>
-								<a class="dropdown-item" href="#">Messages</a>
+								<a class="dropdown-item" href="<?= URL.'message/index'?>">Messages</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="<?= URL.'user/logout'?>">Log out</a>
 							</div>

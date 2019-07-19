@@ -26,22 +26,63 @@ $tour = $this->tour;
                             <div class="form-row pt-3">
                                 <div class="col">
                                     <h6>DEPARTING ON</h6>
-                                    <input type="text" class="form-control datepicker" autocomplete="off" placeholder="First name">
+                                    <input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
                                 </div>
                                 <div class="col">
                                     <h6>RETURNING ON</h6>
-                                    <input type="text" class="form-control datepicker" autocomplete="off" placeholder="Last name">
+                                    <input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
                                 </div>
                             </div>
                             <div class="form-group pt-3">
                                 <H6>GUESTS</H6>
-                                <select id="inputState" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                </select>
+                                <input type="text" class="form-control" placeholder="Guest" data-action="pickGuest">
+                                <div class="main_holder__pickGuest">
+                                    <div class="pickGuest_item">
+                                        <div class="pickGuest_title">
+                                            Adults
+                                        </div>
+                                        <div>
+                                            <button class="btn-transparent mr-3" data-picker="minus">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            1
+                                            <button class="btn-transparent ml-3" data-picker="plus">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="pickGuest_item">
+                                        <div class="pickGuest_title">
+                                            Children
+                                        </div>
+                                        <div>
+                                            <button class="btn-transparent mr-3">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            1
+                                            <button class="btn-transparent ml-3">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="pickGuest_item">
+                                        <div class="pickGuest_title">
+                                            Infants
+                                        </div>
+                                        <div>
+                                            <button class="btn-transparent mr-3">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            1
+                                            <button class="btn-transparent ml-3">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="pt-4 submit-btn">
-                                <button class="btn btn-custom-danger">SUBMIT</button>
+                                <button class="btn btn-custom-danger">BOOK</button>
                             </div>
                         </div>
                     </div>
