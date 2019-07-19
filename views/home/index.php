@@ -22,22 +22,35 @@
 						<div class="form-row">
 							<div class="col">
 								<h6>DEPARTING ON</h6>
-								<input type="text" class="form-control" placeholder="First name">
+								<input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
 							</div>
 							<div class="col">
 								<h6>RETURNING ON</h6>
-								<input type="text" class="form-control" placeholder="Last name">
+								<input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
 							</div>
 						</div>
-						<div class="form-group pt-3">
+						<div class="form-group guest_main pt-3">
 							<H6>GUESTS</H6>
-							<select id="inputState" class="form-control">
-								<option selected>Choose...</option>
-								<option>...</option>
-							</select>
+							<input type="text" class="form-control" placeholder="Guest" data-action="pickGuest">
+							<div class="main_holder__pickGuest">
+								<div class="pickGuest_item">
+									<div class="pickGuest_title">
+										Persons
+									</div>
+									<div>
+										<button class="btn-transparent mr-3" data-picker="minus">
+											<i class="fa fa-minus"></i>
+										</button>
+										1
+										<button class="btn-transparent ml-3" data-picker="plus">
+											<i class="fa fa-plus"></i>
+										</button>
+									</div>
+								</div>
+							</div>
 						</div>
 						<div class="pt-4 submit-btn">
-							<button class="btn btn-custom-danger">SUBMIT</button>
+							<button class="btn btn-custom-danger">SEARCH</button>
 						</div>
 					</div>
 				</div>
@@ -49,10 +62,10 @@
 	<div class="container-xl">
 		<h4>Tours and Packages <span class="text-muted">(Local)</span></h4>
 		<h5 class="">Available Packages recommended for you</h5>
-		<div class="row mt-4">
+		<div class="row mt-4 marginNegLR">
 			<?php if(count($tours)): ?>
 				<?php foreach($tours as $k => $v): ?>
-					<div class="col-lg-3 custom-card">
+					<div class="col-lg-3 custom-card paddingLR">
 						<div class="card">
 							<a href="<?= URL.'tour?id='.$v['id']?>">
 								<img src="<?= $v['image_path'] ?>" class="card-img-top" alt="...">
@@ -83,14 +96,14 @@
 			<h4>Tours and Packages <span class="text-muted">(International)</span></h4>
 			<h5 class="">Available Packages recommended for you</h5>
 		</div>
-		<div class="row mt-4">
+		<div class="row mt-4 marginNegLR">
 			<?php if(count($international)): ?>
 				<?php foreach($international as $key_international => $value_international): ?>
-					<div class="col-md-6 col-sm-12 <?= count($international) < 5 ? 'col-lg-3' : 'col-lg' ?>">
+					<div class="col-lg-2 col-md-4 paddingLR">
 						<a href="<?= URL.'tour/international?id='.$value_international['id']?>">
 							<div class="card">
-								<div class="overlay-gradient"></div>
-								<div class="card-img" alt="Card image" style="background-image: url('<?= $value_international['image_public_path'] ?>') ">
+								<div class="overlay-gradient card-img-bottom"></div>
+								<div class="card-img card-img-top card-img-bottom" alt="Card image" style="background-image: url('<?= $value_international['image_public_path'] ?>') ">
 									<div class="card-content">
 										<div>
 											<?= $value_international['destination_name'] ?>

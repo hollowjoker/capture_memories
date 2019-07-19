@@ -113,6 +113,8 @@
 		<script src="<?= URL ?>public/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+		<script src="https://cdn.tiny.cloud/1/eu5dzjii9t7855b8emqmu9rcklczoyr2ivtkmvj9712vbs33/tinymce/5/tinymce.min.js"></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script> -->
 		<!-- <script src="https://kit.fontawesome.com/725d374b4a.js"></script> -->
 		<script>
@@ -125,13 +127,19 @@
 
 				defaults: {
 					$signUpForm: $('[data-form="sign_up_form"]'),
-					$loginForm: $('[data-form="login_form"]')
+					$loginForm: $('[data-form="login_form"]'),
+					$pickQuest: $('[data-action="pickGuest"]'),
+					$pickerMinus: $('[data-picker="minus"]'),
+					$pickerPlus: $('[data-picker="plus"]')
 				},
 				onInit: function() {
 					var self = this,
 					el = self.defaults
 					self.activateSignUpForm(el.$signUpForm)
 					self.activateLoginForm(el.$loginForm)
+					self.activatePickQuest(el.$pickQuest)
+					self.activatePickerMinus(el.$pickerMinus)
+					self.activatePickerPlus(el.$pickerPlus)
 				},
 				onReady: function(e) {
 					var self = this,
@@ -199,6 +207,21 @@
 							}
 						});
 					});
+				},
+				activatePickQuest: function(trigger) {
+					trigger.click(function (e) {
+						$(this).closest('.guest_main').find('.main_holder__pickGuest').toggleClass('d-block-important');
+					});
+				},
+				activatePickerMinus: function(trigger) {
+					trigger.click(function (e) {
+						console.log(1);
+					});
+				},
+				activatePickerPlus: function(trigger) {
+					trigger.click(function (e) {
+						console.log(1);
+					});
 				}
 			}
 
@@ -206,5 +229,18 @@
 				main.onReady()
 			})
 		</script>
+		<script>
+			$('.datepicker').datepicker({
+				uiLibrary: 'bootstrap4',
+				format: 'yyyy-mm-dd',
+				startDate: '-3d'
+			});
+			tinymce.init({
+				selector: '.tinymce',
+				height: 500
+			});
+			$('.dataTable').DataTable();
+		</script>
+		<script src="<?= URL.'public/js/'.$module.'.js'?>"></script>
 	</body>
 </html>
