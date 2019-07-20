@@ -120,6 +120,9 @@ section.header{
     object-fit: cover;
     width: 52px;
 }
+.border-1 {
+	border: 1px solid #eee;
+}
 
 /*!
 * Button
@@ -249,6 +252,25 @@ section.header{
 */
 .message_section td {
 	font-size: 13px;
+}
+.message_section a {
+	color: #000000;
+	text-decoration: none;
+}
+.convo-section .package-details,
+.convo-section .convo-details {
+	border: 1px solid #eee;
+	border-radius: 8px;
+	font-size: 14px;
+}
+.convo-section ul {
+	padding: 0;
+}
+.convo-section ul li {
+	list-style: none;
+}
+.convo-section span {
+	color: #9b9b9b;
 }
 
 @media (min-width: 576px) {

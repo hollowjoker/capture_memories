@@ -11,5 +11,9 @@ class Message extends Controller
 	public function index()
 	{
 		$this->view->render('views/message/index.php');
-	}
+    }
+    
+    public function convo() {
+        $this->view->render('views/message/convo.php');
+    }
 }
