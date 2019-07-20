@@ -12,6 +12,8 @@ class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 			select
 			tour.id,
 			tour.name,
+			tour.travel_period_from_at,
+			tour.travel_period_to_at,
 			tour.image_public_path,
 			tour.description,
 			place.name destination_name

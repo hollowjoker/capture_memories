@@ -16,6 +16,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet" />
 		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
 		<link href="<?= URL ?>public/css/style.css" rel="stylesheet" />
+		<link rel="icon" href="<?=  URL."public/images/tour/captured_memories_new.png" ?>" type="image/png" sizes="16x16">
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark transparent <?= $module != '' ? "text-black border-bottom" : "nav_fixed" ?>">
@@ -23,13 +24,13 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<a class="navbar-brand" href="http://localhost:8888/capture_memories/">
-				<img src="/capture_memories/public/images/tour/captured_memories_new.png" class="img-fluid" alt="logo" style="width: 50px;">
+				<img src="<?= URL."public/images/tour/captured_memories_new.png"?>" class="img-fluid" alt="logo" style="width: 50px;">
 			</a>
 
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				<ul class="navbar-nav mt-2 mt-lg-0 ml-auto small">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="<?= URL ?>">Home <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link" href="<?= URL.'services'?>">
