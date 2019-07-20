@@ -5,7 +5,8 @@ tour = {
 	defaults: {
 		$tourForm: $('[data-form="tour_form"]'),
 		$imageUpload: $('[data-file="image_upload"]'),
-		$editTour: $('[data-action="edit_tour"]')
+		$editTour: $('[data-action="edit_tour"]'),
+		$deleteTour: $('[data-action="delete_tour"]'),
 	},
 	onInit: function() {
 		var self = this,
@@ -13,6 +14,7 @@ tour = {
 		self.activateTourForm(el.$tourForm)
 		self.activateImageUpload(el.$imageUpload)
 		self.activateEditTour(el.$editTour)
+		self.activateDeleteTour(el.$deleteTour)
 	},
 	onReady: function(e) {
 		var self = this,
@@ -108,6 +110,32 @@ tour = {
 					}
 				});
 			});
+		});
+	},
+	activateDeleteTour: function(trigger) {
+		trigger.click(function (e) {
+			let url = $(this).attr('data-url');
+			let redirectUrl = $('[data-form="tour_form"]').attr('data-redirect');
+
+			Swal.fire({
+				type: 'warning',
+				title: 'Are you sure?',
+				text: "You won't be able to revert this!",
+				showCancelButton: true,
+				confirmButtonColor: '#2CA8FF',
+				cancelButtonColor: '#FF3636',
+				confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+				if(result.value) {
+					$.ajax({
+						url: url,
+						type: 'GET'
+					}).done( result => {
+						location.href = redirectUrl;
+					});
+				}
+			});
+
 		});
 	}
 }

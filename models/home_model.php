@@ -25,9 +25,6 @@ class home_model extends Model
 			$tour[$k]['meta'] = DAOFactory::getTblTourPackageMetaDAO()->getTourMeta($v['id'], $optionMeta);
 		}
 		return $tour;
-
-		// echo '<pre>';
-		// print_r($tour);
 	}
 }
 

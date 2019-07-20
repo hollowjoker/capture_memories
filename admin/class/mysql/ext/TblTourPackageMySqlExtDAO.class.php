@@ -26,7 +26,8 @@ class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 			inner join tbl_place as place
 			on tour.place_id = place.id
 
-			where tour.status = 'active'
+			where tour.status = 'active' &&
+			tour.deleted_at = '0000-00-00 00:00:00'
 		";
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);

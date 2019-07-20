@@ -14,7 +14,7 @@ class user_model extends Model
 		$password = $_POST['password'];
 		
 		
-		$acc = DAOFactory::getTblUserDAO()->queryByEmail($email);
+		$acc = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($email);
 		
 		$result = [
 			'status' => 'error',
@@ -24,10 +24,11 @@ class user_model extends Model
 		{
 			foreach($acc as $each)
 			{
-				if($each->password == $password)
+				if($each['password'] == $password)
 				{
-					$user = Controller::objToArray($each);
-					Session::setSession('user',$user);
+					// $user = Controller::objToArray($each);
+
+					Session::setSession('user',$each);
 					$result = [
 						'status' => 'success',
 						'messages' => 'Login Success!'

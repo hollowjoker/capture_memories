@@ -7,6 +7,12 @@
  */
 class TblUserMySqlExtDAO extends TblUserMySqlDAO{
 
-	
+	public function queryByEmailWhereActive($email) {
+		$sql = "
+			select * from tbl_user where email = '".$email."' && type = 'user' && active = 'active' && deleted_at = '0000-00-00 00:00:00' 
+		";
+		$sqLQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqLQuery);
+	}
 }
 ?>
