@@ -5,72 +5,67 @@ tour = {
 	defaults: {
 		$startDate: $('[data-start-date]').attr('data-start-date'),
 		$endDate: $('[data-end-date]').attr('data-end-date'),
-		$pickQuest: $('[data-action="pickGuest"]'),
-		$guestCounter: $('[data-guest-counter]') 
+		$pickGuest: $('[data-guest-pick="quantity"]'),
+		$bookingForm: $('#booking_form')
 	},
 	onInit: function() {
 		var self = this,
 		el = self.defaults
-		self.activatePickQuest(el.$pickQuest)
-		self.activateGuestCounter(el.$guestCounter)
+		self.activatePickGuest(el.$pickGuest)
+		self.activateBookingForm(el.$bookingForm)
 	},
 	onReady: function(e) {
 		var self = this,
 		el = self.defaults
 		self.onInit()
+		self.activatePickedGuestQuantity();
 		$('.datepicker').datepicker({
 			uiLibrary: 'bootstrap4',
-			format: 'yyyy-mm-dd',
+			format: 'mm/dd/yyyy',
 			startDate: el.$startDate,
 			endDate: el.$endDate
 		});
 	},
-	activatePickQuest: function(trigger) {
+	activatePickedGuestQuantity: function () {
+		let activePickedGuest = $('[data-guest-pick="quantity"].active');
+		let price = activePickedGuest.find('[data-check="price"]').text();
+		let metaId = activePickedGuest.attr('data-meta-id');
+		let guestAppend = $('[data-companion]').find('tbody').html();
+		let guestTable = $('#guest_table').find('tbody');
+
+		$('.price-content').text(price);
+		$('[name="metaId"]').val(metaId);
+
+		let toAppend = "";
+		for(let i=0; i < activePickedGuest.attr('data-guest-quantity'); i++) {
+			toAppend += guestAppend;
+		}
+		guestTable.html(toAppend);
+	},
+	activatePickGuest: function (trigger) {
 		trigger.click(function (e) {
-			$(this).closest('.guest_main').find('.main_holder__pickGuest').toggleClass('d-block-important');
+			$('[data-guest-pick="quantity"]').removeClass('active');
+			$(this).addClass('active');
+
+			tour.activatePickedGuestQuantity();
 		});
 	},
-	activateGuestCounter: function (trigger) {
-		trigger.click(function (e) {
-			let action = $(this).attr('data-picker');
-			let count = $(this).closest('.pickGuest_item').find('[data-count="guest"]');
-			let countInt = parseInt(count.text());
-			let guestCount = $('[data-guest-count]').attr("data-guest-count");
-			let userInput = $('[data-guest-user]');
-			let guestCountAdult = $('[data-picker="plus"][data-guest-counter="adult"]');
-			let guestCountChildren = $('[data-picker="plus"][data-guest-counter="children"]');
-			let quantityInput = $('[name="quantity"]');
+	activateBookingForm: function (trigger) {
+		trigger.submit(function (e) {
+			e.preventDefault();
+			let formUrl = $(this).attr('action');
+			let formMethod = $(this).attr('method');
+			let formData = $(this).serialize();
 
-		
-			if(action == 'plus') {
-				if(guestCount > userInput.attr('data-guest-user') ){
-					count.text(countInt + 1);
-					userInput.attr('data-guest-user',(parseInt(userInput.attr('data-guest-user')) + 1));
-				}
-			} else {
-				if(countInt > 0 ) {
-					count.text(countInt - 1);
-					userInput.attr('data-guest-user',(parseInt(userInput.attr('data-guest-user')) - 1));
-				}
-			}
-
-			let quantityVal = quantityInput.val().split(' ')[0];
-			if(parseInt(userInput.attr('data-guest-user')) > 1) {
-				quantityInput.val(userInput.attr('data-guest-user') + ' Guests');
-			} else {
-				quantityInput.val(userInput.attr('data-guest-user') + ' Guest');
-			}
-
-			if(guestCount == userInput.attr('data-guest-user')) {
-				guestCountAdult.prop('disabled',true);
-				guestCountChildren.prop('disabled',true);
-			} else {
-				guestCountAdult.prop('disabled',false);
-				guestCountChildren.prop('disabled',false);
-			}
+			$.ajax({
+				url: formUrl,
+				type: formMethod,
+				data: formData
+			}).done( result => {
+				console.log(result);
+			});
 		});
-	},
-	
+	}
 }
 
 doc.ready(function(){

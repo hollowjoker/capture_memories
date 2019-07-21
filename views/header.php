@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="<?= URL ?>public/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?= URL ?>public/css/style.css">
 		<link rel="stylesheet" href="<?= URL ?>public/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet" />
 		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />

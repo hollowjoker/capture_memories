@@ -18,4 +18,10 @@ class Tour extends Controller
 		$this->view->tour = $this->model->getTourData();
 		$this->view->render('views/tour/index.php');
 	}
+	
+	public function bookingStore() {
+		$modelResult = $this->model->bookingStore();
+		echo json_encode($modelResult);
+		exit;
+	}
 }

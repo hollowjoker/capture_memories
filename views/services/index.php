@@ -18,7 +18,7 @@
 			<?php foreach($services as $k => $v): ?>
 				<div class="col-lg-4">
 					<div class="service-holder">
-						<h1 class="display-3 mb-4"><i class="fa <?= $v['icon']?> icon-gradient"></i></h1>
+						<h1 class="display-3 mb-4"><i class="<?= $v['icon']?> icon-gradient"></i></h1>
 						<h3><?= $v['main_title'] ?></h3>
 						<div>
 							<hr>

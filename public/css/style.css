@@ -40,6 +40,9 @@ span {
 .transparent {
 	background-color: transparent;
 }
+.text-strong {
+	font-weight: 300;
+}
 
 section {
 	min-height: 100vh;
@@ -146,8 +149,22 @@ section.header{
 	background-color: #5e84df;
 	color: #fff !important;
 }
-.btn-custom-success:hover {
+.btn-custom-success:hover,
+.btn-custom-success.active
+{
 	background-color: #4668b9;
+}
+.btn-custom-success-outlined {
+	background-color: transparent;
+	color: #5e84df !important;
+	border: 1px solid #5e84df;
+}
+.btn-custom-success-outlined:hover,
+.btn-custom-success-outlined.active
+{
+	background-color: #4668b9;
+	border-color: #4668b9;
+	color: #fff !important;
 }
 .d-block-important {
 	display: flex !important;

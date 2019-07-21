@@ -9,7 +9,7 @@ class Data{
 	public function services() {
 		$data = [
 			[
-				"icon" => "fa-wifi",
+				"icon" => "fas fa-wifi",
 				"main_title" => "Wifi Rental",
 				"content" => 
 				[
@@ -32,7 +32,7 @@ class Data{
 				]
 			],
 			[
-				"icon" => "fa-plane",
+				"icon" => "fas fa-globe-asia",
 				"main_title" => "AIRLINE TICKETING",
 				"content" => 
 				[
@@ -55,7 +55,7 @@ class Data{
 				]
 			],
 			[
-				"icon" => "fa-cc-visa",
+				"icon" => "fab fa-cc-visa",
 				"main_title" => "VISA PROCESSING",
 				"content" => 
 				[
@@ -78,7 +78,7 @@ class Data{
 				]
 			],
 			[
-				"icon" => "fa-shield",
+				"icon" => "fas fa-user-shield",
 				"main_title" => "TRAVEL INSURANCE",
 				"content" => 
 				[
@@ -97,7 +97,7 @@ class Data{
 				]
 			],
 			[
-				"icon" => "fa-map-marker",
+				"icon" => "fas fa-map-marked-alt",
 				"main_title" => "TOUR PACKAGE",
 				"content" => 
 				[
