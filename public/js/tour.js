@@ -39,18 +39,28 @@ tour = {
 			let userInput = $('[data-guest-user]');
 			let guestCountAdult = $('[data-picker="plus"][data-guest-counter="adult"]');
 			let guestCountChildren = $('[data-picker="plus"][data-guest-counter="children"]');
-			
-			if(action == 'plus' && $('[data-guest-counter]').attr('data-guest-counterß') != 'infant') {
+			let quantityInput = $('[name="quantity"]');
+
+		
+			if(action == 'plus') {
 				if(guestCount > userInput.attr('data-guest-user') ){
 					count.text(countInt + 1);
 					userInput.attr('data-guest-user',(parseInt(userInput.attr('data-guest-user')) + 1));
 				}
-			} else if($('[data-guest-counter]').attr('data-guest-counterß') != 'infant') {
-				if(countInt > 0) {
+			} else {
+				if(countInt > 0 ) {
 					count.text(countInt - 1);
 					userInput.attr('data-guest-user',(parseInt(userInput.attr('data-guest-user')) - 1));
 				}
 			}
+
+			let quantityVal = quantityInput.val().split(' ')[0];
+			if(parseInt(userInput.attr('data-guest-user')) > 1) {
+				quantityInput.val(userInput.attr('data-guest-user') + ' Guests');
+			} else {
+				quantityInput.val(userInput.attr('data-guest-user') + ' Guest');
+			}
+
 			if(guestCount == userInput.attr('data-guest-user')) {
 				guestCountAdult.prop('disabled',true);
 				guestCountChildren.prop('disabled',true);
@@ -59,7 +69,8 @@ tour = {
 				guestCountChildren.prop('disabled',false);
 			}
 		});
-	}
+	},
+	
 }
 
 doc.ready(function(){

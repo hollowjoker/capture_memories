@@ -1,6 +1,7 @@
 <?php
 	$module = isset(explode('/',$_SERVER['REQUEST_URI'])[3]) ? explode('/',$_SERVER['REQUEST_URI'])[3] : '';
-	
+	// print_r($);	
+	// exit;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +17,10 @@
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet" />
 		<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+		<link href="<?= URL.'public/css/style.css'?>" rel="stylesheet" />
 		<script>
 			let initiateModule = "";
 		</script>  
