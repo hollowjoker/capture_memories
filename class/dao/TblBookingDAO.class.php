@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-07-10 15:03
+ * @date: 2019-07-21 22:58
  */
 interface TblBookingDAO{
 
@@ -55,6 +55,10 @@ interface TblBookingDAO{
 
 	public function queryByTblTourPackageMetaId($value);
 
+	public function queryByDepartingAt($value);
+
+	public function queryByReturningAt($value);
+
 	public function queryByStatus($value);
 
 	public function queryByCreatedAt($value);
@@ -67,6 +71,10 @@ interface TblBookingDAO{
 	public function deleteByTblUserId($value);
 
 	public function deleteByTblTourPackageMetaId($value);
+
+	public function deleteByDepartingAt($value);
+
+	public function deleteByReturningAt($value);
 
 	public function deleteByStatus($value);
 

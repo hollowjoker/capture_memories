@@ -14,5 +14,19 @@ class TblUserMySqlExtDAO extends TblUserMySqlDAO{
 		$sqLQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqLQuery);
 	}
+
+	public function getAdmin($option) {
+		$sql = "select * from tbl_user where type = 'admin'";
+
+		if(isset($option['orderBy'])) {
+			$sql .=" order by ".$option['column']." ".$option['orderBy'];
+		}
+		if(isset($option['limit'])) {
+			$sql .=" limit ".$option['limit'];
+		}
+
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>

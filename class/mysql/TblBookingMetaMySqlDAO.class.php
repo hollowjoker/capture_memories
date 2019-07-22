@@ -1,20 +1,20 @@
 <?php
 /**
- * Class that operate on table 'tbl_services'. Database Mysql.
+ * Class that operate on table 'tbl_booking_meta'. Database Mysql.
  *
  * @author: http://phpdao.com
  * @date: 2019-07-21 22:58
  */
-class TblServicesMySqlDAO implements TblServicesDAO{
+class TblBookingMetaMySqlDAO implements TblBookingMetaDAO{
 
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @return TblServicesMySql 
+	 * @return TblBookingMetaMySql 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM tbl_services WHERE id = ?';
+		$sql = 'SELECT * FROM tbl_booking_meta WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class TblServicesMySqlDAO implements TblServicesDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM tbl_services';
+		$sql = 'SELECT * FROM tbl_booking_meta';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,17 +35,17 @@ class TblServicesMySqlDAO implements TblServicesDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM tbl_services ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM tbl_booking_meta ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
 	
 	/**
  	 * Delete record from table
- 	 * @param tblService primary key
+ 	 * @param tblBookingMeta primary key
  	 */
 	public function delete($id){
-		$sql = 'DELETE FROM tbl_services WHERE id = ?';
+		$sql = 'DELETE FROM tbl_booking_meta WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->executeUpdate($sqlQuery);
@@ -54,43 +54,41 @@ class TblServicesMySqlDAO implements TblServicesDAO{
 	/**
  	 * Insert record to table
  	 *
- 	 * @param TblServicesMySql tblService
+ 	 * @param TblBookingMetaMySql tblBookingMeta
  	 */
-	public function insert($tblService){
-		$sql = 'INSERT INTO tbl_services (tbl_user_id, tbl_service_id, type, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?)';
+	public function insert($tblBookingMeta){
+		$sql = 'INSERT INTO tbl_booking_meta (tbl_booking_id, companion_name, age, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($tblService->tblUserId);
-		$sqlQuery->setNumber($tblService->tblServiceId);
-		$sqlQuery->set($tblService->type);
-		$sqlQuery->set($tblService->status);
-		$sqlQuery->set($tblService->createdAt);
-		$sqlQuery->set($tblService->updatedAt);
-		$sqlQuery->set($tblService->deletedAt);
+		$sqlQuery->setNumber($tblBookingMeta->tblBookingId);
+		$sqlQuery->set($tblBookingMeta->companionName);
+		$sqlQuery->set($tblBookingMeta->age);
+		$sqlQuery->set($tblBookingMeta->createdAt);
+		$sqlQuery->set($tblBookingMeta->updatedAt);
+		$sqlQuery->set($tblBookingMeta->deletedAt);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$tblService->id = $id;
+		$tblBookingMeta->id = $id;
 		return $id;
 	}
 	
 	/**
  	 * Update record in table
  	 *
- 	 * @param TblServicesMySql tblService
+ 	 * @param TblBookingMetaMySql tblBookingMeta
  	 */
-	public function update($tblService){
-		$sql = 'UPDATE tbl_services SET tbl_user_id = ?, tbl_service_id = ?, type = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
+	public function update($tblBookingMeta){
+		$sql = 'UPDATE tbl_booking_meta SET tbl_booking_id = ?, companion_name = ?, age = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($tblService->tblUserId);
-		$sqlQuery->setNumber($tblService->tblServiceId);
-		$sqlQuery->set($tblService->type);
-		$sqlQuery->set($tblService->status);
-		$sqlQuery->set($tblService->createdAt);
-		$sqlQuery->set($tblService->updatedAt);
-		$sqlQuery->set($tblService->deletedAt);
+		$sqlQuery->setNumber($tblBookingMeta->tblBookingId);
+		$sqlQuery->set($tblBookingMeta->companionName);
+		$sqlQuery->set($tblBookingMeta->age);
+		$sqlQuery->set($tblBookingMeta->createdAt);
+		$sqlQuery->set($tblBookingMeta->updatedAt);
+		$sqlQuery->set($tblBookingMeta->deletedAt);
 
-		$sqlQuery->setNumber($tblService->id);
+		$sqlQuery->setNumber($tblBookingMeta->id);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -98,105 +96,91 @@ class TblServicesMySqlDAO implements TblServicesDAO{
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM tbl_services';
+		$sql = 'DELETE FROM tbl_booking_meta';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function queryByTblUserId($value){
-		$sql = 'SELECT * FROM tbl_services WHERE tbl_user_id = ?';
+	public function queryByTblBookingId($value){
+		$sql = 'SELECT * FROM tbl_booking_meta WHERE tbl_booking_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByTblServiceId($value){
-		$sql = 'SELECT * FROM tbl_services WHERE tbl_service_id = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
-		return $this->getList($sqlQuery);
-	}
-
-	public function queryByType($value){
-		$sql = 'SELECT * FROM tbl_services WHERE type = ?';
+	public function queryByCompanionName($value){
+		$sql = 'SELECT * FROM tbl_booking_meta WHERE companion_name = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByStatus($value){
-		$sql = 'SELECT * FROM tbl_services WHERE status = ?';
+	public function queryByAge($value){
+		$sql = 'SELECT * FROM tbl_booking_meta WHERE age = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByCreatedAt($value){
-		$sql = 'SELECT * FROM tbl_services WHERE created_at = ?';
+		$sql = 'SELECT * FROM tbl_booking_meta WHERE created_at = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByUpdatedAt($value){
-		$sql = 'SELECT * FROM tbl_services WHERE updated_at = ?';
+		$sql = 'SELECT * FROM tbl_booking_meta WHERE updated_at = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByDeletedAt($value){
-		$sql = 'SELECT * FROM tbl_services WHERE deleted_at = ?';
+		$sql = 'SELECT * FROM tbl_booking_meta WHERE deleted_at = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 
-	public function deleteByTblUserId($value){
-		$sql = 'DELETE FROM tbl_services WHERE tbl_user_id = ?';
+	public function deleteByTblBookingId($value){
+		$sql = 'DELETE FROM tbl_booking_meta WHERE tbl_booking_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByTblServiceId($value){
-		$sql = 'DELETE FROM tbl_services WHERE tbl_service_id = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
-		return $this->executeUpdate($sqlQuery);
-	}
-
-	public function deleteByType($value){
-		$sql = 'DELETE FROM tbl_services WHERE type = ?';
+	public function deleteByCompanionName($value){
+		$sql = 'DELETE FROM tbl_booking_meta WHERE companion_name = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByStatus($value){
-		$sql = 'DELETE FROM tbl_services WHERE status = ?';
+	public function deleteByAge($value){
+		$sql = 'DELETE FROM tbl_booking_meta WHERE age = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByCreatedAt($value){
-		$sql = 'DELETE FROM tbl_services WHERE created_at = ?';
+		$sql = 'DELETE FROM tbl_booking_meta WHERE created_at = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByUpdatedAt($value){
-		$sql = 'DELETE FROM tbl_services WHERE updated_at = ?';
+		$sql = 'DELETE FROM tbl_booking_meta WHERE updated_at = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByDeletedAt($value){
-		$sql = 'DELETE FROM tbl_services WHERE deleted_at = ?';
+		$sql = 'DELETE FROM tbl_booking_meta WHERE deleted_at = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
@@ -207,21 +191,20 @@ class TblServicesMySqlDAO implements TblServicesDAO{
 	/**
 	 * Read row
 	 *
-	 * @return TblServicesMySql 
+	 * @return TblBookingMetaMySql 
 	 */
 	protected function readRow($row){
-		$tblService = new TblService();
+		$tblBookingMeta = new TblBookingMeta();
 		
-		$tblService->id = $row['id'];
-		$tblService->tblUserId = $row['tbl_user_id'];
-		$tblService->tblServiceId = $row['tbl_service_id'];
-		$tblService->type = $row['type'];
-		$tblService->status = $row['status'];
-		$tblService->createdAt = $row['created_at'];
-		$tblService->updatedAt = $row['updated_at'];
-		$tblService->deletedAt = $row['deleted_at'];
+		$tblBookingMeta->id = $row['id'];
+		$tblBookingMeta->tblBookingId = $row['tbl_booking_id'];
+		$tblBookingMeta->companionName = $row['companion_name'];
+		$tblBookingMeta->age = $row['age'];
+		$tblBookingMeta->createdAt = $row['created_at'];
+		$tblBookingMeta->updatedAt = $row['updated_at'];
+		$tblBookingMeta->deletedAt = $row['deleted_at'];
 
-		return $tblService;
+		return $tblBookingMeta;
 	}
 	
 	protected function getList($sqlQuery){
@@ -236,7 +219,7 @@ class TblServicesMySqlDAO implements TblServicesDAO{
 	/**
 	 * Get row
 	 *
-	 * @return TblServicesMySql 
+	 * @return TblBookingMetaMySql 
 	 */
 	protected function getRow($sqlQuery){
 		$tab = QueryExecutor::execute($sqlQuery);

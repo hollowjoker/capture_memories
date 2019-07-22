@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-07-10 15:03
+ * @date: 2019-07-21 22:58
  */
 interface TblConvoDAO{
 
@@ -53,6 +53,8 @@ interface TblConvoDAO{
 
 	public function queryByTblUserId($value);
 
+	public function queryByTblBookingId($value);
+
 	public function queryByStatus($value);
 
 	public function queryByCreatedAt($value);
@@ -63,6 +65,8 @@ interface TblConvoDAO{
 
 
 	public function deleteByTblUserId($value);
+
+	public function deleteByTblBookingId($value);
 
 	public function deleteByStatus($value);
 

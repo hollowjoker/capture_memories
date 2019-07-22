@@ -21,6 +21,10 @@
 	require_once('class/dto/TblBooking.class.php');
 	require_once('class/mysql/TblBookingMySqlDAO.class.php');
 	require_once('class/mysql/ext/TblBookingMySqlExtDAO.class.php');
+	require_once('class/dao/TblBookingMetaDAO.class.php');
+	require_once('class/dto/TblBookingMeta.class.php');
+	require_once('class/mysql/TblBookingMetaMySqlDAO.class.php');
+	require_once('class/mysql/ext/TblBookingMetaMySqlExtDAO.class.php');
 	require_once('class/dao/TblConvoDAO.class.php');
 	require_once('class/dto/TblConvo.class.php');
 	require_once('class/mysql/TblConvoMySqlDAO.class.php');

@@ -5,13 +5,13 @@
  * @author: http://phpdao.com
  * @date: 2019-07-21 22:58
  */
-interface TblMessageDAO{
+interface TblBookingMetaDAO{
 
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @Return TblMessage 
+	 * @Return TblBookingMeta 
 	 */
 	public function load($id);
 
@@ -28,36 +28,34 @@ interface TblMessageDAO{
 	
 	/**
  	 * Delete record from table
- 	 * @param tblMessage primary key
+ 	 * @param tblBookingMeta primary key
  	 */
 	public function delete($id);
 	
 	/**
  	 * Insert record to table
  	 *
- 	 * @param TblMessage tblMessage
+ 	 * @param TblBookingMeta tblBookingMeta
  	 */
-	public function insert($tblMessage);
+	public function insert($tblBookingMeta);
 	
 	/**
  	 * Update record in table
  	 *
- 	 * @param TblMessage tblMessage
+ 	 * @param TblBookingMeta tblBookingMeta
  	 */
-	public function update($tblMessage);	
+	public function update($tblBookingMeta);	
 
 	/**
 	 * Delete all rows
 	 */
 	public function clean();
 
-	public function queryByTblConvoId($value);
+	public function queryByTblBookingId($value);
 
-	public function queryByTblSenderId($value);
+	public function queryByCompanionName($value);
 
-	public function queryByTblReceiverId($value);
-
-	public function queryByDescription($value);
+	public function queryByAge($value);
 
 	public function queryByCreatedAt($value);
 
@@ -66,13 +64,11 @@ interface TblMessageDAO{
 	public function queryByDeletedAt($value);
 
 
-	public function deleteByTblConvoId($value);
+	public function deleteByTblBookingId($value);
 
-	public function deleteByTblSenderId($value);
+	public function deleteByCompanionName($value);
 
-	public function deleteByTblReceiverId($value);
-
-	public function deleteByDescription($value);
+	public function deleteByAge($value);
 
 	public function deleteByCreatedAt($value);
 

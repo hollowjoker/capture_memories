@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_convo'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-07-10 15:03
+ * @date: 2019-07-21 22:58
  */
 class TblConvoMySqlDAO implements TblConvoDAO{
 
@@ -57,10 +57,11 @@ class TblConvoMySqlDAO implements TblConvoDAO{
  	 * @param TblConvoMySql tblConvo
  	 */
 	public function insert($tblConvo){
-		$sql = 'INSERT INTO tbl_convo (tbl_user_id, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO tbl_convo (tbl_user_id, tbl_booking_id, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblConvo->tblUserId);
+		$sqlQuery->setNumber($tblConvo->tblBookingId);
 		$sqlQuery->set($tblConvo->status);
 		$sqlQuery->set($tblConvo->createdAt);
 		$sqlQuery->set($tblConvo->updatedAt);
@@ -77,10 +78,11 @@ class TblConvoMySqlDAO implements TblConvoDAO{
  	 * @param TblConvoMySql tblConvo
  	 */
 	public function update($tblConvo){
-		$sql = 'UPDATE tbl_convo SET tbl_user_id = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
+		$sql = 'UPDATE tbl_convo SET tbl_user_id = ?, tbl_booking_id = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblConvo->tblUserId);
+		$sqlQuery->setNumber($tblConvo->tblBookingId);
 		$sqlQuery->set($tblConvo->status);
 		$sqlQuery->set($tblConvo->createdAt);
 		$sqlQuery->set($tblConvo->updatedAt);
@@ -101,6 +103,13 @@ class TblConvoMySqlDAO implements TblConvoDAO{
 
 	public function queryByTblUserId($value){
 		$sql = 'SELECT * FROM tbl_convo WHERE tbl_user_id = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByTblBookingId($value){
+		$sql = 'SELECT * FROM tbl_convo WHERE tbl_booking_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
@@ -137,6 +146,13 @@ class TblConvoMySqlDAO implements TblConvoDAO{
 
 	public function deleteByTblUserId($value){
 		$sql = 'DELETE FROM tbl_convo WHERE tbl_user_id = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByTblBookingId($value){
+		$sql = 'DELETE FROM tbl_convo WHERE tbl_booking_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
@@ -182,6 +198,7 @@ class TblConvoMySqlDAO implements TblConvoDAO{
 		
 		$tblConvo->id = $row['id'];
 		$tblConvo->tblUserId = $row['tbl_user_id'];
+		$tblConvo->tblBookingId = $row['tbl_booking_id'];
 		$tblConvo->status = $row['status'];
 		$tblConvo->createdAt = $row['created_at'];
 		$tblConvo->updatedAt = $row['updated_at'];

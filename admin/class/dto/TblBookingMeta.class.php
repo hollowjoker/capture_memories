@@ -1,16 +1,16 @@
 <?php
 	/**
-	 * Object represents table 'tbl_convo'
+	 * Object represents table 'tbl_booking_meta'
 	 *
      	 * @author: http://phpdao.com
      	 * @date: 2019-07-21 22:58	 
 	 */
-	class TblConvo{
+	class TblBookingMeta{
 		
 		var $id;
-		var $tblUserId;
 		var $tblBookingId;
-		var $status;
+		var $companionName;
+		var $age;
 		var $createdAt;
 		var $updatedAt;
 		var $deletedAt;

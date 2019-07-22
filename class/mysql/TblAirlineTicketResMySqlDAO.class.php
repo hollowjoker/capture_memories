@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_airline_ticket_res'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-07-10 15:03
+ * @date: 2019-07-21 22:58
  */
 class TblAirlineTicketResMySqlDAO implements TblAirlineTicketResDAO{
 

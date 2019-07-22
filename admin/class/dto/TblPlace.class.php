@@ -3,7 +3,7 @@
 	 * Object represents table 'tbl_place'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2019-07-10 15:03	 
+     	 * @date: 2019-07-21 22:58	 
 	 */
 	class TblPlace{
 		

@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="main_holder">
-                        <form class="tourInner_holder" action="<?= URL."tour/bookingStore"?>" id="booking_form" method="POST">
+                        <form class="tourInner_holder" action="<?= URL."tour/bookingStore"?>" id="booking_form" method="POST" redirect-url="<?= URL.'message'?>">
                             <span>&#8369;</span>
                             <span class="price-content">
                                 <?= number_format($guestPrice)?>
@@ -35,30 +35,32 @@
                             <span class="small">per person</span>
                             <div class="form-row pt-3">
                                 <div class="col">
-                                    <h6>DEPARTING ON</h6>
-                                    <input type="text" name="departingAt" class="form-control datepicker" autocomplete="off" placeholder="YYYY-MM-DD">
+                                    <label>DEPARTING ON</label>
+                                    <input type="text" name="departingAt" class="form-control datepicker" autocomplete="off" placeholder="MM/DD/YYYY">
                                 </div>
                                 <div class="col">
-                                    <h6>RETURNING ON</h6>
-                                    <input type="text" name="returnningAt" class="form-control datepicker" autocomplete="off" placeholder="YYYY-MM-DD">
+                                    <label>RETURNING ON</label>
+                                    <input type="text" name="returningAt" class="form-control datepicker" autocomplete="off" placeholder="MM/DD/YYYY">
                                 </div>
                             </div>
                             <div class="form-group pt-3">
-                                <H6>Pick No. of Guest</H6>
+                                <label>Pick No. of Guest</label>
                                 <input type="hidden" name="metaId" class="form-control" placeholder="Guest" value="">
-                                <?php foreach($v['meta'] as $metaK => $metaV): ?>
-                                    <button 
-                                        class="btn btn-custom-success-outlined btn-sm <?= $metaK == 0 ? 'active' : ''?> mb-1" 
-                                        data-guest-pick="quantity" 
-                                        data-meta-id="<?= $metaV['id'] ?>" 
-                                        data-guest-quantity="<?= $metaV['quantity']?>"
-                                        type="button"
-                                    >
-                                        <?= $metaV['quantity'] ?> <i class="far fa-user"></i>
-                                        <span>&#8369;</span>
-                                        <span data-check="price"><?= number_format($metaV['price']); ?></span>
-                                    </button>
-                                <?php endforeach; ?>
+                                <div>
+                                    <?php foreach($v['meta'] as $metaK => $metaV): ?>
+                                        <button 
+                                            class="btn btn-custom-success-outlined btn-sm <?= $metaK == 0 ? 'active' : ''?> mb-1" 
+                                            data-guest-pick="quantity" 
+                                            data-meta-id="<?= $metaV['id'] ?>" 
+                                            data-guest-quantity="<?= $metaV['quantity']?>"
+                                            type="button"
+                                        >
+                                            <?= $metaV['quantity'] ?> <i class="far fa-user"></i>
+                                            <span>&#8369;</span>
+                                            <span data-check="price"><?= number_format($metaV['price']); ?></span>
+                                        </button>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Guest Details</label>
@@ -66,6 +68,22 @@
                                     <tbody>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="form-group">
+                                <div class="card p-3 bg-dark text-white small">
+                                    <span>
+                                        Hello! We look forward to your reservation. Let us know if there is anything
+                                        we can help you with. See you soon!
+                                    </span>
+                                    <div class="mt-2 pt-2">
+                                        <img src="<?= URL."public/images/captured_memories_new.png" ?>" alt="" class="img-radius img-radius-bordered img-radius-custom-thumbnail img-fluid mr-2">
+                                        <span class="text-muted">CMTT TEAM</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Share a few details about your plans to help them prepare for your tour.</label>
+                                <textarea name="description" id="description" class="form-control" placeholder="Write your message here"></textarea>
                             </div>
                             <div class="submit-btn">
                                 <button class="btn btn-custom-success btn-block">RESERVE</button>

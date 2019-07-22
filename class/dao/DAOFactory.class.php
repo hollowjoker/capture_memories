@@ -29,6 +29,13 @@ class DAOFactory{
 	}
 
 	/**
+	 * @return TblBookingMetaDAO
+	 */
+	public static function getTblBookingMetaDAO(){
+		return new TblBookingMetaMySqlExtDAO();
+	}
+
+	/**
 	 * @return TblConvoDAO
 	 */
 	public static function getTblConvoDAO(){

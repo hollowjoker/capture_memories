@@ -56,14 +56,35 @@ tour = {
 			let formUrl = $(this).attr('action');
 			let formMethod = $(this).attr('method');
 			let formData = $(this).serialize();
-
-			$.ajax({
-				url: formUrl,
-				type: formMethod,
-				data: formData
-			}).done( result => {
-				console.log(result);
+			let formRedirect = $(this).attr('redirect-url');
+			Swal.fire({
+				type: 'warning',
+				title: 'Are you sure?',
+				text: "You want to reserve this tour?",
+				showCancelButton: true,
+				confirmButtonColor: '#5e84df',
+				cancelButtonColor: '#FF3636',
+				confirmButtonText: 'Yes, reserve it!'
+			}).then((swalResult) => {
+				if(swalResult.value) {
+					$.ajax({
+						url: formUrl,
+						type: formMethod,
+						data: formData
+					}).done( result => {
+						let resultData = JSON.parse(result);
+						Swal.fire({
+							type: resultData.type,
+							title: resultData.messages
+						}).then((result) => {
+							if(result.value) {
+								location.href = formRedirect;
+							}
+						});
+					});
+				}
 			});
+			
 		});
 	}
 }
