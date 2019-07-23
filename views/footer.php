@@ -17,12 +17,17 @@
 							</ul>
 						</div>
 						<div class="convo-section">
-							 <ul class="footer-menu">
+							 <ul class="footer-menu mb-0">
 								<li>Facebook</li>
 								<li>Instagram</li>
 								<li>Twitter</li>
 								<li>Google+</li>
 							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 footer_menu__holder">
+						<div class="footer-copyright">
+							© Capture Memories – 2019 (All Rights Reserved)
 						</div>
 					</div>
 					<!-- <div class="col-lg-3 convo-section">
@@ -32,25 +37,6 @@
 							<li>Invite Friends</li>
 							<li>Invite Friends</li>
 							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-						</ul>
-					</div>
-					<div class="col-lg-3 convo-section">
-						<h4>Hosting</h4>
-						<ul>
-							<li>Trust & Safety</li>
-							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-						</ul>
-					</div>
-					<div class="col-lg-3 convo-section">
-						<h4>Social Media</h4>
-						<ul>
-							<li>Trust & Safety</li>
 							<li>Invite Friends</li>
 							<li>Invite Friends</li>
 						</ul>

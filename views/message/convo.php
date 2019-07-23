@@ -3,21 +3,27 @@
         <div class="row">
             <div class="col-lg-5">
                 <div class="package-details p-5">
-                    <h3>Trip Details</h3>
-
+                    <div class="date_sent">
+                        <img src="/capture_memories/public/images/profile1.jpg" class="img-fluid img-radius-100" alt="Profile">
+                    </div>
+                    <div class="text-center">
+                        <span>Status: </span>Pending
+                        <h3 class="mt-2">Trip Details</h3>
+                    </div>
+                    
                     <div class="mt-4">
                         Hongkong 2d1n
 
                         <div class="border-top border-bottom pt-2 mt-4">
                             <ul>
                                 <li>
-                                    <span>Check-in</span>
+                                    <span>Departing On</span>
                                     <p>
                                         September 07, 2019
                                     </p>
                                 </li>
                                 <li>
-                                    <span>Check-out</span>
+                                    <span>Returning On</span>
                                     <p>
                                         September 11, 2019
                                     </p>
@@ -68,12 +74,27 @@
             <div class="col-lg-7">
                 <div class="convo-details">
                     <div class="row">
+                        <div class="col-sm-9 col-md-9 col-lg-10">
+                            <div class="border-1 p-3">
+                                <div class="mb-3">
+                                    <textarea type="text" placeholder="Reply Here..." class="input-expand"></textarea>
+                                </div>
+                                <div class="img-flex-end">
+                                    <button class="btn btn-custom-success">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-2">
+                            <img src="/capture_memories/public/images/profile2.jpg" class="img-fluid img-radius" alt="Profile">
+                        </div>
+                    </div>
+                    <div class="row mt-5">
                         <div class="col-lg-12">
                             <div class="date_sent">
                                 SENT 04/15/2019
                             </div>
                         </div>
-                        <div class="col-sm-3 col-md-3 col-lg-2">
+                        <div class="col-sm-3 col-md-3 col-lg-2 img-flex-end">
                             <img src="/capture_memories/public/images/profile1.jpg" class="img-fluid img-radius" alt="Profile">
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-10">
@@ -92,7 +113,7 @@
                             </div>
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-10">
-                            <div class="border-1 p-3">
+                            <div class="border-1 p-3 bg-light-gray">
                                 <div class="mb-3">
                                     Okay, thank you will waiting for you parin po.. sana makuha namin yung slot.. thanks so much!
                                 </div>
@@ -104,7 +125,7 @@
                         </div>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-sm-3 col-md-3 col-lg-2">
+                        <div class="col-sm-3 col-md-3 col-lg-2 img-flex-end">
                             <img src="/capture_memories/public/images/profile1.jpg" class="img-fluid img-radius" alt="Profile">
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-10">
