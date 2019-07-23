@@ -7,6 +7,16 @@
  */
 class TblMessageMySqlExtDAO extends TblMessageMySqlDAO{
 
-	
+	public function getMessageByConvo($option) {
+		$sql = "select * from tbl_message where id = ".$option['convoId'];
+		if(isset($option['orderBy'])) {
+			$sql .=" order by ".$option['column']." ".$option['orderBy'];
+		}
+		if(isset($option['limit'])) {
+			$sql .=" limit ".$option['limit'];
+		}
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>

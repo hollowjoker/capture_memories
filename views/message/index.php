@@ -1,3 +1,7 @@
+<?php
+    $convo = $this->convo;
+    $userId = Session::getSession('user')['id'];
+?>
 <section class="message_section">
     <div class="container">
         <div class="row">
@@ -21,100 +25,29 @@
 
                     <table class="table">
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="/capture_memories/public/images/profile1.jpg" class="img-fluid img-radius" alt="Profile">
-                                    </div>
-                                </td>
-                                <td>
-                                    Fermil And Patricia<br>
-                                    Apr 15
-                                </td>
-                                <td>
-                                    <a href="<?= URL.'message/convo'?>">
-                                        Can you get back to us next week please Mandaluyong, Metro Manila, Philippines (Apr 27 - 28, 2019)
-                                    </a>
-                                </td>
-                                <td>
-                                    Status mmm
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="/capture_memories/public/images/profile2.jpg" class="img-fluid img-radius" alt="Profile">
-                                </td>
-                                <td>
-                                    Fermil And Patricia<br>
-                                    Apr 15
-                                </td>
-                                <td>
-                                Can you get back to us next week please Mandaluyong, Metro Manila, Philippines (Apr 27 - 28, 2019)
-                                </td>
-                                <td>
-                                    Status
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="/capture_memories/public/images/profile3.jpeg" class="img-fluid img-radius" alt="Profile">
-                                </td>
-                                <td>
-                                    Fermil And Patricia<br>
-                                    Apr 15
-                                </td>
-                                <td>
-                                Can you get back to us next week please Mandaluyong, Metro Manila, Philippines (Apr 27 - 28, 2019)
-                                </td>
-                                <td>
-                                    Status
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="/capture_memories/public/images/profile3.jpeg" class="img-fluid img-radius" alt="Profile">
-                                </td>
-                                <td>
-                                    Fermil And Patricia<br>
-                                    Apr 15
-                                </td>
-                                <td>
-                                Can you get back to us next week please Mandaluyong, Metro Manila, Philippines (Apr 27 - 28, 2019)
-                                </td>
-                                <td>
-                                    Status
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="/capture_memories/public/images/profile3.jpeg" class="img-fluid img-radius" alt="Profile">
-                                </td>
-                                <td>
-                                    Fermil And Patricia<br>
-                                    Apr 15
-                                </td>
-                                <td>
-                                Can you get back to us next week please Mandaluyong, Metro Manila, Philippines (Apr 27 - 28, 2019)
-                                </td>
-                                <td>
-                                    Status
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="/capture_memories/public/images/profile3.jpeg" class="img-fluid img-radius" alt="Profile">
-                                </td>
-                                <td>
-                                    Fermil And Patricia<br>
-                                    Apr 15
-                                </td>
-                                <td>
-                                Can you get back to us next week please Mandaluyong, Metro Manila, Philippines (Apr 27 - 28, 2019)
-                                </td>
-                                <td>
-                                    Status
-                                </td>
-                            </tr>
+                            <?php if(count($convo)): ?>
+                                <?php foreach($convo as $k => $v): ?>
+                                    <tr>
+                                        <td>
+                                            <div><img src="<?= URL."public/images/captured_memories_new.png" ?>" class="img-fluid img-radius img-border-muticolor" alt="Profile"></div>
+                                        </td>
+                                        <td>
+                                            <?= $userId == $v['user_id'] ? "me" : "CMTT TEAM" ?><br>
+                                            <?= count($v['message'])  ? date('M d', strtotime($v['message'][0]['created_at'])) : '' ?>
+                                        </td>
+                                        <td>
+                                            <a href="<?= URL.'message/convo'?>">
+                                                <?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 100) : "")."<br/>".$v['destination_name']." (".date('M d, Y',strtotime($v['departing_at']))." - ".date('M d, Y',strtotime($v['returning_at'])).")"?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-custom-success" : ($v['status'] == "declined" ? "text-warning" : "text-success")))?>">
+                                                <?= strtoupper($v['status']) ?>    
+                                            </span>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;?>
+                            <?php endif;?>
                         </tbody>
                     </table>
                 </div>

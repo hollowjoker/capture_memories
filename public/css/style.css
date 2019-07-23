@@ -41,13 +41,16 @@ select,
 .btn,
 textarea
 {
-    font-family: 'Roboto Condensed', sans-serif !important;
+    font-family: 'Roboto', sans-serif !important;
 }
 .transparent {
 	background-color: transparent;
 }
 .text-strong {
 	font-weight: 300;
+}
+.text-custom-success{
+	color: #B65EBA !important;
 }
 
 section {
@@ -142,6 +145,10 @@ section.header{
 .img-radius-bordered {
 	background-color: #343a40;
 	border: 2px solid #fff;
+}
+.img-border-muticolor {
+	background-color: #fff;	
+	border: 3px solid #B65EBA;
 }
 .border-1 {
 	border: 1px solid #eee;

@@ -10,6 +10,7 @@ class Message extends Controller
 	
 	public function index()
 	{
+		$this->view->convo = $this->model->getConvo();
 		$this->view->render('views/message/index.php');
     }
     
