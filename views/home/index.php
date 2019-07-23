@@ -50,7 +50,7 @@
 							</div>
 						</div>
 						<div class="pt-4 submit-btn">
-							<button class="btn btn-custom-danger">SEARCH</button>
+							<button class="btn btn-custom-success btn-block">SEARCH</button>
 						</div>
 					</div>
 				</div>

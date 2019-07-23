@@ -122,7 +122,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<button class="btn btn-info btn-block">
+								<button class="btn btn-custom-success btn-block">
 									Sign up
 								</button>
 							</div>
@@ -155,7 +155,7 @@
 								<div class="feedback"></div>
 							</div>
 							<div class="form-group">
-								<button class="btn btn-info btn-block">
+								<button class="btn btn-custom-success btn-block">
 									Log in
 								</button>
 							</div>
@@ -170,132 +170,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
 		<script src="https://cdn.tiny.cloud/1/eu5dzjii9t7855b8emqmu9rcklczoyr2ivtkmvj9712vbs33/tinymce/5/tinymce.min.js"></script>
-		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script> -->
-		<!-- <script src="https://kit.fontawesome.com/725d374b4a.js"></script> -->
-		<script>
-		// var scene = document.getElementById('scene');
-		// var parallaxInstance = new Parallax(scene);
-			var doc = $(document)
-			var main = {}
-
-			main = {
-
-				defaults: {
-					$signUpForm: $('[data-form="sign_up_form"]'),
-					$loginForm: $('[data-form="login_form"]'),
-					$pickQuest: $('[data-action="pickGuest"]'),
-					$pickerMinus: $('[data-picker="minus"]'),
-					$pickerPlus: $('[data-picker="plus"]')
-				},
-				onInit: function() {
-					var self = this,
-					el = self.defaults
-					self.activateSignUpForm(el.$signUpForm)
-					self.activateLoginForm(el.$loginForm)
-					self.activatePickQuest(el.$pickQuest)
-					self.activatePickerMinus(el.$pickerMinus)
-					self.activatePickerPlus(el.$pickerPlus)
-				},
-				onReady: function(e) {
-					var self = this,
-					el = self.defaults
-					self.onInit()
-				},
-				activateSignUpForm: function(trigger) {
-					trigger.submit(function(e) {
-						e.preventDefault();
-						let formUrl = $(this).attr('action');
-						let formMethod = $(this).attr('method');
-						let redirectUrl = $(this).attr('data-redirect');
-						let formData = $(this).serialize();
-
-						$.ajax({
-							url: formUrl,
-							type: formMethod,
-							data: formData
-						}).done( returnResult => {
-							let parsedData = JSON.parse(returnResult);
-							$('input').removeClass('is-invalid').closest('.form-group').find('.feedback').removeClass('invalid-feedback');
-							if (parsedData.status == 'success') {
-								Swal.fire({
-									type: parsedData.status,
-									title: parsedData.messages
-								}).then((result) => {
-									location.href = redirectUrl;
-								});
-							} else {
-								$.each(parsedData.messages, function (k, v) {
-									let inputName = '[name="'+k+'"]';
-									$(inputName).addClass('is-invalid').closest('.form-group').find('.feedback').addClass('invalid-feedback').text(v);
-								})
-							}
-						});
-					})
-				},
-				activateLoginForm: function(trigger) {
-					trigger.submit(function(e) {
-						e.preventDefault();
-						let formUrl = $(this).attr('action');
-						let formMethod = $(this).attr('method');
-						let redirectUrl = $(this).attr('data-redirect');
-						let formData = $(this).serialize();
-
-						$.ajax({
-							url: formUrl,
-							type: formMethod,
-							data: formData
-						}).done( returnResult => {
-							let parsedData = JSON.parse(returnResult);
-							$('input').removeClass('is-invalid').closest('.form-group').find('.feedback').removeClass('invalid-feedback');
-							if (parsedData.status == 'success') {
-								Swal.fire({
-									type: parsedData.status,
-									title: parsedData.messages
-								}).then((result) => {
-									location.href = redirectUrl;
-								});
-							} else {
-								$.each(parsedData.messages, function (k, v) {
-									let inputName = '[name="'+k+'"]';
-									$(inputName).addClass('is-invalid').closest('.form-group').find('.feedback').addClass('invalid-feedback').text(v);
-								})
-							}
-						});
-					});
-				},
-				activatePickQuest: function(trigger) {
-					trigger.click(function (e) {
-						$(this).closest('.guest_main').find('.main_holder__pickGuest').toggleClass('d-block-important');
-					});
-				},
-				activatePickerMinus: function(trigger) {
-					trigger.click(function (e) {
-						console.log(1);
-					});
-				},
-				activatePickerPlus: function(trigger) {
-					trigger.click(function (e) {
-						console.log(1);
-					});
-				}
-			}
-
-			doc.ready(function(){
-				main.onReady()
-			})
-		</script>
-		<script>
-			$('.datepicker').datepicker({
-				uiLibrary: 'bootstrap4',
-				format: 'yyyy-mm-dd',
-				startDate: '-3d'
-			});
-			tinymce.init({
-				selector: '.tinymce',
-				height: 500
-			});
-			$('.dataTable').DataTable();
-		</script>
+		<?php $module = $module != "" ? $module : "home"?>
 		<script src="<?= URL.'public/js/'.$module.'.js'?>"></script>
 	</body>
 </html>

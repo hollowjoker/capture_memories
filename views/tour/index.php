@@ -1,5 +1,12 @@
 <?php 
 $tour = $this->tour;
+$guestCount = 1;
+$guestPrice = 0;
+foreach($tour[0]['meta'] as $k => $v) {
+    if($v['quantity'] > $guestCount) {
+        $guestCount = $v['quantity'];
+    }
+}
 ?>
 <section>
     <div class="container">
@@ -7,11 +14,21 @@ $tour = $this->tour;
             <div class="row">
                 <div class="col-lg-12">
                 <div class="mt-5 mb-4">
-                <h2>International: <?= $v['destination_name']?></h2>
+                <h2 
+                    data-start-date="<?= $v['travel_period_from_at']?>" 
+                    data-end-date="<?= $v['travel_period_to_at']?>"
+                    data-guest-count="<?= $guestCount ?>"
+                    data-guest-user="1"
+                >
+                    International: <?= $v['destination_name']?>
+                </h2>
+                <?php foreach($v['meta'] as $metaK => $metaV ): ?>
+                    <input type="hidden" name="guest-<?= $metaV['quantity']?>" value="<?= $metaV['price']?>">
+                <?php endforeach; ?>
             </div>
             <div class="row">
                 <div class="col-lg-7">
-                    <img class="img-fluid" src="<?= $v['image_public_path'] ?>" alt="Bali">
+                    <img class="img-fluid" src="<?= $v['image_public_path'] ?>" alt="<?= $v['name']?>">
                     <div class="mt-4 international-text">
                         <div class="mt-5">
                             <h2><?= $v['name'] ?></h2>
@@ -22,31 +39,31 @@ $tour = $this->tour;
                 <div class="col-lg-5">
                     <div class="main_holder">
                         <div class="tourInner_holder">
-                            <h1>Book unique places to stay and things to do.</h1>
+                            <span class="price-content"><span>&#8369;</span><?= number_format($guestPrice)?></span> <span class="small">per person</span>
                             <div class="form-row pt-3">
                                 <div class="col">
                                     <h6>DEPARTING ON</h6>
-                                    <input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
+                                    <input type="text" class="form-control datepicker" autocomplete="off" placeholder="YYYY-MM-DD">
                                 </div>
                                 <div class="col">
                                     <h6>RETURNING ON</h6>
-                                    <input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
+                                    <input type="text" class="form-control datepicker" autocomplete="off" placeholder="YYYY-MM-DD">
                                 </div>
                             </div>
-                            <div class="form-group pt-3">
+                            <div class="form-group guest_main pt-3">
                                 <H6>GUESTS</H6>
-                                <input type="text" class="form-control" placeholder="Guest" data-action="pickGuest">
+                                <input type="text" name="quantity" class="form-control guest-count-picker" placeholder="Guest" data-action="pickGuest" value="1 Guest" data-count-guest="1" readonly>
                                 <div class="main_holder__pickGuest">
                                     <div class="pickGuest_item">
                                         <div class="pickGuest_title">
                                             Adults
                                         </div>
                                         <div>
-                                            <button class="btn-transparent mr-3" data-picker="minus">
+                                            <button class="btn-transparent mr-3" data-picker="minus" data-guest-counter="adult">
                                                 <i class="fa fa-minus"></i>
                                             </button>
-                                            1
-                                            <button class="btn-transparent ml-3" data-picker="plus">
+                                            <span data-count="guest">1</span>
+                                            <button class="btn-transparent ml-3" data-picker="plus" data-guest-counter="adult">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
@@ -56,33 +73,19 @@ $tour = $this->tour;
                                             Children
                                         </div>
                                         <div>
-                                            <button class="btn-transparent mr-3">
+                                            <button class="btn-transparent mr-3" data-picker="minus" data-guest-counter="children">
                                                 <i class="fa fa-minus"></i>
                                             </button>
-                                            1
-                                            <button class="btn-transparent ml-3">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="pickGuest_item">
-                                        <div class="pickGuest_title">
-                                            Infants
-                                        </div>
-                                        <div>
-                                            <button class="btn-transparent mr-3">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                            1
-                                            <button class="btn-transparent ml-3">
+                                            <span data-count="guest">0</span>
+                                            <button class="btn-transparent ml-3" data-picker="plus" data-guest-counter="children">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="pt-4 submit-btn">
-                                <button class="btn btn-custom-danger">BOOK</button>
+                            <div class="submit-btn">
+                                <button class="btn btn-custom-success btn-block">RESERVE</button>
                             </div>
                         </div>
                     </div>

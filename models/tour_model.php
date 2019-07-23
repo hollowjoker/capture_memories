@@ -14,11 +14,9 @@ class tour_model extends Model
 		];
 		$tourType = "";
 		$tour = DAOFactory::getTblTourPackageDAO()->getTourPlaceByType($tourType, $option);
-		return $tour;
 		$optionMeta = [
-			'column' => 'price',
-			'orderBy' => 'asc',
-			'limit' => 1
+			'column' => 'quantity',
+			'orderBy' => 'desc',
 		];
 		foreach($tour as $k => $v) {
 			$tour[$k]['meta'] = DAOFactory::getTblTourPackageMetaDAO()->getTourMeta($v['id'], $optionMeta);
