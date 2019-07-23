@@ -66,21 +66,37 @@
                 </div>
             </div>
             <div class="col-lg-7">
-                <div class="convo-details p-3">
+                <div class="convo-details">
                     <div class="row">
+                        <div class="col-lg-12">
+                            <div class="date_sent">
+                                SENT 04/15/2019
+                            </div>
+                        </div>
                         <div class="col-sm-3 col-md-3 col-lg-2">
                             <img src="/capture_memories/public/images/profile1.jpg" class="img-fluid img-radius" alt="Profile">
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-10">
                             <div class="border-1 p-3">
-                                hello
+                                <div class="mb-3">
+                                    Can you get back to us next week please
+                                </div>
+                                <span>Apr 15, 2019</span>
                             </div>
                         </div>
                     </div>
                     <div class="row mt-5">
+                        <div class="col-lg-12">
+                            <div class="date_sent">
+                                SENT 04/14/2019
+                            </div>
+                        </div>
                         <div class="col-sm-9 col-md-9 col-lg-10">
                             <div class="border-1 p-3">
-                                hello
+                                <div class="mb-3">
+                                    Okay, thank you will waiting for you parin po.. sana makuha namin yung slot.. thanks so much!
+                                </div>
+                                <span>Apr 14, 2019</span>
                             </div>
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-2">
@@ -93,7 +109,11 @@
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-10">
                             <div class="border-1 p-3">
-                                hello
+                                <div class="mb-3">
+                                    Hi Sam,<br>
+                                    For right now, we don't accept overnight bookings ahead of time as it prevents long term guests to book our condo. Kindly get back to us a week or few days before for availability. My apologies.
+                                </div>
+                                <span>Apr 14, 2019</span>
                             </div>
                         </div>
                     </div>
