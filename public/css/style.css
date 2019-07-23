@@ -331,6 +331,13 @@ section.header{
 	font-size: 1.5rem;
 	font-weight: 600;
 }
+.show-more-holder {
+	height: 200px;
+	overflow: hidden;
+}
+.show-more-holder.active {
+	height: auto;
+}
 /*!
 * Color
 */
@@ -376,7 +383,7 @@ section.header{
 .convo-section ul li {
 	list-style: none;
 }
-.convo-section span {
+.convo-section .convo-muted {
 	color: #9b9b9b;
 }
 .date_sent {

@@ -36,7 +36,7 @@
                                             <?= count($v['message'])  ? date('M d', strtotime($v['message'][0]['created_at'])) : '' ?>
                                         </td>
                                         <td>
-                                            <a href="<?= URL.'message/convo'?>">
+                                            <a href="<?= URL.'message/convo?id='.$v['id'] ?>">
                                                 <?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 100) : "")."<br/>".$v['destination_name']." (".date('M d, Y',strtotime($v['departing_at']))." - ".date('M d, Y',strtotime($v['returning_at'])).")"?>
                                             </a>
                                         </td>

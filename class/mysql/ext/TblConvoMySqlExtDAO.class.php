@@ -38,5 +38,34 @@ class TblConvoMySqlExtDAO extends TblConvoMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}
+
+	public function getConvoById($convoId) {
+		$sql = "
+			select
+			convo.id,
+			booking.departing_at,
+			booking.returning_at,
+			booking.status,
+			booking.id booking_id,
+			tour.name,
+			tour.description,
+			tourMeta.price,
+			tourMeta.quantity
+
+			from tbl_convo as convo
+			inner join tbl_booking as booking
+			on convo.tbl_booking_id = booking.id
+
+			inner join tbl_tour_package_meta as tourMeta
+			on booking.tbl_tour_package_meta_id = tourMeta.id
+
+			inner join tbl_tour_package as tour
+			on tourMeta.tbl_tour_package_id = tour.id
+
+			where convo.id = ".$convoId."
+		";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>
