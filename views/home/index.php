@@ -14,23 +14,23 @@
 					<div class="inner_holder">
 						<h1>Book unique places to stay and things to do.</h1>
 						<div class="pt-3">
-							<h6>WHERE</h6>
+							<label>WHERE</label>
 							<div class="form-group">
 								<input type="text" class="form-control" placeholder="Anywhere">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col">
-								<h6>DEPARTING ON</h6>
+								<label>DEPARTING ON</label>
 								<input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
 							</div>
 							<div class="col">
-								<h6>RETURNING ON</h6>
+								<label>RETURNING ON</label>
 								<input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
 							</div>
 						</div>
 						<div class="form-group guest_main pt-3">
-							<H6>GUESTS</H6>
+							<label>GUESTS</label>
 							<input type="text" class="form-control" placeholder="Guest" data-action="pickGuest">
 							<div class="main_holder__pickGuest">
 								<div class="pickGuest_item">
@@ -58,7 +58,7 @@
 		</div>
 	</div>
 </section>
-<section class="py-4">
+<section class="home-body">
 	<div class="container-xl">
 		<h4>Tours and Packages <span class="text-muted">(Local)</span></h4>
 		<h5 class="">Available Packages recommended for you</h5>

@@ -1,6 +1,9 @@
 /*!
 * Typography
 */
+* {
+	font-family: 'Roboto', sans-serif;
+}
 h1, h2, h3, h4, h5, h6,
 .display-1, .display-2, .display-3, .display-4, .display-5
 {
@@ -126,9 +129,6 @@ section.header{
 	margin-left: -10px !important;
 	margin-right: -10px !important;
 }
-/*!
-* Global
-*/
 .dropdown-menu > .dropdown-item {
 	font-size: 13px;
 }
@@ -152,6 +152,9 @@ section.header{
 }
 .border-1 {
 	border: 1px solid #eee;
+}
+.home-body {
+	padding: 1rem 0 5rem 0;
 }
 
 /*!
@@ -364,6 +367,9 @@ section.header{
 	border-radius: 8px;
 	font-size: 14px;
 }
+.convo-section .convo-details {
+	padding: 2rem 1rem;
+}
 .convo-section ul {
 	padding: 0;
 }
@@ -372,6 +378,35 @@ section.header{
 }
 .convo-section span {
 	color: #9b9b9b;
+}
+.date_sent {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+}
+/*!
+* Footer
+*/
+.footer-icon {
+	display: flex;
+	justify-content: center;
+}
+.footer-holder {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+.footer_menu__holder {
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.footer-menu {
+	display: flex;
+	justify-content: center;
+}
+.footer-menu > li {
+	margin: 0 1rem;
 }
 
 @media (min-width: 576px) {

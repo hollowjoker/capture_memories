@@ -2,7 +2,61 @@
 
 		<footer>
 			<div class="container-fluid">
-			</div>
+				<div class="border-top"></div>
+				<div class="row footer-holder">
+					<div class="col-lg-3">
+						<div class="footer-icon">
+							<img src="/capture_memories/public/images/tour/captured_memories_new.png" class="img-fluid" alt="logo" width="120px;">
+						</div>
+					</div>
+					<div class="col-lg-6 footer_menu__holder">
+						<div class="convo-section">
+							<ul class="footer-menu">
+								<li>Home</li>
+								<li>Services</li>
+							</ul>
+						</div>
+						<div class="convo-section">
+							 <ul class="footer-menu">
+								<li>Facebook</li>
+								<li>Instagram</li>
+								<li>Twitter</li>
+								<li>Google+</li>
+							</ul>
+						</div>
+					</div>
+					<!-- <div class="col-lg-3 convo-section">
+						<h4>Discover</h4>
+						<ul>
+							<li>Trust & Safety</li>
+							<li>Invite Friends</li>
+							<li>Invite Friends</li>
+							<li>Invite Friends</li>
+							<li>Invite Friends</li>
+							<li>Invite Friends</li>
+						</ul>
+					</div>
+					<div class="col-lg-3 convo-section">
+						<h4>Hosting</h4>
+						<ul>
+							<li>Trust & Safety</li>
+							<li>Invite Friends</li>
+							<li>Invite Friends</li>
+							<li>Invite Friends</li>
+							<li>Invite Friends</li>
+							<li>Invite Friends</li>
+						</ul>
+					</div>
+					<div class="col-lg-3 convo-section">
+						<h4>Social Media</h4>
+						<ul>
+							<li>Trust & Safety</li>
+							<li>Invite Friends</li>
+							<li>Invite Friends</li>
+						</ul>
+					</div> -->
+				</div>
+			</div> 
 		</footer>
 		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
