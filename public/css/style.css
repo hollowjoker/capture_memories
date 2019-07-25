@@ -40,11 +40,13 @@ h6 {
 span,
 label,
 input::placeholder,
+textarea::placeholder,
 select,
 .btn,
 textarea
 {
-    font-family: 'Roboto', sans-serif !important;
+	font-family: 'Roboto', sans-serif !important;
+	/* color: #c3c3c3 !important; */
 }
 .transparent {
 	background-color: transparent;
@@ -213,6 +215,7 @@ section.header{
 .d-block-important {
 	display: flex !important;
 }
+
 /*!
 * Banner
 */
@@ -406,6 +409,7 @@ section.header{
 	justify-content: center;
 	margin-bottom: 2rem;
 }
+
 /*!
 * Footer
 */
@@ -435,6 +439,18 @@ section.header{
 	font-size: 14px;
 	text-align: center;
 }
+
+/*!
+* Services
+*/
+.modal-services form > input,
+.modal-services form > textarea {
+	margin-top: 1rem;
+}
+.input-hidden {
+	display: none;
+}
+
 
 @media (min-width: 576px) {
 	.container-xl {
