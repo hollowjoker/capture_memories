@@ -14,6 +14,8 @@ destination = {
 		var self = this,
 		el = self.defaults
 		self.onInit()
+
+		$('.dataTable').DataTable();
 	},
 	activateDestinationForm: function (trigger) {
 		trigger.submit(function (e) {

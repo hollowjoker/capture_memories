@@ -49,6 +49,11 @@
 								<i class="now-ui-icons transportation_air-baloon"></i><p>Tours</p>
 							</a>
 						</li>
+						<li class="<?= $module == 'reservation' ? 'active' : ''?> ">
+							<a href="<?= URL.'reservation'?>">
+								<i class="now-ui-icons transportation_air-baloon"></i><p>Reservations</p>
+							</a>
+						</li>
 						<li>
 							<a href="./user.html">
 								<i class="now-ui-icons users_single-02"></i><p>User Profile</p>

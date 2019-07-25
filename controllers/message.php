@@ -17,5 +17,11 @@ class Message extends Controller
     public function convo() {
 		$this->view->tourDetails = $this->model->getTourDetails();
         $this->view->render('views/message/convo.php');
-    }
+	}
+	
+	public function store () {
+		$modelResult = $this->model->store();
+		echo json_encode($modelResult);
+		exit;
+	}
 }

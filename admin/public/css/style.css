@@ -25,6 +25,9 @@
 {
 	font-size: 1em;
 }
+.table-vertical-top tbody tr td {
+    vertical-align: top;
+}
 form input[type=file]{
 	cursor: pointer;
 }
@@ -54,6 +57,13 @@ form select {
 }
 .fw-100{
     width: 100px;
+}
+.default-text-color {
+    color: #2c2c2c;
+    text-decoration: none !important;
+}
+.default-text-color:hover{
+    color: #c2c2c2;
 }
 
 

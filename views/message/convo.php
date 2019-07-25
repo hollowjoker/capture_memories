@@ -12,11 +12,16 @@
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="package-details p-5">
-                            <h3>Trip Details</h3>
+                            <div class="date_sent">
+                                <img src="<?= $v['image_public_path'] ?>" class="img-fluid border-radius-8" alt="Profile">
+                            </div>
+                            <div class="text-center">
+                                <h5 class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-danger" : "text-success")))?>"><?= strtoupper($v['status']) ?></h5>
+                                <h3 class="mt-2">Trip Details</h3>
+                            </div>
 
                             <div class="mt-4">
                                 <?= $v['name'] ?>
-
                                 <div class="border-top border-bottom pt-2 mt-4">
                                     <ul>
                                         <li>
@@ -29,7 +34,6 @@
                                         </li>
                                     </ul>
                                 </div>
-
                                 <div class="mt-4">
                                     <span class="convo-muted">Guest</span>
                                     <?php foreach($v['booking_meta'] as $metaK => $metaV): ?>
@@ -68,35 +72,53 @@
                     </div>
                     <div class="col-lg-7">
                         <div class="convo-details">
+                            <div class="row">
+                                <div class="col-sm-9 col-md-9 col-lg-10">
+                                    <form action="<?= URL.'message/store'?>" method="post" id="message_form" data-redirect="<?= URL.'message/convo?id='.$_GET['id']?>">
+                                        <input type="hidden" name="tblConvoId" value="<?= $v['id'] ?>">
+                                        <div class="border-1 p-3 mb-3">
+                                            <div class="mb-3">
+                                                <textarea name="description" type="text" placeholder="Reply Here..." class="form-control custom-textarea small"></textarea>
+                                            </div>
+                                            <div class="img-flex-end">
+                                                <button class="btn btn-custom-success btn-sm">Send Message</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-2">
+                                    <img src="/capture_memories/public/images/profile2.jpg" class="img-fluid img-radius" alt="Profile">
+                                </div>
+                            </div>
                             <?php foreach($v['messages'] as $tourK => $tourV): ?>
                                 <?php if($tourV['tbl_receiver_id'] != $user['id']): ?>
                                     <div class="row mb-3">
-                                        <div class="col-lg-12">
+                                        <!-- <div class="col-lg-12">
                                             <div class="date_sent">
                                                 SENT <?= date('m/d/Y', strtotime($tourV['created_at'])) ?>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-sm-9 col-md-9 col-lg-10">
-                                            <div class="border-1 p-3">
+                                            <div class="border-1 p-3 bg-light-gray">
                                                 <div class="mb-3">
                                                     <?= $tourV['description']?>
                                                 </div>
-                                                <span class="convo-muted"><?= date('F d, Y', strtotime($tourV['created_at'])) ?></span>
+                                                <span class="convo-muted"><?= date('F d, Y - h:i A', strtotime($tourV['created_at'])) ?></span>
                                             </div>
                                         </div>
                                         <div class="col-sm-3 col-md-3 col-lg-2">
-                                            <img src="/capture_memories/public/images/profile2.jpg" class="img-fluid img-radius" alt="Profile">
+                                            <img src="/capture_memories/public/images/profile2.jpg" class="img-fluid img-radius" alt="Profile">                                    
                                         </div>
                                     </div>
                                 <?php else: ?>
                                     <div class="row mb-3">
-                                        <div class="col-lg-12">
+                                        <!-- <div class="col-lg-12">
                                             <div class="date_sent">
                                                 SENT <?= date('m/d/Y', strtotime($tourV['created_at'])) ?>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3 col-lg-2">
-                                            <img src="/capture_memories/public/images/profile1.jpg" class="img-fluid img-radius" alt="Profile">
+                                        </div> -->
+                                        <div class="col-sm-3 col-md-3 col-lg-2 img-flex-end">
+                                            <img src="<?= URL.'public/images/captured_memories_new.png'?>" class="img-fluid img-radius " alt="Profile">
                                         </div>
                                         <div class="col-sm-9 col-md-9 col-lg-10">
                                             <div class="border-1 p-3">

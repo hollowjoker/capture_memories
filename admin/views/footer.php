@@ -56,7 +56,6 @@
 				selector: '.tinymce',
 				height: 500
 			});
-			$('.dataTable').DataTable();
 		</script>
 		<script src="<?= URL.'public/js/'.$module.'.js'?>"></script>
 		

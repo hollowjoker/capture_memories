@@ -18,9 +18,9 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="d-flex align-self-center">
+                        <!-- <div class="d-flex align-self-center">
                             pagination
-                        </div>
+                        </div> -->
                     </form>
 
                     <table class="table">

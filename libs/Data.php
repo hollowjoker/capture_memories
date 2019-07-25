@@ -29,7 +29,8 @@ class Data{
 						'title' => 'CONFIRMATION',
 						'description' => 'he travel agency will deliver the wifi rental on specified date of travel'
 					],
-				]
+				],
+				"data-action" => "wifi-rental"
 			],
 			[
 				"icon" => "fas fa-globe-asia",

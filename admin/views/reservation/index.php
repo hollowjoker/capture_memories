@@ -1,46 +1,58 @@
 
 <?php
-	$destination = $this->destinationData;
+	$convo = $this->convo;
 ?>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card card__table">
 				<div class="card-header">
 					<h4 class="card-title">
-						<span>Destination List</span>
-						<button class="btn btn-info btn__circle shadow" data-toggle="modal" data-target="#destinationFormModal">
-							<i class="now-ui-icons ui-1_simple-add"></i>
-						</button>
+						<span>Reservation List (Tour)</span>
 					</h4>
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-custom dataTable">
+						<table class="table table-custom small dataTable table-vertical-top">
 							<thead>
 								<tr>
 									<th>Name</th>
-									<th>Type</th>
-									<th>Available On</th>
+									<th>Message</th>
+									<th>Package Reserve</th>
 									<th>Status</th>
+									<th>Received</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php if(count($destination)): ?>
-									<?php foreach($destination as $k => $v): ?>
-										<tr>
-											<td><?= $v->name ?></td>
-											<td><?= $v->type ?></td>
+								<?php if(count($convo)): ?>
+									<?php foreach($convo as $k => $v): ?>
+										<tr class="<?= $v['convo_status'] == 'unread' ? 'font-weight-bold' : '' ?>">
+											<td><?= $v['first_name']." ".$v['last_name']?></td>
 											<td>
-												<span class="badge badge-pill badge-info"><?= $v->airlineStatus == 'yes' ? 'airline' : '' ?></span>
-												<span class="badge badge-pill badge-danger"><?= $v->visaStatus == 'yes' ? 'visa' : '' ?></span>
-												<span class="badge badge-pill badge-dark"><?= $v->wifiStatus == 'yes' ? 'wifi' : '' ?></span>
-												<span class="badge badge-pill badge-warning text-white"><?= $v->tourStatus == 'yes' ? 'tour' : '' ?></span>
+												<a href="<?= URL.'reservation/convo?id='.$v['id'] ?>" class="default-text-color"><?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 60)."..." : "") ?></a>
 											</td>
-											<td><span class="<?= $v->status == 'active' ? 'text-success' : 'text-danger'?>"><?= $v->status ?></span></td>
 											<td>
-												<button type="button" class="btn btn-info btn-sm" data-action="editDestination" data-id="<?= $v->id ?>">Edit</button>
+												<?= $v['tour_name']?>
+												<p class="text-muted">
+													- <?= date('M d, Y',strtotime($v['departing_at']))." - ".date('M d, Y',strtotime($v['returning_at'])) ?>
+													<br>
+													- <?= $v['destination_name'] ?>
+													<br>
+													- <?= $v['type'] ?>
+												</p>
 											</td>
+											<td>
+												<span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-warning" : "text-success")))?>">
+													<?= strtoupper($v['status']) ?>    
+												</span>
+											</td>
+											<td>
+												<span class="clearfix"><?= date('h:i A',strtotime($v['updated_at'])) ?></span>
+												<span class="clearfix text-muted">
+													<?= date('Y-m-d') == date('Y-m-d', strtotime($v['updated_at'])) ? "Now" : date('M d, Y',strtotime($v['updated_at'])) ?>
+												</span>
+											</td>
+											<td></td>
 										</tr>
 									<?php endforeach;?>
 								<?php endif;?>
@@ -147,5 +159,5 @@
 
 
 	<script>
-		initiateModule = 'destination';
+		initiateModule = 'reservation';
 	</script>

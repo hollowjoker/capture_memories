@@ -1,17 +1,15 @@
 <?php
 
-class message_model extends Model
+class Reservation_model extends Model
 {
 
 	function __construct()
 	{
 		parent::__construct();
 	}
-
-	public function getConvo() {
-		$userId = Session::getSession('user')['id'];
-		$convoResult = DAOFactory::getTblConvoDAO()->getConvo($userId);
-
+	
+	public function getConvoData() {
+		$convoResult = DAOFactory::getTblConvoDAO()->getCompleteConvos();
 		foreach($convoResult as $k => $v) {
 			$option = [
 				'column' => 'created_at',
@@ -21,47 +19,54 @@ class message_model extends Model
 			];
 			$convoResult[$k]['message'] = DAOFactory::getTblMessageDAO()->getMessageByConvo($option);
 		}
+
 		return $convoResult;
 	}
 
-	public function getTourDetails() {
-		$convoId = $_REQUEST['id'];
-		$convoResult = DAOFactory::getTblConvoDAO()->getConvoById($convoId);
+	public function getSingleConvoData() {
+		
+		$id = $_GET['id'];
+		$convo = DAOFactory::getTblConvoDAO()->load($id);
+		$convo->status = "read";
 
-		foreach($convoResult as $k => $v) {
+		$convoResult = DAOFactory::getTblConvoDAO()->update($convo);
+
+		
+		$convoDataResult = DAOFactory::getTblConvoDAO()->getConvo($id);
+
+		foreach($convoDataResult as $k => $v) {
 			$option = [
-				'column' => 'created_at',
+				'column' => 'message.created_at',
 				'orderBy' => 'desc',
-				'convoId' => $v['id']
+				'id' => $v['id']
 			];
-			$convoResult[$k]['messages'] = DAOFactory::getTblMessageDAO()->getMessageByConvo($option);
+			$convoDataResult[$k]['messages'] = DAOFactory::getTblMessageDAO()->getMessageByConvo($option);
 			$bookingOption = [
 				'bookingId' => $v['booking_id']
 			];
-			$convoResult[$k]['booking_meta'] = DAOFactory::getTblBookingMetaDAO()->getMetaByBooking($bookingOption);
+			$convoDataResult[$k]['booking_meta'] = DAOFactory::getTblBookingMetaDAO()->getMetaByBooking($bookingOption);
 		}
-		return $convoResult;
+		return $convoDataResult;
+		
 	}
 
-	public function store() {
-		$user = Session::getSession('user');
+	public function messageStore() {
+		$admin = Session::getSession('admin');
 		$option = [
 			'column' => 'id',
 			'orderBy' => 'desc',
 			'limit' => 1
 		];
-		$admin = DAOFactory::getTblUserDAO()->getAdmin($option);
 		$message = new TblMessage;
 		$message->tblConvoId = $_POST['tblConvoId'];
 		$message->description = $_POST['description'];
-		$message->tblSenderId = $user['id'];
-		$message->tblReceiverId = $admin[0]['id'];
+		$message->tblSenderId = $admin['id'];
+		$message->tblReceiverId = $_POST['tblReceiverId'];
 		$message = Controller::insertDate($message);
 
 		$messageResult = DAOFactory::getTblMessageDAO()->insert($message);
 
 		$convo = DAOFactory::getTblConvoDAO()->load($_POST['tblConvoId']);
-		$convo->status = "unread";
 		$convo = Controller::insertDateUpdate($convo);
 		
 		$convoResult = DAOFactory::getTblConvoDAO()->update($convo);

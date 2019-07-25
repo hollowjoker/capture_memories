@@ -2,7 +2,7 @@
     $tour = $this->tour;
     $guestPrice = 0;
 ?>
-<section>
+<section class="mb-5">
     <div class="container">
         <?php foreach($tour as $k => $v): ?>
             <div class="row">

@@ -1,15 +1,16 @@
-var doc = $(document)
-var message = {}
 
-message = {
-
+var doc = $(document);
+var reservation = {}
+reservation = {
 	defaults: {
+		$destinationForm: $('[data-form="destination_form"]'),
 		$showMore: $('[data-action="showMore"]'),
 		$messageForm: $('#message_form')
 	},
 	onInit: function() {
 		var self = this,
 		el = self.defaults
+		self.activateDestinationForm(el.$destinationForm)
 		self.activateShowMore(el.$showMore)
 		self.activateMessageForm(el.$messageForm)
 	},
@@ -17,6 +18,35 @@ message = {
 		var self = this,
 		el = self.defaults
 		self.onInit()
+		
+		$('.dataTable').DataTable({
+			"ordering": false
+		});
+	},
+	activateDestinationForm: function (trigger) {
+		trigger.submit(function (e) {
+			e.preventDefault();
+			let formUrl = $(this).attr('action');
+			let formMethod = $(this).attr('method');
+			let redirectUrl = $(this).attr('data-redirect');
+			let formData = $(this).serialize();
+
+			$.ajax({
+				url: formUrl,
+				type: formMethod,
+				data: formData
+			}).done( resultData => {
+				let parsedResult = JSON.parse(resultData);
+				Swal.fire({
+					type: parsedResult.type,
+					title: parsedResult.messages
+				}).then((result) => {
+					if(result.value) {
+						location.href = redirectUrl;
+					}
+				});
+			});
+		});
 	},
 	activateShowMore: function (trigger) {
 		trigger.click(function (e) {
@@ -48,6 +78,7 @@ message = {
 	}
 }
 
+
 doc.ready(function(){
-	message.onReady()
+	reservation.onReady()
 })

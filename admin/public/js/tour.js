@@ -20,6 +20,8 @@ tour = {
 		var self = this,
 		el = self.defaults
 		self.onInit()
+		
+		$('.dataTable').DataTable();
 	},
 	activateTourForm: function(trigger) {
 		trigger.submit(function(e) {
