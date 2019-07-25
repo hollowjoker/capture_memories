@@ -60,7 +60,7 @@
 						<button class="btn btn-custom-success-outlined btn-sm active mb-1" data-pick="type">Domestic</button>
 						<button class="btn btn-custom-success-outlined btn-sm mb-1" data-pick="type">International</button>
 						
-						<div class="input-hidden">
+						<div class="input-hidden mt-3">
 							<select class="form-control">
 								<option selected>Destination</option>
 								<option>Baler</option>
@@ -68,7 +68,7 @@
 								<option>Siargao</option>
 								<option>Zambales</option>
 							</select>
-							<input type="text" name="other" class="form-control mt-2" placeholder="Other">
+							<input type="text" name="other" class="form-control mt-3" placeholder="Other">
 						</div>
 					</div>
 					<input type="text" name="passenger_name" class="form-control" placeholder="Name">
@@ -78,8 +78,7 @@
 				</form>
 			</div>
 			<div class="modal-footer mt-4">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-custom-success btn-block">Save changes</button>
 			</div>
 		</div>
 	</div>
