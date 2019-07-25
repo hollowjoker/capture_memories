@@ -48,12 +48,13 @@
 <div class="modal fade modal-services" id="WifiRental" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header border-0">
+			<div class="modal-header">
+				<h5 class="modal-title">Wifi Rental</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body mt-3">
 				<form action="">
 					<div>
 						<button class="btn btn-custom-success-outlined btn-sm active mb-1" data-pick="type">Domestic</button>

@@ -178,6 +178,10 @@ section.header{
 	padding: 10px;
 	width: 100%;
 }
+.d-block-important {
+	display: flex !important;
+	flex-direction: column;
+}
 
 /*!
 * Button
