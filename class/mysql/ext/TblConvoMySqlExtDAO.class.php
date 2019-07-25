@@ -15,7 +15,8 @@ class TblConvoMySqlExtDAO extends TblConvoMySqlDAO{
 			booking.departing_at,
 			booking.returning_at,
 			booking.status,
-			place.name destination_name
+			place.name destination_name,
+			tour.image_public_path
 
 			from tbl_convo as convo
 			inner join tbl_booking as booking
@@ -30,6 +31,7 @@ class TblConvoMySqlExtDAO extends TblConvoMySqlDAO{
 			inner join tbl_place as place
 			on tour.place_id = place.id
 
+			where booking.tbl_user_id = ".$userId."
 			order by convo.updated_at desc
 		";
 		$sqlQuery = new SqlQuery($sql);
