@@ -29,7 +29,7 @@
                                 <?php foreach($convo as $k => $v): ?>
                                     <tr>
                                         <td>
-                                            <div><img src="<?= URL."public/images/captured_memories_new.png" ?>" class="img-fluid img-radius img-border-muticolor" alt="Profile"></div>
+                                            <div><a href="<?= URL.'message/convo?id='.$v['id'] ?>"><img src="<?= $v['image_public_path'] ?>" class="img-fluid img-non-radius img-border-muticolor" alt="Profile"></a></div>
                                         </td>
                                         <td>
                                             <?= $userId == $v['user_id'] ? "me" : "CMTT TEAM" ?><br>

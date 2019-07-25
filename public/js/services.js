@@ -20,7 +20,8 @@ services = {
             e.preventDefault();
             
             $('[data-pick="type"]').removeClass('active');
-			$(this).addClass('active');
+            $(this).addClass('active');
+            $(this).closest('.modal-body').find('.input-hidden').addClass('d-block-important');
         });
     }
 }
