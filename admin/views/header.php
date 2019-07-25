@@ -89,7 +89,7 @@
 										<p><span class="d-lg-none d-md-block">Account</span></p>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-										<a class="dropdown-item" href="#">Profile</a>
+										<!-- <a class="dropdown-item" href="#">Profile</a> -->
 										<a class="dropdown-item" href="<?= URL.'admin/logout'?>">Logout</a>
 									</div>
 								</li>

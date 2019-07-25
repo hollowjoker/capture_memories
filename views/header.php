@@ -50,8 +50,7 @@
 							Welcome <?= isset($userSession['first_name']) ? $userSession['first_name'] : ""?>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">Profile</a>
-								<a class="dropdown-item" href="#">Cart</a>
+								<a class="dropdown-item" href="<?= URL.'user/profile' ?>">Profile</a>
 								<a class="dropdown-item" href="<?= URL.'message/index'?>">Messages</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="<?= URL.'user/logout'?>">Log out</a>

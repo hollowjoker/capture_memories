@@ -15,8 +15,16 @@ class Tour extends Controller
 
 	public function international()
 	{
+		$this->view->type = "International";
 		$this->view->tour = $this->model->getTourData();
-		$this->view->render('views/tour/index.php');
+		$this->view->render('views/tour/package.php');
+	}
+
+	public function domestic()
+	{
+		$this->view->type = "Local";
+		$this->view->tour = $this->model->getTourData();
+		$this->view->render('views/tour/package.php');
 	}
 	
 	public function bookingStore() {

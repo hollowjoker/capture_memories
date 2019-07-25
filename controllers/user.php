@@ -27,6 +27,10 @@ class User extends Controller
 		exit;
 	}
 
+	public function profile() {
+		$this->view->render('views/user/index.php');
+	}
+
 }
 
 ?>

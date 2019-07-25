@@ -1,9 +1,6 @@
 <?php 
 	$tours = $this->tours;
 	$international = $this->international;
-	// echo '<pre>';
-	// print_r($international);
-	// exit;
 ?>
 <section class="header">
 	<div class="overlay"></div>
@@ -67,14 +64,17 @@
 				<?php foreach($tours as $k => $v): ?>
 					<div class="col-lg-3 custom-card paddingLR">
 						<div class="card">
-							<a href="<?= URL.'tour?id='.$v['id']?>">
-								<img src="<?= $v['image_path'] ?>" class="card-img-top" alt="...">
+							<a href="<?= URL.'tour/domestic?id='.$v['id']?>">
+								<img src="<?= $v['image_public_path'] ?>" class="card-img-top" alt="...">
 							</a>
 							<div class="card-body">
 								<h5 class="card-sub-title"><?= strtoupper($v['place']) ?></h5>
 								<h5 class="card-title"><?= $v['name'] ?></h5>
 								<h5 class="card-price-holder">
-									<span class="formater">Php <?= number_format($v['price']) ?></span>
+									<?php foreach($v['meta'] as $key_meta => $value_meta): ?>
+										<span class="formater">Php <?= number_format($value_meta['price']) ?></span>
+									<?php endforeach; ?>
+									
 								</h5>
 								<p class="card-text">
 									<span class="badge"> </span>
