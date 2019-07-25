@@ -17,7 +17,7 @@
 		<div class="row">
 			<?php foreach($services as $k => $v): ?>
 				<div class="col-lg-4">
-					<div class="service-holder">
+					<div class="service-holder my-5">
 						<h1 class="display-3 mb-4"><i class="<?= $v['icon']?> icon-gradient"></i></h1>
 						<h3><?= $v['main_title'] ?></h3>
 						<div>
@@ -36,7 +36,7 @@
 								</li>
 							<?php endforeach;?>
 						</ul>
-						<button data-action="<?= $v['data-action'] ?>" data-toggle="modal" data-target="#WifiRental">Inquire Now</button>
+						<button class="btn btn-custom-success btn-block" data-action="<?= $v['data-action'] ?>" data-toggle="modal" data-target="#WifiRental">Inquire Now</button>
 					</div>
 				</div>
 			<?php endforeach;?>
@@ -45,19 +45,38 @@
 </section>
 
 <!--Wifi Rental Modal -->
-<div class="modal fade" id="WifiRental" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modal-services" id="WifiRental" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+			<div class="modal-header border-0">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				...
+				<form action="">
+					<div>
+						<button class="btn btn-custom-success-outlined btn-sm active mb-1" data-pick="type">Domestic</button>
+						<button class="btn btn-custom-success-outlined btn-sm mb-1" data-pick="type">International</button>
+						
+						<div class="input-hidden">
+							<select class="form-control">
+								<option selected>Destination</option>
+								<option>Baler</option>
+								<option>Batanes</option>
+								<option>Siargao</option>
+								<option>Zambales</option>
+							</select>
+							<input type="text" name="other" class="form-control mt-2" placeholder="Other">
+						</div>
+					</div>
+					<input type="text" name="passenger_name" class="form-control" placeholder="Name">
+					<input type="text" name="travel_from" class="form-control" placeholder="Travel Form">
+					<input type="text" name="travel_To" class="form-control" placeholder="Travel To">
+					<textarea name="message" class="form-control" placeholder="Tell us what you need"></textarea>
+				</form>
 			</div>
-			<div class="modal-footer">
+			<div class="modal-footer mt-4">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-primary">Save changes</button>
 			</div>
