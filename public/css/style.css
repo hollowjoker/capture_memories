@@ -534,6 +534,14 @@ section.header{
 	display: none;
 } */
 
+/*!
+* 
+*/
+.badge-custombg {
+	background-color: #8acac7;
+	color: #fff;
+}
+
 
 @media (min-width: 576px) {
 	.container-xl {

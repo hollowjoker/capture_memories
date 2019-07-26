@@ -2,7 +2,7 @@
 <?php
 	$convo = $this->convo;
 ?>
-	<div class="row">
+	<div class="row convo-section">
 		<div class="col-md-12">
 			<div class="card card__table">
 				<div class="card-header">
