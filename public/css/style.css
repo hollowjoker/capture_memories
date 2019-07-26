@@ -43,7 +43,8 @@ input::placeholder,
 textarea::placeholder,
 select,
 .btn,
-textarea
+textarea,
+.font-style-normal
 {
 	font-family: 'Roboto', sans-serif !important;
 	/* color: #c3c3c3 !important; */
@@ -56,6 +57,12 @@ textarea
 }
 .text-custom-success{
 	color: #B65EBA !important;
+}
+.font-size-2 {
+	font-size: 2rem;
+}
+.font-size-08 {
+	font-size: .8rem;
 }
 
 section {
@@ -270,6 +277,47 @@ section.header{
 .card-img-bottom {
 	border-bottom-left-radius: calc(.25rem - 1px);
     border-bottom-right-radius: calc(.25rem - 1px);
+}
+.profile-card .card-body {
+	padding: 0px;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+.profile-card .avatar-holder {
+	display: flex;
+	justify-content: center;
+}
+.profile-card .avatar-holder,
+.profile-card .profile-content {
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.profile-card .avatar-holder .avatar {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 5px solid #B65EBA;
+	font-size: 2.5rem;
+	padding: 15px;
+	text-align: center;
+	color: #B65EBA;
+}
+.profile-card ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.profile-card ul li {
+	padding: 10px 0px;
+}
+.profile-card ul li i {
+	width: 30px;
+}
+.w-30px {
+	width: 30px;
+}
+.w-50px {
+	width: 50px;
 }
 /* .main_holder_gradient {
 	background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 3%, rgb(0, 0, 0) 100%) !important;
