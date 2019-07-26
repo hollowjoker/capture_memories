@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.6.38)
 # Database: capture_memories
-# Generation Time: 2019-07-23 09:30:24 +0000
+# Generation Time: 2019-07-26 14:10:36 +0000
 # ************************************************************
 
 
@@ -27,40 +27,29 @@ DROP TABLE IF EXISTS `tbl_airline_ticket_res`;
 
 CREATE TABLE `tbl_airline_ticket_res` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `location` varchar(50) DEFAULT NULL,
-  `quantity` int(5) DEFAULT NULL,
-  `status` enum('pending','cancelled','done') DEFAULT 'pending',
-  `traveled_from_at` date DEFAULT NULL,
-  `traveled_to_at` date DEFAULT NULL,
-  `type` enum('domestic','international') DEFAULT 'domestic',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `deleted_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Dump of table tbl_airline_ticket_res_meta
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `tbl_airline_ticket_res_meta`;
-
-CREATE TABLE `tbl_airline_ticket_res_meta` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `tbl_airline_ticket_res_id` int(11) DEFAULT NULL,
+  `tbl_user_id` int(11) DEFAULT NULL,
   `passenger_name` varchar(120) DEFAULT NULL,
-  `age` varchar(3) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
-  `passport_number` varchar(50) DEFAULT NULL,
-  `expiry_date` datetime DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `type` enum('domestic','international') DEFAULT 'domestic',
+  `passport_no` varchar(120) DEFAULT NULL,
+  `expiry_date` date DEFAULT NULL,
+  `status` enum('pending','cancelled','done') DEFAULT 'pending',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `tbl_airline_ticket_res` WRITE;
+/*!40000 ALTER TABLE `tbl_airline_ticket_res` DISABLE KEYS */;
+
+INSERT INTO `tbl_airline_ticket_res` (`id`, `tbl_user_id`, `passenger_name`, `birth_date`, `age`, `type`, `passport_no`, `expiry_date`, `status`, `created_at`, `updated_at`, `deleted_at`)
+VALUES
+	(1,1,'Eric Jonson','2016-01-03',12,'domestic','','0000-00-00','pending','2019-07-26 21:32:43','2019-07-26 21:32:43','0000-00-00 00:00:00');
+
+/*!40000 ALTER TABLE `tbl_airline_ticket_res` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table tbl_booking
@@ -100,9 +89,10 @@ VALUES
 	(12,1,36,'2019-07-17','2019-07-18','pending','2019-07-22 01:38:46','2019-07-22 01:38:46','0000-00-00 00:00:00'),
 	(13,1,36,'2019-07-17','2019-07-18','pending','2019-07-22 01:39:24','2019-07-22 01:39:24','0000-00-00 00:00:00'),
 	(14,1,37,'2019-07-17','2019-07-18','pending','2019-07-22 20:57:23','2019-07-22 20:57:23','0000-00-00 00:00:00'),
-	(15,1,36,'2019-07-17','2019-07-18','pending','2019-07-22 21:03:09','2019-07-22 21:03:09','0000-00-00 00:00:00'),
-	(16,1,32,'2019-07-19','2019-07-24','pending','2019-07-22 21:20:57','2019-07-22 21:20:57','0000-00-00 00:00:00'),
-	(17,1,32,'2019-07-26','2019-07-27','pending','2019-07-22 21:23:39','2019-07-22 21:23:39','0000-00-00 00:00:00');
+	(15,1,36,'2019-07-17','2019-07-18','pending','2019-07-22 21:03:09','2019-07-25 21:03:09','0000-00-00 00:00:00'),
+	(16,1,32,'2019-07-19','2019-07-24','pending','2019-07-22 21:20:57','2019-07-24 21:20:57','0000-00-00 00:00:00'),
+	(17,1,35,'2019-08-01','2019-08-02','pending','2019-07-25 21:56:06','2019-07-25 21:56:06','0000-00-00 00:00:00'),
+	(18,2,35,'2019-07-19','2019-07-21','pending','2019-07-25 22:13:21','2019-07-25 22:13:21','0000-00-00 00:00:00');
 
 /*!40000 ALTER TABLE `tbl_booking` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -144,10 +134,12 @@ VALUES
 	(13,14,'Carla','Remo','2019-07-22 20:57:23','2019-07-22 20:57:23','0000-00-00 00:00:00'),
 	(14,14,'Sam','Esque','2019-07-22 20:57:23','2019-07-22 20:57:23','0000-00-00 00:00:00'),
 	(15,14,'Sam','AWTAS','2019-07-22 20:57:23','2019-07-22 20:57:23','0000-00-00 00:00:00'),
-	(16,15,'Carla','Remo','2019-07-22 21:03:09','2019-07-22 21:03:09','0000-00-00 00:00:00'),
-	(17,15,'Sam','Esque','2019-07-22 21:03:09','2019-07-22 21:03:09','0000-00-00 00:00:00'),
+	(16,15,'Carla Remo','21','2019-07-22 21:03:09','2019-07-22 21:03:09','0000-00-00 00:00:00'),
+	(17,15,'Sam Esquejo','23','2019-07-22 21:03:09','2019-07-22 21:03:09','0000-00-00 00:00:00'),
 	(18,16,'Sam','Esque','2019-07-22 21:20:57','2019-07-22 21:20:57','0000-00-00 00:00:00'),
-	(19,17,'Vaperspoint','Manda','2019-07-22 21:23:39','2019-07-22 21:23:39','0000-00-00 00:00:00');
+	(19,17,'Vaperspoint','Manda','2019-07-22 21:23:39','2019-07-22 21:23:39','0000-00-00 00:00:00'),
+	(20,17,'Andrew E','42','2019-07-25 21:56:06','2019-07-25 21:56:06','0000-00-00 00:00:00'),
+	(21,18,'NYAW MING','42','2019-07-25 22:13:21','2019-07-25 22:13:21','0000-00-00 00:00:00');
 
 /*!40000 ALTER TABLE `tbl_booking_meta` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -176,9 +168,10 @@ INSERT INTO `tbl_convo` (`id`, `tbl_user_id`, `tbl_booking_id`, `status`, `creat
 VALUES
 	(1,1,13,'unread','2019-07-22 01:39:24','2019-07-22 01:39:24','0000-00-00 00:00:00'),
 	(2,1,14,'unread','2019-07-22 20:57:23','2019-07-22 20:57:23','0000-00-00 00:00:00'),
-	(3,1,15,'unread','2019-07-22 21:03:09','2019-07-22 21:03:09','0000-00-00 00:00:00'),
-	(4,1,16,'unread','2019-07-22 21:20:57','2019-07-22 21:20:57','0000-00-00 00:00:00'),
-	(5,1,17,'unread','2019-07-22 21:23:39','2019-07-22 21:23:39','0000-00-00 00:00:00');
+	(3,1,15,'read','2019-07-22 21:03:09','2019-07-24 23:36:08','0000-00-00 00:00:00'),
+	(4,1,16,'read','2019-07-22 21:20:57','2019-07-25 02:22:10','0000-00-00 00:00:00'),
+	(5,1,17,'read','2019-07-25 21:56:06','2019-07-25 21:56:06','0000-00-00 00:00:00'),
+	(6,2,18,'read','2019-07-25 22:13:21','2019-07-25 22:13:21','0000-00-00 00:00:00');
 
 /*!40000 ALTER TABLE `tbl_convo` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -209,7 +202,19 @@ VALUES
 	(1,2,1,1,'Hi CMTT can we have a meeting?','2019-07-22 20:57:23','2019-07-22 20:57:23','0000-00-00 00:00:00'),
 	(2,3,1,1,'Hi give me a sample\r\n','2019-07-22 21:03:09','2019-07-22 21:03:09','0000-00-00 00:00:00'),
 	(3,4,1,6,'can you help me with this?','2019-07-22 21:20:57','2019-07-22 21:20:57','0000-00-00 00:00:00'),
-	(4,5,1,6,'hi we are vaperspoint mandaluyong','2019-07-22 21:23:40','2019-07-22 21:23:40','0000-00-00 00:00:00');
+	(4,4,6,1,'hi we are vaperspoint mandaluyong','2019-07-22 21:23:40','2019-07-22 21:23:40','0000-00-00 00:00:00'),
+	(5,4,1,6,'hi there!','2019-07-23 23:11:11','2019-07-23 23:11:11','0000-00-00 00:00:00'),
+	(6,4,1,6,'let be peace on earth!','2019-07-23 23:12:05','2019-07-23 23:12:05','0000-00-00 00:00:00'),
+	(7,4,1,6,'hi!','2019-07-23 23:12:20','2019-07-23 23:12:20','0000-00-00 00:00:00'),
+	(8,4,1,6,'hello!','2019-07-23 23:34:15','2019-07-23 23:34:15','0000-00-00 00:00:00'),
+	(9,3,1,6,'time check','2019-07-23 23:36:08','2019-07-23 23:36:08','0000-00-00 00:00:00'),
+	(10,4,1,6,'Lorem ipsum dolor sit amet dolor dolor sasd asdnmaskn jsdasd nasd ajsd nasdj asnd jasdn asjnd','2019-07-25 01:00:15','2019-07-25 01:00:15','0000-00-00 00:00:00'),
+	(11,4,1,6,'hi asdmaisdhj asodn aiosdj asiodj asodj asiodj aiosj dasj chinchong','2019-07-25 01:23:36','2019-07-25 01:23:36','0000-00-00 00:00:00'),
+	(12,4,6,1,'Hi Madam!','2019-07-25 02:21:34','2019-07-25 02:21:34','0000-00-00 00:00:00'),
+	(13,4,6,1,'Good morning po','2019-07-25 02:21:59','2019-07-25 02:21:59','0000-00-00 00:00:00'),
+	(14,4,1,6,'helo po may gusto po akong tanong','2019-07-25 02:22:10','2019-07-25 02:22:10','0000-00-00 00:00:00'),
+	(15,5,1,6,'Hi There!','2019-07-25 21:56:06','2019-07-25 21:56:06','0000-00-00 00:00:00'),
+	(16,6,2,6,'hi hi ihi','2019-07-25 22:13:21','2019-07-25 22:13:21','0000-00-00 00:00:00');
 
 /*!40000 ALTER TABLE `tbl_message` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -241,7 +246,7 @@ LOCK TABLES `tbl_place` WRITE;
 
 INSERT INTO `tbl_place` (`id`, `name`, `description`, `type`, `airline_status`, `visa_status`, `wifi_status`, `tour_status`, `status`, `created_at`, `updated_at`, `deleted_at`)
 VALUES
-	(7,'Batanes','batanes','international','yes','yes','yes','yes','active','2019-07-05 11:35:46','2019-07-05 11:35:46','0000-00-00 00:00:00'),
+	(7,'Batanes','batanes','domestic','yes','yes','yes','yes','active','2019-07-05 11:35:46','2019-07-05 11:35:46','0000-00-00 00:00:00'),
 	(8,'Hongkong','hongkong','international','yes','yes','yes','yes','active','2019-07-05 12:07:50','2019-07-05 12:07:50','0000-00-00 00:00:00'),
 	(9,'Bali','','international','yes','yes','yes','yes','active','2019-07-15 13:49:07','2019-07-15 13:49:07','0000-00-00 00:00:00');
 
@@ -266,6 +271,49 @@ CREATE TABLE `tbl_services` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `tbl_services` WRITE;
+/*!40000 ALTER TABLE `tbl_services` DISABLE KEYS */;
+
+INSERT INTO `tbl_services` (`id`, `tbl_user_id`, `tbl_service_id`, `type`, `status`, `created_at`, `updated_at`, `deleted_at`)
+VALUES
+	(1,1,1,'wifi','active','2019-07-26 21:31:32','2019-07-26 21:31:32','0000-00-00 00:00:00'),
+	(2,1,2,'wifi','active','2019-07-26 21:32:04','2019-07-26 21:32:04','0000-00-00 00:00:00'),
+	(3,1,1,'airline','active','2019-07-26 21:32:43','2019-07-26 21:32:43','0000-00-00 00:00:00'),
+	(4,1,1,'travel','active','2019-07-26 21:37:29','2019-07-26 21:37:29','0000-00-00 00:00:00');
+
+/*!40000 ALTER TABLE `tbl_services` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table tbl_services_message
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tbl_services_message`;
+
+CREATE TABLE `tbl_services_message` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `tbl_services_id` int(11) DEFAULT NULL,
+  `tbl_sender_id` int(11) DEFAULT NULL,
+  `tbl_receiver_id` int(11) DEFAULT NULL,
+  `description` text,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
+  `deleted_at` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `tbl_services_message` WRITE;
+/*!40000 ALTER TABLE `tbl_services_message` DISABLE KEYS */;
+
+INSERT INTO `tbl_services_message` (`id`, `tbl_services_id`, `tbl_sender_id`, `tbl_receiver_id`, `description`, `created_at`, `updated_at`, `deleted_at`)
+VALUES
+	(1,1,1,6,'Hi there wifi rental here','2019-07-26','2019-07-26','0000-00-00'),
+	(2,2,1,6,'Hi there wifi rental here for international','2019-07-26','2019-07-26','0000-00-00'),
+	(3,3,1,6,'Domestic airline ticketing','2019-07-26','2019-07-26','0000-00-00'),
+	(4,4,1,6,'Hi I am Jon Snow','2019-07-26','2019-07-26','0000-00-00');
+
+/*!40000 ALTER TABLE `tbl_services_message` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table tbl_site
@@ -367,7 +415,9 @@ DROP TABLE IF EXISTS `tbl_travel_insurance`;
 CREATE TABLE `tbl_travel_insurance` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `tbl_user_id` int(11) DEFAULT NULL,
-  `quantity` int(5) DEFAULT NULL,
+  `passenger_name` varchar(120) DEFAULT NULL,
+  `age` int(5) DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
   `status` enum('pending','cancelled','done') DEFAULT 'pending',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -375,25 +425,15 @@ CREATE TABLE `tbl_travel_insurance` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `tbl_travel_insurance` WRITE;
+/*!40000 ALTER TABLE `tbl_travel_insurance` DISABLE KEYS */;
 
+INSERT INTO `tbl_travel_insurance` (`id`, `tbl_user_id`, `passenger_name`, `age`, `birth_date`, `status`, `created_at`, `updated_at`, `deleted_at`)
+VALUES
+	(1,1,'Jon Snow',34,'1928-04-28','pending','2019-07-26 21:37:29','2019-07-26 21:37:29','0000-00-00 00:00:00');
 
-# Dump of table tbl_travel_insurance_meta
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `tbl_travel_insurance_meta`;
-
-CREATE TABLE `tbl_travel_insurance_meta` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `tbl_travel_insurance_id` int(5) DEFAULT NULL,
-  `passenger_name` varchar(50) DEFAULT NULL,
-  `age` int(5) DEFAULT NULL,
-  `birth_date` date DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `deleted_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+/*!40000 ALTER TABLE `tbl_travel_insurance` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table tbl_user
@@ -409,6 +449,8 @@ CREATE TABLE `tbl_user` (
   `password` varchar(50) DEFAULT NULL,
   `phone` varchar(30) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
+  `address` text,
+  `about` text,
   `type` enum('user','admin') NOT NULL DEFAULT 'user',
   `active` enum('active','inactive') DEFAULT 'active',
   `created_at` datetime DEFAULT NULL,
@@ -420,13 +462,14 @@ CREATE TABLE `tbl_user` (
 LOCK TABLES `tbl_user` WRITE;
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
 
-INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `birth_date`, `type`, `active`, `created_at`, `updated_at`, `deleted_at`)
+INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `birth_date`, `address`, `about`, `type`, `active`, `created_at`, `updated_at`, `deleted_at`)
 VALUES
-	(1,'Sam','Esquejo','sam@oqulo.com','123456','0907929292','1992-09-07','user','active','2019-06-25 16:50:58','2019-06-25 16:50:58','0000-00-00 00:00:00'),
-	(2,'Carla','Remo','mjcarlaremo@gmail.com','1234','090932138','1994-09-10','user','active','2019-06-25 17:00:44','2019-06-25 17:00:44','0000-00-00 00:00:00'),
-	(4,'sam','esquejio','sam.esquejo@august99.com','12341234','123123','2019-01-03','user','active','2019-06-25 19:12:23','2019-06-25 19:12:23','0000-00-00 00:00:00'),
-	(5,'Sam','Esquejo','champot07@gmail.com','12341234','09029191','1992-09-07','user','active','2019-06-25 19:22:19','2019-06-25 19:22:19','0000-00-00 00:00:00'),
-	(6,'admin','admin','admin@admin.com','admin',NULL,NULL,'admin','active','2019-06-26 20:47:29','2019-06-26 20:47:29','0000-00-00 00:00:00');
+	(1,'Sam','Esquejo','sam@oqulo.com','123456','0907929292','1992-09-07',NULL,NULL,'user','active','2019-06-25 16:50:58','2019-06-25 16:50:58','0000-00-00 00:00:00'),
+	(2,'Carla','Remo','mjcarlaremo@gmail.com','1234','090932138','1994-09-10',NULL,NULL,'user','active','2019-06-25 17:00:44','2019-06-25 17:00:44','0000-00-00 00:00:00'),
+	(4,'sam','esquejio','sam.esquejo@august99.com','12341234','123123','2019-01-03',NULL,NULL,'user','active','2019-06-25 19:12:23','2019-06-25 19:12:23','0000-00-00 00:00:00'),
+	(5,'Sam','Esquejo','champot07@gmail.com','12341234','09029191','1992-09-07',NULL,NULL,'user','active','2019-06-25 19:22:19','2019-06-25 19:22:19','0000-00-00 00:00:00'),
+	(6,'admin','admin','admin@admin.com','admin',NULL,NULL,NULL,NULL,'admin','active','2019-06-26 20:47:29','2019-06-26 20:47:29','0000-00-00 00:00:00'),
+	(9,'Samuel','Esquejo','samuelresquejo@gmail.com','12341234','0192308417','1995-05-15','Mandaluyong, Philippines','Hi Therre!','user','active','2019-07-26 08:50:37','2019-07-26 11:13:59','0000-00-00 00:00:00');
 
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -440,29 +483,11 @@ DROP TABLE IF EXISTS `tbl_visa_processing`;
 CREATE TABLE `tbl_visa_processing` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `tbl_user_id` int(5) DEFAULT NULL,
-  `quantity` int(5) DEFAULT NULL,
-  `destination` varchar(120) DEFAULT NULL,
+  `passenger_name` varchar(120) DEFAULT NULL,
+  `age` int(5) DEFAULT NULL,
   `traveled_from_at` date DEFAULT NULL,
   `traveled_to_at` date DEFAULT NULL,
   `status` enum('pending','cancelled','done') DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `deleted` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Dump of table tbl_visa_processing_meta
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `tbl_visa_processing_meta`;
-
-CREATE TABLE `tbl_visa_processing_meta` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `tbl_visa_processing_id` int(5) DEFAULT NULL,
-  `passenger_name` varchar(50) DEFAULT NULL,
-  `age` varchar(3) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
@@ -479,17 +504,28 @@ DROP TABLE IF EXISTS `tbl_wifi_rental`;
 CREATE TABLE `tbl_wifi_rental` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `tbl_user_id` int(5) DEFAULT NULL,
-  `passenger_name` varchar(50) DEFAULT NULL,
+  `passenger_name` varchar(120) DEFAULT NULL,
   `destination` varchar(120) DEFAULT NULL,
   `traveled_from_at` date DEFAULT NULL,
   `traveled_to_at` date DEFAULT NULL,
+  `destination_type` varchar(20) DEFAULT NULL,
   `status` enum('pending','cancelled','done') DEFAULT 'pending',
   `created_at` datetime DEFAULT NULL,
-  `updated` datetime DEFAULT NULL,
-  `deleted` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `tbl_wifi_rental` WRITE;
+/*!40000 ALTER TABLE `tbl_wifi_rental` DISABLE KEYS */;
+
+INSERT INTO `tbl_wifi_rental` (`id`, `tbl_user_id`, `passenger_name`, `destination`, `traveled_from_at`, `traveled_to_at`, `destination_type`, `status`, `created_at`, `updated_at`, `deleted_at`)
+VALUES
+	(1,1,'Nyaw Nyi','Batanes','2019-07-09','2019-07-11','domestic','pending','2019-07-26 21:31:32','2019-07-26 21:31:32','0000-00-00 00:00:00'),
+	(2,1,'Nyaw Nyi','Hongkong','2019-07-09','2019-07-11','international','pending','2019-07-26 21:32:04','2019-07-26 21:32:04','0000-00-00 00:00:00');
+
+/*!40000 ALTER TABLE `tbl_wifi_rental` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 

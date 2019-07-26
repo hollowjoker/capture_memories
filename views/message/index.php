@@ -12,9 +12,12 @@
                     <form action="" class="mt-5 d-flex justify-content-between">
                         <div class="" style="width: 250px;">
                             <div class="form-group">
-                                <select id="" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                <select class="custom-select" data-redirect="<?= URL.'message/?type='?>" data-action="serviceInbox">
+                                    <option value="airline" <?= isset($_GET['type']) && $_GET['type'] == 'airline' ? 'selected' : '' ?>>Airline Ticketing</option>
+                                    <option value="travel" <?= isset($_GET['type']) && $_GET['type'] == 'travel' ? 'selected' : '' ?>>Travel Insurance</option>
+                                    <option value="tour" <?= isset($_GET['type']) && $_GET['type'] == 'tour' ? 'selected' : '' ?>>Tour and Packages</option>
+                                    <option value="wifi" <?= isset($_GET['type']) && $_GET['type'] == 'wifi' ? 'selected' : '' ?>>Wifi Rental</option>
+                                    <option value="visa" <?= isset($_GET['type']) && $_GET['type'] == 'visa' ? 'selected' : '' ?>>Visa Processing</option>
                                 </select>
                             </div>
                         </div>

@@ -5,13 +5,15 @@ message = {
 
 	defaults: {
 		$showMore: $('[data-action="showMore"]'),
-		$messageForm: $('#message_form')
+		$messageForm: $('#message_form'),
+		$serviceInbox: $('[data-action="serviceInbox"]')
 	},
 	onInit: function() {
 		var self = this,
 		el = self.defaults
 		self.activateShowMore(el.$showMore)
 		self.activateMessageForm(el.$messageForm)
+		self.activateServiceInbox(el.$serviceInbox)
 	},
 	onReady: function(e) {
 		var self = this,
@@ -44,6 +46,12 @@ message = {
 			}).done( result => {
 				location.href = formRedirect;
 			});
+		});
+	},
+	activateServiceInbox: function (trigger) {
+		trigger.change(function (e) {
+			let redirectUrl = $(this).attr('data-redirect');
+			// location
 		});
 	}
 }
