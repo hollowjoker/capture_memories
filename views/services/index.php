@@ -1,5 +1,7 @@
 <?php
 	$services = $this->services;
+	$domestic = $this->domesticPlaces;
+	$international = $this->internationalPlaces;
 ?>
 
 <section class="bg-custom-gradient py-5">
@@ -58,25 +60,32 @@
 			</div>
 			<div class="modal-body">
 				<!-- wifi rental form -->
-				<form action="" data-form="wifi-rental" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message?type=wifi' ?>" data-form="wifi-rental" hidden>
 					<div class="form-group">
 						<button type="button" class="btn btn-custom-success-outlined btn-sm active mb-1" data-pick="type" data-pick-filter="domestic">Domestic</button>
 						<button type="button" class="btn btn-custom-success-outlined btn-sm mb-1" data-pick="type" data-pick-filter="international">International</button>
 						<button type="button" class="btn btn-custom-success-outlined btn-sm mb-1" data-pick="type" data-pick-filter="other">Other</button>
 					</div>
 					<div class="form-group">
-						<select class="custom-select" hidden data-filter="domestic">
-							<option selected>Destination</option>
-							<option>Baler</option>
-							<option>Batanes</option>
-							<option>Siargao</option>
-							<option>Zambales</option>
+						<select name="domestic" class="custom-select" hidden data-filter="domestic">
+							<option selected disabled value="">Destination</option>
+							<?php if(count($domestic)): ?>
+								<?php foreach($domestic as $k => $v): ?>
+									<option value="<?= $v['name']?>"><?= $v['name']?></option>
+								<?php endforeach;?>
+							<?php endif; ?>
 						</select>
-						<select class="custom-select" hidden data-filter="international">
-							<option selected>Destination</option>
-							<option>Hongkong</option>
+						<select name="international" class="custom-select" hidden data-filter="international">
+							<option selected disabled value="">Destination</option>
+							<?php if(count($international)): ?>
+								<?php foreach($international as $k => $v): ?>
+									<option value="<?= $v['name']?>"><?= $v['name']?></option>
+								<?php endforeach;?>
+							<?php endif; ?>
 						</select>
-						<input type="text" class="form-control" hidden data-filter="other" placeholder="Destination">
+						<input type="text" name="other" class="form-control" hidden data-filter="other" placeholder="Destination">
+						<input type="hidden" name="type" class="form-control">
+						<input type="hidden" name="service_type" class="form-control" value="wifi">
 					</div>
 					<div class="form-group">
 						<input type="text" name="passenger_name" class="form-control" placeholder="Passenger Name">
@@ -84,10 +93,10 @@
 					<div class="form-row form-group">
 						<label for="" class="col-12">Dates of Travel</label>
 						<div class="col">
-							<input type="text" name="departingAt" class="form-control datepicker" autocomplete="off" placeholder="Departing on">
+							<input type="text" name="travelFromAt" class="form-control datepicker" autocomplete="off" placeholder="Departing on">
 						</div>
 						<div class="col">
-							<input type="text" name="returningAt" class="form-control datepicker" autocomplete="off" placeholder="Return on">
+							<input type="text" name="travelToAt" class="form-control datepicker" autocomplete="off" placeholder="Return on">
 						</div>
 					</div>
 					<hr>
@@ -95,10 +104,15 @@
 						<label for="">Share a few details about your plans to help them prepare their services.</label>
 						<textarea name="message" class="form-control" placeholder="Write your message here"></textarea>
 					</div>
+					<div class="form-group">
+						<button class="btn btn-custom-success btn-block">Submit</button>
+					</div>
 				</form>
 
 				<!-- airline ticketing form -->
-				<form action="" data-form="airline-ticketing" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message?type=airline' ?>" data-form="airline-ticketing" hidden>
+					<input type="hidden" name="type" class="form-control">
+					<input type="hidden" name="service_type" class="form-control" value="airline">
 					<div class="form-group">
 						<button type="button" class="btn btn-custom-success-outlined btn-sm active mb-1" data-pick="type" data-pick-filter="domestic">Domestic</button>
 						<button type="button" class="btn btn-custom-success-outlined btn-sm mb-1" data-pick="type" data-pick-filter="international">International</button>
@@ -157,10 +171,14 @@
 						<label for="">Share a few details about your plans to help them prepare their services.</label>
 						<textarea name="message" class="form-control" placeholder="Write your message here"></textarea>
 					</div>
+					<div class="form-group">
+						<button class="btn btn-custom-success btn-block">Submit</button>
+					</div>
 				</form>
 
 				<!-- visa processing -->
-				<form action="" data-form="visa-processing" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message?type=visa' ?>" data-form="visa-processing" hidden>
+					<input type="hidden" name="service_type" class="form-control" value="visa">
 					<div class="form-row form-group">
 						<label class="col-12">Passenger Details</label>
 						<div class="col-10">
@@ -184,10 +202,14 @@
 						<label for="">Share a few details about your plans to help them prepare their services.</label>
 						<textarea name="message" class="form-control" placeholder="Write your message here"></textarea>
 					</div>
+					<div class="form-group">
+						<button class="btn btn-custom-success btn-block">Submit</button>
+					</div>
 				</form>
 
 				<!-- travel insurance -->
-				<form action="" data-form="travel-insurance" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message?type=travel' ?>" data-form="travel-insurance" hidden>
+					<input type="hidden" name="service_type" class="form-control" value="travel">
 					<div class="form-row form-group">
 						<label class="col-12">Passenger Details</label>
 						<div class="col-10">
@@ -195,15 +217,6 @@
 						</div>
 						<div class="col-2">
 							<input type="text" name="age" class="form-control" placeholder="Age">
-						</div>
-					</div>
-					<div class="form-row form-group">
-						<label for="" class="col-12">Dates of Travel</label>
-						<div class="col">
-							<input type="text" name="departingAt" class="form-control datepicker" autocomplete="off" placeholder="Departing on">
-						</div>
-						<div class="col">
-							<input type="text" name="returningAt" class="form-control datepicker" autocomplete="off" placeholder="Return on">
 						</div>
 					</div>
 					<div class="form-group">
@@ -242,10 +255,10 @@
 						<label for="">Share a few details about your plans to help them prepare their services.</label>
 						<textarea name="message" class="form-control" placeholder="Write your message here"></textarea>
 					</div>
+					<div class="form-group">
+						<button class="btn btn-custom-success btn-block">Submit</button>
+					</div>
 				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-custom-success btn-block">Save changes</button>
 			</div>
 		</div>
 	</div>

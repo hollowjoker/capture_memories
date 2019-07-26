@@ -19,7 +19,6 @@ class Reservation_model extends Model
 			];
 			$convoResult[$k]['message'] = DAOFactory::getTblMessageDAO()->getMessageByConvo($option);
 		}
-
 		return $convoResult;
 	}
 
@@ -38,7 +37,7 @@ class Reservation_model extends Model
 			$option = [
 				'column' => 'message.created_at',
 				'orderBy' => 'desc',
-				'id' => $v['id']
+				'convoId' => $v['id']
 			];
 			$convoDataResult[$k]['messages'] = DAOFactory::getTblMessageDAO()->getMessageByConvo($option);
 			$bookingOption = [

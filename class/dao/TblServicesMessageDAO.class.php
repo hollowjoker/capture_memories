@@ -3,15 +3,15 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 08:38
+ * @date: 2019-07-26 21:16
  */
-interface TblVisaProcessingMetaDAO{
+interface TblServicesMessageDAO{
 
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @Return TblVisaProcessingMeta 
+	 * @Return TblServicesMessage 
 	 */
 	public function load($id);
 
@@ -28,34 +28,36 @@ interface TblVisaProcessingMetaDAO{
 	
 	/**
  	 * Delete record from table
- 	 * @param tblVisaProcessingMeta primary key
+ 	 * @param tblServicesMessage primary key
  	 */
 	public function delete($id);
 	
 	/**
  	 * Insert record to table
  	 *
- 	 * @param TblVisaProcessingMeta tblVisaProcessingMeta
+ 	 * @param TblServicesMessage tblServicesMessage
  	 */
-	public function insert($tblVisaProcessingMeta);
+	public function insert($tblServicesMessage);
 	
 	/**
  	 * Update record in table
  	 *
- 	 * @param TblVisaProcessingMeta tblVisaProcessingMeta
+ 	 * @param TblServicesMessage tblServicesMessage
  	 */
-	public function update($tblVisaProcessingMeta);	
+	public function update($tblServicesMessage);	
 
 	/**
 	 * Delete all rows
 	 */
 	public function clean();
 
-	public function queryByTblVisaProcessingId($value);
+	public function queryByTblServicesId($value);
 
-	public function queryByPassengerName($value);
+	public function queryByTblSenderId($value);
 
-	public function queryByAge($value);
+	public function queryByTblReceiverId($value);
+
+	public function queryByDescription($value);
 
 	public function queryByCreatedAt($value);
 
@@ -64,11 +66,13 @@ interface TblVisaProcessingMetaDAO{
 	public function queryByDeletedAt($value);
 
 
-	public function deleteByTblVisaProcessingId($value);
+	public function deleteByTblServicesId($value);
 
-	public function deleteByPassengerName($value);
+	public function deleteByTblSenderId($value);
 
-	public function deleteByAge($value);
+	public function deleteByTblReceiverId($value);
+
+	public function deleteByDescription($value);
 
 	public function deleteByCreatedAt($value);
 

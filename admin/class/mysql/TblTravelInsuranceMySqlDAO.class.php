@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_travel_insurance'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 08:38
+ * @date: 2019-07-26 21:16
  */
 class TblTravelInsuranceMySqlDAO implements TblTravelInsuranceDAO{
 
@@ -57,11 +57,13 @@ class TblTravelInsuranceMySqlDAO implements TblTravelInsuranceDAO{
  	 * @param TblTravelInsuranceMySql tblTravelInsurance
  	 */
 	public function insert($tblTravelInsurance){
-		$sql = 'INSERT INTO tbl_travel_insurance (tbl_user_id, quantity, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO tbl_travel_insurance (tbl_user_id, passenger_name, age, birth_date, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblTravelInsurance->tblUserId);
-		$sqlQuery->setNumber($tblTravelInsurance->quantity);
+		$sqlQuery->set($tblTravelInsurance->passengerName);
+		$sqlQuery->setNumber($tblTravelInsurance->age);
+		$sqlQuery->set($tblTravelInsurance->birthDate);
 		$sqlQuery->set($tblTravelInsurance->status);
 		$sqlQuery->set($tblTravelInsurance->createdAt);
 		$sqlQuery->set($tblTravelInsurance->updatedAt);
@@ -78,11 +80,13 @@ class TblTravelInsuranceMySqlDAO implements TblTravelInsuranceDAO{
  	 * @param TblTravelInsuranceMySql tblTravelInsurance
  	 */
 	public function update($tblTravelInsurance){
-		$sql = 'UPDATE tbl_travel_insurance SET tbl_user_id = ?, quantity = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
+		$sql = 'UPDATE tbl_travel_insurance SET tbl_user_id = ?, passenger_name = ?, age = ?, birth_date = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblTravelInsurance->tblUserId);
-		$sqlQuery->setNumber($tblTravelInsurance->quantity);
+		$sqlQuery->set($tblTravelInsurance->passengerName);
+		$sqlQuery->setNumber($tblTravelInsurance->age);
+		$sqlQuery->set($tblTravelInsurance->birthDate);
 		$sqlQuery->set($tblTravelInsurance->status);
 		$sqlQuery->set($tblTravelInsurance->createdAt);
 		$sqlQuery->set($tblTravelInsurance->updatedAt);
@@ -108,10 +112,24 @@ class TblTravelInsuranceMySqlDAO implements TblTravelInsuranceDAO{
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByQuantity($value){
-		$sql = 'SELECT * FROM tbl_travel_insurance WHERE quantity = ?';
+	public function queryByPassengerName($value){
+		$sql = 'SELECT * FROM tbl_travel_insurance WHERE passenger_name = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByAge($value){
+		$sql = 'SELECT * FROM tbl_travel_insurance WHERE age = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByBirthDate($value){
+		$sql = 'SELECT * FROM tbl_travel_insurance WHERE birth_date = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
@@ -151,10 +169,24 @@ class TblTravelInsuranceMySqlDAO implements TblTravelInsuranceDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByQuantity($value){
-		$sql = 'DELETE FROM tbl_travel_insurance WHERE quantity = ?';
+	public function deleteByPassengerName($value){
+		$sql = 'DELETE FROM tbl_travel_insurance WHERE passenger_name = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByAge($value){
+		$sql = 'DELETE FROM tbl_travel_insurance WHERE age = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByBirthDate($value){
+		$sql = 'DELETE FROM tbl_travel_insurance WHERE birth_date = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -198,7 +230,9 @@ class TblTravelInsuranceMySqlDAO implements TblTravelInsuranceDAO{
 		
 		$tblTravelInsurance->id = $row['id'];
 		$tblTravelInsurance->tblUserId = $row['tbl_user_id'];
-		$tblTravelInsurance->quantity = $row['quantity'];
+		$tblTravelInsurance->passengerName = $row['passenger_name'];
+		$tblTravelInsurance->age = $row['age'];
+		$tblTravelInsurance->birthDate = $row['birth_date'];
 		$tblTravelInsurance->status = $row['status'];
 		$tblTravelInsurance->createdAt = $row['created_at'];
 		$tblTravelInsurance->updatedAt = $row['updated_at'];

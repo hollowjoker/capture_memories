@@ -3,7 +3,7 @@
 	 * Object represents table 'tbl_wifi_rental'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2019-07-26 08:38	 
+     	 * @date: 2019-07-26 21:16	 
 	 */
 	class TblWifiRental{
 		
@@ -13,10 +13,11 @@
 		var $destination;
 		var $traveledFromAt;
 		var $traveledToAt;
+		var $destinationType;
 		var $status;
 		var $createdAt;
-		var $updated;
-		var $deleted;
+		var $updatedAt;
+		var $deletedAt;
 		
 	}
 ?>

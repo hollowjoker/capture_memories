@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 08:38
+ * @date: 2019-07-26 21:16
  */
 interface TblTravelInsuranceDAO{
 
@@ -53,7 +53,11 @@ interface TblTravelInsuranceDAO{
 
 	public function queryByTblUserId($value);
 
-	public function queryByQuantity($value);
+	public function queryByPassengerName($value);
+
+	public function queryByAge($value);
+
+	public function queryByBirthDate($value);
 
 	public function queryByStatus($value);
 
@@ -66,7 +70,11 @@ interface TblTravelInsuranceDAO{
 
 	public function deleteByTblUserId($value);
 
-	public function deleteByQuantity($value);
+	public function deleteByPassengerName($value);
+
+	public function deleteByAge($value);
+
+	public function deleteByBirthDate($value);
 
 	public function deleteByStatus($value);
 

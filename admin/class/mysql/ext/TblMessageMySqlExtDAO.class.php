@@ -23,7 +23,7 @@ class TblMessageMySqlExtDAO extends TblMessageMySqlDAO{
 			inner join tbl_user as user
 			on message.tbl_sender_id = user.id
 			
-			where convo.id = ".$option['id']
+			where convo.id = ".$option['convoId']
 		;
 		if(isset($option['orderBy'])) {
 			$sql .=" order by ".$option['column']." ".$option['orderBy'];

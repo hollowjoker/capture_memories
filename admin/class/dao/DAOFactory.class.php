@@ -15,13 +15,6 @@ class DAOFactory{
 	}
 
 	/**
-	 * @return TblAirlineTicketResMetaDAO
-	 */
-	public static function getTblAirlineTicketResMetaDAO(){
-		return new TblAirlineTicketResMetaMySqlExtDAO();
-	}
-
-	/**
 	 * @return TblBookingDAO
 	 */
 	public static function getTblBookingDAO(){
@@ -64,6 +57,13 @@ class DAOFactory{
 	}
 
 	/**
+	 * @return TblServicesMessageDAO
+	 */
+	public static function getTblServicesMessageDAO(){
+		return new TblServicesMessageMySqlExtDAO();
+	}
+
+	/**
 	 * @return TblSiteDAO
 	 */
 	public static function getTblSiteDAO(){
@@ -92,13 +92,6 @@ class DAOFactory{
 	}
 
 	/**
-	 * @return TblTravelInsuranceMetaDAO
-	 */
-	public static function getTblTravelInsuranceMetaDAO(){
-		return new TblTravelInsuranceMetaMySqlExtDAO();
-	}
-
-	/**
 	 * @return TblUserDAO
 	 */
 	public static function getTblUserDAO(){
@@ -110,13 +103,6 @@ class DAOFactory{
 	 */
 	public static function getTblVisaProcessingDAO(){
 		return new TblVisaProcessingMySqlExtDAO();
-	}
-
-	/**
-	 * @return TblVisaProcessingMetaDAO
-	 */
-	public static function getTblVisaProcessingMetaDAO(){
-		return new TblVisaProcessingMetaMySqlExtDAO();
 	}
 
 	/**

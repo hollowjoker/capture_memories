@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_airline_ticket_res'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 08:38
+ * @date: 2019-07-26 21:16
  */
 class TblAirlineTicketResMySqlDAO implements TblAirlineTicketResDAO{
 
@@ -57,16 +57,17 @@ class TblAirlineTicketResMySqlDAO implements TblAirlineTicketResDAO{
  	 * @param TblAirlineTicketResMySql tblAirlineTicketRe
  	 */
 	public function insert($tblAirlineTicketRe){
-		$sql = 'INSERT INTO tbl_airline_ticket_res (user_id, location, quantity, status, traveled_from_at, traveled_to_at, type, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO tbl_airline_ticket_res (tbl_user_id, passenger_name, birth_date, age, type, passport_no, expiry_date, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($tblAirlineTicketRe->userId);
-		$sqlQuery->set($tblAirlineTicketRe->location);
-		$sqlQuery->setNumber($tblAirlineTicketRe->quantity);
-		$sqlQuery->set($tblAirlineTicketRe->status);
-		$sqlQuery->set($tblAirlineTicketRe->traveledFromAt);
-		$sqlQuery->set($tblAirlineTicketRe->traveledToAt);
+		$sqlQuery->setNumber($tblAirlineTicketRe->tblUserId);
+		$sqlQuery->set($tblAirlineTicketRe->passengerName);
+		$sqlQuery->set($tblAirlineTicketRe->birthDate);
+		$sqlQuery->setNumber($tblAirlineTicketRe->age);
 		$sqlQuery->set($tblAirlineTicketRe->type);
+		$sqlQuery->set($tblAirlineTicketRe->passportNo);
+		$sqlQuery->set($tblAirlineTicketRe->expiryDate);
+		$sqlQuery->set($tblAirlineTicketRe->status);
 		$sqlQuery->set($tblAirlineTicketRe->createdAt);
 		$sqlQuery->set($tblAirlineTicketRe->updatedAt);
 		$sqlQuery->set($tblAirlineTicketRe->deletedAt);
@@ -82,16 +83,17 @@ class TblAirlineTicketResMySqlDAO implements TblAirlineTicketResDAO{
  	 * @param TblAirlineTicketResMySql tblAirlineTicketRe
  	 */
 	public function update($tblAirlineTicketRe){
-		$sql = 'UPDATE tbl_airline_ticket_res SET user_id = ?, location = ?, quantity = ?, status = ?, traveled_from_at = ?, traveled_to_at = ?, type = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
+		$sql = 'UPDATE tbl_airline_ticket_res SET tbl_user_id = ?, passenger_name = ?, birth_date = ?, age = ?, type = ?, passport_no = ?, expiry_date = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($tblAirlineTicketRe->userId);
-		$sqlQuery->set($tblAirlineTicketRe->location);
-		$sqlQuery->setNumber($tblAirlineTicketRe->quantity);
-		$sqlQuery->set($tblAirlineTicketRe->status);
-		$sqlQuery->set($tblAirlineTicketRe->traveledFromAt);
-		$sqlQuery->set($tblAirlineTicketRe->traveledToAt);
+		$sqlQuery->setNumber($tblAirlineTicketRe->tblUserId);
+		$sqlQuery->set($tblAirlineTicketRe->passengerName);
+		$sqlQuery->set($tblAirlineTicketRe->birthDate);
+		$sqlQuery->setNumber($tblAirlineTicketRe->age);
 		$sqlQuery->set($tblAirlineTicketRe->type);
+		$sqlQuery->set($tblAirlineTicketRe->passportNo);
+		$sqlQuery->set($tblAirlineTicketRe->expiryDate);
+		$sqlQuery->set($tblAirlineTicketRe->status);
 		$sqlQuery->set($tblAirlineTicketRe->createdAt);
 		$sqlQuery->set($tblAirlineTicketRe->updatedAt);
 		$sqlQuery->set($tblAirlineTicketRe->deletedAt);
@@ -109,50 +111,57 @@ class TblAirlineTicketResMySqlDAO implements TblAirlineTicketResDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function queryByUserId($value){
-		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE user_id = ?';
+	public function queryByTblUserId($value){
+		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE tbl_user_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByLocation($value){
-		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE location = ?';
+	public function queryByPassengerName($value){
+		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE passenger_name = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByQuantity($value){
-		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE quantity = ?';
+	public function queryByBirthDate($value){
+		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE birth_date = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByAge($value){
+		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE age = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
-		return $this->getList($sqlQuery);
-	}
-
-	public function queryByStatus($value){
-		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE status = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($value);
-		return $this->getList($sqlQuery);
-	}
-
-	public function queryByTraveledFromAt($value){
-		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE traveled_from_at = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($value);
-		return $this->getList($sqlQuery);
-	}
-
-	public function queryByTraveledToAt($value){
-		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE traveled_to_at = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByType($value){
 		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE type = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByPassportNo($value){
+		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE passport_no = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByExpiryDate($value){
+		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE expiry_date = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByStatus($value){
+		$sql = 'SELECT * FROM tbl_airline_ticket_res WHERE status = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -180,50 +189,57 @@ class TblAirlineTicketResMySqlDAO implements TblAirlineTicketResDAO{
 	}
 
 
-	public function deleteByUserId($value){
-		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE user_id = ?';
+	public function deleteByTblUserId($value){
+		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE tbl_user_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByLocation($value){
-		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE location = ?';
+	public function deleteByPassengerName($value){
+		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE passenger_name = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByQuantity($value){
-		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE quantity = ?';
+	public function deleteByBirthDate($value){
+		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE birth_date = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByAge($value){
+		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE age = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
-		return $this->executeUpdate($sqlQuery);
-	}
-
-	public function deleteByStatus($value){
-		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE status = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($value);
-		return $this->executeUpdate($sqlQuery);
-	}
-
-	public function deleteByTraveledFromAt($value){
-		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE traveled_from_at = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($value);
-		return $this->executeUpdate($sqlQuery);
-	}
-
-	public function deleteByTraveledToAt($value){
-		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE traveled_to_at = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByType($value){
 		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE type = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByPassportNo($value){
+		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE passport_no = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByExpiryDate($value){
+		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE expiry_date = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByStatus($value){
+		$sql = 'DELETE FROM tbl_airline_ticket_res WHERE status = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
@@ -261,13 +277,14 @@ class TblAirlineTicketResMySqlDAO implements TblAirlineTicketResDAO{
 		$tblAirlineTicketRe = new TblAirlineTicketRe();
 		
 		$tblAirlineTicketRe->id = $row['id'];
-		$tblAirlineTicketRe->userId = $row['user_id'];
-		$tblAirlineTicketRe->location = $row['location'];
-		$tblAirlineTicketRe->quantity = $row['quantity'];
-		$tblAirlineTicketRe->status = $row['status'];
-		$tblAirlineTicketRe->traveledFromAt = $row['traveled_from_at'];
-		$tblAirlineTicketRe->traveledToAt = $row['traveled_to_at'];
+		$tblAirlineTicketRe->tblUserId = $row['tbl_user_id'];
+		$tblAirlineTicketRe->passengerName = $row['passenger_name'];
+		$tblAirlineTicketRe->birthDate = $row['birth_date'];
+		$tblAirlineTicketRe->age = $row['age'];
 		$tblAirlineTicketRe->type = $row['type'];
+		$tblAirlineTicketRe->passportNo = $row['passport_no'];
+		$tblAirlineTicketRe->expiryDate = $row['expiry_date'];
+		$tblAirlineTicketRe->status = $row['status'];
 		$tblAirlineTicketRe->createdAt = $row['created_at'];
 		$tblAirlineTicketRe->updatedAt = $row['updated_at'];
 		$tblAirlineTicketRe->deletedAt = $row['deleted_at'];
