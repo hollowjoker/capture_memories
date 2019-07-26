@@ -17,48 +17,44 @@
 						<table class="table table-custom small dataTable">
 							<thead>
 								<tr>
-									<th></th>
 									<th>Name</th>
 									<th>Email</th>
 									<th>Phone No.</th>
 									<th>Birth Date</th>
 									<th>Type</th>
 									<th>Status</th>
+									<th>Action</th>
 								</tr>
 							</thead>
-							<!-- <tbody>
-								<?php if(count($tour)): ?>
-									<?php foreach($tour as $k => $v): ?>
-										<tr>
-											<td>
-												<img src="<?= $v['image_public_path']?>" alt="" class="fw-100">
-											</td>
-											<td><?= $v['tour_name']?></td>
-											<td><?= $v['type']?></td>
-											<td>
-												<?php if(count($v['meta'])): ?>
-													<?php foreach($v['meta'] as $metaK => $metaV): ?>
-														<span class="badge badge-custombg badge-custombg-<?=$metaK?> badge-lg badge-pill"> 
-															<?= $metaV['quantity'] ?>
-															<i class="now-ui-icons users_single-02"></i>
-															<?= number_format($metaV['price'],0) ?>
-														</span>
-													<?php endforeach;?>
-												<?php endif;?>
-											</td>
-											<td>
-												<button type="button" class="btn btn-info btn-sm" data-action="edit_tour" data-url="<?= URL.'tour/update?id='.$v['id']?>">
-													<i class="now-ui-icons design-2_ruler-pencil"></i>
-												</button>
-												<button type="button" class="btn btn-danger btn-sm" data-action="delete_tour" data-url="<?= URL.'tour/delete?id='.$v['id']?>">
-													<i class="now-ui-icons ui-1_simple-delete"></i>
-												</button>
-											</td>
-										</tr>
-									<?php endforeach;?>
-								<?php endif;?>
-							</tbody> -->
-							
+							<tbody>
+								<tr>
+									<td>Carla Remo</td>
+									<td>mjcarlaremo@gmail.com</td>
+									<!-- <td>
+										<?php if(count($v['meta'])): ?>
+											<?php foreach($v['meta'] as $metaK => $metaV): ?>
+												<span class="badge badge-custombg badge-custombg-<?=$metaK?> badge-lg badge-pill"> 
+													<?= $metaV['quantity'] ?>
+													<i class="now-ui-icons users_single-02"></i>
+													<?= number_format($metaV['price'],0) ?>
+												</span>
+											<?php endforeach;?>
+										<?php endif;?>
+									</td> -->
+									<td>0920392932930</td>
+									<td>09/11/94</td>
+									<td>Admin</td>
+									<td>Active</td>
+									<td>
+										<button type="button" class="btn btn-info btn-sm" data-action="edit_user" data-url="">
+											<i class="now-ui-icons design-2_ruler-pencil"></i>
+										</button>
+										<button type="button" class="btn btn-danger btn-sm" data-action="delete_user" data-url="">
+											<i class="now-ui-icons ui-1_simple-delete"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>
