@@ -26,30 +26,77 @@
                         </div> -->
                     </form>
 
-                    <table class="table">
+                    <table class="table vertical-align-center">
                         <tbody>
-                            <?php if(count($convo)): ?>
+                            <?php if(count($convo) && (isset($_GET['type']) && $_GET['type'] == 'tour')): ?>
                                 <?php foreach($convo as $k => $v): ?>
                                     <tr>
                                         <td>
                                             <div><a href="<?= URL.'message/convo?id='.$v['id'] ?>"><img src="<?= $v['image_public_path'] ?>" class="img-fluid img-non-radius img-border-muticolor" alt="Profile"></a></div>
                                         </td>
                                         <td>
-                                            <?= $userId == $v['user_id'] ? "me" : "CMTT TEAM" ?><br>
+                                            <span class="mb-1 d-block font-size-09">
+                                                <?= $userId == $v['message'][0]['tbl_sender_id'] ? "ME" : "CMTT TEAM" ?><br>
+                                            </span>
                                             <?= count($v['message'])  ? date('M d', strtotime($v['message'][0]['created_at'])) : '' ?>
                                         </td>
                                         <td>
                                             <a href="<?= URL.'message/convo?id='.$v['id'] ?>">
-                                                <?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 100) : "")."<br/>".$v['destination_name']." (".date('M d, Y',strtotime($v['departing_at']))." - ".date('M d, Y',strtotime($v['returning_at'])).")"?>
+                                                <span class="mb-1 d-block font-size-09"><?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 100) : "") ?></span>
+                                                <span class="text-muted"><?= $v['destination_name']." (".date('M d, Y',strtotime($v['departing_at']))." - ".date('M d, Y',strtotime($v['returning_at'])).")"?></span>
                                             </a>
                                         </td>
                                         <td>
-                                            <span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-custom-success" : ($v['status'] == "declined" ? "text-warning" : "text-success")))?>">
+                                            <span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-warning" : "text-success")))?>">
                                                 <?= strtoupper($v['status']) ?>    
                                             </span>
                                         </td>
                                     </tr>
                                 <?php endforeach;?>
+                            <?php elseif(count($convo) && (isset($_GET['type']) && $_GET['type'] != 'tour')): ?>
+                                <?php foreach($convo as $k => $v): ?>
+                                    <tr>
+                                        <td>
+                                            <div class="calendar">
+                                                <?php if(count($v['message'])): ?>
+                                                    <span class="month clearfix"><?= date('M', strtotime($v['message'][0]['created_at'])) ?></span>
+                                                    <span class="day"><?= date('d', strtotime($v['message'][0]['created_at'])) ?></span>
+                                                <?php endif;?>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <?php if($userId == $v['message'][0]['tbl_sender_id']): ?>
+                                                <span class="header-avatar font-size-08">
+                                                    <?= substr($userSession['first_name'], 0, 1).substr($userSession['last_name'], 0, 1)?>
+                                                </span>
+                                            <?php else: ?>
+                                                <span class="header-avatar avatar-admin font-size-08">
+                                                    CM
+                                                </span>
+                                            <?php endif;?>
+                                        </td>
+                                        <td>
+                                            <a href="<?= URL.'message/convo?id='.$v['id'] ?>">
+                                                <span class="mb-1 d-block font-size-09"><?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 100) : "") ?></span>
+                                                <span class="text-muted">
+                                                    <?= isset($v['destination']) ? $v['destination'] : "" ?>
+                                                    <?php if(isset($v['traveled_from_at'])): ?>
+                                                        <?= " (".date('M d, Y',strtotime($v['traveled_from_at']))." - ".date('M d, Y',strtotime($v['traveled_to_at'])).")"?>
+                                                    <?php endif;?>
+                                                </span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-warning" : "text-success")))?>">
+                                                <?= strtoupper($v['status']) ?>    
+                                            </span>
+                                        </td>
+                                    </tr>
+                                <?php endforeach;?>
+                            <?php else:?>
+                                <tr>
+                                    <td>You don't have any Reservations yet.</td>
+                                </tr>
                             <?php endif;?>
                         </tbody>
                     </table>

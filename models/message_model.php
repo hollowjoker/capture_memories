@@ -10,16 +10,32 @@ class message_model extends Model
 
 	public function getConvo() {
 		$userId = Session::getSession('user')['id'];
-		$convoResult = DAOFactory::getTblConvoDAO()->getConvo($userId);
+		$convoResult = [];
+		if($_GET['type'] == 'tour') {
+			$convoResult = DAOFactory::getTblConvoDAO()->getConvo($userId);
 
-		foreach($convoResult as $k => $v) {
-			$option = [
-				'column' => 'created_at',
-				'orderBy' => 'desc',
-				'limit' => 1,
-				'convoId' => $v['id']
-			];
-			$convoResult[$k]['message'] = DAOFactory::getTblMessageDAO()->getMessageByConvo($option);
+			foreach($convoResult as $k => $v) {
+				$option = [
+					'column' => 'created_at',
+					'orderBy' => 'desc',
+					'limit' => 1,
+					'convoId' => $v['id']
+				];
+				$convoResult[$k]['message'] = DAOFactory::getTblMessageDAO()->getMessageByConvo($option);
+			}
+		} else {
+			$type = $_GET['type'];
+			$convoResult = DAOFactory::getTblServicesDAO()->getServices($userId, $type);
+
+			foreach($convoResult as $k => $v) {
+				$option = [
+					'column' => 'created_at',
+					'orderBy' => 'desc',
+					'limit' => 1,
+					'serviceId' => $v['id']
+				];
+				$convoResult[$k]['message'] = DAOFactory::getTblServicesMessageDAO()->getMessageByService($option);
+			}
 		}
 		return $convoResult;
 	}

@@ -22,6 +22,7 @@
 									<th>Name</th>
 									<th>Type</th>
 									<th>Amounts</th>
+									<th>Status</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -45,6 +46,7 @@
 													<?php endforeach;?>
 												<?php endif;?>
 											</td>
+											<td><span class="<?= $v['status'] == 'active' ? 'text-success' : 'text-danger'?>"><?= $v['status'] ?></span></td>
 											<td>
 												<button type="button" class="btn btn-info btn-sm" data-action="edit_tour" data-url="<?= URL.'tour/update?id='.$v['id']?>">
 													<i class="now-ui-icons design-2_ruler-pencil"></i>

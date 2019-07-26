@@ -62,7 +62,10 @@ textarea,
 	font-size: 2rem;
 }
 .font-size-08 {
-	font-size: .8rem;
+	font-size: .8rem !important;
+}
+.font-size-09 {
+	font-size: .9rem;
 }
 
 section {
@@ -324,6 +327,9 @@ section.header{
 	color: #fff;
 	background: linear-gradient(to right top, #b65eba, #9e6ccc, #8179d8, #5e84df, #2e8de1);
 }
+.header-avatar.avatar-admin {
+	background: #333;
+}
 .w-30px {
 	width: 30px;
 }
@@ -491,6 +497,24 @@ section.header{
 }
 .custom-textarea::placeholder{
 	color: #bfbfbf;
+}
+.calendar {
+	width: 50px;
+	height: 50px;
+	border: 3px solid #cc2a2a;
+	border-radius: 8px;
+	text-align: center;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.calendar .month{
+	font-size: .9rem;
+}
+.calendar .day {
+	font-size: 1.3rem;
+}
+.vertical-align-center tbody tr td{
+	vertical-align: middle;
 }
 
 /*!

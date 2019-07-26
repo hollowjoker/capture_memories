@@ -51,7 +51,8 @@ message = {
 	activateServiceInbox: function (trigger) {
 		trigger.change(function (e) {
 			let redirectUrl = $(this).attr('data-redirect');
-			// location
+			let type = $(this).find('option:selected').val();
+			location.href = redirectUrl+type;
 		});
 	}
 }
