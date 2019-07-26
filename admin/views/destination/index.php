@@ -39,7 +39,9 @@
 											</td>
 											<td><span class="<?= $v->status == 'active' ? 'text-success' : 'text-danger'?>"><?= $v->status ?></span></td>
 											<td>
-												<button type="button" class="btn btn-info btn-sm" data-action="editDestination" data-id="<?= $v->id ?>">Edit</button>
+												<button type="button" class="btn btn-info btn-sm" data-action="editDestination" data-url="<?= URL.'destination/getDestination?id='.$v->id ?>">
+													<i class="now-ui-icons design-2_ruler-pencil"></i>
+												</button>
 											</td>
 										</tr>
 									<?php endforeach;?>
@@ -64,7 +66,7 @@
 				</div>
 				<div class="modal-body">
 					<form action="<?= URL.'destination/store'?>" data-form="destination_form" method="POST" data-redirect="<?= URL.'destination'?>">
-						<input type="hidden" name="destination_id" value="0">
+						<input type="hidden" name="id" value="0">
 						<div class="form-group">
 							<input type="name" class="form-control" name="name" placeholder="name">
 							<div class="feedback"></div>
@@ -134,7 +136,7 @@
 								</label>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group text-right">
 							<button class="btn btn-info">
 								Submit
 							</button>

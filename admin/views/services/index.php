@@ -1,6 +1,6 @@
 
 <?php
-	
+	$services = $this->services;
 ?>
 	<div class="row">
 		<div class="col-md-12">
@@ -11,34 +11,51 @@
 					</h4>
 				</div>
 				<div class="card-body">
+					<ul class="nav nav-tabs">
+						<li class="nav-item">
+							<a href="<?= URL.'services?type=airline'?>" class="nav-link <?= $_GET['type'] == 'airline' ? 'active' : ''?>">Airline Ticketing</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= URL.'services?type=travel'?>" class="nav-link <?= $_GET['type'] == 'travel' ? 'active' : ''?>">Travel Insurance</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= URL.'services?type=visa'?>" class="nav-link <?= $_GET['type'] == 'visa' ? 'active' : ''?>">Visa Processing</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= URL.'services?type=wifi'?>" class="nav-link <?= $_GET['type'] == 'wifi' ? 'active' : ''?>">Wifi Rental</a>
+						</li>
+					</ul>
 					<div class="table-responsive">
 						<table class="table table-custom small dataTable table-vertical-top">
 							<thead>
 								<tr>
 									<th>Name</th>
 									<th>Message</th>
-									<th>Package Reserve</th>
+									<th>Details</th>
 									<th>Status</th>
 									<th>Received</th>
 									<th>Action</th>
 								</tr>
 							</thead>
-							<!-- <tbody>
-								<?php if(count($convo)): ?>
-									<?php foreach($convo as $k => $v): ?>
-										<tr class="<?= $v['convo_status'] == 'unread' ? 'font-weight-bold' : '' ?>">
+							<tbody>
+								<?php if(count($services)): ?>
+									<?php foreach($services as $k => $v): ?>
+										<tr class="<?= $v['status'] == 'unread' ? 'font-weight-bold' : '' ?>">
 											<td><?= $v['first_name']." ".$v['last_name']?></td>
 											<td>
 												<a href="<?= URL.'reservation/convo?id='.$v['id'] ?>" class="default-text-color"><?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 60)."..." : "") ?></a>
 											</td>
 											<td>
-												<?= $v['tour_name']?>
 												<p class="text-muted">
-													- <?= date('M d, Y',strtotime($v['departing_at']))." - ".date('M d, Y',strtotime($v['returning_at'])) ?>
-													<br>
-													- <?= $v['destination_name'] ?>
-													<br>
-													- <?= $v['type'] ?>
+													<span class="clearfix">
+														<?= isset($v['traveled_from_at']) ? "- ".date('M d, Y',strtotime($v['traveled_from_at']))." - ".date('M d, Y',strtotime($v['traveled_to_at'])) : '' ?>
+													</span>
+													<span class="clearfix">
+														<?= isset($v['destination']) ? "- ".$v['destination'] : "" ?>
+													</span>
+													<span class="clearfix">
+														<?= isset($v['sub_type']) ? "- ".ucfirst($v['sub_type']) : "" ?>
+													</span>
 												</p>
 											</td>
 											<td>
@@ -56,7 +73,7 @@
 										</tr>
 									<?php endforeach;?>
 								<?php endif;?>
-							</tbody> -->
+							</tbody>
 							
 						</table>
 					</div>

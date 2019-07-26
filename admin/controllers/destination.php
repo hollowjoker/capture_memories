@@ -22,6 +22,12 @@ class Destination extends Controller
 		exit;
 	}
 
+	public function getDestination() {
+		$modelResult = $this->model->getDestination();
+		echo json_encode($modelResult);
+		exit;
+	}
+
 }
 
 ?>

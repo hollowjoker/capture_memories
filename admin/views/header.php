@@ -30,7 +30,7 @@
 			<div class="sidebar" data-color="orange">
 				<div class="logo">
 					<!-- <a href="http://www.creative-tim.com" class="simple-text logo-mini">CAPTURE</a> -->
-					<a href="http://www.creative-tim.com" class="simple-text logo-normal">CAPTURE</a>
+					<a href="<?= URL ?>" class="simple-text logo-normal">CAPTURE MEMORIES</a>
 				</div>
 				<div class="sidebar-wrapper" id="sidebar-wrapper">
 					<ul class="nav">
@@ -60,7 +60,7 @@
 							</a>
 						</li>
 						<li class="<?= $module == 'services' ? 'active' : ''?> ">
-							<a href="<?= URL.'services'?>">
+							<a href="<?= URL.'services?type=airline'?>">
 								<i class="now-ui-icons users_single-02"></i><p>Services</p>
 							</a>
 						</li>

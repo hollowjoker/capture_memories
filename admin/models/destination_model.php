@@ -13,7 +13,11 @@ class Destination_model extends Model
 		return $result;
 	}
 	public function store() {
-		$insert = new TblPlace;
+		if($_POST['id']) {
+			$insert = DAOFactory::getTblPlaceDAO()->load($_POST['id']);
+		} else {
+			$insert = new TblPlace;
+		}
 		$insert->name = $_POST['name'];
 		$insert->type = $_POST['type'];
 		$insert->description = $_POST['description'];
@@ -22,8 +26,15 @@ class Destination_model extends Model
 		$insert->wifiStatus = isset($_POST['wifiStatus']) ? 'yes' : 'no';
 		$insert->tourStatus = isset($_POST['tourStatus']) ? 'yes' : 'no';
 		$insert->status = isset($_POST['status']) ? 'active' : 'inactive';
-		$insert = Controller::insertDate($insert);
-		$inserResult = DAOFactory::getTblPlaceDAO()->insert($insert);
+
+		if($_POST['id']) {
+			$insert = Controller::insertDateUpdate($insert);
+			$inserResult = DAOFactory::getTblPlaceDAO()->update($insert);
+		} else {
+			$insert = Controller::insertDate($insert);
+			$inserResult = DAOFactory::getTblPlaceDAO()->insert($insert);
+		}
+
 		if($inserResult) {
 			$result = [
 				'type' => 'success',
@@ -36,5 +47,11 @@ class Destination_model extends Model
 			];
 		}
 		return $result;
+	}
+
+	public function getDestination() {
+		$id = $_GET['id'];
+		$destinationData = DAOFactory::getTblPlaceDAO()->load($id);
+		return $destinationData;
 	}
 }

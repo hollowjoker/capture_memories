@@ -12,6 +12,7 @@ class Services extends Controller
 	
 	public function index()
 	{
+		$this->view->services = $this->model->getServices();
 		$this->view->render('views/services/index.php');
 	}
 
