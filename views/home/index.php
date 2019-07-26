@@ -74,12 +74,10 @@
 									<?php foreach($v['meta'] as $key_meta => $value_meta): ?>
 										<span class="formater">Php <?= number_format($value_meta['price']) ?></span>
 									<?php endforeach; ?>
-									
 								</h5>
 								<p class="card-text">
 									<span class="badge"> </span>
 								</p>
-
 							</div>
 						</div>
 					</div>
@@ -88,7 +86,7 @@
 		</div>
 		<div class="row mt-1">
 			<div class="col-lg-12">
-				<a href="" class="text-secondary text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
+				<a href="<?= URL.'tour'?>" class="text-secondary text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
 			</div>
 		</div>
 
@@ -123,7 +121,7 @@
 		</div>
 		<div class="row mt-5">
 			<div class="col-lg-12">
-				<a href="" class="text-secondary text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
+				<a href="<?= URL.'tour'?>" class="text-secondary text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
 			</div>
 		</div>
 	</div>

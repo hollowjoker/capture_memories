@@ -523,6 +523,18 @@ section.header{
 	display: none;
 }
 
+/*
+* Tour
+*/
+.card-title-all {
+	font-weight: 400;
+	text-transform: capitalize;
+	font-family: 'Roboto', sans-serif !important;
+}
+.card-sub-all {
+	color: #484848;
+	font-size: .8rem;
+}
 
 @media (min-width: 576px) {
 	.container-xl {
