@@ -13,10 +13,6 @@
 	require_once('class/dto/TblAirlineTicketRe.class.php');
 	require_once('class/mysql/TblAirlineTicketResMySqlDAO.class.php');
 	require_once('class/mysql/ext/TblAirlineTicketResMySqlExtDAO.class.php');
-	require_once('class/dao/TblAirlineTicketResMetaDAO.class.php');
-	require_once('class/dto/TblAirlineTicketResMeta.class.php');
-	require_once('class/mysql/TblAirlineTicketResMetaMySqlDAO.class.php');
-	require_once('class/mysql/ext/TblAirlineTicketResMetaMySqlExtDAO.class.php');
 	require_once('class/dao/TblBookingDAO.class.php');
 	require_once('class/dto/TblBooking.class.php');
 	require_once('class/mysql/TblBookingMySqlDAO.class.php');
@@ -41,6 +37,10 @@
 	require_once('class/dto/TblService.class.php');
 	require_once('class/mysql/TblServicesMySqlDAO.class.php');
 	require_once('class/mysql/ext/TblServicesMySqlExtDAO.class.php');
+	require_once('class/dao/TblServicesMessageDAO.class.php');
+	require_once('class/dto/TblServicesMessage.class.php');
+	require_once('class/mysql/TblServicesMessageMySqlDAO.class.php');
+	require_once('class/mysql/ext/TblServicesMessageMySqlExtDAO.class.php');
 	require_once('class/dao/TblSiteDAO.class.php');
 	require_once('class/dto/TblSite.class.php');
 	require_once('class/mysql/TblSiteMySqlDAO.class.php');
@@ -57,10 +57,6 @@
 	require_once('class/dto/TblTravelInsurance.class.php');
 	require_once('class/mysql/TblTravelInsuranceMySqlDAO.class.php');
 	require_once('class/mysql/ext/TblTravelInsuranceMySqlExtDAO.class.php');
-	require_once('class/dao/TblTravelInsuranceMetaDAO.class.php');
-	require_once('class/dto/TblTravelInsuranceMeta.class.php');
-	require_once('class/mysql/TblTravelInsuranceMetaMySqlDAO.class.php');
-	require_once('class/mysql/ext/TblTravelInsuranceMetaMySqlExtDAO.class.php');
 	require_once('class/dao/TblUserDAO.class.php');
 	require_once('class/dto/TblUser.class.php');
 	require_once('class/mysql/TblUserMySqlDAO.class.php');
@@ -69,10 +65,6 @@
 	require_once('class/dto/TblVisaProcessing.class.php');
 	require_once('class/mysql/TblVisaProcessingMySqlDAO.class.php');
 	require_once('class/mysql/ext/TblVisaProcessingMySqlExtDAO.class.php');
-	require_once('class/dao/TblVisaProcessingMetaDAO.class.php');
-	require_once('class/dto/TblVisaProcessingMeta.class.php');
-	require_once('class/mysql/TblVisaProcessingMetaMySqlDAO.class.php');
-	require_once('class/mysql/ext/TblVisaProcessingMetaMySqlExtDAO.class.php');
 	require_once('class/dao/TblWifiRentalDAO.class.php');
 	require_once('class/dto/TblWifiRental.class.php');
 	require_once('class/mysql/TblWifiRentalMySqlDAO.class.php');

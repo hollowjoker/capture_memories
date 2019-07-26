@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_booking_meta'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 08:38
+ * @date: 2019-07-26 21:16
  */
 class TblBookingMetaMySqlDAO implements TblBookingMetaDAO{
 

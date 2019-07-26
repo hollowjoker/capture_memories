@@ -19,7 +19,6 @@ class Reservation_model extends Model
 			];
 			$convoResult[$k]['message'] = DAOFactory::getTblMessageDAO()->getMessageByConvo($option);
 		}
-
 		return $convoResult;
 	}
 

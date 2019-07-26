@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 08:38
+ * @date: 2019-07-26 21:16
  */
 interface TblAirlineTicketResDAO{
 
@@ -51,19 +51,21 @@ interface TblAirlineTicketResDAO{
 	 */
 	public function clean();
 
-	public function queryByUserId($value);
+	public function queryByTblUserId($value);
 
-	public function queryByLocation($value);
+	public function queryByPassengerName($value);
 
-	public function queryByQuantity($value);
+	public function queryByBirthDate($value);
 
-	public function queryByStatus($value);
-
-	public function queryByTraveledFromAt($value);
-
-	public function queryByTraveledToAt($value);
+	public function queryByAge($value);
 
 	public function queryByType($value);
+
+	public function queryByPassportNo($value);
+
+	public function queryByExpiryDate($value);
+
+	public function queryByStatus($value);
 
 	public function queryByCreatedAt($value);
 
@@ -72,19 +74,21 @@ interface TblAirlineTicketResDAO{
 	public function queryByDeletedAt($value);
 
 
-	public function deleteByUserId($value);
+	public function deleteByTblUserId($value);
 
-	public function deleteByLocation($value);
+	public function deleteByPassengerName($value);
 
-	public function deleteByQuantity($value);
+	public function deleteByBirthDate($value);
 
-	public function deleteByStatus($value);
-
-	public function deleteByTraveledFromAt($value);
-
-	public function deleteByTraveledToAt($value);
+	public function deleteByAge($value);
 
 	public function deleteByType($value);
+
+	public function deleteByPassportNo($value);
+
+	public function deleteByExpiryDate($value);
+
+	public function deleteByStatus($value);
 
 	public function deleteByCreatedAt($value);
 

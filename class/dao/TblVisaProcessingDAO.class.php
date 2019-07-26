@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 08:38
+ * @date: 2019-07-26 21:16
  */
 interface TblVisaProcessingDAO{
 
@@ -53,9 +53,9 @@ interface TblVisaProcessingDAO{
 
 	public function queryByTblUserId($value);
 
-	public function queryByQuantity($value);
+	public function queryByPassengerName($value);
 
-	public function queryByDestination($value);
+	public function queryByAge($value);
 
 	public function queryByTraveledFromAt($value);
 
@@ -67,14 +67,14 @@ interface TblVisaProcessingDAO{
 
 	public function queryByUpdatedAt($value);
 
-	public function queryByDeleted($value);
+	public function queryByDeletedAt($value);
 
 
 	public function deleteByTblUserId($value);
 
-	public function deleteByQuantity($value);
+	public function deleteByPassengerName($value);
 
-	public function deleteByDestination($value);
+	public function deleteByAge($value);
 
 	public function deleteByTraveledFromAt($value);
 
@@ -86,7 +86,7 @@ interface TblVisaProcessingDAO{
 
 	public function deleteByUpdatedAt($value);
 
-	public function deleteByDeleted($value);
+	public function deleteByDeletedAt($value);
 
 
 }

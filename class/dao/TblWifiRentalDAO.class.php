@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 08:38
+ * @date: 2019-07-26 21:16
  */
 interface TblWifiRentalDAO{
 
@@ -61,13 +61,15 @@ interface TblWifiRentalDAO{
 
 	public function queryByTraveledToAt($value);
 
+	public function queryByDestinationType($value);
+
 	public function queryByStatus($value);
 
 	public function queryByCreatedAt($value);
 
-	public function queryByUpdated($value);
+	public function queryByUpdatedAt($value);
 
-	public function queryByDeleted($value);
+	public function queryByDeletedAt($value);
 
 
 	public function deleteByTblUserId($value);
@@ -80,13 +82,15 @@ interface TblWifiRentalDAO{
 
 	public function deleteByTraveledToAt($value);
 
+	public function deleteByDestinationType($value);
+
 	public function deleteByStatus($value);
 
 	public function deleteByCreatedAt($value);
 
-	public function deleteByUpdated($value);
+	public function deleteByUpdatedAt($value);
 
-	public function deleteByDeleted($value);
+	public function deleteByDeletedAt($value);
 
 
 }
