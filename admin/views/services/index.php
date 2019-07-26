@@ -13,16 +13,16 @@
 				<div class="card-body">
 					<ul class="nav nav-tabs">
 						<li class="nav-item">
-							<a href="<?= URL.'services?type=airline'?>" class="nav-link <?= $_GET['type'] == 'airline' ? 'active' : ''?>">Airline Ticketing</a>
+							<a href="<?= URL.'services/?type=airline'?>" class="nav-link <?= $_GET['type'] == 'airline' ? 'active' : ''?>">Airline Ticketing</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= URL.'services?type=travel'?>" class="nav-link <?= $_GET['type'] == 'travel' ? 'active' : ''?>">Travel Insurance</a>
+							<a href="<?= URL.'services/?type=travel'?>" class="nav-link <?= $_GET['type'] == 'travel' ? 'active' : ''?>">Travel Insurance</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= URL.'services?type=visa'?>" class="nav-link <?= $_GET['type'] == 'visa' ? 'active' : ''?>">Visa Processing</a>
+							<a href="<?= URL.'services/?type=visa'?>" class="nav-link <?= $_GET['type'] == 'visa' ? 'active' : ''?>">Visa Processing</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= URL.'services?type=wifi'?>" class="nav-link <?= $_GET['type'] == 'wifi' ? 'active' : ''?>">Wifi Rental</a>
+							<a href="<?= URL.'services/?type=wifi'?>" class="nav-link <?= $_GET['type'] == 'wifi' ? 'active' : ''?>">Wifi Rental</a>
 						</li>
 					</ul>
 					<div class="table-responsive">

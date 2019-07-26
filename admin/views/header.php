@@ -41,7 +41,7 @@
 						</li>
 						<li class="<?= $module == 'destination' ? 'active' : ''?> ">
 							<a href="<?= URL.'destination'?>">
-								<i class="now-ui-icons transportation_air-baloon"></i><p>Destinations</p>
+								<i class="now-ui-icons location_map-big"></i><p>Destinations</p>
 							</a>
 						</li>
 						<li class="<?= $module == 'tour' ? 'active' : ''?> ">
@@ -51,17 +51,17 @@
 						</li>
 						<li class="<?= $module == 'reservation' ? 'active' : ''?> ">
 							<a href="<?= URL.'reservation'?>">
-								<i class="now-ui-icons transportation_air-baloon"></i><p>Reservations</p>
+								<i class="now-ui-icons ui-1_calendar-60"></i><p>Reservations</p>
+							</a>
+						</li>
+						<li class="<?= $module == 'services' ? 'active' : ''?> ">
+							<a href="<?= URL.'services/?type=airline'?>">
+								<i class="now-ui-icons objects_spaceship"></i><p>Services</p>
 							</a>
 						</li>
 						<li class="<?= $module == 'user' ? 'active' : ''?> ">
 							<a href="<?= URL.'user'?>">
 								<i class="now-ui-icons users_single-02"></i><p>User Profile</p>
-							</a>
-						</li>
-						<li class="<?= $module == 'services' ? 'active' : ''?> ">
-							<a href="<?= URL.'services?type=airline'?>">
-								<i class="now-ui-icons users_single-02"></i><p>Services</p>
 							</a>
 						</li>
 					</ul>
