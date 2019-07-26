@@ -15,6 +15,13 @@ class Services extends Controller
 		$this->view->render('views/services/index.php');
 	}
 
+	public function convo()
+	{
+		$this->view->render('views/services/convo.php');
+	}
+
+
+
 	// public function store() {
 	// 	$modelResult = $this->model->store();
 	// 	echo json_encode($modelResult);

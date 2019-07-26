@@ -52,7 +52,17 @@
 													<?= date('Y-m-d') == date('Y-m-d', strtotime($v['updated_at'])) ? "Now" : date('M d, Y',strtotime($v['updated_at'])) ?>
 												</span>
 											</td>
-											<td></td>
+											<td>
+												<button type="button" class="btn btn-success btn-sm" data-action="approved_reservation" data-url="">
+													<i class="now-ui-icons"></i>
+												</button>
+												<button type="button" class="btn btn-warning btn-sm" data-action="declined_tour" data-url="">
+													<i class="now-ui-icons"></i>
+												</button>
+												<button type="button" class="btn btn-danger btn-sm" data-action="delete_tour" data-url="">
+													<i class="now-ui-icons ui-1_simple-delete"></i>
+												</button>
+											</td>
 										</tr>
 									<?php endforeach;?>
 								<?php endif;?>
