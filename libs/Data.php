@@ -53,7 +53,8 @@ class Data{
 						'title' => 'CONFIRMATION',
 						'description' => 'confirmed payment and get the booking confirmation thru your email'
 					],
-				]
+				],
+				"data-action" => "airline-ticketing"
 			],
 			[
 				"icon" => "fab fa-cc-visa",
@@ -76,7 +77,8 @@ class Data{
 						'title' => 'CONFIRMATION',
 						'description' => 'the travel agency will deliver the result of the documents from the embassy.'
 					],
-				]
+				],
+				"data-action" => "visa-processing"
 			],
 			[
 				"icon" => "fas fa-user-shield",
@@ -95,7 +97,8 @@ class Data{
 						'title' => 'CONFIRMATION',
 						'description' => 'the travel agency will email the confirmed  insurance policy of the guest.'
 					],
-				]
+				],
+				"data-action" => "travel-insurance"
 			],
 			[
 				"icon" => "fas fa-map-marked-alt",
@@ -118,7 +121,8 @@ class Data{
 						'title' => 'CONFIRMATION',
 						'description' => 'confirmed payment and get the travel voucher thru your email'
 					],
-				]
+				],
+				"data-action" => "tour-package"
 			],
 		];
 

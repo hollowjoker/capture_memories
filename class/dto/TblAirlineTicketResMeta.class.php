@@ -3,7 +3,7 @@
 	 * Object represents table 'tbl_airline_ticket_res_meta'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2019-07-21 22:58	 
+     	 * @date: 2019-07-26 08:38	 
 	 */
 	class TblAirlineTicketResMeta{
 		

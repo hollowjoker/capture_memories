@@ -47,7 +47,9 @@
 					<?php else: ?>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Welcome <?= isset($userSession['first_name']) ? $userSession['first_name'] : ""?>
+								<span class="header-avatar">
+									<?= substr($userSession['first_name'], 0, 1).substr($userSession['last_name'], 0, 1)?>
+								</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="<?= URL.'user/profile' ?>">Profile</a>

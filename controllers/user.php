@@ -31,6 +31,12 @@ class User extends Controller
 		$this->view->render('views/user/index.php');
 	}
 
+	public function update() {
+		$modelResult = $this->model->update();
+		echo json_encode($modelResult);
+		exit;
+	}
+
 }
 
 ?>

@@ -68,7 +68,7 @@
 								<img src="<?= $v['image_public_path'] ?>" class="card-img-top" alt="...">
 							</a>
 							<div class="card-body">
-								<h5 class="card-sub-title"><?= strtoupper($v['place']) ?></h5>
+								<h5 class="card-sub-title"><?= strtoupper($v['destination_name']) ?></h5>
 								<h5 class="card-title"><?= $v['name'] ?></h5>
 								<h5 class="card-price-holder">
 									<?php foreach($v['meta'] as $key_meta => $value_meta): ?>

@@ -296,11 +296,12 @@ section.header{
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
-	border: 5px solid #B65EBA;
+	border: 5px solid #fff;
 	font-size: 2.5rem;
 	padding: 15px;
 	text-align: center;
-	color: #B65EBA;
+	color: #fff;
+	background: linear-gradient(to right top, #b65eba, #9e6ccc, #8179d8, #5e84df, #2e8de1);
 }
 .profile-card ul {
 	list-style: none;
@@ -312,6 +313,16 @@ section.header{
 }
 .profile-card ul li i {
 	width: 30px;
+}
+.header-avatar {
+	border-radius: 50%;
+	border: 2px solid #fff;
+	font-size: .5rem;
+	padding: 11px 9px 11px 11px;
+	margin-right: 5px;
+	text-align: center;
+	color: #fff;
+	background: linear-gradient(to right top, #b65eba, #9e6ccc, #8179d8, #5e84df, #2e8de1);
 }
 .w-30px {
 	width: 30px;
@@ -515,26 +526,14 @@ section.header{
 /*!
 * Services
 */
-.modal-services form > input,
+/* .modal-services form > input,
 .modal-services form > textarea {
 	margin-top: 1rem;
-}
-.input-hidden {
+} */
+/* .input-hidden {
 	display: none;
-}
+} */
 
-/*
-* Tour
-*/
-.card-title-all {
-	font-weight: 400;
-	text-transform: capitalize;
-	font-family: 'Roboto', sans-serif !important;
-}
-.card-sub-all {
-	color: #484848;
-	font-size: .8rem;
-}
 
 @media (min-width: 576px) {
 	.container-xl {

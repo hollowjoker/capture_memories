@@ -89,6 +89,8 @@ class user_model extends Model
 			$newUser->birthDate = $formatedDate;
 			$newUser->type = "user";
 			$newUser->active = "active";
+			$newUser->address = "";
+			$newUser->about = "";
 			$insertData = Controller::insertDate($newUser);
 	
 			$result = [
@@ -97,15 +99,35 @@ class user_model extends Model
 				'messages' => 'Sign up success!'
 			];
 
-			$userData = DAOFactory::getTblUserDAO()->load($result['id']);
-			$userData = Controller::objToArray($userData);
-
+			$userData = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($_POST['email'])[0];
 			$userSession = Session::setSession('user',$userData);
 		}
 		return $result;
 	}
-	
 
+	public function update() {
+		$birthDate = $_POST['year'].'-'.$_POST['month'].'-'.$_POST['day'];
+		$formatedDate = date('Y-m-d',strtotime($birthDate));
+		
+		$newUser = DAOFactory::getTblUserDAO()->load($_POST['id']);
+		$newUser->firstName = $_POST['firstName'];
+		$newUser->lastName = $_POST['lastName'];
+		$newUser->phone = $_POST['phone'];
+		$newUser->birthDate = $formatedDate;
+		$newUser->address = $_POST['address'];
+		$newUser->about = $_POST['about'];
+		$insertData = Controller::insertDateUpdate($newUser);
+
+		$result = [
+			'id' => DAOFactory::getTblUserDAO()->update($insertData),
+			'status' => 'success',
+			'messages' => 'Update Success!'
+		];
+
+		$userData = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($newUser->email)[0];
+		$userSession = Session::setSession('user',$userData);
+		return $result;
+	}
 
 }
 

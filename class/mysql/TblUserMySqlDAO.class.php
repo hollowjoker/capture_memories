@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_user'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-07-21 22:58
+ * @date: 2019-07-26 08:38
  */
 class TblUserMySqlDAO implements TblUserDAO{
 
@@ -57,7 +57,7 @@ class TblUserMySqlDAO implements TblUserDAO{
  	 * @param TblUserMySql tblUser
  	 */
 	public function insert($tblUser){
-		$sql = 'INSERT INTO tbl_user (first_name, last_name, email, password, phone, birth_date, type, active, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO tbl_user (first_name, last_name, email, password, phone, birth_date, address, about, type, active, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($tblUser->firstName);
@@ -66,6 +66,8 @@ class TblUserMySqlDAO implements TblUserDAO{
 		$sqlQuery->set($tblUser->password);
 		$sqlQuery->set($tblUser->phone);
 		$sqlQuery->set($tblUser->birthDate);
+		$sqlQuery->set($tblUser->address);
+		$sqlQuery->set($tblUser->about);
 		$sqlQuery->set($tblUser->type);
 		$sqlQuery->set($tblUser->active);
 		$sqlQuery->set($tblUser->createdAt);
@@ -83,7 +85,7 @@ class TblUserMySqlDAO implements TblUserDAO{
  	 * @param TblUserMySql tblUser
  	 */
 	public function update($tblUser){
-		$sql = 'UPDATE tbl_user SET first_name = ?, last_name = ?, email = ?, password = ?, phone = ?, birth_date = ?, type = ?, active = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
+		$sql = 'UPDATE tbl_user SET first_name = ?, last_name = ?, email = ?, password = ?, phone = ?, birth_date = ?, address = ?, about = ?, type = ?, active = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($tblUser->firstName);
@@ -92,6 +94,8 @@ class TblUserMySqlDAO implements TblUserDAO{
 		$sqlQuery->set($tblUser->password);
 		$sqlQuery->set($tblUser->phone);
 		$sqlQuery->set($tblUser->birthDate);
+		$sqlQuery->set($tblUser->address);
+		$sqlQuery->set($tblUser->about);
 		$sqlQuery->set($tblUser->type);
 		$sqlQuery->set($tblUser->active);
 		$sqlQuery->set($tblUser->createdAt);
@@ -148,6 +152,20 @@ class TblUserMySqlDAO implements TblUserDAO{
 
 	public function queryByBirthDate($value){
 		$sql = 'SELECT * FROM tbl_user WHERE birth_date = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByAddress($value){
+		$sql = 'SELECT * FROM tbl_user WHERE address = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByAbout($value){
+		$sql = 'SELECT * FROM tbl_user WHERE about = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -231,6 +249,20 @@ class TblUserMySqlDAO implements TblUserDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByAddress($value){
+		$sql = 'DELETE FROM tbl_user WHERE address = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByAbout($value){
+		$sql = 'DELETE FROM tbl_user WHERE about = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 	public function deleteByType($value){
 		$sql = 'DELETE FROM tbl_user WHERE type = ?';
 		$sqlQuery = new SqlQuery($sql);
@@ -283,6 +315,8 @@ class TblUserMySqlDAO implements TblUserDAO{
 		$tblUser->password = $row['password'];
 		$tblUser->phone = $row['phone'];
 		$tblUser->birthDate = $row['birth_date'];
+		$tblUser->address = $row['address'];
+		$tblUser->about = $row['about'];
 		$tblUser->type = $row['type'];
 		$tblUser->active = $row['active'];
 		$tblUser->createdAt = $row['created_at'];
