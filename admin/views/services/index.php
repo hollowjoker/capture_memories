@@ -43,7 +43,7 @@
 										<tr class="<?= $v['status'] == 'unread' ? 'font-weight-bold' : '' ?>">
 											<td><?= $v['first_name']." ".$v['last_name']?></td>
 											<td>
-												<a href="<?= URL.'reservation/convo?id='.$v['id'] ?>" class="default-text-color"><?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 60)."..." : "") ?></a>
+												<a href="<?= URL.'services/convo?id='.$v['id'].'&type='.$v['type'] ?>" class="default-text-color"><?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 60)."..." : "") ?></a>
 											</td>
 											<td>
 												<p class="text-muted">
