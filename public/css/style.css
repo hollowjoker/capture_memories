@@ -503,6 +503,7 @@ section.header{
 	height: 50px;
 	border: 3px solid #cc2a2a;
 	border-radius: 8px;
+	line-height: 1.2;
 	text-align: center;
 	padding-top: 3px;
 	padding-bottom: 3px;
@@ -545,6 +546,10 @@ section.header{
 .footer-copyright {
 	font-size: 14px;
 	text-align: center;
+}
+footer ul li a {
+	color: #000000;
+	text-decoration: none !important;
 }
 
 /*!

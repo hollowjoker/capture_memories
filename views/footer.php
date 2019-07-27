@@ -12,16 +12,16 @@
 					<div class="col-lg-6 footer_menu__holder">
 						<div class="convo-section">
 							<ul class="footer-menu">
-								<li>Home</li>
-								<li>Services</li>
+								<li><a href="http://localhost:8888/capture_memories/">Home</a></li>
+								<li><a href="http://localhost:8888/capture_memories/services">Services</a></li>
 							</ul>
 						</div>
 						<div class="convo-section">
 							 <ul class="footer-menu mb-0">
-								<li>Facebook</li>
-								<li>Instagram</li>
-								<li>Twitter</li>
-								<li>Google+</li>
+								<li><a href="https://www.facebook.com/">Facebook</a></li>
+								<li><a href="https://www.instagram.com/">Instagram</a></li>
+								<li><a href="https://twitter.com/">Twitter</a></li>
+								<li><a href="https://www.google.com/">Google+</a></li>
 							</ul>
 						</div>
 					</div>
@@ -30,17 +30,6 @@
 							© Capture Memories – 2019 (All Rights Reserved)
 						</div>
 					</div>
-					<!-- <div class="col-lg-3 convo-section">
-						<h4>Discover</h4>
-						<ul>
-							<li>Trust & Safety</li>
-							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-							<li>Invite Friends</li>
-						</ul>
-					</div> -->
 				</div>
 			</div> 
 		</footer>

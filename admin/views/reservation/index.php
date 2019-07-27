@@ -54,10 +54,10 @@
 											</td>
 											<td>
 												<button type="button" class="btn btn-success btn-sm" data-action="approved_reservation" data-url="">
-													<i class="now-ui-icons"></i>
+													<i class="now-ui-icons ui-2_like"></i>
 												</button>
 												<button type="button" class="btn btn-warning btn-sm" data-action="declined_tour" data-url="">
-													<i class="now-ui-icons"></i>
+													<i class="now-ui-icons ui-1_simple-remove"></i>
 												</button>
 												<button type="button" class="btn btn-danger btn-sm" data-action="delete_tour" data-url="">
 													<i class="now-ui-icons ui-1_simple-delete"></i>
