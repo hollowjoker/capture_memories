@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="main_holder">
-                        <form class="tourInner_holder" action="<?= URL."tour/bookingStore"?>" id="booking_form" method="POST" redirect-url="<?= URL.'message'?>">
+                        <form class="tourInner_holder" action="<?= URL."tour/bookingStore"?>" id="booking_form" method="POST" redirect-url="<?= URL.'message/?type=tour'?>">
                             <span>&#8369;</span>
                             <span class="price-content">
                                 <?= number_format($guestPrice)?>

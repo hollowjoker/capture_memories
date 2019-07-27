@@ -5,6 +5,7 @@ services = {
 	defaults: {
 		$dataPickType: $('[data-pick="type"]'),
 		$dataActionForm: $('[data-action]'),
+		$messageForm: $('#message_form'),
 		$dataServiceForm: $('[data-form]')
 	},
 	onInit: function() {
@@ -12,6 +13,7 @@ services = {
 		el = self.defaults
 		self.activateDataPickType()
 		self.activateDataPick(el.$dataPickType)
+		self.activateMessageForm(el.$messageForm)
 		self.activateDataActionForm(el.$dataActionForm)
 		self.activateDataServiceForm(el.$dataServiceForm)
 		$('.datepicker').datepicker({
@@ -79,7 +81,23 @@ services = {
 				});
 			});
 		});
-	}
+	},
+	activateMessageForm: function (trigger) {
+		trigger.submit(function (e) {
+			e.preventDefault();
+			let formUrl = $(this).attr('action');
+			let formMethod = $(this).attr('method');
+			let formData = $(this).serialize();
+			let formRedirect = $(this).attr('data-redirect');
+			$.ajax({
+				url: formUrl,
+				type: formMethod,
+				data: formData
+			}).done( result => {
+				location.href = formRedirect;
+			});
+		});
+	},
 }
 
 doc.ready(function(){

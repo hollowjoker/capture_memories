@@ -26,7 +26,8 @@ class TblServicesMessageMySqlExtDAO extends TblServicesMessageMySqlDAO{
 			message.created_at,
 			user.type,
 			user.first_name,
-			user.last_name
+			user.last_name,
+			message.tbl_receiver_id
 
 			from tbl_services_message message
 			inner join tbl_services as service

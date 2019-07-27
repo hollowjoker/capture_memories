@@ -11,7 +11,7 @@
                 <?php foreach($tours as $k => $v): ?>
                     <div class="col-lg-3 custom-card paddingLR">
                         <div class="card">
-                            <a href="">
+                            <a href="<?= URL.'tour/domestic?id='.$v['id']?>">
                                 <img src="<?= $v['image_public_path'] ?>" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
@@ -78,5 +78,17 @@
                 <?php endforeach;?>
             </div>
         <?php endif; ?>
+        <?php if(!count($tours) && !count($international)): ?>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-5 text-muted">
+                        OH CRUMBS!
+                    </h1>
+                    <h1 class="display-5">
+                        Sorry we don't have a tour package with your filters applied.
+                    </h1>
+                </div>
+            </div>
+        <?php endif;?>
     </div>
 </section>

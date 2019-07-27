@@ -60,7 +60,7 @@
 			</div>
 			<div class="modal-body">
 				<!-- wifi rental form -->
-				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message?type=wifi' ?>" data-form="wifi-rental" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=wifi' ?>" data-form="wifi-rental" hidden>
 					<div class="form-group">
 						<button type="button" class="btn btn-custom-success-outlined btn-sm active mb-1" data-pick="type" data-pick-filter="domestic">Domestic</button>
 						<button type="button" class="btn btn-custom-success-outlined btn-sm mb-1" data-pick="type" data-pick-filter="international">International</button>
@@ -110,7 +110,7 @@
 				</form>
 
 				<!-- airline ticketing form -->
-				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message?type=airline' ?>" data-form="airline-ticketing" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=airline' ?>" data-form="airline-ticketing" hidden>
 					<input type="hidden" name="type" class="form-control">
 					<input type="hidden" name="service_type" class="form-control" value="airline">
 					<div class="form-group">
@@ -177,7 +177,7 @@
 				</form>
 
 				<!-- visa processing -->
-				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message?type=visa' ?>" data-form="visa-processing" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=visa' ?>" data-form="visa-processing" hidden>
 					<input type="hidden" name="service_type" class="form-control" value="visa">
 					<div class="form-row form-group">
 						<label class="col-12">Passenger Details</label>
@@ -208,7 +208,7 @@
 				</form>
 
 				<!-- travel insurance -->
-				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message?type=travel' ?>" data-form="travel-insurance" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=travel' ?>" data-form="travel-insurance" hidden>
 					<input type="hidden" name="service_type" class="form-control" value="travel">
 					<div class="form-row form-group">
 						<label class="col-12">Passenger Details</label>

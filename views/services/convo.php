@@ -110,9 +110,8 @@
 									<div class="convo-details">
 										<div class="row">
 											<div class="col-sm-9 col-md-9 col-lg-10">
-												<form action="<?= URL.'reservation/messageStore'?>" method="post" id="message_form" data-redirect="<?= URL.'reservation/convo?id='.$_GET['id']?>">
-													<input type="hidden" name="tblConvoId" value="<?= $v['id'] ?>">
-													<input type="hidden" name="tblReceiverId" value="<?= $v['user_id'] ?>">
+												<form action="<?= URL.'services/messageStore'?>" method="post" id="message_form" data-redirect="<?= URL.'reservation/convo?id='.$_GET['id']?>">
+													<input type="hidden" name="tblServiceId" value="<?= $v['id'] ?>">
 													<div class="border-1 p-3 mb-3">
 														<div class="mb-3">
 															<textarea name="description" type="text" placeholder="Reply Here..." class="form-control custom-textarea small"></textarea>
@@ -124,11 +123,11 @@
 												</form>
 											</div>
 											<div class="col-sm-3 col-md-3 col-lg-2">
-												<img src="<?= MAIN_URL.'public/images/captured_memories_new.png'?>" class="img-fluid img-radius" alt="Profile">
+												<img src="/capture_memories/public/images/profile2.jpg" class="img-fluid img-radius" alt="Profile">
 											</div>
 										</div>
 										<?php foreach($v['messages'] as $tourK => $tourV): ?>
-											<?php if($tourV['type'] == 'admin'): ?>
+											<?php if($tourV['tbl_receiver_id'] != $user['id']): ?>
 												<div class="row mb-3">
 													<!-- <div class="col-lg-12">
 														<div class="date_sent">
@@ -144,7 +143,7 @@
 														</div>
 													</div>
 													<div class="col-sm-3 col-md-3 col-lg-2">
-														<img src="<?= MAIN_URL.'public/images/captured_memories_new.png'?>" class="img-fluid img-radius" alt="Profile">                                    
+														<img src="/capture_memories/public/images/profile2.jpg" class="img-fluid img-radius" alt="Profile">                                    
 													</div>
 												</div>
 											<?php else: ?>
@@ -155,18 +154,14 @@
 														</div>
 													</div> -->
 													<div class="col-sm-3 col-md-3 col-lg-2 img-flex-end">
-														<img src="<?= MAIN_URL.'public/images/profile2.jpg'?>" class="img-fluid img-radius " alt="Profile">
+														<img src="<?= URL.'public/images/captured_memories_new.png'?>" class="img-fluid img-radius " alt="Profile">
 													</div>
 													<div class="col-sm-9 col-md-9 col-lg-10">
 														<div class="border-1 p-3">
 															<div class="mb-3">
 																<?= $tourV['description']?>
 															</div>
-															<span class="convo-muted">
-																<?= date('F d, Y', strtotime($tourV['created_at'])) ?>
-																<i class="fas fa-ellipsis-h"></i>
-																<?= $tourV['first_name']." ".$tourV['last_name'] ?>
-															</span>
+															<span class="convo-muted"><?= date('F d, Y', strtotime($tourV['created_at'])) ?></span>
 														</div>
 													</div>
 												</div>

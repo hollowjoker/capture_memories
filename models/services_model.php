@@ -123,13 +123,38 @@ class services_model extends Model
 
 		foreach($convoDataResult as $k => $v) {
 			$option = [
-				'column' => 'service.created_at',
+				'column' => 'created_at',
 				'orderBy' => 'desc',
 				'serviceId' => $v['id']
 			];
-			$convoDataResult[$k]['messages'] = DAOFactory::getTblServicesMessageDAO()->getMessageByServiceMeta($option);
+			$convoDataResult[$k]['messages'] = DAOFactory::getTblServicesMessageDAO()->getMessageByService($option);
 		}
 		return $convoDataResult;
+	}
+
+	public function messageStore() {
+		$user = Session::getSession('user');
+		$option = [
+			'column' => 'id',
+			'orderBy' => 'desc',
+			'limit' => 1
+		];
+		$admin = DAOFactory::getTblUserDAO()->getAdmin($option);
+		$message = new TblServicesMessage;
+		$message->tblServicesId = $_POST['tblServiceId'];
+		$message->description = $_POST['description'];
+		$message->tblSenderId = $user['id'];
+		$message->tblReceiverId = $admin[0]['id'];
+		$message = Controller::insertDate($message);
+
+		$messageResult = DAOFactory::getTblServicesMessageDAO()->insert($message);
+
+		$convo = DAOFactory::getTblServicesDAO()->load($_POST['tblServiceId']);
+		$convo->status = "unread";
+		$convo = Controller::insertDateUpdate($convo);
+		
+		$convoResult = DAOFactory::getTblServicesDAO()->update($convo);
+		return $message;
 	}
 }
 

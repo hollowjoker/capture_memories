@@ -58,7 +58,13 @@ class TblServicesMySqlExtDAO extends TblServicesMySqlDAO{
 			";
 		}
 
-		$sql .= " where service.tbl_user_id = ".$userId." && service.type='".$type."'";
+		$sql .= " 
+			where 
+			service.tbl_user_id = ".$userId." && 
+			service.type='".$type."'
+
+			order by service.updated_at desc
+		";
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}

@@ -8,6 +8,10 @@
 class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 
 	public function getTourPlaceByType($tourType, $option) {
+		$search = isset($_GET['search']) ? $_GET['search'] : '';
+		$travelPeriodFrom = isset($_GET['traveled_period_from_at']) && $_GET['traveled_period_from_at'] != "" ? date('Y-m-d', strtotime($_GET['traveled_period_from_at'])) : ''; 
+		$travelPeriodTo = isset($_GET['traveled_period_to_at']) && $_GET['traveled_period_to_at'] != "" ? date('Y-m-d', strtotime($_GET['traveled_period_to_at'])) : ''; 
+
 		$sql = "
 			select
 			tour.id,
@@ -26,6 +30,26 @@ class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 			tour.status = 'active' && 
 			tour.deleted_at = '0000-00-00 00:00:00'
 		";
+
+		if(isset($_GET['search'])) {
+			$sql .= "
+				&& (
+					tour.name like '%".$search."%' ||
+					place.name like '%".$search."%'
+				)
+			";
+		}
+
+		if($travelPeriodFrom != "" ) {
+			$sql .= "
+				&& tour.travel_period_from_at <= '".$travelPeriodFrom."' 
+			";
+		}
+		if($travelPeriodTo != "" ) {
+			$sql .= "
+				&& tour.travel_period_to_at >= '".$travelPeriodTo."' 
+			";
+		}
 
 		if($tourType != "") {
 			$sql .= " && place.type = '".$tourType."' ";

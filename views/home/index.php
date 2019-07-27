@@ -7,50 +7,52 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-5 col-md-6">
-				<div class="main_holder">
-					<div class="inner_holder">
-						<h1>Book unique places to stay and things to do.</h1>
-						<div class="pt-3">
-							<label>WHERE</label>
-							<div class="form-group">
-								<input type="text" name="search" class="form-control" placeholder="Anywhere">
+				<form action="<?= URL.'tour'?>" type="get">
+					<div class="main_holder">
+						<div class="inner_holder">
+							<h1>Book unique places to stay and things to do.</h1>
+							<div class="pt-3">
+								<label>WHERE</label>
+								<div class="form-group">
+									<input type="text" name="search" class="form-control" placeholder="Anywhere">
+								</div>
 							</div>
-						</div>
-						<div class="form-row">
-							<div class="col">
-								<label>DEPARTING ON</label>
-								<input type="text" name="traveled_period_from_at" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy" data-start-date="<?= date('m/d/Y')?>">
+							<div class="form-row">
+								<div class="col">
+									<label>DEPARTING ON</label>
+									<input type="text" name="traveled_period_from_at" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy" data-start-date="<?= date('m/d/Y')?>">
+								</div>
+								<div class="col">
+									<label>RETURNING ON</label>
+									<input type="text" name="traveled_period_to_at" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
+								</div>
 							</div>
-							<div class="col">
-								<label>RETURNING ON</label>
-								<input type="text" name="traveled_period_to_at" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
-							</div>
-						</div>
-						<div class="form-group guest_main pt-3">
-							<label>GUESTS</label>
-							<input type="text" name="quantity" class="form-control" placeholder="Guest count" data-action="pickGuest" readonly value="1">
-							<div class="main_holder__pickGuest">
-								<div class="pickGuest_item">
-									<div class="pickGuest_title">
-										Persons
-									</div>
-									<div>
-										<button class="btn-transparent mr-3" data-picker="minus">
-											<i class="fa fa-minus"></i>
-										</button>
-										<span data-count="guest">1</span>
-										<button class="btn-transparent ml-3" data-picker="plus">
-											<i class="fa fa-plus"></i>
-										</button>
+							<div class="form-group guest_main pt-3">
+								<label>GUESTS</label>
+								<input type="text" name="quantity" class="form-control" placeholder="Guest count" data-action="pickGuest" readonly value="1">
+								<div class="main_holder__pickGuest">
+									<div class="pickGuest_item">
+										<div class="pickGuest_title">
+											Persons
+										</div>
+										<div>
+											<button class="btn-transparent mr-3" data-picker="minus">
+												<i class="fa fa-minus"></i>
+											</button>
+											<span data-count="guest">1</span>
+											<button class="btn-transparent ml-3" data-picker="plus">
+												<i class="fa fa-plus"></i>
+											</button>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="pt-4 submit-btn">
-							<button class="btn btn-custom-success btn-block">SEARCH</button>
+							<div class="pt-4 submit-btn">
+								<button class="btn btn-custom-success btn-block">SEARCH</button>
+							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>

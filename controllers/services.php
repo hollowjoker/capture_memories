@@ -21,11 +21,17 @@ class Services extends Controller
 		echo json_encode($modelResult);
 		exit;
 	}
-
+	
 	public function convo()
 	{
 		$this->view->services = $this->model->getSingleConvoData();
 		$this->view->render('views/services/convo.php');
+	}
+
+	public function messageStore() {
+		$modelResult = $this->model->messageStore();
+		echo json_encode($modelResult);
+		exit;
 	}
 
 }

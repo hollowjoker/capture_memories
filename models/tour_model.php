@@ -96,6 +96,7 @@ class tour_model extends Model
 		foreach($tour as $k => $v) {
 			$tour[$k]['meta'] = DAOFactory::getTblTourPackageMetaDAO()->getTourMeta($v['id'], $optionMeta);
 		}
+		
 		return $tour;
 	}
 }
