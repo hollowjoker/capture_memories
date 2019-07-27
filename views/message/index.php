@@ -76,7 +76,7 @@
                                             <?php endif;?>
                                         </td>
                                         <td>
-                                            <a href="<?= URL.'message/convo?id='.$v['id'] ?>">
+                                            <a href="<?= URL.'services/convo?id='.$v['id'].'&type='.$v['type'] ?>">
                                                 <span class="mb-1 d-block font-size-09"><?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 100) : "") ?></span>
                                                 <span class="text-muted">
                                                     <?= isset($v['destination']) ? $v['destination'] : "" ?>
