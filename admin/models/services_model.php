@@ -67,6 +67,30 @@ class Services_model extends Model
 		$type = $_GET['type'];
 		if($type == 'airline') {
 			$data = DAOFactory::getTblAirlineTicketResDAO()->load($_GET['id']);
+			$data->status = $_GET['status'];
+			$data = Controller::insertDateUpdate($data);
+
+			DAOFactory::getTblAirlineTicketResDAO()->update($data);
+		} elseif($type == 'travel') {
+			$data = DAOFactory::getTblTravelInsuranceDAO()->load($_GET['id']);
+			$data->status = $_GET['status'];
+			$data = Controller::insertDateUpdate($data);
+
+			DAOFactory::getTblTravelInsuranceDAO()->update($data);
+		} elseif ($type == 'visa') {
+			$data = DAOFactory::getTblVisaProcessingDAO()->load($_GET['id']);
+			$data->status = $_GET['status'];
+			$data = Controller::insertDateUpdate($data);
+
+			DAOFactory::getTblVisaProcessingDAO()->update($data);
+		} elseif ($type == 'wifi') {
+			$data = DAOFactory::getTblWifiRentalDAO()->load($_GET['id']);
+			$data->status = $_GET['status'];
+			$data = Controller::insertDateUpdate($data);
+
+			DAOFactory::getTblWifiRentalDAO()->update($data);	
 		}
+
+		return $type;
 	}
 }

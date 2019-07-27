@@ -59,8 +59,8 @@ services = {
 						url: dataUrl,
 						type: 'GET'
 					}).done( result => {
-						console.log(result);
-						// location.href = redirectUrl;
+						let parsedResult = JSON.parse(result);
+						location.href = redirectUrl+parsedResult;
 					});
 				}
 			});

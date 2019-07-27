@@ -26,7 +26,7 @@
 						</li>
 					</ul>
 					<div class="table-responsive mt-3">
-						<table class="table table-custom small dataTable table-vertical-top">
+						<table class="table table-custom small dataTable table-vertical-top" data-redirect="<?= URL.'services/?type='?>">
 							<thead>
 								<tr>
 									<th>Name</th>
@@ -59,7 +59,7 @@
 												</p>
 											</td>
 											<td>
-												<span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-warning" : "text-success")))?>">
+												<span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "cancelled" ? "text-danger" : "text-success")))?>">
 													<?= strtoupper($v['status']) ?>    
 												</span>
 											</td>

@@ -33,15 +33,14 @@ destination = {
 				data: formData
 			}).done( resultData => {
 				let parsedResult = JSON.parse(resultData);
-				console.log(parsedResult);
-				// Swal.fire({
-				// 	type: parsedResult.type,
-				// 	title: parsedResult.messages
-				// }).then((result) => {
-				// 	if(result.value) {
-				// 		location.href = redirectUrl;
-				// 	}
-				// });
+				Swal.fire({
+					type: parsedResult.type,
+					title: parsedResult.messages
+				}).then((result) => {
+					if(result.value) {
+						location.href = redirectUrl;
+					}
+				});
 			});
 		});
 	},
