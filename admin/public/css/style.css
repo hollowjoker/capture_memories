@@ -170,13 +170,22 @@ form select {
     background-color: #8acac7;
 }
 .badge-custombg-1 {
-    background-color: #edc7bf;
+    background-color: #f3a683;
 }
 .badge-custombg-2 {
-    background-color: #f5ac83;
+    background-color: #937cbf;
 }
 .badge-custombg-3 {
-    background-color: #3c2e3e;
+    background-color: #f18fb1;
+}
+.badge-custombg-4 {
+    background-color: #778ceb;
+}
+.badge-custombg-5 {
+    background-color: #e78068;
+}
+.badge-custombg-6 {
+    background-color: #596175;
 }
 .fw-100{
     width: 100px;

@@ -10,6 +10,9 @@ class Tour extends Controller
 	
 	public function index()
 	{
+		$type = isset($_GET['type']) ? $_GET['type'] : '';
+		$this->view->tours = $type == 'domestic' || $type == '' ? $this->model->getTourAllData('domestic') : [];
+		$this->view->international = $type == 'international' || $type == '' ? $this->model->getTourAllData('international') : [];
 		$this->view->render('views/tour/index.php');
 	}
 

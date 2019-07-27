@@ -167,11 +167,6 @@
 					var self = this,
 					el = self.defaults
 					self.onInit()
-					
-					$('.datepicker').datepicker({
-						uiLibrary: 'bootstrap4',
-						format: 'yyyy-mm-dd',
-					});
 				},
 				activateSignUpForm: function(trigger) {
 					trigger.submit(function(e) {

@@ -13,22 +13,22 @@
 						<div class="pt-3">
 							<label>WHERE</label>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Anywhere">
+								<input type="text" name="search" class="form-control" placeholder="Anywhere">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col">
 								<label>DEPARTING ON</label>
-								<input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
+								<input type="text" name="traveled_period_from_at" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy" data-start-date="<?= date('m/d/Y')?>">
 							</div>
 							<div class="col">
 								<label>RETURNING ON</label>
-								<input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
+								<input type="text" name="traveled_period_to_at" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
 							</div>
 						</div>
 						<div class="form-group guest_main pt-3">
 							<label>GUESTS</label>
-							<input type="text" class="form-control" placeholder="Guest" data-action="pickGuest">
+							<input type="text" name="quantity" class="form-control" placeholder="Guest count" data-action="pickGuest" readonly value="1">
 							<div class="main_holder__pickGuest">
 								<div class="pickGuest_item">
 									<div class="pickGuest_title">
@@ -38,7 +38,7 @@
 										<button class="btn-transparent mr-3" data-picker="minus">
 											<i class="fa fa-minus"></i>
 										</button>
-										1
+										<span data-count="guest">1</span>
 										<button class="btn-transparent ml-3" data-picker="plus">
 											<i class="fa fa-plus"></i>
 										</button>
@@ -86,7 +86,7 @@
 		</div>
 		<div class="row mt-1">
 			<div class="col-lg-12">
-				<a href="<?= URL.'tour'?>" class="text-secondary text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
+				<a href="<?= URL.'tour/?type=domestic'?>" class="text-custom-success text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
 			</div>
 		</div>
 
@@ -121,7 +121,7 @@
 		</div>
 		<div class="row mt-5">
 			<div class="col-lg-12">
-				<a href="<?= URL.'tour'?>" class="text-secondary text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
+				<a href="<?= URL.'tour/?type=international'?>" class="text-custom-success text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
 			</div>
 		</div>
 	</div>

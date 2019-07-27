@@ -78,6 +78,26 @@ class tour_model extends Model
 
 		return $result;
 	}
+
+	public function getTourAllData($tourType) {
+		$option = [
+			'column' => 'tour.created_at',
+			'orderBy' => 'desc',
+		];
+		$tour = DAOFactory::getTblTourPackageDAO()->getTourPlaceByType($tourType, $option);
+
+		$optionMeta = [
+			'column' => 'price',
+			'orderBy' => 'asc',
+		];
+		if($tourType == 'international') {
+			$option['limit'] = 1;
+		}
+		foreach($tour as $k => $v) {
+			$tour[$k]['meta'] = DAOFactory::getTblTourPackageMetaDAO()->getTourMeta($v['id'], $optionMeta);
+		}
+		return $tour;
+	}
 }
 
 ?>

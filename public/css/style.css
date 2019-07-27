@@ -379,6 +379,9 @@ section.header{
 	position: absolute;
     width: 100%;
 }
+.main_holder__pickGuest.active {
+	display: block;
+}
 .pickGuest_item {
 	display: flex;
 	justify-content: space-between;
@@ -567,8 +570,29 @@ footer ul li a {
 * 
 */
 .badge-custombg {
-	background-color: #8acac7;
-	color: #fff;
+    color: #fff;
+    font-size: .8em;
+}
+.badge-custombg-0 {
+    background-color: #8acac7;
+}
+.badge-custombg-1 {
+    background-color: #f3a683;
+}
+.badge-custombg-2 {
+    background-color: #937cbf;
+}
+.badge-custombg-3 {
+    background-color: #f18fb1;
+}
+.badge-custombg-4 {
+    background-color: #778ceb;
+}
+.badge-custombg-5 {
+    background-color: #e78068;
+}
+.badge-custombg-6 {
+    background-color: #596175;
 }
 
 
