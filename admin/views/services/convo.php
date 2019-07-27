@@ -1,6 +1,6 @@
 
 <?php
-	
+	$services = $this->services;
 ?>
 	<div class="row convo-section">
 		<div class="col-md-12">

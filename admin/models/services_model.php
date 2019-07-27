@@ -23,4 +23,20 @@ class Services_model extends Model
 		}
 		return $convoResult;
 	}
+
+	public function getSingleConvoData() {
+		$id = $_GET['id'];
+		$type = $_GET['type'];
+		$convoDataResult = DAOFactory::getTblServicesDAO()->getSingleService($id, $type);
+
+		foreach($convoDataResult as $k => $v) {
+			$option = [
+				'column' => 'service.created_at',
+				'orderBy' => 'desc',
+				'serviceId' => $v['id']
+			];
+			$convoDataResult[$k]['messages'] = DAOFactory::getTblServicesMessageDAO()->getMessageByService($option);
+		}
+		return $convoDataResult;
+	}
 }

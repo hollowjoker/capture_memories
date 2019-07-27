@@ -18,6 +18,7 @@ class Services extends Controller
 
 	public function convo()
 	{
+		$this->view->services = $this->model->getSingleConvoData();
 		$this->view->render('views/services/convo.php');
 	}
 
