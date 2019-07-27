@@ -14,7 +14,6 @@
 					<?php if(count($services)): ?>
 						<?php foreach($services as $k => $v): ?>
 							<?php
-                                $totalPrice = number_format($v['price'] * $v['quantity']);
                                 $airline = 'Airline Ticketing';
                                 $visa = 'Visa Processing';
                                 $wifi = 'Wifi Rental';
@@ -110,8 +109,8 @@
 									<div class="convo-details">
 										<div class="row">
 											<div class="col-sm-9 col-md-9 col-lg-10">
-												<form action="<?= URL.'reservation/messageStore'?>" method="post" id="message_form" data-redirect="<?= URL.'reservation/convo?id='.$_GET['id']?>">
-													<input type="hidden" name="tblConvoId" value="<?= $v['id'] ?>">
+												<form action="<?= URL.'services/messageStore'?>" method="post" id="message_form" data-redirect="<?= URL.'services/convo?id='.$_GET['id'].'&type='.$_GET['type']?>">
+													<input type="hidden" name="tblServicesId" value="<?= $v['id'] ?>">
 													<input type="hidden" name="tblReceiverId" value="<?= $v['user_id'] ?>">
 													<div class="border-1 p-3 mb-3">
 														<div class="mb-3">

@@ -27,6 +27,12 @@ class Reservation extends Controller
 		$this->view->render('views/reservation/convo.php');
 	}
 
+	public function update() {
+		$modelResult = $this->model->update();
+		echo json_encode($modelResult);
+		exit;
+	}
+
 }
 
 ?>

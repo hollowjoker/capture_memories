@@ -12,7 +12,7 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-custom small dataTable table-vertical-top">
+						<table class="table table-custom small dataTable table-vertical-top" data-redirect="<?= URL.'reservation'?>">
 							<thead>
 								<tr>
 									<th>Name</th>
@@ -42,7 +42,7 @@
 												</p>
 											</td>
 											<td>
-												<span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-warning" : "text-success")))?>">
+												<span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-danger" : "text-success")))?>">
 													<?= strtoupper($v['status']) ?>    
 												</span>
 											</td>
@@ -53,15 +53,15 @@
 												</span>
 											</td>
 											<td>
-												<button type="button" class="btn btn-success btn-sm" data-action="approved_reservation" data-url="">
+												<button type="button" class="btn btn-success btn-sm" data-action="update_status" data-status="approve" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=approved' ?>">
 													<i class="now-ui-icons ui-2_like"></i>
 												</button>
-												<button type="button" class="btn btn-warning btn-sm" data-action="declined_tour" data-url="">
+												<button type="button" class="btn btn-warning btn-sm" data-action="update_status" data-status="decline" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=declined' ?>">
 													<i class="now-ui-icons ui-1_simple-remove"></i>
 												</button>
-												<button type="button" class="btn btn-danger btn-sm" data-action="delete_tour" data-url="">
+												<!-- <button type="button" class="btn btn-danger btn-sm" data-action="update_status" data-url="">
 													<i class="now-ui-icons ui-1_simple-delete"></i>
-												</button>
+												</button> -->
 											</td>
 										</tr>
 									<?php endforeach;?>
@@ -74,99 +74,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="modal fade" id="destinationFormModal" tabindex="-1" role="dialog" aria-labelledby="destinationFormModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="destinationFormModalLabel">Add Destination</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="<?= URL.'destination/store'?>" data-form="destination_form" method="POST" data-redirect="<?= URL.'destination'?>">
-						<input type="hidden" name="destination_id" value="0">
-						<div class="form-group">
-							<input type="name" class="form-control" name="name" placeholder="name">
-							<div class="feedback"></div>
-						</div>
-						<div class="form-group">
-							<select name="type" id="type" class="custom-select">
-								<option>Type</option>
-								<option value="domestic">Domestic</option>
-								<option value="international">International</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<textarea name="description" id="description" class="form-control textarea-custom" placeholder="description"></textarea>
-						</div>
-						<div class="form-group mt-3">
-							<label for="available">Available On</label>
-							<div class="row">
-								<div class="col">
-									<label for="" class="small">airlineStatus</label>
-									<div class="onoffswitch">
-										<input type="checkbox" name="airlineStatus" class="onoffswitch-checkbox" id="airlineStatus" checked>
-										<label class="onoffswitch-label" for="airlineStatus">
-											<span class="onoffswitch-inner"></span>
-											<span class="onoffswitch-switch"></span>
-										</label>
-									</div>
-								</div>
-								<div class="col">
-									<label for="" class="small">visaStatus</label>
-									<div class="onoffswitch">
-										<input type="checkbox" name="visaStatus" class="onoffswitch-checkbox" id="visaStatus" checked>
-										<label class="onoffswitch-label" for="visaStatus">
-											<span class="onoffswitch-inner"></span>
-											<span class="onoffswitch-switch"></span>
-										</label>
-									</div>
-								</div>
-								<div class="col">
-									<label for="" class="small">wifiStatus</label>
-									<div class="onoffswitch">
-										<input type="checkbox" name="wifiStatus" class="onoffswitch-checkbox" id="wifiStatus" checked>
-										<label class="onoffswitch-label" for="wifiStatus">
-											<span class="onoffswitch-inner"></span>
-											<span class="onoffswitch-switch"></span>
-										</label>
-									</div>
-								</div>
-								<div class="col">
-									<label for="" class="small">tourStatus</label>
-									<div class="onoffswitch">
-										<input type="checkbox" name="tourStatus" class="onoffswitch-checkbox" id="tourStatus" checked>
-										<label class="onoffswitch-label" for="tourStatus">
-											<span class="onoffswitch-inner"></span>
-											<span class="onoffswitch-switch"></span>
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="small">Status</label>
-							<div class="onoffswitch">
-								<input type="checkbox" name="status" class="onoffswitch-checkbox" id="status" checked>
-								<label class="onoffswitch-label" for="status">
-									<span class="onoffswitch-inner"></span>
-									<span class="onoffswitch-switch"></span>
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-							<button class="btn btn-info">
-								Submit
-							</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
 
 	<script>
 		initiateModule = 'reservation';

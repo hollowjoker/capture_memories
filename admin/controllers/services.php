@@ -22,27 +22,17 @@ class Services extends Controller
 		$this->view->render('views/services/convo.php');
 	}
 
-
-
-	// public function store() {
-	// 	$modelResult = $this->model->store();
-	// 	echo json_encode($modelResult);
-	// 	exit;
-
-	// }
-
-	// public function update() {
-	// 	$modelResult = $this->model->update();
-	// 	echo json_encode($modelResult);
-	// 	exit;
-	// }
-
-	// public function delete() {
-	// 	$modelResult = $this->model->delete();
-	// 	echo json_encode($modelResult);
-	// 	exit;
-	// }
-
+	public function messageStore() {
+		$modelResult = $this->model->messageStore();
+		echo json_encode($modelResult);
+		exit;
+	}
+	
+	public function update() {
+		$modelResult = $this->model->update();
+		echo json_encode($modelResult);
+		exit;
+	}
 }
 
 ?>

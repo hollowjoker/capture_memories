@@ -25,7 +25,7 @@
 							<a href="<?= URL.'services/?type=wifi'?>" class="nav-link <?= $_GET['type'] == 'wifi' ? 'active' : ''?>">Wifi Rental</a>
 						</li>
 					</ul>
-					<div class="table-responsive">
+					<div class="table-responsive mt-3">
 						<table class="table table-custom small dataTable table-vertical-top">
 							<thead>
 								<tr>
@@ -70,15 +70,15 @@
 												</span>
 											</td>
 											<td>
-												<button type="button" class="btn btn-success btn-sm" data-action="approved_reservation" data-url="">
+												<button type="button" class="btn btn-success btn-sm" data-action="update_status" data-status="approve" data-url="<?= URL.'services/update?id='.$v['tbl_service_id'].'&status=done&type='.$v['type'] ?>">
 													<i class="now-ui-icons ui-2_like"></i>
 												</button>
-												<button type="button" class="btn btn-warning btn-sm" data-action="declined_tour" data-url="">
+												<button type="button" class="btn btn-warning btn-sm" data-action="update_status" data-status="decline" data-url="<?= URL.'services/update?id='.$v['tbl_service_id'].'&status=cancelled&type='.$v['type'] ?>">
 													<i class="now-ui-icons ui-1_simple-remove"></i>
 												</button>
-												<button type="button" class="btn btn-danger btn-sm" data-action="delete_tour" data-url="">
+												<!-- <button type="button" class="btn btn-danger btn-sm" data-action="delete_tour" data-url="">
 													<i class="now-ui-icons ui-1_simple-delete"></i>
-												</button>
+												</button> -->
 											</td>
 										</tr>
 									<?php endforeach;?>

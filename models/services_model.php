@@ -150,7 +150,7 @@ class services_model extends Model
 		$messageResult = DAOFactory::getTblServicesMessageDAO()->insert($message);
 
 		$convo = DAOFactory::getTblServicesDAO()->load($_POST['tblServiceId']);
-		$convo->status = "unread";
+		$convo->status = "active";
 		$convo = Controller::insertDateUpdate($convo);
 		
 		$convoResult = DAOFactory::getTblServicesDAO()->update($convo);

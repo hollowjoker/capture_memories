@@ -1,16 +1,14 @@
 
 var doc = $(document);
-var reservation = {}
-reservation = {
+var services = {}
+services = {
 	defaults: {
-		$showMore: $('[data-action="showMore"]'),
 		$messageForm: $('#message_form'),
 		$updateStatus: $('[data-action="update_status"]')
 	},
 	onInit: function() {
 		var self = this,
 		el = self.defaults
-		self.activateShowMore(el.$showMore)
 		self.activateMessageForm(el.$messageForm)
 		self.activateUpdateStatus(el.$updateStatus)
 	},
@@ -21,17 +19,6 @@ reservation = {
 		
 		$('.dataTable').DataTable({
 			"ordering": false
-		});
-	},
-	activateShowMore: function (trigger) {
-		trigger.click(function (e) {
-			let contentHolder = $('[data-holder="showMore"]');
-			contentHolder.toggleClass('active');
-			if(contentHolder.hasClass('active')) {
-				$(this).text('Show less');
-			} else {
-				$(this).text('Show more');
-			}
 		});
 	},
 	activateMessageForm: function (trigger) {
@@ -72,7 +59,8 @@ reservation = {
 						url: dataUrl,
 						type: 'GET'
 					}).done( result => {
-						location.href = redirectUrl;
+						console.log(result);
+						// location.href = redirectUrl;
 					});
 				}
 			});
@@ -83,5 +71,5 @@ reservation = {
 
 
 doc.ready(function(){
-	reservation.onReady()
+	services.onReady()
 })

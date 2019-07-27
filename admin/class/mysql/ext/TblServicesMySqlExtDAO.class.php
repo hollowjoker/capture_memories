@@ -14,6 +14,7 @@ class TblServicesMySqlExtDAO extends TblServicesMySqlDAO{
 			service.id,
 			service.type,
 			service.updated_at,
+			service.tbl_service_id,
 			user.first_name,
 			user.last_name,
 		";
@@ -66,6 +67,7 @@ class TblServicesMySqlExtDAO extends TblServicesMySqlDAO{
 			inner join tbl_user as user
 			on service.tbl_user_id = user.id
 			where service.type='".$type."'
+			order by service.updated_at desc
 		";
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
@@ -79,6 +81,7 @@ class TblServicesMySqlExtDAO extends TblServicesMySqlDAO{
 			service.id,
 			service.type,
 			service.updated_at,
+			service.tbl_user_id as user_id,
 			user.first_name,
 			user.last_name,
 		";

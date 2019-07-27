@@ -14,7 +14,7 @@ class Services_model extends Model
 
 		foreach($convoResult as $k => $v) {
 			$option = [
-				'column' => 'created_at',
+				'column' => 'message.created_at',
 				'orderBy' => 'desc',
 				'limit' => 1,
 				'serviceId' => $v['id']
@@ -31,12 +31,42 @@ class Services_model extends Model
 
 		foreach($convoDataResult as $k => $v) {
 			$option = [
-				'column' => 'service.created_at',
+				'column' => 'message.created_at',
 				'orderBy' => 'desc',
 				'serviceId' => $v['id']
 			];
 			$convoDataResult[$k]['messages'] = DAOFactory::getTblServicesMessageDAO()->getMessageByService($option);
 		}
 		return $convoDataResult;
+	}
+	
+	public function messageStore() {
+		$admin = Session::getSession('admin');
+		$option = [
+			'column' => 'id',
+			'orderBy' => 'desc',
+			'limit' => 1
+		];
+		$message = new TblServicesMessage;
+		$message->tblServicesId = $_POST['tblServicesId'];
+		$message->description = $_POST['description'];
+		$message->tblSenderId = $admin['id'];
+		$message->tblReceiverId = $_POST['tblReceiverId'];
+		$message = Controller::insertDate($message);
+
+		$messageResult = DAOFactory::getTblServicesMessageDAO()->insert($message);
+
+		$convo = DAOFactory::getTblServicesDAO()->load($_POST['tblServicesId']);
+		$convo = Controller::insertDateUpdate($convo);
+		
+		$convoResult = DAOFactory::getTblServicesDAO()->update($convo);
+		return $message;
+	}
+
+	public function update() {
+		$type = $_GET['type'];
+		if($type == 'airline') {
+			$data = DAOFactory::getTblAirlineTicketResDAO()->load($_GET['id']);
+		}
 	}
 }

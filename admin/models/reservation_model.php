@@ -71,6 +71,15 @@ class Reservation_model extends Model
 		$convoResult = DAOFactory::getTblConvoDAO()->update($convo);
 		return $message;
 	}
+
+	public function update() {
+		$update = DAOFactory::getTblBookingDAO()->load($_GET['id']);
+		$update->status = $_GET['status'];
+		$update = Controller::insertDateUpdate($update);
+
+		$result = DAOFactory::getTblBookingDAO()->update($update);
+		return $result;
+	}
 }
 
 ?>

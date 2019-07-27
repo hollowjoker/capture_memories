@@ -1,6 +1,7 @@
 
 <?php
     $services = $this->services;
+    $user = Session::getSession('user');
 ?>
 	<div class="row convo-section">
 		<div class="col-md-12">
@@ -14,7 +15,6 @@
 					<?php if(count($services)): ?>
 						<?php foreach($services as $k => $v): ?>
 							<?php
-                                $totalPrice = number_format($v['price'] * $v['quantity']);
                                 $airline = 'Airline Ticketing';
                                 $visa = 'Visa Processing';
                                 $wifi = 'Wifi Rental';
@@ -110,7 +110,7 @@
 									<div class="convo-details">
 										<div class="row">
 											<div class="col-sm-9 col-md-9 col-lg-10">
-												<form action="<?= URL.'services/messageStore'?>" method="post" id="message_form" data-redirect="<?= URL.'reservation/convo?id='.$_GET['id']?>">
+												<form action="<?= URL.'services/messageStore'?>" method="post" id="message_form" data-redirect="<?= URL.'services/convo?id='.$_GET['id'].'&type='.$_GET['type']?>">
 													<input type="hidden" name="tblServiceId" value="<?= $v['id'] ?>">
 													<div class="border-1 p-3 mb-3">
 														<div class="mb-3">
