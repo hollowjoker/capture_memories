@@ -36,11 +36,11 @@
 											Persons
 										</div>
 										<div>
-											<button class="btn-transparent mr-3" data-picker="minus">
+											<button class="btn-transparent mr-3" type="button" data-picker="minus">
 												<i class="fa fa-minus"></i>
 											</button>
 											<span data-count="guest">1</span>
-											<button class="btn-transparent ml-3" data-picker="plus">
+											<button class="btn-transparent ml-3" type="button" data-picker="plus">
 												<i class="fa fa-plus"></i>
 											</button>
 										</div>

@@ -10,9 +10,11 @@ class services_model extends Model
 
 	public function store() {
 		$user = Session::getSession('user');
-		$birthDate = $_POST['year'].'-'.$_POST['month'].'-'.$_POST['day'];
-		$formatedDate = date('Y-m-d',strtotime($birthDate));
 		$serviceType = $_POST['service_type'];
+		if($serviceType == 'airline' || $serviceType == 'travel') {
+			$birthDate = $_POST['year'].'-'.$_POST['month'].'-'.$_POST['day'];
+			$formatedDate = date('Y-m-d',strtotime($birthDate));
+		}
 		
 		if($serviceType == 'wifi') {
 			$type = $_POST['type'];

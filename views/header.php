@@ -19,11 +19,11 @@
 		<link rel="icon" href="<?=  URL."public/images/tour/captured_memories_new.png" ?>" type="image/png" sizes="16x16">
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark transparent <?= $module != '' ? "text-black border-bottom" : "nav_fixed" ?>">
+		<nav class="navbar navbar-expand-lg navbar-light transparent <?= $module != '' ? "text-black border-bottom" : "nav_fixed" ?>">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand" href="http://localhost:8888/capture_memories/">
+			<a class="navbar-brand" href="<?= URL ?>">
 				<img src="<?= URL."public/images/tour/captured_memories_new.png"?>" class="img-fluid" alt="logo" style="width: 50px;">
 			</a>
 
@@ -45,6 +45,9 @@
 							<a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log in</a>
 						</li>
 					<?php else: ?>
+						<li class="nav-item">
+							<a class="nav-link" href="<?= URL.'message/?type=tour'?>">Messages</a>
+						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<span class="header-avatar">
@@ -53,7 +56,6 @@
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="<?= URL.'user/profile' ?>">Profile</a>
-								<a class="dropdown-item" href="<?= URL.'message/?type=tour'?>">Messages</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="<?= URL.'user/logout'?>">Log out</a>
 							</div>

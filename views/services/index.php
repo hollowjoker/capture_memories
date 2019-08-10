@@ -60,7 +60,7 @@
 			</div>
 			<div class="modal-body">
 				<!-- wifi rental form -->
-				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=wifi' ?>" data-form="wifi-rental" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=wifi' ?>" data-service-form="wifi-rental" hidden>
 					<div class="form-group">
 						<button type="button" class="btn btn-custom-success-outlined btn-sm active mb-1" data-pick="type" data-pick-filter="domestic">Domestic</button>
 						<button type="button" class="btn btn-custom-success-outlined btn-sm mb-1" data-pick="type" data-pick-filter="international">International</button>
@@ -88,29 +88,35 @@
 						<input type="hidden" name="service_type" class="form-control" value="wifi">
 					</div>
 					<div class="form-group">
-						<input type="text" name="passenger_name" class="form-control" placeholder="Passenger Name">
+						<input type="text" name="passenger_name" class="form-control" placeholder="Passenger Name" required>
 					</div>
 					<div class="form-row form-group">
 						<label for="" class="col-12">Dates of Travel</label>
 						<div class="col">
-							<input type="text" name="travelFromAt" class="form-control datepicker" autocomplete="off" placeholder="Departing on">
+							<input type="text" name="travelFromAt" class="form-control datepicker" autocomplete="off" placeholder="Departing on" required>
 						</div>
 						<div class="col">
-							<input type="text" name="travelToAt" class="form-control datepicker" autocomplete="off" placeholder="Return on">
+							<input type="text" name="travelToAt" class="form-control datepicker" autocomplete="off" placeholder="Return on" required>
 						</div>
 					</div>
 					<hr>
 					<div class="form-group">
 						<label for="">Share a few details about your plans to help them prepare their services.</label>
-						<textarea name="message" class="form-control" placeholder="Write your message here"></textarea>
+						<textarea name="message" class="form-control" placeholder="Write your message here" required></textarea>
 					</div>
-					<div class="form-group">
-						<button class="btn btn-custom-success btn-block">Submit</button>
-					</div>
+					<?php if(isset($userSession['id'])):?>
+						<div class="form-group">
+							<button class="btn btn-custom-success btn-block">Submit</button>
+						</div>
+					<?php else: ?>
+						<div class="card p-3 small bg-warning">
+							<span> Please <a href="#" data-toggle="modal" data-target="#loginModal">Login</a> or <a href="#" data-toggle="modal" data-target="#signUpModal">Register</a> if you want to reserve this Tour</span>
+						</div>
+					<?php endif;?>
 				</form>
 
 				<!-- airline ticketing form -->
-				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=airline' ?>" data-form="airline-ticketing" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=airline' ?>" data-service-form="airline-ticketing" hidden>
 					<input type="hidden" name="type" class="form-control">
 					<input type="hidden" name="service_type" class="form-control" value="airline">
 					<div class="form-group">
@@ -171,13 +177,19 @@
 						<label for="">Share a few details about your plans to help them prepare their services.</label>
 						<textarea name="message" class="form-control" placeholder="Write your message here"></textarea>
 					</div>
-					<div class="form-group">
-						<button class="btn btn-custom-success btn-block">Submit</button>
-					</div>
+					<?php if(isset($userSession['id'])):?>
+						<div class="form-group">
+							<button class="btn btn-custom-success btn-block">Submit</button>
+						</div>
+					<?php else: ?>
+						<div class="card p-3 small bg-warning">
+							<span> Please <a href="#" data-toggle="modal" data-target="#loginModal">Login</a> or <a href="#" data-toggle="modal" data-target="#signUpModal">Register</a> if you want to reserve this Tour</span>
+						</div>
+					<?php endif;?>
 				</form>
 
 				<!-- visa processing -->
-				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=visa' ?>" data-form="visa-processing" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=visa' ?>" data-service-form="visa-processing" hidden>
 					<input type="hidden" name="service_type" class="form-control" value="visa">
 					<div class="form-row form-group">
 						<label class="col-12">Passenger Details</label>
@@ -202,13 +214,19 @@
 						<label for="">Share a few details about your plans to help them prepare their services.</label>
 						<textarea name="message" class="form-control" placeholder="Write your message here"></textarea>
 					</div>
-					<div class="form-group">
-						<button class="btn btn-custom-success btn-block">Submit</button>
-					</div>
+					<?php if(isset($userSession['id'])):?>
+						<div class="form-group">
+							<button class="btn btn-custom-success btn-block">Submit</button>
+						</div>
+					<?php else: ?>
+						<div class="card p-3 small bg-warning">
+							<span> Please <a href="#" data-toggle="modal" data-target="#loginModal">Login</a> or <a href="#" data-toggle="modal" data-target="#signUpModal">Register</a> if you want to reserve this Tour</span>
+						</div>
+					<?php endif;?>
 				</form>
 
 				<!-- travel insurance -->
-				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=travel' ?>" data-form="travel-insurance" hidden>
+				<form action="<?= URL.'services/store'?>" redirect-url="<?= URL.'message/?type=travel' ?>" data-service-form="travel-insurance" hidden>
 					<input type="hidden" name="service_type" class="form-control" value="travel">
 					<div class="form-row form-group">
 						<label class="col-12">Passenger Details</label>
@@ -255,9 +273,15 @@
 						<label for="">Share a few details about your plans to help them prepare their services.</label>
 						<textarea name="message" class="form-control" placeholder="Write your message here"></textarea>
 					</div>
-					<div class="form-group">
-						<button class="btn btn-custom-success btn-block">Submit</button>
-					</div>
+					<?php if(isset($userSession['id'])):?>
+						<div class="form-group">
+							<button class="btn btn-custom-success btn-block">Submit</button>
+						</div>
+					<?php else: ?>
+						<div class="card p-3 small bg-warning">
+							<span> Please <a href="#" data-toggle="modal" data-target="#loginModal">Login</a> or <a href="#" data-toggle="modal" data-target="#signUpModal">Register</a> if you want to reserve this Tour</span>
+						</div>
+					<?php endif;?>
 				</form>
 			</div>
 		</div>

@@ -6,7 +6,7 @@ services = {
 		$dataPickType: $('[data-pick="type"]'),
 		$dataActionForm: $('[data-action]'),
 		$messageForm: $('#message_form'),
-		$dataServiceForm: $('[data-form]')
+		$dataServiceForm: $('[data-service-form]')
 	},
 	onInit: function() {
 		var self = this,
@@ -52,8 +52,8 @@ services = {
 				location.href = $('[relocate-tour]').attr('relocate-tour');
 				return false;
 			}
-			$('[data-form]').prop('hidden', true);
-			$('[data-form="'+type+'"]').prop('hidden', false);
+			$('[data-service-form]').prop('hidden', true);
+			$('[data-service-form="'+type+'"]').prop('hidden', false);
 			modalHolder.find('.modal-title').text(title);
 			modalHolder.modal();
 		});

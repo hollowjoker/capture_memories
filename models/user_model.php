@@ -49,6 +49,8 @@ class user_model extends Model
 	public static function register() {
 		$birthDate = $_POST['year'].'-'.$_POST['month'].'-'.$_POST['day'];
 		$formatedDate = date('Y-m-d',strtotime($birthDate));
+		$customDateDiff = date_create($formatedDate);
+		$thisDateDiff = date_create(date('Y-m-d'));
 
 		$emailExist = DAOFactory::getTblUserDAO()->queryByEmail($_POST['email']);
 
@@ -63,7 +65,7 @@ class user_model extends Model
 				'password' => 'Must be 8 letters'
 			]);
 		}
-		if((date('Y-m-d') - $formatedDate) < 18) {
+		if(date_diff($customDateDiff, $thisDateDiff)->y < 18) {
 			$result['messages'] = array_merge($result['messages'],
 			[
 				'month' => 'Must be 18 Years old and above',

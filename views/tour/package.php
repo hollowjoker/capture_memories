@@ -86,9 +86,15 @@
                                 <label for="description">Share a few details about your plans to help them prepare for your tour.</label>
                                 <textarea name="description" id="description" class="form-control" placeholder="Write your message here"></textarea>
                             </div>
-                            <div class="submit-btn">
-                                <button class="btn btn-custom-success btn-block">RESERVE</button>
-                            </div>
+                            <?php if(isset($userSession['id'])):?>
+                                <div class="submit-btn">
+                                    <button class="btn btn-custom-success btn-block">RESERVE</button>
+                                </div>
+                            <?php else: ?>
+                                <div class="card p-3 small bg-warning">
+                                    <span> Please <a href="#" data-toggle="modal" data-target="#loginModal">Login</a> or <a href="#" data-toggle="modal" data-target="#signUpModal">Register</a> if you want to reserve this Tour</span>
+                                </div>
+                            <?php endif;?>
                         </form>
                     </div>
                 </div>

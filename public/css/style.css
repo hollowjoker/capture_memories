@@ -632,4 +632,9 @@ footer ul li a {
 		max-width: 100%;
 	}
 }
+@media (max-width: 992px) {
+	.navbar.navbar-light {
+		background-color: #f8f9fa!important;
+	}
+}
 

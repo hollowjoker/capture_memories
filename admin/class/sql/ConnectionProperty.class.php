@@ -29,7 +29,6 @@ class ConnectionProperty{
 	}
 	
 	public static function getConnection(){
-		echo 1;
 		return mysqli_connect(
 			defined("DATABASE_HOST") ? DATABASE_HOST : ConnectionProperty::$host,
 			defined("DATABASE_USER") ? DATABASE_USER : ConnectionProperty::$user,
