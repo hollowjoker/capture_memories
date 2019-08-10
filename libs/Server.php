@@ -7,7 +7,14 @@
 	ini_set('memory_limit', '-1');
 	ini_set('max_execution_time', 300);
 
-	define('DB_HOST','localhost');
-	define('DB_USER','root');
-	define('DB_PASS','root');
-	define('DB_NAME','capture_memories');
+	// macos connection
+	// define('DATABASE_HOST','localhost');
+	// define('DATABASE_USER','root');
+	// define('DATABASE_PASS','root');
+	// define('DATABASE_NAME','capture_memories');
+
+	// windows connection
+	define('DATABASE_HOST','localhost');
+	define('DATABASE_USER','root');
+	define('DATABASE_PASS','');
+	define('DATABASE_NAME','capture_memories');
