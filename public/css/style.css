@@ -596,13 +596,18 @@ footer ul li a {
 }
 
 /*datepicker*/
-.datepicker th,
 .datepicker td
+{
+	border-radius: 100%;
+}
+.datepicker th,
+.datepicker td.disabled
 {
 	border-radius: 0;
 }
 .datepicker table tr td.disabled {
-	background-color: #e74c3c;
+	background-color: #f7a39a;
+	color: #fff;
 
 }
 
