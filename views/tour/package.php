@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                 <div class="mt-5 mb-4">
                 <h2 
-                    data-start-date="<?= date('m/d/Y',strtotime($v['travel_period_from_at']))?>" 
+                    data-start-date="<?= date('m/d/Y', strtotime($v['travel_period_from_at']))?>" 
                     data-end-date="<?= date('m/d/Y', strtotime($v['travel_period_to_at']))?>"
                 >
                     <?= $type ?>: <?= $v['destination_name']?>

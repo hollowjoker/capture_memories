@@ -80,5 +80,18 @@ class TblConvoMySqlExtDAO extends TblConvoMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}
+
+	public function fetchConvoByStatus($status) {
+		$sql = "
+			select
+			count(id)
+
+			from tbl_convo
+			where status = '".$status."'
+		";
+
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>

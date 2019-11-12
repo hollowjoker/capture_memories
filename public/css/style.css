@@ -56,7 +56,7 @@ textarea,
 	font-weight: 300;
 }
 .text-custom-success{
-	color: #B65EBA !important;
+	color: #E692C5 !important;
 }
 .font-size-2 {
 	font-size: 2rem;
@@ -171,7 +171,7 @@ section.header{
 }
 .img-border-muticolor {
 	background-color: #fff;	
-	border: 3px solid #B65EBA;
+	border: 3px solid #E692C5;
 }
 .border-1 {
 	border: 1px solid #eee;
@@ -211,24 +211,24 @@ section.header{
 	opacity: .5;
 }
 .btn-custom-success {
-	background-color: #5e84df;
+	background-color: #E692C5;
 	color: #fff !important;
 }
 .btn-custom-success:hover,
 .btn-custom-success.active
 {
-	background-color: #4668b9;
+	background-color: #ce6da8;
 }
 .btn-custom-success-outlined {
 	background-color: transparent;
-	color: #5e84df !important;
-	border: 1px solid #5e84df;
+	color: #E692C5 !important;
+	border: 1px solid #E692C5;
 }
 .btn-custom-success-outlined:hover,
 .btn-custom-success-outlined.active
 {
-	background-color: #4668b9;
-	border-color: #4668b9;
+	background-color: #ce6da8;
+	border-color: #ce6da8;
 	color: #fff !important;
 }
 .d-block-important {
@@ -304,7 +304,7 @@ section.header{
 	padding: 15px;
 	text-align: center;
 	color: #fff;
-	background: linear-gradient(to right top, #b65eba, #9e6ccc, #8179d8, #5e84df, #2e8de1);
+	background-image: linear-gradient(to right top, #4fc5f8, #7dbafd, #a9adf6, #ce9ee2, #e692c5);
 }
 .profile-card ul {
 	list-style: none;
@@ -325,7 +325,7 @@ section.header{
 	margin-right: 5px;
 	text-align: center;
 	color: #fff;
-	background: linear-gradient(to right top, #b65eba, #9e6ccc, #8179d8, #5e84df, #2e8de1);
+	background-image: linear-gradient(to right top, #4fc5f8, #7dbafd, #a9adf6, #ce9ee2, #e692c5);
 }
 .header-avatar.avatar-admin {
 	background: #333;
@@ -417,12 +417,12 @@ section.header{
 .service-holder .service-list li .service-list-count span {
 	width: 30px;
     height: 30px;
-    border: 3px solid #B65EBA;
+    border: 3px solid #E692C5;
     border-radius: 50%;
     display: block;
     padding: 8px;
     line-height: 10px;
-	color: #B65EBA;
+	color: #E692C5;
 }
 .service-holder .service-list li .service-list-content{
 	width: calc(100% - 50px);
@@ -445,12 +445,12 @@ section.header{
 	color: #000000 !important;
 }
 .icon-gradient {
-	background: linear-gradient(to right top, #b65eba, #9e6ccc, #8179d8, #5e84df, #2e8de1);
+	background-image: linear-gradient(to right top, #4fc5f8, #7dbafd, #a9adf6, #ce9ee2, #e692c5);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 .bg-custom-gradient {
-	background-image: linear-gradient(to right top, #b65eba, #9e6ccc, #8179d8, #5e84df, #2e8de1);
+	background-image: linear-gradient(to right top, #4fc5f8, #7dbafd, #a9adf6, #ce9ee2, #e692c5);
 	min-height: auto;
 }
 .weight-100 {
@@ -593,6 +593,17 @@ footer ul li a {
 }
 .badge-custombg-6 {
     background-color: #596175;
+}
+
+/*datepicker*/
+.datepicker th,
+.datepicker td
+{
+	border-radius: 0;
+}
+.datepicker table tr td.disabled {
+	background-color: #e74c3c;
+
 }
 
 

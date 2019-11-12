@@ -51,12 +51,29 @@
 						</li>
 						<li class="<?= $module == 'reservation' ? 'active' : ''?> ">
 							<a href="<?= URL.'reservation'?>">
-								<i class="now-ui-icons ui-1_calendar-60"></i><p>Reservations</p>
+								<i class="now-ui-icons ui-1_calendar-60"></i>
+								<div class="d-flex pt-1 justify-content-between">
+									Reservations
+									<div>
+										<span class="badge badge-pill badge-light font-size-08" data-booking-counter="reservation" data-counter-url="<?= URL.'booking/fetchBookingCounter?countertype=reservation'?>">0</span>
+									</div>
+								</div>
 							</a>
 						</li>
 						<li class="<?= $module == 'services' ? 'active' : ''?> ">
 							<a href="<?= URL.'services/?type=airline'?>">
-								<i class="now-ui-icons objects_spaceship"></i><p>Services</p>
+								<i class="now-ui-icons objects_spaceship"></i>
+								<div class="d-flex pt-1 justify-content-between">
+									Services
+									<div>
+										<span class="badge badge-pill badge-light font-size-08" data-booking-counter="services" data-counter-url="<?= URL.'booking/fetchBookingCounter?countertype=services'?>">0</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li class="<?= $module == 'booking' ? 'active' : ''?> ">
+							<a href="<?= URL.'booking'?>">
+								<i class="now-ui-icons objects_spaceship"></i><p>Bookings</p>
 							</a>
 						</li>
 						<li class="<?= $module == 'user' ? 'active' : ''?> ">

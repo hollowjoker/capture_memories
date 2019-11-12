@@ -18,7 +18,7 @@ class Data{
 						'description' => 'look for your destination and fill out the guest information.'
 					],
 					[
-						'title' => 'WAIT FOR CONFIRMATION',
+						'title' => 'WAIT FOR THE AGENT RESPONSE',
 						'description' => 'a travel agent will email or call you within 24hrs.'
 					],
 					[
@@ -42,7 +42,7 @@ class Data{
 						'description' => 'fill out the guest information.'
 					],
 					[
-						'title' => 'WAIT FOR CONFIRMATION',
+						'title' => 'WAIT FOR THE AGENT RESPONSE',
 						'description' => 'a travel agent will email or call you within 24hrs.'
 					],
 					[
@@ -66,7 +66,7 @@ class Data{
 						'description' => 'Choose the destination and fill out guest information together with the complete travel documents.'
 					],
 					[
-						'title' => 'WAIT FOR CONFIRMATION',
+						'title' => 'WAIT FOR THE AGENT RESPONSE',
 						'description' => 'a travel agent will email or call you within 24hrs.'
 					],
 					[
@@ -110,7 +110,7 @@ class Data{
 						'description' => 'Choose a destination and fill out the basic guest information'
 					],
 					[
-						'title' => 'WAIT FOR CONFIRMATION',
+						'title' => 'WAIT FOR THE AGENT RESPONSE',
 						'description' => 'a travel agent will email or call you within 24hrs'
 					],
 					[

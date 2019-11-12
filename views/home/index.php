@@ -74,7 +74,7 @@
 								<h5 class="card-title"><?= $v['name'] ?></h5>
 								<h5 class="card-price-holder">
 									<?php foreach($v['meta'] as $key_meta => $value_meta): ?>
-										<span class="formater">Php <?= number_format($value_meta['price']) ?></span>
+										<span class="formater">Starting at Php <?= number_format($value_meta['price']) ?></span>
 									<?php endforeach; ?>
 								</h5>
 								<p class="card-text">
@@ -104,14 +104,9 @@
 							<div class="card">
 								<div class="overlay-gradient card-img-bottom"></div>
 								<div class="card-img card-img-top card-img-bottom" alt="Card image" style="background-image: url('<?= $value_international['image_public_path'] ?>') ">
-									<div class="card-content">
+									<div class="card-content pt-4">
 										<div>
 											<?= $value_international['destination_name'] ?>
-										</div>	
-										<div>
-											<?php foreach($value_international['meta'] as $key_meta => $value_meta): ?>
-												Php <?= number_format($value_meta['price']) ?>
-											<?php endforeach; ?>
 										</div>
 									</div>
 								</div>

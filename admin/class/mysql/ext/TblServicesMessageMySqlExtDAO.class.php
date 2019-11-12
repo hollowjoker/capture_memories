@@ -14,7 +14,8 @@ class TblServicesMessageMySqlExtDAO extends TblServicesMessageMySqlDAO{
 			message.created_at,
 			user.type,
 			user.first_name,
-			user.last_name
+			user.last_name,
+			message.updated_at
 
 			from tbl_services_message message
 			inner join tbl_services as service
@@ -31,6 +32,27 @@ class TblServicesMessageMySqlExtDAO extends TblServicesMessageMySqlDAO{
 		if(isset($option['limit'])) {
 			$sql .=" limit ".$option['limit'];
 		}
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
+
+	public function fetchConvoByStatus() {
+		$sql = "
+			select
+			count(id)
+
+			from tbl_services_message
+			where created_at = updated_at
+		";
+
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
+
+	public function updateMessageOpen($id) {
+		$sql = "
+			update tbl_services_message set updated_at = '".date('Y-m-d')."' where tbl_services_id = ".$id."
+		";
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}

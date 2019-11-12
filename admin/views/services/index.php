@@ -40,7 +40,7 @@
 							<tbody>
 								<?php if(count($services)): ?>
 									<?php foreach($services as $k => $v): ?>
-										<tr class="<?= $v['status'] == 'unread' ? 'font-weight-bold' : '' ?>">
+										<tr class="<?= $v['message'][0]['created_at'] == $v['message'][0]['updated_at'] ? 'font-weight-bold' : '' ?>">
 											<td><?= $v['first_name']." ".$v['last_name']?></td>
 											<td>
 												<a href="<?= URL.'services/convo?id='.$v['id'].'&type='.$v['type'] ?>" class="default-text-color"><?= (count($v['message']) ? substr($v['message'][0]['description'], 0, 60)."..." : "") ?></a>

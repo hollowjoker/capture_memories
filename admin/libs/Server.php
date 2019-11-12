@@ -9,13 +9,13 @@
 	ini_set('max_execution_time', 300);
 
 	// macos connection
-	// define('DATABASE_HOST','localhost');
-	// define('DATABASE_USER','root');
-	// define('DATABASE_PASS','root');
-	// define('DATABASE_NAME','capture_memories');
-
-	// windows connection
 	define('DATABASE_HOST','localhost');
 	define('DATABASE_USER','root');
-	define('DATABASE_PASS','');
+	define('DATABASE_PASS','root');
 	define('DATABASE_NAME','capture_memories');
+
+	// windows connection
+	// define('DATABASE_HOST','localhost');
+	// define('DATABASE_USER','root');
+	// define('DATABASE_PASS','');
+	// define('DATABASE_NAME','capture_memories');

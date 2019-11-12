@@ -26,6 +26,7 @@ tour = {
 	activateTourForm: function(trigger) {
 		trigger.submit(function(e) {
 			e.preventDefault();
+			let loader = $(this).find('.btn').attr('disabled',true);
 			let formUrl = $(this).attr('action');
 			let formMethod = $(this).attr('method');
 			let redirectUrl = $(this).attr('data-redirect');
@@ -40,6 +41,7 @@ tour = {
 				processData: false,
 				dataType:'json',
 			}).done( resultData => {
+				loader.attr('disabled',false);
 				Swal.fire({
 					type: resultData.type,
 					title: resultData.messages

@@ -28,6 +28,8 @@ class Services_model extends Model
 		$id = $_GET['id'];
 		$type = $_GET['type'];
 		$convoDataResult = DAOFactory::getTblServicesDAO()->getSingleService($id, $type);
+	
+		$updateServiceMessage = DAOFactory::getTblServicesMessageDAO()->updateMessageOpen($id);
 
 		foreach($convoDataResult as $k => $v) {
 			$option = [

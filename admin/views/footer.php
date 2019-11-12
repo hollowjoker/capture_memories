@@ -56,6 +56,7 @@
 				height: 500
 			});
 		</script>
+		<script src="<?= URL.'public/js/main.js'?>"></script>
 		<script src="<?= URL.'public/js/'.$module.'.js'?>"></script>
 		
 	</body>

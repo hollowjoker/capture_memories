@@ -37,6 +37,9 @@
 						Services
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?= URL.'about_us' ?>">About Us</a>
+					</li>
 					<?php if(!isset($userSession['id'])) : ?>
 						<li class="nav-item">
 							<a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">Sign up</a>
