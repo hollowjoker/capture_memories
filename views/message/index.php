@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="mt-5">
                     <h1>Messages</h1>
-    
+<!--     
                     <form action="" class="mt-5 d-flex justify-content-between">
                         <div class="" style="width: 250px;">
                             <div class="form-group">
@@ -21,10 +21,7 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="d-flex align-self-center">
-                            pagination
-                        </div> -->
-                    </form>
+                    </form> -->
 
                     <table class="table vertical-align-center">
                         <tbody>

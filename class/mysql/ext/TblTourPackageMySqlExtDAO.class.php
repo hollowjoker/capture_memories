@@ -20,7 +20,8 @@ class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 			tour.travel_period_to_at,
 			tour.image_public_path,
 			tour.description,
-			place.name destination_name
+			place.name destination_name,
+			tour.tour_limit
 
 			from tbl_tour_package as tour
 			inner join tbl_place as place
@@ -28,7 +29,8 @@ class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 
 			where
 			tour.status = 'active' && 
-			tour.deleted_at = '0000-00-00 00:00:00'
+			tour.deleted_at = '0000-00-00 00:00:00' &&
+			tour.travel_period_to_at >= '".date('Y-m-d')."'
 		";
 
 		if(isset($_GET['search'])) {

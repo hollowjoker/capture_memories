@@ -95,4 +95,15 @@ class Controller{
 		return $data;
 	}
 	
+	static function generateReference() {
+		$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		$length = 15;
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return "TR-".$randomString;
+	}
+	
 }

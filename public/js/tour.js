@@ -6,13 +6,17 @@ tour = {
 		$startDate: $('[data-start-date]').attr('data-start-date'),
 		$endDate: $('[data-end-date]').attr('data-end-date'),
 		$pickGuest: $('[data-guest-pick="quantity"]'),
-		$bookingForm: $('#booking_form')
+		$bookingForm: $('#booking_form'),
+		$tourChecker: $('[data-tour-checker]'),
+		$tourCheckout: $('[data-checkout]')
 	},
 	onInit: function() {
 		var self = this,
 		el = self.defaults
 		self.activatePickGuest(el.$pickGuest)
 		self.activateBookingForm(el.$bookingForm)
+		self.triggerCheckTour(el.$tourChecker),
+		self.triggerCheckout(el.$tourCheckout)
 	},
 	onReady: function(e) {
 		var self = this,
@@ -35,6 +39,8 @@ tour = {
 
 		$('.price-content').text(price);
 		$('[name="metaId"]').val(metaId);
+		$('[name="quantity"]').val(activePickedGuest.attr('data-guest-quantity'));
+		$('[name="amount"]').val(parseInt(activePickedGuest.attr('data-unformed-price')) * parseInt(activePickedGuest.attr('data-guest-quantity')));
 
 		let toAppend = "";
 		for(let i=0; i < activePickedGuest.attr('data-guest-quantity'); i++) {
@@ -85,6 +91,81 @@ tour = {
 				}
 			});
 			
+		});
+	},
+	triggerCheckTour: function (trigger) {
+		trigger.change(function (e) {
+			let departing = $('[name="departingAt"]').val();
+			let returning = $('[name="returningAt"]').val();
+			let metaId = $('[name="metaId"]').val();
+			let dataUrl = $('[data-tour-checker-url]').attr('data-tour-checker-url');
+			let tourLimit = $('[data-count-limit]').attr('data-count-limit');
+
+			if(departing != "" && returning != "") {
+				let data = {
+					departing: departing,
+					returning: returning,
+					metaId: metaId
+				};
+				$.ajax({
+					url: dataUrl,
+					type: "POST",
+					data: data
+				}).done(function (returnData) {
+					let parsedData = JSON.parse(returnData);
+					let textSlot =  "";
+					if(parsedData.slot) {
+						textSlot = parsedData.slot+" more slot/s available";
+					} else {
+						textSlot = "Sorry, there are no more slots available";
+					}
+					$('[data-checker-receiver]').text(textSlot);
+				});
+			}
+		});
+	},
+	triggerCheckout: function (trigger) {
+		trigger.click(function (e) {
+			
+			let formData = $('#booking_form').serializeArray();
+			let proceed = true;
+			$.each(formData, function (k, v) {
+				if(v.value == "") {
+					proceed = false;	
+				};
+			});
+
+			if(!proceed) {
+				Swal.fire({
+					type: 'error',
+					title: 'Please complete the form'
+				});
+			} else {
+				$(this).attr('hidden',true);
+				$('[data-invoice]').attr('hidden', false);
+				$('.submit-btn').attr('hidden', false);
+				let strAppend = "";
+				let ageArray = [];
+				let companionArray = [];
+				$.each(formData, function (k ,v) {
+					if(v.name == "age[]") {
+						ageArray.push(v.value);
+					} else if(v.name == "companionName[]") {
+						companionArray.push(v.value);
+					} else {
+						$('[data-detail="'+v.name+'"]').text(v.value);
+					}
+				});
+				$.each(companionArray, function (k ,v) {
+					strAppend += ""+
+						"<tr>"+
+							"<td>"+v+"</td>"+
+							"<td>"+ageArray[k]+"</td>"+
+						"</tr>";
+				});
+				$('[data-detail="guest-row"]').html(strAppend);
+			}
+
 		});
 	}
 }

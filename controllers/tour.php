@@ -27,11 +27,18 @@ class Tour extends Controller
 	{
 		$this->view->type = "Local";
 		$this->view->tour = $this->model->getTourData();
+		$this->view->referenceNo = Controller::generateReference();
 		$this->view->render('views/tour/package.php');
 	}
 	
 	public function bookingStore() {
 		$modelResult = $this->model->bookingStore();
+		echo json_encode($modelResult);
+		exit;
+	}
+
+	public function tourChecker() {
+		$modelResult = $this->model->tourChecker();
 		echo json_encode($modelResult);
 		exit;
 	}

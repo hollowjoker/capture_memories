@@ -58,6 +58,9 @@ textarea,
 .text-custom-success{
 	color: #E692C5 !important;
 }
+.font-size-15 {
+	font-size: 1.5rem;
+}
 .font-size-2 {
 	font-size: 2rem;
 }
@@ -455,6 +458,9 @@ section.header{
 }
 .weight-100 {
 	font-weight: 100;
+}
+.weight-600 {
+	font-weight: 600;
 }
 .bg-light-gray {
 	background-color: #eee;

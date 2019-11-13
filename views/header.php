@@ -32,11 +32,11 @@
 					<li class="nav-item active">
 						<a class="nav-link" href="<?= URL ?>">Home <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item dropdown">
+					<!-- <li class="nav-item dropdown">
 						<a class="nav-link" href="<?= URL.'services'?>">
 						Services
 						</a>
-					</li>
+					</li> -->
 					<li class="nav-item">
 						<a class="nav-link" href="<?= URL.'about_us' ?>">About Us</a>
 					</li>

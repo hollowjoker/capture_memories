@@ -13,35 +13,40 @@ class Tour_model extends Model
 		$target_dir = getcwd().DIRECTORY_SEPARATOR."../public/images/tour/";
 		$target_file = null;
 		$public_file = null;
+		$check = true;
+
+		$result = [];
+		$result['type'] = 'error';
+
 		if($_FILES["imagePath"]["size"] > 0) {
 			$target_file = $target_dir . basename($_FILES["imagePath"]["name"]);
 			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 			$target_public_dir = MAIN_URL."public/images/tour/";
 			$public_file = $target_public_dir . basename($_FILES["imagePath"]["name"]);
+			$check = getimagesize($_FILES["imagePath"]["tmp_name"]);
+
+			if($check === false && $_FILES["imagePath"]["size"] > 0) {
+				$result['messages'] = "File is not an image.";
+				$uploadOk = 0;
+				return $result;
+			}
+			if(file_exists($target_file) && $_FILES["imagePath"]["size"] > 0) {
+				$result['messages'] = "Sorry, file already exists.";
+				$uploadOk = 0;
+				return $result;
+			}
+			if($_FILES["imagePath"]["size"] > 5000000) {
+				$result['messages'] = "Sorry, your file is too large.";
+				$uploadOk = 0;
+				return $result;
+			}
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $_FILES["imagePath"]["size"] > 0) {
+				$result['messages'] = "Sorry, only JPG, JPEG & PNG files are allowed.";
+				$uploadOk = 0;
+				return $result;
+			}
 		}
-		$check = getimagesize($_FILES["imagePath"]["tmp_name"]);
-		$result = [];
-		$result['type'] = 'error';
-		if($check === false && $_FILES["imagePath"]["size"] > 0) {
-			$result['messages'] = "File is not an image.";
-			$uploadOk = 0;
-			return $result;
-		}
-		if(file_exists($target_file) && $_FILES["imagePath"]["size"] > 0) {
-			$result['messages'] = "Sorry, file already exists.";
-			$uploadOk = 0;
-			return $result;
-		}
-		if($_FILES["imagePath"]["size"] > 5000000) {
-			$result['messages'] = "Sorry, your file is too large.";
-			$uploadOk = 0;
-			return $result;
-		}
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $_FILES["imagePath"]["size"] > 0) {
-			$result['messages'] = "Sorry, only JPG, JPEG & PNG files are allowed.";
-			$uploadOk = 0;
-			return $result;
-		}
+		
 		if($uploadOk == 0 && $_FILES["imagePath"]["size"] > 0) {
 			$result['messages'] = "Sorry, your file was not uploaded.";
 			return $result;
@@ -56,6 +61,7 @@ class Tour_model extends Model
 			if($_POST['id']) {
 				$tour = DAOFactory::getTblTourPackageDAO()->load($_POST['id']);
 				$tour = Controller::insertDateUpdate($tour);
+
 				if($_FILES["imagePath"]["size"] > 0) {
 					$tour->imagePath = $target_file;
 					$tour->imagePublicPath = $public_file;
@@ -71,6 +77,7 @@ class Tour_model extends Model
 			$tour->travelPeriodFromAt = $_POST['travelPeriodFromAt'];
 			$tour->travelPeriodToAt = $_POST['travelPeriodToAt'];
 			$tour->sellingPeriod = $_POST['sellingPeriod'];
+			$tour->tourLimit = $_POST['tourLimit'];
 			$tour->description = $_POST['description'];
 			$tour->status = isset($_POST['status']) ? 'active' : 'inactive';
 

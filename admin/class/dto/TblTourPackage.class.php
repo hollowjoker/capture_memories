@@ -3,7 +3,7 @@
 	 * Object represents table 'tbl_tour_package'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2019-11-13 09:17	 
+     	 * @date: 2019-11-13 10:12	 
 	 */
 	class TblTourPackage{
 		
@@ -14,7 +14,7 @@
 		var $travelPeriodFromAt;
 		var $travelPeriodToAt;
 		var $sellingPeriod;
-		var $limit;
+		var $tourLimit;
 		var $imagePath;
 		var $imagePublicPath;
 		var $status;

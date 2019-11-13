@@ -2,6 +2,7 @@
     $tour = $this->tour;
     $type = $this->type;
     $guestPrice = 0;
+    $referenceNo = $this->referenceNo;
 ?>
 <section class="mb-5">
     <div class="container">
@@ -35,18 +36,25 @@
                             </span> 
                             <span class="small">per person</span>
                             <div class="form-row pt-3">
-                                <div class="col">
+                                <div class="col-6">
                                     <label>DEPARTING ON</label>
-                                    <input type="text" name="departingAt" class="form-control datepicker" autocomplete="off" placeholder="MM/DD/YYYY">
+                                    <input type="text" name="departingAt" class="form-control datepicker" autocomplete="off" placeholder="MM/DD/YYYY" data-tour-checker="departing" data-tour-checker-url="<?= URL."tour/tourChecker"?>">
                                 </div>
-                                <div class="col">
+                                <div class="col-6">
                                     <label>RETURNING ON</label>
-                                    <input type="text" name="returningAt" class="form-control datepicker" autocomplete="off" placeholder="MM/DD/YYYY">
+                                    <input type="text" name="returningAt" class="form-control datepicker" autocomplete="off" placeholder="MM/DD/YYYY" data-tour-checker="returning">
+                                </div>
+                                <div class="col mt-2">
+                                    <h5><span class="badge badge-pill badge-info" data-checker-receiver="tour" data-count-limit="<?= $v['tour_limit']?>"></span></h5>
                                 </div>
                             </div>
                             <div class="form-group pt-3">
                                 <label>Pick No. of Guest</label>
-                                <input type="hidden" name="metaId" class="form-control" placeholder="Guest" value="">
+                                <input type="hidden" name="metaId" class="form-control" value="">
+                                <input type="hidden" name="quantity" class="form-control" value="">
+                                <input type="hidden" name="packageName" class="form-control" value="<?= $v['name']?>">
+                                <input type="hidden" name="referenceNo" class="form-control" value="<?= $referenceNo?>">
+                                <input type="hidden" name="amount" class="form-control" value="">
                                 <div>
                                     <?php foreach($v['meta'] as $metaK => $metaV): ?>
                                         <button 
@@ -54,6 +62,7 @@
                                             data-guest-pick="quantity" 
                                             data-meta-id="<?= $metaV['id'] ?>" 
                                             data-guest-quantity="<?= $metaV['quantity']?>"
+                                            data-unformed-price="<?= $metaV['price']?>"
                                             type="button"
                                         >
                                             <?= $metaV['quantity'] ?> <i class="far fa-user"></i>
@@ -82,12 +91,53 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" hidden>
                                 <label for="description">Share a few details about your plans to help them prepare for your tour.</label>
-                                <textarea name="description" id="description" class="form-control" placeholder="Write your message here"></textarea>
+                                <textarea name="description" id="description" class="form-control" placeholder="Write your message here">Hi please see my reservation thanks!</textarea>
+                            </div>
+                            <div class="submit-btn">
+                                <button class="btn btn-custom-success btn-block" type="button" data-checkout="proceed">
+                                    Proceed
+                                </button>
+                            </div>
+                            <hr>
+                            <div class="form-group" data-invoice="false" hidden>
+                                <h3>Invoice</h3>
+                                <div class="row">
+                                    <div class="col-12 mb-1">
+                                        Reference No.: <span class="weight-600" data-detail="referenceNo">TR-ASDM213ASD</span>
+                                    </div>
+                                    <div class="col-12 mb-1">
+                                        Package Name: <span class="weight-600" data-detail="packageName">BATANES TRIP</span>
+                                    </div>
+                                    <div class="col-6 mb-1">Departing on: <span class="weight-600" data-detail="departingAt">11/09/2019</span></div>
+                                    <div class="col-6 mb-1">Returning on: <span class="weight-600" data-detail="returningAt">11/09/2019</span></div>
+                                    <div class="col-12 mb-1">No. of Guest: <span class="weight-600" data-detail="quantity">3</span></div>
+                                    <div class="col-12 mb-1">
+                                        Guest Details:
+                                        <table class="table table-borderless table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Full Name</th>
+                                                    <th>Age</th>
+                                                </tr>
+                                                <tbody data-detail="guest-row">
+                                                    
+                                                </tbody>
+                                            </thead>
+                                        </table>
+                                        <hr>
+                                    </div>
+                                    <div class="col-6 mb-1 font-size-15">
+                                        Total Amount:
+                                    </div>
+                                    <div class="col-6 mb-1 font-size-15">
+                                        Php.<span class="weight-600" data-detail="amount">0</span>
+                                    </div>
+                                </div>
                             </div>
                             <?php if(isset($userSession['id'])):?>
-                                <div class="submit-btn">
+                                <div class="submit-btn" hidden>
                                     <button class="btn btn-custom-success btn-block">RESERVE</button>
                                 </div>
                             <?php else: ?>

@@ -3,7 +3,7 @@
 	 * Object represents table 'tbl_services_message'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2019-11-13 09:17	 
+     	 * @date: 2019-11-13 10:12	 
 	 */
 	class TblServicesMessage{
 		
