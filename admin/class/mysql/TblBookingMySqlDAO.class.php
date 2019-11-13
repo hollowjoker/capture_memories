@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_booking'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-11-13 10:12
+ * @date: 2019-11-14 06:33
  */
 class TblBookingMySqlDAO implements TblBookingDAO{
 
@@ -57,11 +57,12 @@ class TblBookingMySqlDAO implements TblBookingDAO{
  	 * @param TblBookingMySql tblBooking
  	 */
 	public function insert($tblBooking){
-		$sql = 'INSERT INTO tbl_booking (tbl_user_id, tbl_tour_package_meta_id, departing_at, returning_at, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO tbl_booking (tbl_user_id, tbl_tour_package_meta_id, transaction_no, departing_at, returning_at, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblBooking->tblUserId);
 		$sqlQuery->setNumber($tblBooking->tblTourPackageMetaId);
+		$sqlQuery->set($tblBooking->transactionNo);
 		$sqlQuery->set($tblBooking->departingAt);
 		$sqlQuery->set($tblBooking->returningAt);
 		$sqlQuery->set($tblBooking->status);
@@ -80,11 +81,12 @@ class TblBookingMySqlDAO implements TblBookingDAO{
  	 * @param TblBookingMySql tblBooking
  	 */
 	public function update($tblBooking){
-		$sql = 'UPDATE tbl_booking SET tbl_user_id = ?, tbl_tour_package_meta_id = ?, departing_at = ?, returning_at = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
+		$sql = 'UPDATE tbl_booking SET tbl_user_id = ?, tbl_tour_package_meta_id = ?, transaction_no = ?, departing_at = ?, returning_at = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblBooking->tblUserId);
 		$sqlQuery->setNumber($tblBooking->tblTourPackageMetaId);
+		$sqlQuery->set($tblBooking->transactionNo);
 		$sqlQuery->set($tblBooking->departingAt);
 		$sqlQuery->set($tblBooking->returningAt);
 		$sqlQuery->set($tblBooking->status);
@@ -116,6 +118,13 @@ class TblBookingMySqlDAO implements TblBookingDAO{
 		$sql = 'SELECT * FROM tbl_booking WHERE tbl_tour_package_meta_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByTransactionNo($value){
+		$sql = 'SELECT * FROM tbl_booking WHERE transaction_no = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
@@ -176,6 +185,13 @@ class TblBookingMySqlDAO implements TblBookingDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByTransactionNo($value){
+		$sql = 'DELETE FROM tbl_booking WHERE transaction_no = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 	public function deleteByDepartingAt($value){
 		$sql = 'DELETE FROM tbl_booking WHERE departing_at = ?';
 		$sqlQuery = new SqlQuery($sql);
@@ -231,6 +247,7 @@ class TblBookingMySqlDAO implements TblBookingDAO{
 		$tblBooking->id = $row['id'];
 		$tblBooking->tblUserId = $row['tbl_user_id'];
 		$tblBooking->tblTourPackageMetaId = $row['tbl_tour_package_meta_id'];
+		$tblBooking->transactionNo = $row['transaction_no'];
 		$tblBooking->departingAt = $row['departing_at'];
 		$tblBooking->returningAt = $row['returning_at'];
 		$tblBooking->status = $row['status'];

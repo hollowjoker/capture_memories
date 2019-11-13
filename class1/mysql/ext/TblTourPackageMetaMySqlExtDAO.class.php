@@ -18,5 +18,21 @@ class TblTourPackageMetaMySqlExtDAO extends TblTourPackageMetaMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}
+
+	public function fetchTour($metaId) {
+		$sql = "
+			select
+			tour.tour_limit
+
+			from tbl_tour_package_meta as meta
+			inner join tbl_tour_package as tour
+			on meta.tbl_tour_package_id = tour.id
+
+			where meta.id = ".$metaId."
+		";
+
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>

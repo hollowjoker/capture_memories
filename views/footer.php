@@ -173,10 +173,12 @@
 				activateSignUpForm: function(trigger) {
 					trigger.submit(function(e) {
 						e.preventDefault();
+						let that = $(this);
 						let formUrl = $(this).attr('action');
 						let formMethod = $(this).attr('method');
 						let redirectUrl = $(this).attr('data-redirect');
 						let formData = $(this).serialize();
+						that.find('button').attr('disabled', true);
 
 						$.ajax({
 							url: formUrl,
@@ -184,7 +186,7 @@
 							data: formData
 						}).done( returnResult => {
 							let parsedData = JSON.parse(returnResult);
-							$('input').removeClass('is-invalid').closest('.form-group').find('.feedback').removeClass('invalid-feedback');
+							that.find('button').attr('disabled', false);
 							if (parsedData.status == 'success') {
 								Swal.fire({
 									type: parsedData.status,
@@ -193,6 +195,7 @@
 									location.href = location.href;
 								});
 							} else {
+								$('input').removeClass('is-invalid').closest('.form-group').find('.feedback').removeClass('invalid-feedback');
 								$.each(parsedData.messages, function (k, v) {
 									let inputName = '[name="'+k+'"]';
 									$(inputName).addClass('is-invalid').closest('.form-group').find('.feedback').addClass('invalid-feedback').text(v);
