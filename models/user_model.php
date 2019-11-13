@@ -103,13 +103,20 @@ class user_model extends Model
 				'email' => $_POST['email'],	
 				'body' => 'verify'
 			];
-			Controller::emailSend($emailData);
+			$emailResult = Controller::emailSend($emailData);
 			
-			$result = [
-				'id' => $userId,
-				'status' => 'success',
-				'messages' => 'Please verfiy your email address'
-			];
+			if($emailResult) {
+				$result = [
+					'id' => $userId,
+					'status' => 'success',
+					'messages' => 'Please verfiy your email address'
+				];
+			} else {
+				$result = [
+					'status' => 'error',
+					'messages' => 'Please try again.'
+				];
+			}
 
 			// $userData = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($_POST['email'])[0];
 			// $userSession = Session::setSession('user',$userData);
@@ -138,6 +145,71 @@ class user_model extends Model
 
 		$userData = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($newUser->email)[0];
 		$userSession = Session::setSession('user',$userData);
+		return $result;
+	}
+
+	public function submitForgotPassword() {
+		$userData = DAOFactory::getTblUserDAO()->queryByEmail($_POST['email']);
+		$result = [
+			'type' => 'error',
+			'messages' => 'Email not exist'
+		];
+		if(count($userData)) {
+			$data = [
+				'id' => $userData[0]->id,
+				'displayName' => $userData[0]->firstName,
+				'email' => $_POST['email'],
+				'body' => 'forgetPassword',
+				'subject' => 'Forgot Password'
+			];
+			$emailResult = Controller::emailSend($data);
+			if($emailResult) {
+				$result = [
+					'type' => 'success',
+					'messages' => 'Email sent. Please see your inbox'
+				];
+			} else {
+				$result = [
+					'type' => 'error',
+					'messages' => 'Please try again.'
+				];
+			}
+		}
+		return $result;
+	}
+
+	public function submitVerifyPassword() {
+		$userData = DAOFactory::getTblUserDAO()->load($_POST['id']);
+		if($_POST['newPassword'] == $_POST['confirmPassword']) {
+			if(count($userData)) {
+				$userData->password = $_POST['newPassword'];
+				DAOFactory::getTblUserDAO()->update($userData);
+				
+				$newUserData = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($_POST['email'])[0];
+				if(count($newUserData) == 0) {
+					return $result = [
+						'type' => 'error',
+						'messages' => 'Please verify your email first'
+					];
+				}
+				$userSession = Session::setSession('user',$newUserData);
+
+				$result = [
+					'type' => 'success',
+					'messages' => 'Password update Success!'
+				];
+			} else {
+				$result = [
+					'type' => 'error',
+					'messages' => 'Invalid User'
+				];
+			}
+		} else {
+			$result = [
+				'type' => 'error',
+				'messages' => 'New and Confirm password does not match'
+			];
+		}
 		return $result;
 	}
 

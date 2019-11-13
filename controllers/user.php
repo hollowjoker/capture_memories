@@ -37,6 +37,18 @@ class User extends Controller
 		exit;
 	}
 
+	public function submitForgotPassword() {
+		$modelResult = $this->model->submitForgotPassword();
+		echo json_encode($modelResult);
+		exit;	
+	}
+
+	public function submitVerifyPassword() {
+		$modelResult = $this->model->submitVerifyPassword();
+		echo json_encode($modelResult);
+		exit;
+	}
+
 }
 
 ?>

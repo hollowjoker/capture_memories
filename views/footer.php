@@ -13,7 +13,7 @@
 						<div class="convo-section">
 							<ul class="footer-menu">
 								<li><a href="http://localhost:8888/capture_memories/">Home</a></li>
-								<li><a href="http://localhost:8888/capture_memories/services">Services</a></li>
+								<!-- <li><a href="http://localhost:8888/capture_memories/services">Services</a></li> -->
 							</ul>
 						</div>
 						<div class="convo-section">
@@ -21,7 +21,6 @@
 								<li><a href="https://www.facebook.com/">Facebook</a></li>
 								<li><a href="https://www.instagram.com/">Instagram</a></li>
 								<li><a href="https://twitter.com/">Twitter</a></li>
-								<li><a href="https://www.google.com/">Google+</a></li>
 							</ul>
 						</div>
 					</div>
@@ -133,6 +132,9 @@
 								<button class="btn btn-custom-success btn-block">
 									Log in
 								</button>
+							</div>
+							<div class="form-group">
+								<a href="<?= URL.'home/reset_password' ?>">Forgot password</a>
 							</div>
 						</form>
 					</div>

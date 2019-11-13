@@ -31,7 +31,7 @@ class Home extends Controller
 		$this->view->render('views/home/verify.php');
 	}
 	public function passwordReset() {
-		echo 1;
+		$this->view->render('views/home/verify_password.php');
 	}
 
 }
