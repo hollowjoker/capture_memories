@@ -1,8 +1,10 @@
+<?php
+
+?>
 <div class="row">
 	<div class="col-lg-4">
 		<div class="card card-chart">
 			<div class="card-header">
-				<h5 class="card-category">Global Sales</h5>
 				<h4 class="card-title">Total Sales</h4>
 				<div class="dropdown">
 					<div class="dropdown-menu dropdown-menu-right">
@@ -24,7 +26,6 @@
 	<div class="col-lg-4 col-md-6">
 		<div class="card card-chart">
 			<div class="card-header">
-				<h5 class="card-category">2018 Sales</h5>
 				<h4 class="card-title">Customers</h4>
 				<div class="dropdown">
 					<div class="dropdown-menu dropdown-menu-right">
@@ -46,7 +47,6 @@
 	<div class="col-lg-4 col-md-6">
 		<div class="card card-chart">
 			<div class="card-header">
-				<h5 class="card-category">Email Statistics</h5>
 				<h4 class="card-title">Bookings</h4>
 			</div>
 			<div class="card-body"></div>
