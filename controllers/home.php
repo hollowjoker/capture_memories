@@ -17,8 +17,12 @@ class Home extends Controller
 	}
 	
 	public function verifyEmail() {
-		$modelResult = $this->model->verifyEmail();;
-		return $modelResult;
+		$this->view->$modelResult = $this->model->verifyEmail();
+		$this->view->render('views/home/verify.php');
+	}
+
+	public function passwordReset() {
+		echo 1;
 	}
 
 }
