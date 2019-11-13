@@ -1,5 +1,4 @@
 <?php
-
 class user_model extends Model
 {
 
@@ -90,19 +89,30 @@ class user_model extends Model
 			$newUser->phone = $_POST['phone'];
 			$newUser->birthDate = $formatedDate;
 			$newUser->type = "user";
-			$newUser->active = "active";
+			$newUser->active = "inactive";
 			$newUser->address = "";
 			$newUser->about = "";
 			$insertData = Controller::insertDate($newUser);
-	
+			
+			$userId = DAOFactory::getTblUserDAO()->insert($insertData);
+
+			$emailData = [
+				'id' => $userId,
+				'subject' => 'Verify your Password',
+				'displayName' => $_POST['firstName'],
+				'email' => $_POST['email'],	
+				'body' => 'verify'
+			];
+			Controller::emailSend($emailData);
+			
 			$result = [
-				'id' => DAOFactory::getTblUserDAO()->insert($insertData),
+				'id' => $userId,
 				'status' => 'success',
-				'messages' => 'Sign up success!'
+				'messages' => 'Please verfiy your email address'
 			];
 
-			$userData = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($_POST['email'])[0];
-			$userSession = Session::setSession('user',$userData);
+			// $userData = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($_POST['email'])[0];
+			// $userSession = Session::setSession('user',$userData);
 		}
 		return $result;
 	}

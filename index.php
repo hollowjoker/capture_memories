@@ -14,6 +14,10 @@
 	require 'libs/Data.php';
 	require 'libs/Model.php';
 	require 'libs/Views.php';
+
+	require 'PHPMailer-master/src/Exception.php';
+	require 'PHPMailer-master/src/PHPMailer.php';
+	require 'PHPMailer-master/src/SMTP.php';
 	
 	//autoloader
 	

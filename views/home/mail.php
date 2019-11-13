@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- If you delete this meta tag, Half Life 3 will never be released. -->
 <meta name="viewport" content="width=device-width" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,9 +11,6 @@
 </head>
  
 <style>
-    /* ------------------------------------- 
-		GLOBAL 
-------------------------------------- */
 * { 
 	margin:0;
 	padding:0;
@@ -34,11 +30,6 @@ body {
 	width: 100%!important; 
 	height: 100%;
 }
-
-
-/* ------------------------------------- 
-		ELEMENTS 
-------------------------------------- */
 a { color: #2BA6CB;}
 
 .btn {
@@ -64,7 +55,6 @@ p.callout {
 }
 
 table.social {
-/* 	padding:15px; */
 	background-color: #ebebeb;
 	
 }
@@ -87,24 +77,13 @@ a.ms { background-color: #000!important; }
 	width:100%;
 }
 
-/* ------------------------------------- 
-		HEADER 
-------------------------------------- */
 table.head-wrap { width: 100%;}
 
 .header.container table td.logo { padding: 15px; }
 .header.container table td.label { padding: 15px; padding-left:0px;}
 
-
-/* ------------------------------------- 
-		BODY 
-------------------------------------- */
 table.body-wrap { width: 100%;}
 
-
-/* ------------------------------------- 
-		FOOTER 
-------------------------------------- */
 table.footer-wrap { width: 100%;	clear:both!important;
 }
 .footer-wrap .container td.content  p { border-top: 1px solid rgb(215,215,215); padding-top:15px;}
@@ -113,11 +92,6 @@ table.footer-wrap { width: 100%;	clear:both!important;
 	font-weight: bold;
 	
 }
-
-
-/* ------------------------------------- 
-		TYPOGRAPHY 
-------------------------------------- */
 h1,h2,h3,h4,h5,h6 {
 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; line-height: 1.1; margin-bottom:15px; color:#000;
 }
@@ -145,10 +119,6 @@ ul li {
 	margin-left:5px;
 	list-style-position: inside;
 }
-
-/* ------------------------------------- 
-		SIDEBAR 
-------------------------------------- */
 ul.sidebar {
 	background:#ebebeb;
 	display:block;
@@ -159,9 +129,7 @@ ul.sidebar li a {
 	text-decoration:none;
 	color: #666;
 	padding:10px 16px;
-/* 	font-weight:bold; */
 	margin-right:10px;
-/* 	text-align:center; */
 	cursor:pointer;
 	border-bottom: 1px solid #777777;
 	border-top: 1px solid #FFFFFF;
@@ -171,14 +139,6 @@ ul.sidebar li a {
 ul.sidebar li a.last { border-bottom-width:0px;}
 ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.sidebar li a h5,ul.sidebar li a h6,ul.sidebar li a p { margin-bottom:0!important;}
 
-
-
-/* --------------------------------------------------- 
-		RESPONSIVENESS
-		Nuke it from orbit. It's the only way to be sure. 
------------------------------------------------------- */
-
-/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
 .container {
 	display:block!important;
 	max-width:600px!important;
@@ -194,7 +154,6 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 	display:block; 
 }
 
-/* Let's make sure tables in the content area are 100% wide */
 .content table { width: 100%; }
 
 
@@ -216,15 +175,8 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 	float:left;
 }
 
-/* Be sure to place a .clear element after each set of columns, just to be safe */
 .clear { display: block; clear: both; }
 
-
-/* ------------------------------------------- 
-		PHONE
-		For clients that support media queries.
-		Nothing fancy. 
--------------------------------------------- */
 @media only screen and (max-width: 600px) {
 	
 	a[class="btn"] { display:block!important; margin-bottom:10px!important; background-image:none!important; margin-right:0!important;}
@@ -270,7 +222,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 					<td style="text-align: center;">
                         <h2>Email Confirmation</h2>
 						<h3 style="margin-top: 40px;">Hi, Elijah Baily</h3>
-                        <p class="lead">You're almost ready to start enjoying our app.</p>
+                        <p class="lead">You are almost ready to start enjoying our app.</p>
                         <p>Simply click the big yellow button to verify your email address.</p>
                         <div style="margin-top: 50px;">
                             <button type="button" class="btn" style="background-color: #ffc107; padding: 14px 16px; font-size: 18px;">Verify Email Address</button>

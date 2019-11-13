@@ -1,16 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<!-- If you delete this meta tag, Half Life 3 will never be released. -->
-<meta name="viewport" content="width=device-width" />
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ZURBemails</title>
-	
-<link rel="stylesheet" type="text/css" href="stylesheets/email.css" />
-
-</head>
- 
 <style>
     /* ------------------------------------- 
 		GLOBAL 
@@ -237,26 +224,6 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 
 }
 </style>
-<body bgcolor="#FFFFFF">
-
-<!-- HEADER -->
-<table class="head-wrap">
-	<tr>
-		<td></td>
-		<td class="header container" >
-				<div class="content">
-				<table>
-					<tr>
-						<td><img src="<?= URL."public/images/tour/captured_memories_new.png"?>" class="img-fluid" alt="logo" style="width: 50px;" /></td>
-						<td align="right"><h6 class="collapse">Captured Memories Travel and Tours</h6></td>
-					</tr>
-				</table>
-				</div>
-		</td>
-		<td></td>
-	</tr>
-</table><!-- /HEADER -->
-
 
 <!-- BODY -->
 <table class="body-wrap">
@@ -264,7 +231,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 		<td></td>
 		<td class="container" bgcolor="#FFFFFF">
 
-			<div class="content" style="margin-top: 50px;">
+			<div class="content" style="margin-top: 20px; margin-bottom: 20px;">
 			<table>
 				<tr>
 					<td style="text-align: center;">
@@ -272,7 +239,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
                         <p class="lead">Your Account has been successfully activated.</p>
                         <p class="lead">You can now log in using the username and password you chose during the registration.</p>
                         <div style="margin-top: 50px;">
-                            <button type="button" class="btn" style="background-color: #17a2b8; padding: 14px 50px; font-size: 18px;">Start Tour</button>
+                            <a href="<?= URL ?>" class="btn" style="background-color: #17a2b8; padding: 14px 50px; font-size: 18px;">Start Tour</a>
                         </div>
 					</td>
 				</tr>
@@ -283,6 +250,3 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 		<td></td>
 	</tr>
 </table><!-- /BODY -->
-
-</body>
-</html>

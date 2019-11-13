@@ -1,10 +1,5 @@
 <?php 
-	$tours = $this->tours;
-	$international = $this->international;
 	$about_data = $this->about_us;
-
-	// echo '<pre>';
-	// print_r($about_data);
 ?>
 <!-- <section style="background-color: red; height: 100px;">
 </section> -->
