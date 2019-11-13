@@ -20,6 +20,7 @@ class Tour extends Controller
 	{
 		$this->view->type = "International";
 		$this->view->tour = $this->model->getTourData();
+		$this->view->referenceNo = Controller::generateReference();
 		$this->view->render('views/tour/package.php');
 	}
 
