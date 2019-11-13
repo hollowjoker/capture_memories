@@ -43,7 +43,7 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 	public function fetchTotalSales() {
 		$sql = "
 			select
-			MAX(tour.price)
+			SUM(tour.price)
 
 			from tbl_booking as booking
 			inner join tbl_tour_package_meta as tour

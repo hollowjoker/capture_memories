@@ -20,7 +20,6 @@
 								<tr>
 									<th>Name</th>
 									<th>Type</th>
-									<th>Available On</th>
 									<th>Status</th>
 									<th>Action</th>
 								</tr>
@@ -31,12 +30,6 @@
 										<tr>
 											<td><?= $v->name ?></td>
 											<td><?= $v->type ?></td>
-											<td>
-												<span class="badge badge-pill badge-info"><?= $v->airlineStatus == 'yes' ? 'airline' : '' ?></span>
-												<span class="badge badge-pill badge-danger"><?= $v->visaStatus == 'yes' ? 'visa' : '' ?></span>
-												<span class="badge badge-pill badge-dark"><?= $v->wifiStatus == 'yes' ? 'wifi' : '' ?></span>
-												<span class="badge badge-pill badge-warning text-white"><?= $v->tourStatus == 'yes' ? 'tour' : '' ?></span>
-											</td>
 											<td><span class="<?= $v->status == 'active' ? 'text-success' : 'text-danger'?>"><?= $v->status ?></span></td>
 											<td>
 												<button type="button" class="btn btn-info btn-sm" data-action="editDestination" data-url="<?= URL.'destination/getDestination?id='.$v->id ?>">
