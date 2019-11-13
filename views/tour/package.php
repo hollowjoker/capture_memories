@@ -161,7 +161,7 @@
                     <input type="text" class="form-control" name="companionName[]" placeholder="Full Name">
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="age[]" placeholder="Age">
+                    <input type="number" class="form-control" name="age[]" placeholder="Age" onkeyup="return tour.triggerNumberValidate(event)">
                 </td>
             </tr>
         </tbody>

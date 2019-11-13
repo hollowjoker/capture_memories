@@ -17,19 +17,19 @@
 									<input type="text" name="search" class="form-control" placeholder="Anywhere">
 								</div>
 							</div>
-							<div class="form-row">
+							<div class="form-row" hidden>
 								<div class="col">
 									<label>DEPARTING ON</label>
-									<input type="text" name="traveled_period_from_at" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy" data-start-date="<?= date('m/d/Y')?>">
+									<input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy" data-start-date="<?= date('m/d/Y')?>">
 								</div>
 								<div class="col">
 									<label>RETURNING ON</label>
-									<input type="text" name="traveled_period_to_at" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
+									<input type="text" class="form-control datepicker" autocomplete="off" placeholder="mm/dd/yyyy">
 								</div>
 							</div>
-							<div class="form-group guest_main pt-3">
+							<div class="form-group guest_main pt-3" hidden>
 								<label>GUESTS</label>
-								<input type="text" name="quantity" class="form-control" placeholder="Guest count" data-action="pickGuest" readonly value="1">
+								<input type="text" class="form-control" placeholder="Guest count" data-action="pickGuest" readonly value="1">
 								<div class="main_holder__pickGuest">
 									<div class="pickGuest_item">
 										<div class="pickGuest_title">

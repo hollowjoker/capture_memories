@@ -6,13 +6,17 @@ home = {
 	defaults: {
 		$homePickGuest: $('[data-action="pickGuest"]'),
 		$dataPicker: $('[data-picker]'),
-		$startDate: $('[data-start-date]').attr('data-start-date')
+		$startDate: $('[data-start-date]').attr('data-start-date'),
+		$forgetPasswordForm: $('#forgot_form'),
+		$verifyPasswordForm: $('#verfiy_password_form')
 	},
 	onInit: function() {
 		var self = this,
 		el = self.defaults
 		self.activateHomePickGuest(el.$homePickGuest)
 		self.activateDataPicker(el.$dataPicker)
+		self.activateForgetPasswordForm(el.$forgetPasswordForm)
+		self.activateVerifyPasswordForm(el.$verifyPasswordForm)
 	},
 	onReady: function(e) {
 		var self = this,
@@ -46,6 +50,49 @@ home = {
 					$('[data-count="guest"]').text(value);
 				}
 			}
+		});
+	},
+	activateForgetPasswordForm: function (trigger) {
+		trigger.submit(function (e) {
+			e.preventDefault();
+			let dataUrl = $(this).attr('action');
+			let formData = $(this).serialize();
+			let dataType = $(this).attr('method');
+			$.ajax({
+				url: dataUrl,
+				data: formData,
+				type: dataType
+			}).done(function (returnData) {
+				let parsedData = JSON.parse(returnData);
+				Swal.fire({
+					type: parsedData.type,
+					title: parsedData.messages
+				});
+			});
+		});
+	},
+	activateVerifyPasswordForm: function (trigger) {
+		trigger.submit(function (e) {
+			e.preventDefault();
+			let dataUrl = $(this).attr('action');
+			let formData = $(this).serialize();
+			let dataType = $(this).attr('method');
+			let redirectUrl = $(this).attr('data-redirect');
+			$.ajax({
+				url: dataUrl,
+				data: formData,
+				type: dataType
+			}).done(function (returnData) {
+				let parsedData = JSON.parse(returnData);
+				Swal.fire({
+					type: parsedData.type,
+					title: parsedData.messages
+				}).then((result) => {
+					if(result.value && parsedData.type == 'success') {
+						location.href = redirectUrl;
+					}
+				});
+			});
 		});
 	}
 }
