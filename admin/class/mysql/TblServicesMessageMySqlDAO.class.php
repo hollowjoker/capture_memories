@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_services_message'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 21:16
+ * @date: 2019-11-13 09:17
  */
 class TblServicesMessageMySqlDAO implements TblServicesMessageDAO{
 

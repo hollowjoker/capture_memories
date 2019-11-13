@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_tour_package'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-07-26 21:16
+ * @date: 2019-11-13 09:17
  */
 class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 
@@ -57,7 +57,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
  	 * @param TblTourPackageMySql tblTourPackage
  	 */
 	public function insert($tblTourPackage){
-		$sql = 'INSERT INTO tbl_tour_package (place_id, name, description, travel_period_from_at, travel_period_to_at, selling_period, image_path, image_public_path, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO tbl_tour_package (place_id, name, description, travel_period_from_at, travel_period_to_at, selling_period, limit, image_path, image_public_path, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblTourPackage->placeId);
@@ -66,6 +66,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 		$sqlQuery->set($tblTourPackage->travelPeriodFromAt);
 		$sqlQuery->set($tblTourPackage->travelPeriodToAt);
 		$sqlQuery->set($tblTourPackage->sellingPeriod);
+		$sqlQuery->setNumber($tblTourPackage->limit);
 		$sqlQuery->set($tblTourPackage->imagePath);
 		$sqlQuery->set($tblTourPackage->imagePublicPath);
 		$sqlQuery->set($tblTourPackage->status);
@@ -84,7 +85,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
  	 * @param TblTourPackageMySql tblTourPackage
  	 */
 	public function update($tblTourPackage){
-		$sql = 'UPDATE tbl_tour_package SET place_id = ?, name = ?, description = ?, travel_period_from_at = ?, travel_period_to_at = ?, selling_period = ?, image_path = ?, image_public_path = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
+		$sql = 'UPDATE tbl_tour_package SET place_id = ?, name = ?, description = ?, travel_period_from_at = ?, travel_period_to_at = ?, selling_period = ?, limit = ?, image_path = ?, image_public_path = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblTourPackage->placeId);
@@ -93,6 +94,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 		$sqlQuery->set($tblTourPackage->travelPeriodFromAt);
 		$sqlQuery->set($tblTourPackage->travelPeriodToAt);
 		$sqlQuery->set($tblTourPackage->sellingPeriod);
+		$sqlQuery->setNumber($tblTourPackage->limit);
 		$sqlQuery->set($tblTourPackage->imagePath);
 		$sqlQuery->set($tblTourPackage->imagePublicPath);
 		$sqlQuery->set($tblTourPackage->status);
@@ -152,6 +154,13 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 		$sql = 'SELECT * FROM tbl_tour_package WHERE selling_period = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByLimit($value){
+		$sql = 'SELECT * FROM tbl_tour_package WHERE limit = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
@@ -240,6 +249,13 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByLimit($value){
+		$sql = 'DELETE FROM tbl_tour_package WHERE limit = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 	public function deleteByImagePath($value){
 		$sql = 'DELETE FROM tbl_tour_package WHERE image_path = ?';
 		$sqlQuery = new SqlQuery($sql);
@@ -299,6 +315,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 		$tblTourPackage->travelPeriodFromAt = $row['travel_period_from_at'];
 		$tblTourPackage->travelPeriodToAt = $row['travel_period_to_at'];
 		$tblTourPackage->sellingPeriod = $row['selling_period'];
+		$tblTourPackage->limit = $row['limit'];
 		$tblTourPackage->imagePath = $row['image_path'];
 		$tblTourPackage->imagePublicPath = $row['image_public_path'];
 		$tblTourPackage->status = $row['status'];

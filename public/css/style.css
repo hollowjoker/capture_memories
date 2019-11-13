@@ -608,7 +608,15 @@ footer ul li a {
 .datepicker table tr td.disabled {
 	background-color: #f7a39a;
 	color: #fff;
-
+}
+.datepicker table tr td.active.active {
+	background-color: #4ec1f0;
+	background-image: none;
+	border-radius: 0;
+}
+.datepicker table tr td.active.active:hover {
+	background-color: #33a8d8;
+	border-radius: 0;
 }
 
 
