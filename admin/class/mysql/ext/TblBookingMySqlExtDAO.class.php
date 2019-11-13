@@ -16,6 +16,7 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 			booking.departing_at,
 			booking.returning_at,
 			tourMeta.price,
+			tourMeta.quantity,
 			tour.name
 
 			from tbl_booking as booking
