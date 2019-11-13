@@ -60,7 +60,7 @@
 								<div class="feedback"></div>
 							</div>
 							<div class="form-group">
-								<input type="text" id="phone" class="form-control" name="phone" placeholder="Phone No." required>
+								<input type="text" maxlength="11" id="phone" class="form-control" name="phone" placeholder="Phone No." required onkeypress="return main.triggerNumberValidate(event)">
 								<div class="feedback"></div>
 							</div>
 							<div class="form-group">
@@ -231,6 +231,13 @@
 							}
 						});
 					});
+				},
+				triggerNumberValidate: function (evt) {
+					var charCode = (evt.which) ? evt.which : event.keyCode
+					if (charCode > 31 && (charCode < 48 || charCode > 57))
+						return false;
+
+					return true;
 				}
 			}
 
