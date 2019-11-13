@@ -144,10 +144,10 @@
 												</td>
 												<td>
 													<input type="hidden" name="metaId[]" class="form-control" placeholder="metaId" value="0">
-													<input type="text" name="quantity[]" required  class="form-control" placeholder="quantity" required>
+													<input type="text" name="quantity[]" required  class="form-control" placeholder="quantity" required onkeypress="return tour.triggerNumberValidate(event)">
 												</td>
 												<td>
-													<input type="text" name="price[]" required  class="form-control" placeholder="price" required>
+													<input type="text" name="price[]" required  class="form-control" placeholder="price" required onkeypress="return tour.triggerNumberValidate(event)">
 												</td>
 												<td>
 												<div class="onoffswitch">
@@ -206,10 +206,10 @@
 					</td>
 					<td>
 						<input type="hidden" name="metaId[]" class="form-control" placeholder="metaId" value="0">
-						<input type="text" name="quantity[]" class="form-control" placeholder="quantity" required>
+						<input type="text" name="quantity[]" class="form-control" placeholder="quantity" required onkeypress="return tour.triggerNumberValidate(event)">
 					</td>
 					<td>
-						<input type="text" name="price[]" class="form-control" placeholder="price" required>
+						<input type="text" name="price[]" class="form-control" placeholder="price" required onkeypress="return tour.triggerNumberValidate(event)">
 					</td>
 					<td>
 					<div class="onoffswitch">
