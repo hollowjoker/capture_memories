@@ -10,7 +10,12 @@ class Dashboard_model extends Model
 
 	public function fetchTotalSales() {
 		$data = DAOFactory::getTblBookingDAO()->fetchTotalSales();
-		$totalSales = count($data) ? $data[0][0] : 0;
+		$totalSales = 0;
+		if(count($data)) {
+			foreach($data as $k => $v) {
+				$totalSales += $v['price'] * $v['quantity'];
+			}
+		}
 		return $totalSales;
 	}
 
