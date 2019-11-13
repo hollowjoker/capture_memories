@@ -45,7 +45,7 @@
                                     <input type="text" name="returningAt" class="form-control datepicker" autocomplete="off" placeholder="MM/DD/YYYY" data-tour-checker="returning">
                                 </div>
                                 <div class="col mt-2">
-                                    <h5><span class="badge badge-pill badge-info" data-checker-receiver="tour" data-count-limit="<?= $v['tour_limit']?>"></span></h5>
+                                    <h5><span class="badge badge-pill badge-info" data-checker-receiver="tour" data-count-limit=""></span></h5>
                                 </div>
                             </div>
                             <div class="form-group pt-3">
@@ -96,7 +96,7 @@
                                 <textarea name="description" id="description" class="form-control" placeholder="Write your message here">Hi please see my reservation thanks!</textarea>
                             </div>
                             <div class="submit-btn">
-                                <button class="btn btn-custom-success btn-block" type="button" data-checkout="proceed">
+                                <button class="btn btn-custom-success btn-block" type="button" data-checkout="proceed" hidden>
                                     Proceed
                                 </button>
                             </div>

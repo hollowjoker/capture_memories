@@ -28,5 +28,11 @@ class TblUserMySqlExtDAO extends TblUserMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}
+
+	public function checkVerify($id, $email) {
+		$sql = "select * from tbl_user where id =".$id." && email = '".$email."'";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>

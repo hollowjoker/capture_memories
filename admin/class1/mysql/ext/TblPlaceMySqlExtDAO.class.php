@@ -8,7 +8,7 @@
 class TblPlaceMySqlExtDAO extends TblPlaceMySqlDAO{
 
 	public function getPlaceByAvailability($availability) {
-		$sql = "select * from tbl_place where ".$availability." = 'yes'";
+		$sql = "select * from tbl_place where ".$availability." = 'yes' && status = 'active'";
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}

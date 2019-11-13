@@ -46,6 +46,11 @@ tour = {
 		for(let i=0; i < activePickedGuest.attr('data-guest-quantity'); i++) {
 			toAppend += guestAppend;
 		}
+		if($('[data-count-limit]').attr('data-count-limit') >= activePickedGuest.attr('data-guest-quantity')) {
+			$('[data-checkout="proceed"]').attr('hidden', false);
+		} else {
+			$('[data-checkout="proceed"]').attr('hidden', true);
+		}
 		guestTable.html(toAppend);
 	},
 	activatePickGuest: function (trigger) {
@@ -99,7 +104,6 @@ tour = {
 			let returning = $('[name="returningAt"]').val();
 			let metaId = $('[name="metaId"]').val();
 			let dataUrl = $('[data-tour-checker-url]').attr('data-tour-checker-url');
-			let tourLimit = $('[data-count-limit]').attr('data-count-limit');
 
 			if(departing != "" && returning != "") {
 				let data = {
@@ -114,10 +118,13 @@ tour = {
 				}).done(function (returnData) {
 					let parsedData = JSON.parse(returnData);
 					let textSlot =  "";
+					$('[data-count-limit]').attr('data-count-limit',parsedData.slot);
 					if(parsedData.slot) {
 						textSlot = parsedData.slot+" more slot/s available";
+						$('[data-checkout="proceed"]').attr('hidden', false);
 					} else {
 						textSlot = "Sorry, there are no more slots available";
+						$('[data-checkout="proceed"]').attr('hidden', true);
 					}
 					$('[data-checker-receiver]').text(textSlot);
 				});
