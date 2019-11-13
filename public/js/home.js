@@ -55,14 +55,18 @@ home = {
 	activateForgetPasswordForm: function (trigger) {
 		trigger.submit(function (e) {
 			e.preventDefault();
+			let that = $(this).find('button');
+			that.attr('disabled',true);
 			let dataUrl = $(this).attr('action');
 			let formData = $(this).serialize();
 			let dataType = $(this).attr('method');
+
 			$.ajax({
 				url: dataUrl,
 				data: formData,
 				type: dataType
 			}).done(function (returnData) {
+				that.attr('disabled',false);
 				let parsedData = JSON.parse(returnData);
 				Swal.fire({
 					type: parsedData.type,
