@@ -113,7 +113,7 @@
 													<div class="col-sm-9 col-md-9 col-lg-10">
 														<div class="border-1 p-3 bg-light-gray">
 															<div class="mb-3">
-																<?php if(strpos($tourV['description'],'files') !== false) :?>
+																<?php if(strpos($tourV['description'],'images/files') !== false) :?>
 																	<img src="<?= $tourV['description']?>" alt="" class="img-fluid">
 																<?php else:?>
 																	<?= $tourV['description'] ?>
@@ -139,7 +139,11 @@
 													<div class="col-sm-9 col-md-9 col-lg-10">
 														<div class="border-1 p-3">
 															<div class="mb-3">
-																<?= $tourV['description']?>
+																<?php if(strpos($tourV['description'],'images/files') !== false) :?>
+																	<img src="<?= $tourV['description']?>" alt="" class="img-fluid">
+																<?php else:?>
+																	<?= $tourV['description'] ?>
+																<?php endif;?>
 															</div>
 															<span class="convo-muted">
 																<?= date('F d, Y', strtotime($tourV['created_at'])) ?>
