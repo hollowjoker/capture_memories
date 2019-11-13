@@ -39,5 +39,47 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}
+
+	public function fetchTotalSales() {
+		$sql = "
+			select
+			MAX(tour.price)
+
+			from tbl_booking as booking
+			inner join tbl_tour_package_meta as tour
+			on tour.id = booking.tbl_tour_package_meta_id
+
+			where booking.status = 'approved'
+		";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
+
+	public function fetchTotalBookings($type) {
+		$place = "domestic";
+		if($type == "international") {
+			$place = "international";
+		}
+		$sql = "
+			select
+
+			count(booking.id)
+
+			from tbl_booking as booking
+			inner join tbl_tour_package_meta as meta
+			on booking.tbl_tour_package_meta_id = meta.id
+
+			inner join tbl_tour_package as tour
+			on tour.id = meta.tbl_tour_package_id
+
+			inner join tbl_place as place
+			on place.id = tour.place_id
+
+			where place.type = '".$place."' &&
+			booking.status = 'approved'
+		";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>

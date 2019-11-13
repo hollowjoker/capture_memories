@@ -12,5 +12,11 @@ class TblUserMySqlExtDAO extends TblUserMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}
+
+	public function fetchTotalCustomers() {
+		$sql = "select count(id) from tbl_user where type = 'user'";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>
