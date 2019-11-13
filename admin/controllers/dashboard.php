@@ -11,6 +11,10 @@ class Dashboard extends Controller
 	
 	public function index()
 	{
+		$this->view->totalSales = $this->model->fetchTotalSales();
+		$this->view->totalCustomers = $this->model->fetchTotalCustomers();
+		$this->view->totalLocalBookings = $this->model->fetchTotalBookings('local');
+		$this->view->totalInternationalBookings = $this->model->fetchTotalBookings('international');
 		$this->view->render('views/'.$this->module.'/index.php');
 	}
 
