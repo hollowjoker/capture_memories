@@ -103,7 +103,7 @@ class user_model extends Model
 				'email' => $_POST['email'],	
 				'body' => 'verify'
 			];
-			return Controller::emailSend($emailData);
+			Controller::emailSend($emailData);
 			
 			$result = [
 				'id' => $userId,
