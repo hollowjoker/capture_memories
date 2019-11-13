@@ -12,6 +12,7 @@ class User extends Controller
 	
 	public function index()
 	{
+		$this->view->user = $this->model->fetchUser();
 		$this->view->render('views/user/index.php');
 	}
 

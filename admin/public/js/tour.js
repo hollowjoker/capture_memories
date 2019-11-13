@@ -7,6 +7,7 @@ tour = {
 		$imageUpload: $('[data-file="image_upload"]'),
 		$editTour: $('[data-action="edit_tour"]'),
 		$deleteTour: $('[data-action="delete_tour"]'),
+		$uploadFile: $('[name="file"]')
 	},
 	onInit: function() {
 		var self = this,

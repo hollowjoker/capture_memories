@@ -74,7 +74,7 @@
 						<div class="form-group">
 							<textarea name="description" id="description" class="form-control textarea-custom" placeholder="description"></textarea>
 						</div>
-						<div class="form-group mt-3">
+						<div class="form-group mt-3" hidden>
 							<label for="available">Available On</label>
 							<div class="row">
 								<div class="col">

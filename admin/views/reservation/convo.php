@@ -81,7 +81,7 @@
 									<div class="convo-details">
 										<div class="row">
 											<div class="col-sm-9 col-md-9 col-lg-10">
-												<form action="<?= URL.'reservation/messageStore'?>" method="post" id="message_form" data-redirect="<?= URL.'reservation/convo?id='.$_GET['id']?>">
+												<form action="<?= URL.'reservation/messageStore'?>" method="post" id="message_form" data-redirect="<?= URL.'reservation/convo?id='.$_GET['id']?>" enctype="multipart/form-data">
 													<input type="hidden" name="tblConvoId" value="<?= $v['id'] ?>">
 													<input type="hidden" name="tblReceiverId" value="<?= $v['user_id'] ?>">
 													<div class="border-1 p-3 mb-3">
@@ -89,6 +89,10 @@
 															<textarea name="description" type="text" placeholder="Reply Here..." class="form-control custom-textarea small"></textarea>
 														</div>
 														<div class="img-flex-end">
+															<div class="col mt-2">
+																<input type="file" name="file" class="form-control">
+															</div>
+															<button type="button" class="btn btn-custom-success btn-sm" data-upload-button="true" hidden><i class="now-ui-icons objects_spaceship"></i></button>
 															<button class="btn btn-custom-success btn-sm">Send Message</button>
 														</div>
 													</div>
@@ -109,7 +113,11 @@
 													<div class="col-sm-9 col-md-9 col-lg-10">
 														<div class="border-1 p-3 bg-light-gray">
 															<div class="mb-3">
-																<?= $tourV['description']?>
+																<?php if(strpos($tourV['description'],'files') !== false) :?>
+																	<img src="<?= $tourV['description']?>" alt="" class="img-fluid">
+																<?php else:?>
+																	<?= $tourV['description'] ?>
+																<?php endif;?>
 															</div>
 															<span class="convo-muted"><?= date('F d, Y - h:i A', strtotime($tourV['created_at'])) ?></span>
 														</div>
