@@ -1,4 +1,8 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class Controller{
 	function __construct(){
 		$this->view = new Views();
@@ -104,6 +108,36 @@ class Controller{
 			$randomString .= $characters[rand(0, $charactersLength - 1)];
 		}
 		return "TR-".$randomString;
+	}
+
+	static function emailSend($data) {
+		$body = "";
+		if($data['body'] == 'verify') {
+			$body = self::verify($data);
+		}
+		$mail = new PHPMailer;
+		$mail->isSMTP(); 
+		$mail->Host = "smtp.gmail.com";
+		$mail->Port = 587;
+		$mail->SMTPSecure = 'tls';
+		$mail->SMTPAuth = true;
+		$mail->Username = "adec.joshua@gmail.com";
+		$mail->Password = "adec2019";
+		$mail->setFrom("adec.joshua@gmail.com", "Capture Memories");
+		$mail->addAddress($data['email'], $data['displayName']);
+		$mail->Subject = $data['subject'];
+		$mail->Body = $body;
+		$mail->isHTML(true);
+
+		if(!$mail->send()){
+			return 0;
+		}else{
+			return 1;
+		}
+	}
+
+	static function verify($data) {
+		return "Hi please verify your account <a href='".MAILHOST."home/verifyEmail?orion=".$data['id']."&email=".$data['email']."'>Verify</a>";
 	}
 	
 }

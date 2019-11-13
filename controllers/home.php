@@ -15,6 +15,11 @@ class Home extends Controller
 		$this->view->international = $this->model->getTourData('international');
 		$this->view->render('views/home/index.php');
 	}
+	
+	public function verifyEmail() {
+		$modelResult = $this->model->verifyEmail();;
+		return $modelResult;
+	}
 
 }
 

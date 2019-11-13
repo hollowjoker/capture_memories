@@ -26,6 +26,32 @@ class home_model extends Model
 		}
 		return $tour;
 	}
+
+	public function verifyEmail() {
+		$id = $_GET['orion'];
+		$email = $_GET['email'];
+		$userData = DAOFactory::getTblUserDAO()->checkVerify($id, $email);
+		$result = [
+			'type' => 'error',
+			'messages' => 'Invalid Credentials'
+		];
+		if(count($userData)) {
+			$loadedUser = DAOFactory::getTblUserDAO()->load($id);
+			$loadedUser->active = "active";
+			
+			DAOFactory::getTblUserDAO()->update($loadedUser);
+
+			$userSignData = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($email)[0];
+			$userSession = Session::setSession('user',$userSignData);
+
+		}
+		$result = [
+			'type' => 'success',
+			'messages' => 'Verify Success!'
+		];
+
+		return $result;
+	}
 }
 
 ?>
