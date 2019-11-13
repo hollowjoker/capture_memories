@@ -7,4 +7,9 @@ class User_model extends Model
 	{
 		parent::__construct();
 	}
+
+	public function fetchUser() {
+		$userData = DAOFactory::getTblUserDAO()->queryAll();
+		return $userData;
+	}
 }

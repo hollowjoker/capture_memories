@@ -1,5 +1,5 @@
 <?php
-	
+	$user = $this->user;
 ?>
 	<div class="row">
 		<div class="col-md-12">
@@ -7,9 +7,9 @@
 				<div class="card-header">
 					<h4 class="card-title">
 						<span>User List</span>
-						<button class="btn btn-info btn__circle shadow" data-toggle="modal" data-target="#userFormModal">
+						<!-- <button class="btn btn-info btn__circle shadow" data-toggle="modal" data-target="#userFormModal">
 							<i class="now-ui-icons ui-1_simple-add"></i>
-						</button>
+						</button> -->
 					</h4>
 				</div>
 				<div class="card-body">
@@ -23,37 +23,34 @@
 									<th>Birth Date</th>
 									<th>Type</th>
 									<th>Status</th>
-									<th>Action</th>
+									<!-- <th>Action</th> -->
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Carla Remo</td>
-									<td>mjcarlaremo@gmail.com</td>
-									<!-- <td>
-										<?php if(count($v['meta'])): ?>
-											<?php foreach($v['meta'] as $metaK => $metaV): ?>
-												<span class="badge badge-custombg badge-custombg-<?=$metaK?> badge-lg badge-pill"> 
-													<?= $metaV['quantity'] ?>
-													<i class="now-ui-icons users_single-02"></i>
-													<?= number_format($metaV['price'],0) ?>
-												</span>
-											<?php endforeach;?>
-										<?php endif;?>
-									</td> -->
-									<td>0920392932930</td>
-									<td>09/11/94</td>
-									<td>Admin</td>
-									<td>Active</td>
-									<td>
-										<button type="button" class="btn btn-info btn-sm" data-action="edit_user" data-url="">
-											<i class="now-ui-icons design-2_ruler-pencil"></i>
-										</button>
-										<button type="button" class="btn btn-danger btn-sm" data-action="delete_user" data-url="">
-											<i class="now-ui-icons ui-1_simple-delete"></i>
-										</button>
-									</td>
-								</tr>
+								<?php
+									if(count($user)):
+										foreach($user as $k => $v):
+								?>
+									<tr>
+										<td><?= $v->firstName." ".$v->lastName?></td>
+										<td><?= $v->email ?></td>
+										<td><?= $v->phone ?></td>
+										<td><?= $v->birthDate ?></td>
+										<td><?= ucfirst($v->type) ?></td>
+										<td><?= $v->active ?></td>
+										<!-- <td>
+											<button type="button" class="btn btn-info btn-sm" data-action="edit_user" data-url="">
+												<i class="now-ui-icons design-2_ruler-pencil"></i>
+											</button>
+											<button type="button" class="btn btn-danger btn-sm" data-action="delete_user" data-url="">
+												<i class="now-ui-icons ui-1_simple-delete"></i>
+											</button>
+										</td> -->
+									</tr>
+								<?php
+										endforeach;
+									endif;
+								?>
 							</tbody>
 						</table>
 					</div>

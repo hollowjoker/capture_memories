@@ -55,7 +55,7 @@ class Tour_model extends Model
 				if(move_uploaded_file($_FILES["imagePath"]["tmp_name"], $target_file)) {
 				} else {
 					$result['messsages'] = "Sorry, there was an error uploading your file.";
-					return $tour;
+					return $result;
 				}
 			}
 			if($_POST['id']) {

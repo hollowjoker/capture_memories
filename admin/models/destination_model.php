@@ -24,7 +24,7 @@ class Destination_model extends Model
 		$insert->airlineStatus = isset($_POST['airlineStatus']) ? 'yes' : 'no';
 		$insert->visaStatus = isset($_POST['visaStatus']) ? 'yes' : 'no';
 		$insert->wifiStatus = isset($_POST['wifiStatus']) ? 'yes' : 'no';
-		$insert->tourStatus = isset($_POST['tourStatus']) ? 'yes' : 'no';
+		$insert->tourStatus = 'yes';
 		$insert->status = isset($_POST['status']) ? 'active' : 'inactive';
 
 		if($_POST['id']) {
