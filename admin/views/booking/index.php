@@ -27,7 +27,7 @@
 								?>
 									<tr>
 										<td><?= $v['first_name'].' '.$v['last_name']?></td>
-										<td>Php. <?= number_format($v['price'])?></td>
+										<td>Php. <?= number_format($v['price'] * $v['quantity'])?></td>
 										<td>
 											<p class="text-muted">
 												<span class="text-dark"><?= $v['name'] ?></span>
@@ -71,7 +71,7 @@
 								?>
 									<tr>
 										<td><?= $v['first_name'].' '.$v['last_name']?></td>
-										<td>Php. <?= number_format($v['price'])?></td>
+										<td>Php. <?= number_format($v['price'] * $v['quantity'])?></td>
 										<td>
 											<p class="text-muted">
 												<span class="text-dark"><?= $v['name'] ?></span>
