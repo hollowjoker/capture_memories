@@ -109,8 +109,16 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control" autocomplete="off" name="sellingPeriod" placeholder="Selling Period (ex. August 20 2019)">
-									<div class="feedback"></div>
+									<div class="row">
+										<div class="col">
+											<input type="text" class="form-control" autocomplete="off" name="sellingPeriod" placeholder="Selling Period (ex. August 20 2019)">
+											<div class="feedback"></div>
+										</div>
+										<div class="col">
+											<input type="number" class="form-control" autocomplete="off" name="tourLimit" placeholder="Tour Limit">
+											<div class="feedback"></div>
+										</div>
+									</div>
 								</div>
 								<div class="form-group">
 									<img src="<?= MAIN_URL.'public/images/placeholder-600x400.png'?>" class="img-fluid shadow" alt="" data-render="image">

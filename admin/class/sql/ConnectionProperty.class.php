@@ -9,7 +9,7 @@ class ConnectionProperty{
 
 	private static $host = 'localhost';
 	private static $user = 'root';
-	private static $password = '';
+	private static $password = 'root';
 	private static $database = 'capture_memories';
 	
 	public static function getHost(){

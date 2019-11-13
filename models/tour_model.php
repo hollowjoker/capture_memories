@@ -99,6 +99,28 @@ class tour_model extends Model
 		
 		return $tour;
 	}
+	
+	public function tourChecker() {
+		$departing = date('Y-m-d', strtotime($_POST['departing']));
+		$returning = date('Y-m-d', strtotime($_POST['returning']));
+		
+		$params = [
+			'departing' => $departing,
+			'returning' => $returning,
+			'metaId' => $_POST['metaId']
+		];
+		$packageData = DAOFactory::getTblTourPackageMetaDAO()->fetchTour($_POST['metaId']);
+		$bookingData = DAOFactory::getTblBookingDAO()->tourChecker($params);
+		$bookingCount = 0;
+		foreach($bookingData as $k => $v) {
+			$bookingCount += $v['quantity'];
+		}
+		$tourLimit = count($packageData) ? $packageData[0]['tour_limit'] : 0;
+		$totalSlot = $tourLimit - $bookingCount;
+		return array(
+			'slot' => $totalSlot
+		);
+	}
 }
 
 ?>

@@ -58,6 +58,9 @@ textarea,
 .text-custom-success{
 	color: #E692C5 !important;
 }
+.font-size-15 {
+	font-size: 1.5rem;
+}
 .font-size-2 {
 	font-size: 2rem;
 }
@@ -456,6 +459,9 @@ section.header{
 .weight-100 {
 	font-weight: 100;
 }
+.weight-600 {
+	font-weight: 600;
+}
 .bg-light-gray {
 	background-color: #eee;
 }
@@ -608,7 +614,15 @@ footer ul li a {
 .datepicker table tr td.disabled {
 	background-color: #f7a39a;
 	color: #fff;
-
+}
+.datepicker table tr td.active.active {
+	background-color: #4ec1f0;
+	background-image: none;
+	border-radius: 0;
+}
+.datepicker table tr td.active.active:hover {
+	background-color: #33a8d8;
+	border-radius: 0;
 }
 
 /*about_us*/

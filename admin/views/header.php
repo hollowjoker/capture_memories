@@ -60,7 +60,7 @@
 								</div>
 							</a>
 						</li>
-						<li class="<?= $module == 'services' ? 'active' : ''?> ">
+						<!-- <li class="<?= $module == 'services' ? 'active' : ''?> ">
 							<a href="<?= URL.'services/?type=airline'?>">
 								<i class="now-ui-icons objects_spaceship"></i>
 								<div class="d-flex pt-1 justify-content-between">
@@ -70,7 +70,7 @@
 									</div>
 								</div>
 							</a>
-						</li>
+						</li> -->
 						<li class="<?= $module == 'booking' ? 'active' : ''?> ">
 							<a href="<?= URL.'booking'?>">
 								<i class="now-ui-icons objects_spaceship"></i><p>Bookings</p>
