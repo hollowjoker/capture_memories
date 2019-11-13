@@ -11,6 +11,7 @@ class About_us extends Controller
 	
 	public function index()
 	{
+		$this->view->about_us = Data::About_us();
 		$this->view->render('views/about-us/index.php');
 	}
 
