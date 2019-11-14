@@ -149,10 +149,10 @@ class user_model extends Model
 	}
 
 	public function submitForgotPassword() {
-		$userData = DAOFactory::getTblUserDAO()->queryByEmail($_POST['email']);
+		$userData = DAOFactory::getTblUserDAO()->queryByEmailWhereActive($_POST['email']);
 		$result = [
 			'type' => 'error',
-			'messages' => 'Email not exist'
+			'messages' => 'Please verify your email.'
 		];
 		if(count($userData)) {
 			$data = [
