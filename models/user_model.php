@@ -181,7 +181,7 @@ class user_model extends Model
 	public function submitVerifyPassword() {
 		$userData = DAOFactory::getTblUserDAO()->load($_POST['id']);
 		if($_POST['newPassword'] == $_POST['confirmPassword']) {
-			if(count($userData)) {
+			if($userData) {
 				$userData->password = $_POST['newPassword'];
 				DAOFactory::getTblUserDAO()->update($userData);
 				
