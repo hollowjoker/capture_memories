@@ -133,6 +133,10 @@ class message_model extends Model
 		$convo = Controller::insertDateUpdate($convo);
 		
 		$convoResult = DAOFactory::getTblConvoDAO()->update($convo);
+
+		$result = [
+			'type' => 'success' 
+		];
 		return $result;
 	}
 }
