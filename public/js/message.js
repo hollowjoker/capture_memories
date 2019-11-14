@@ -52,7 +52,6 @@ message = {
 				processData: false,
 				dataType:'json',
 			}).done( result => {
-				// console.log(result);
 				if(result.type == 'error') {
 					Swal.fire({
 						type: result.type,

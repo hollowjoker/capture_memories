@@ -115,7 +115,7 @@
 											<div class="feedback"></div>
 										</div>
 										<div class="col">
-											<input type="number" class="form-control" autocomplete="off" name="tourLimit" placeholder="Tour Limit">
+											<input type="text" class="form-control" autocomplete="off" name="tourLimit" placeholder="Tour Limit" onkeypress="return tour.triggerNumberValidate(event)" >
 											<div class="feedback"></div>
 										</div>
 									</div>
