@@ -61,7 +61,7 @@
 					<span class="d-inline-block font-size-4 ml-3">
 						<i class="now-ui-icons color-primary shopping_shop"></i>
 					</span>
-					<span class="d-inline-block mr-5"><?= number_format($totalCustomers) ?></span>
+					<span class="d-inline-block mr-5"><?= number_format($local) ?></span>
 				</h1>
 			</div>
 		</div>
