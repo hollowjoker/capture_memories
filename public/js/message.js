@@ -52,15 +52,15 @@ message = {
 				processData: false,
 				dataType:'json',
 			}).done( result => {
-				console.log(result);
-				// if(result.type == 'error') {
-				// 	Swal.fire({
-				// 		type: result.type,
-				// 		title: result.messages
-				// 	});
-				// 	return false;
-				// }
-				// location.href = formRedirect;
+				// console.log(result);
+				if(result.type == 'error') {
+					Swal.fire({
+						type: result.type,
+						title: result.messages
+					});
+					return false;
+				}
+				location.href = formRedirect;
 			});
 		});
 	},
