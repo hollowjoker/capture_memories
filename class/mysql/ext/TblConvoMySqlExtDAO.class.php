@@ -45,6 +45,7 @@ class TblConvoMySqlExtDAO extends TblConvoMySqlDAO{
 			booking.departing_at,
 			booking.returning_at,
 			booking.status,
+			booking.transaction_no,
 			booking.id booking_id,
 			tour.name,
 			tour.image_public_path,
