@@ -21,6 +21,8 @@
                             </div>
 
                             <div class="mt-4">
+                                Transaction No.: <span class="mt-2 weight-600"><?= $v['transaction_no'] ?></span>
+                                <br/>
                                 <?= $v['name'] ?>
                                 <div class="border-top border-bottom pt-2 mt-4">
                                     <ul>

@@ -30,6 +30,7 @@ class tour_model extends Model
 		$booking->tblTourPackageMetaId = $_POST['metaId'];
 		$booking->departingAt = date('Y-m-d', strtotime($_POST['departingAt']));
 		$booking->returningAt = date('Y-m-d', strtotime($_POST['returningAt']));
+		$booking->transactionNo = $_POST['referenceNo'];
 		$booking->tblUserId = $user['id'];
 		$booking->status = 'pending';
 		$booking = Controller::insertDate($booking);
