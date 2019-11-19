@@ -2,11 +2,11 @@
 	$tours = $this->tours;
 	$international = $this->international;
 ?>
-<section class="header">
+<section class="header pb-5">
 	<div class="overlay"></div>
-	<div class="container">
+	<div class="container-xl">
 		<div class="row">
-			<div class="col-lg-5 col-md-6">
+			<div class="col-lg-4 col-md-3">
 				<form action="<?= URL.'tour'?>" type="get">
 					<div class="main_holder">
 						<div class="inner_holder">
@@ -53,6 +53,56 @@
 						</div>
 					</div>
 				</form>
+			</div>
+			<div class="col-lg-8">
+				<div class="row header-card-holder marginNegLR">
+					<div class="col-12">
+						<h4 class="text-light">Tours and Packages <span>(Local)</span></h4>
+					</div>
+					<?php if(count($tours)): ?>
+						<?php foreach($tours as $k => $v): ?>
+							<div class="col-lg-4 custom-card paddingLR header-custom-card">
+								<div class="card">
+									<a href="<?= URL.'tour/domestic?id='.$v['id']?>">
+										<img src="<?= $v['image_public_path'] ?>" class="card-img-top" alt="...">
+									</a>
+									<div class="card-body px-2">
+										<h5 class="card-sub-title"><?= strtoupper($v['destination_name']) ?></h5>
+										<h5 class="card-title"><?= $v['name'] ?></h5>
+										<h5 class="card-price-holder">
+											<?php foreach($v['meta'] as $key_meta => $value_meta): ?>
+												<span class="formater">Starting at Php <?= number_format($value_meta['price']) ?></span>
+											<?php endforeach; ?>
+										</h5>
+									</div>
+								</div>
+							</div>
+						<?php endforeach;?>
+					<?php endif ?>
+				</div>
+				<div class="row mt-5 marginNegLR">
+					<div class="col-12">
+						<h4 class="text-light">Tours and Packages <span>(International)</span></h4>
+					</div>
+					<?php if(count($international)): ?>
+						<?php foreach($international as $key_international => $value_international): ?>
+							<div class="col-lg-4 paddingLR">
+								<a href="<?= URL.'tour/international?id='.$value_international['id']?>">
+									<div class="card">
+										<div class="overlay-gradient card-img-bottom"></div>
+										<div class="header-card-img card-img card-img-top card-img-bottom" alt="Card image" style="background-image: url('<?= $value_international['image_public_path'] ?>') ">
+											<div class="card-content pt-4">
+												<div>
+													<?= $value_international['destination_name'] ?>
+												</div>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						<?php endforeach;?>
+					<?php endif ?>
+				</div>
 			</div>
 		</div>
 	</div>

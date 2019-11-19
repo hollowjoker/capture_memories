@@ -17,6 +17,7 @@
 		<link href="<?= MAIN_URL ?>public/now-ui-dashboard-master/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
 		<link href="<?= URL ?>public/css/style.css" rel="stylesheet" />
 		<link rel="icon" href="<?=  URL."public/images/tour/captured_memories_new.png" ?>" type="image/png" sizes="16x16">
+		<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light transparent <?= $module != '' ? "text-black border-bottom" : "nav_fixed" ?>">
@@ -24,11 +25,12 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<a class="navbar-brand" href="<?= URL ?>">
-				<img src="<?= URL."public/images/tour/captured_memories_new.png"?>" class="img-fluid" alt="logo" style="width: 50px;">
+				<img src="<?= URL."public/images/tour/captured_memories_new.png"?>" class="img-fluid mr-4" alt="logo" style="width: 100px;">
+				<span class="text-dark text-pacifico">Captured Memories Travel and Tours</span>
 			</a>
 
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-				<ul class="navbar-nav mt-2 mt-lg-0 ml-auto small">
+				<ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
 					<li class="nav-item active">
 						<a class="nav-link" href="<?= URL ?>">Home <span class="sr-only">(current)</span></a>
 					</li>

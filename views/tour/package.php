@@ -119,12 +119,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>Full Name</th>
-                                                    <th>Age</th>
+                                                    <th>Birth Date</th>
                                                 </tr>
-                                                <tbody data-detail="guest-row">
-                                                    
-                                                </tbody>
                                             </thead>
+                                            <tbody data-detail="guest-row">
+                                                
+                                            </tbody>
                                         </table>
                                         <hr>
                                     </div>
@@ -161,7 +161,7 @@
                     <input type="text" class="form-control" name="companionName[]" placeholder="Full Name">
                 </td>
                 <td>
-                    <input type="number" class="form-control" name="age[]" placeholder="Age" onkeyup="return tour.triggerNumberValidate(event)">
+                    <input type="text" class="form-control birthdate_picker" name="birthDate[]" placeholder="Birth Date" autocomplete="off">
                 </td>
             </tr>
         </tbody>

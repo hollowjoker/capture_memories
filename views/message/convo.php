@@ -39,7 +39,7 @@
                                 <div class="mt-4">
                                     <span class="convo-muted">Guest</span>
                                     <?php foreach($v['booking_meta'] as $metaK => $metaV): ?>
-                                        <p class="m-0"><?= $metaV['companion_name'].", ".$metaV['age'] ?></p>
+                                        <p class="m-0"><?= $metaV['companion_name'].", ".date('F d, Y', strtotime($metaV['birth_date'])) ?></p>
                                     <?php endforeach;?>
                                 </div>
 

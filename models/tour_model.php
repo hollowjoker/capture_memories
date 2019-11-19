@@ -41,7 +41,7 @@ class tour_model extends Model
 			$bookingMeta = new TblBookingMeta;
 			$bookingMeta->tblBookingId = $bookingResult;
 			$bookingMeta->companionName = $v;
-			$bookingMeta->age = $_POST['age'][$k];
+			$bookingMeta->birthDate = date('Y-m-d', strtotime($_POST['birthDate'][$k]));
 			$bookingMeta = Controller::insertDate($bookingMeta);
 
 			$bookingMetaResult = DAOFactory::getTblBookingMetaDAO()->insert($bookingMeta);

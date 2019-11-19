@@ -49,6 +49,10 @@
 	require_once('class/dto/TblTourPackage.class.php');
 	require_once('class/mysql/TblTourPackageMySqlDAO.class.php');
 	require_once('class/mysql/ext/TblTourPackageMySqlExtDAO.class.php');
+	require_once('class/dao/TblTourPackageImagesDAO.class.php');
+	require_once('class/dto/TblTourPackageImage.class.php');
+	require_once('class/mysql/TblTourPackageImagesMySqlDAO.class.php');
+	require_once('class/mysql/ext/TblTourPackageImagesMySqlExtDAO.class.php');
 	require_once('class/dao/TblTourPackageMetaDAO.class.php');
 	require_once('class/dto/TblTourPackageMeta.class.php');
 	require_once('class/mysql/TblTourPackageMetaMySqlDAO.class.php');

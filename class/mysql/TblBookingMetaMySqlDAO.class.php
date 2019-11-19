@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_booking_meta'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-11-14 06:33
+ * @date: 2019-11-19 12:59
  */
 class TblBookingMetaMySqlDAO implements TblBookingMetaDAO{
 
@@ -57,12 +57,12 @@ class TblBookingMetaMySqlDAO implements TblBookingMetaDAO{
  	 * @param TblBookingMetaMySql tblBookingMeta
  	 */
 	public function insert($tblBookingMeta){
-		$sql = 'INSERT INTO tbl_booking_meta (tbl_booking_id, companion_name, age, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO tbl_booking_meta (tbl_booking_id, companion_name, birth_date, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblBookingMeta->tblBookingId);
 		$sqlQuery->set($tblBookingMeta->companionName);
-		$sqlQuery->set($tblBookingMeta->age);
+		$sqlQuery->set($tblBookingMeta->birthDate);
 		$sqlQuery->set($tblBookingMeta->createdAt);
 		$sqlQuery->set($tblBookingMeta->updatedAt);
 		$sqlQuery->set($tblBookingMeta->deletedAt);
@@ -78,12 +78,12 @@ class TblBookingMetaMySqlDAO implements TblBookingMetaDAO{
  	 * @param TblBookingMetaMySql tblBookingMeta
  	 */
 	public function update($tblBookingMeta){
-		$sql = 'UPDATE tbl_booking_meta SET tbl_booking_id = ?, companion_name = ?, age = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
+		$sql = 'UPDATE tbl_booking_meta SET tbl_booking_id = ?, companion_name = ?, birth_date = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblBookingMeta->tblBookingId);
 		$sqlQuery->set($tblBookingMeta->companionName);
-		$sqlQuery->set($tblBookingMeta->age);
+		$sqlQuery->set($tblBookingMeta->birthDate);
 		$sqlQuery->set($tblBookingMeta->createdAt);
 		$sqlQuery->set($tblBookingMeta->updatedAt);
 		$sqlQuery->set($tblBookingMeta->deletedAt);
@@ -115,8 +115,8 @@ class TblBookingMetaMySqlDAO implements TblBookingMetaDAO{
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByAge($value){
-		$sql = 'SELECT * FROM tbl_booking_meta WHERE age = ?';
+	public function queryByBirthDate($value){
+		$sql = 'SELECT * FROM tbl_booking_meta WHERE birth_date = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -158,8 +158,8 @@ class TblBookingMetaMySqlDAO implements TblBookingMetaDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByAge($value){
-		$sql = 'DELETE FROM tbl_booking_meta WHERE age = ?';
+	public function deleteByBirthDate($value){
+		$sql = 'DELETE FROM tbl_booking_meta WHERE birth_date = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
@@ -199,7 +199,7 @@ class TblBookingMetaMySqlDAO implements TblBookingMetaDAO{
 		$tblBookingMeta->id = $row['id'];
 		$tblBookingMeta->tblBookingId = $row['tbl_booking_id'];
 		$tblBookingMeta->companionName = $row['companion_name'];
-		$tblBookingMeta->age = $row['age'];
+		$tblBookingMeta->birthDate = $row['birth_date'];
 		$tblBookingMeta->createdAt = $row['created_at'];
 		$tblBookingMeta->updatedAt = $row['updated_at'];
 		$tblBookingMeta->deletedAt = $row['deleted_at'];

@@ -87,14 +87,22 @@
 									<div class="feedback"></div>
 								</div>
 								<div class="form-group">
-									<select name="placeId" id="placeId" class="custom-select" required>
-										<option disabled selected value="">Destination</option>
-										<?php if(count($place)): ?>
-											<?php foreach($place as $k => $v): ?>
-												<option value="<?= $v['id'] ?>"><?= $v['name'] ?></option>
-											<?php endforeach;?>
-										<?php endif;?>
-									</select>
+									<div class="row">
+										<div class="col">
+											<select name="placeId" id="placeId" class="custom-select" required>
+												<option disabled selected value="">Destination</option>
+												<?php if(count($place)): ?>
+													<?php foreach($place as $k => $v): ?>
+														<option value="<?= $v['id'] ?>"><?= $v['name'] ?></option>
+													<?php endforeach;?>
+												<?php endif;?>
+											</select>
+										</div>
+										<div class="col">
+											<input type="text" class="form-control" autocomplete="off" name="downpaymentDuration" placeholder="Downpayment Duration /hr" onkeypress="return tour.triggerNumberValidate(event)" >
+											<div class="feedback"></div>
+										</div>
+									</div>
 								</div>
 								<div class="form-group">
 									<div class="row">

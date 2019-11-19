@@ -78,6 +78,7 @@ class Tour_model extends Model
 			$tour->travelPeriodToAt = $_POST['travelPeriodToAt'];
 			$tour->sellingPeriod = $_POST['sellingPeriod'];
 			$tour->tourLimit = $_POST['tourLimit'];
+			$tour->downpaymentDuration = $_POST['downpaymentDuration'];
 			$tour->description = $_POST['description'];
 			$tour->status = isset($_POST['status']) ? 'active' : 'inactive';
 

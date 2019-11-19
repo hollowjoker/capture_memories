@@ -18,6 +18,7 @@
 									<th>Name</th>
 									<th>Message</th>
 									<th>Package Reserve</th>
+									<th>Slot Available</th>
 									<th>Status</th>
 									<th>Received</th>
 									<th>Action</th>
@@ -42,8 +43,11 @@
 												</p>
 											</td>
 											<td>
+												8
+											</td>
+											<td>
 												<span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-danger" : "text-success")))?>">
-													<?= strtoupper($v['status']) ?>    
+													<?= strtoupper($v['status']) ?>
 												</span>
 											</td>
 											<td>
@@ -51,14 +55,28 @@
 												<span class="clearfix text-muted">
 													<?= date('Y-m-d') == date('Y-m-d', strtotime($v['updated_at'])) ? "Now" : date('M d, Y',strtotime($v['updated_at'])) ?>
 												</span>
+												<?php
+													$dateNow = strtotime(date('Y-m-d H:i:s'));
+													$dateDown = date('Y-m-d H:i:s', strtotime('+'.$v['downpayment_duration'].' hours', strtotime($v['created_at'])));
+													$dateInterference = strtotime($dateDown) - $dateNow;
+													$hours = $dateInterference / 3600;
+													$duration = $hours > 0 ? gmdate("H:i", $dateInterference) : "Cancelled";
+												?>
+												<span class="clearfix badge badge-pill badge-<?= $duration != "Cancelled" ? "warning" : "danger"?> font-size-08">
+													<?= $duration ?>
+												</span>
 											</td>
 											<td>
-												<button type="button" class="btn btn-success btn-sm" data-action="update_status" data-status="approve" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=approved' ?>">
+												<?php if($v['status'] == "pending"): ?>
+													<button type="button" class="btn btn-success btn-sm" data-action="update_status" data-status="approve" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=approved' ?>">
 													<i class="now-ui-icons ui-2_like"></i>
 												</button>
-												<button type="button" class="btn btn-warning btn-sm" data-action="update_status" data-status="decline" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=declined' ?>">
-													<i class="now-ui-icons ui-1_simple-remove"></i>
-												</button>
+												<?php endif; ?>
+												<?php if($v['status'] != "declined"): ?>
+													<button type="button" class="btn btn-warning btn-sm" data-action="update_status" data-status="decline" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=declined' ?>">
+														<i class="now-ui-icons ui-1_simple-remove"></i>
+													</button>
+												<?php endif; ?>
 												<!-- <button type="button" class="btn btn-danger btn-sm" data-action="update_status" data-url="">
 													<i class="now-ui-icons ui-1_simple-delete"></i>
 												</button> -->

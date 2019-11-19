@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-11-14 06:33
+ * @date: 2019-11-19 12:59
  */
 interface TblTourPackageDAO{
 
@@ -61,6 +61,8 @@ interface TblTourPackageDAO{
 
 	public function queryByTravelPeriodToAt($value);
 
+	public function queryByDownpaymentDuration($value);
+
 	public function queryBySellingPeriod($value);
 
 	public function queryByTourLimit($value);
@@ -87,6 +89,8 @@ interface TblTourPackageDAO{
 	public function deleteByTravelPeriodFromAt($value);
 
 	public function deleteByTravelPeriodToAt($value);
+
+	public function deleteByDownpaymentDuration($value);
 
 	public function deleteBySellingPeriod($value);
 

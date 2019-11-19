@@ -29,8 +29,16 @@ tour = {
 			startDate: el.$startDate,
 			endDate: el.$endDate
 		});
+		self.activateBirthPicker();
+	},
+	activateBirthPicker: function () {
+		$('.birthdate_picker').datepicker({
+			uiLibrary: 'bootstrap4',
+			format: 'mm/dd/yyyy'
+		});
 	},
 	activatePickedGuestQuantity: function () {
+		var self = this;
 		let activePickedGuest = $('[data-guest-pick="quantity"].active');
 		let price = activePickedGuest.find('[data-check="price"]').text();
 		let metaId = activePickedGuest.attr('data-meta-id');
@@ -52,6 +60,7 @@ tour = {
 			$('[data-checkout="proceed"]').attr('hidden', true);
 		}
 		guestTable.html(toAppend);
+		self.activateBirthPicker();
 	},
 	activatePickGuest: function (trigger) {
 		trigger.click(function (e) {
@@ -155,7 +164,7 @@ tour = {
 				let ageArray = [];
 				let companionArray = [];
 				$.each(formData, function (k ,v) {
-					if(v.name == "age[]") {
+					if(v.name == "birthDate[]") {
 						ageArray.push(v.value);
 					} else if(v.name == "companionName[]") {
 						companionArray.push(v.value);
