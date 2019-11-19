@@ -65,7 +65,10 @@ class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 			$sql .= " order by ".$option['column']." ".$option['orderBy']." ";
 		}
 		if(isset($option['limit'])) {
-			$sql .= " limit ".$option['limit'];
+			$sql .= " limit ".$option['limit']." ";
+		}
+		if(isset($option['offset'])) {
+			$sql .= " offset ".$option['offset'];
 		}
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
