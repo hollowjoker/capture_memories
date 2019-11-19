@@ -18,15 +18,23 @@
 						</div>
 						<div class="convo-section">
 							 <ul class="footer-menu mb-0">
-								<li><a href="https://www.facebook.com/">Facebook</a></li>
-								<li><a href="https://www.instagram.com/">Instagram</a></li>
-								<li><a href="https://twitter.com/">Twitter</a></li>
+								<li><a href="https://www.facebook.com/capturedmemoriestravelandtours/" target="_blank">Facebook</a></li>
+								<li><a href="mailto:capturedmemoriestravelandtours@gmail.com" target="_blank">Gmail</a></li>
+								<li><a href="https://m.me/capturedmemoriestravelandtours?fbclid=IwAR0A8tbOj2vQmqsFOr0ENqVYAjGsUR_fiSWTXmWEx11awqMeaLAxfyshBSw" target="_blank">Messanger</a></li>
 							</ul>
+							<div class="footer-copyright pt-3">
+								© Capture Memories – 2019 (All Rights Reserved)
+							</div>
 						</div>
 					</div>
 					<div class="col-lg-3 footer_menu__holder">
-						<div class="footer-copyright">
-							© Capture Memories – 2019 (All Rights Reserved)
+						<div class="footer-copyright pt-2">
+							<strong>CONTACT US</strong><br>
+							<ul style="list-style: none; padding: 0;" class="mt-2">
+								<li><strong>LANDLINE:</strong>(02) 917 8134</li>
+								<li><strong>GLOBE:</strong>+63 9155018187</li>
+								<li><strong>SMART</strong>+63 9164847665</li>
+							</ul>
 						</div>
 					</div>
 				</div>
