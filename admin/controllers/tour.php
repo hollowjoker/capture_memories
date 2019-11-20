@@ -36,6 +36,18 @@ class Tour extends Controller
 		exit;
 	}
 
+	public function imageStore() {
+		$modelResult = $this->model->imageStore();
+		echo json_encode($modelResult);
+		exit;
+	}
+
+	public function fetchGallery() {
+		$modelResult = $this->model->fetchGallery();
+		echo json_encode($modelResult);
+		exit;
+	}
+
 }
 
 ?>
