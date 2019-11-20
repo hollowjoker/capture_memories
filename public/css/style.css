@@ -58,6 +58,9 @@ textarea,
 .text-custom-success{
 	color: #E692C5 !important;
 }
+.text-pacifico {
+	font-family: 'Pacifico', cursive !important;
+}
 .font-size-15 {
 	font-size: 1.5rem;
 }
@@ -117,6 +120,9 @@ section.header{
     border-bottom-right-radius: calc(.25rem - 1px);
 	height: 200px;
     object-fit: cover;
+}
+.header-custom-card .card img {
+	height: 100px;
 }
 .container-xl {
 	padding-right: 15px;
@@ -245,7 +251,7 @@ section.header{
 	background-color: #fff;
 	border-radius: 10px;
 	height: 100%;
-	margin-top: 120px;
+	margin-top: 140px;
 	padding: 2rem;
 	width: 100%;
 }
@@ -253,6 +259,9 @@ section.header{
 	position: absolute;
     width: 100%;
     z-index: 10;
+}
+.header-card-holder {
+	margin-top: 140px;
 }
 
 /*!
@@ -271,6 +280,9 @@ section.header{
 	font-weight: 600;
 	height: 300px;
 	justify-content: flex-end;
+}
+.header-card-img {
+	height: 230px;
 }
 .card-content {
 	height: 30%;

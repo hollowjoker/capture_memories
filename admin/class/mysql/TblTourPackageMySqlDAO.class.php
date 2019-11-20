@@ -3,7 +3,7 @@
  * Class that operate on table 'tbl_tour_package'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2019-11-14 06:33
+ * @date: 2019-11-19 12:59
  */
 class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 
@@ -57,7 +57,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
  	 * @param TblTourPackageMySql tblTourPackage
  	 */
 	public function insert($tblTourPackage){
-		$sql = 'INSERT INTO tbl_tour_package (place_id, name, description, travel_period_from_at, travel_period_to_at, selling_period, tour_limit, image_path, image_public_path, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO tbl_tour_package (place_id, name, description, travel_period_from_at, travel_period_to_at, downpayment_duration, selling_period, tour_limit, image_path, image_public_path, status, created_at, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblTourPackage->placeId);
@@ -65,6 +65,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 		$sqlQuery->set($tblTourPackage->description);
 		$sqlQuery->set($tblTourPackage->travelPeriodFromAt);
 		$sqlQuery->set($tblTourPackage->travelPeriodToAt);
+		$sqlQuery->set($tblTourPackage->downpaymentDuration);
 		$sqlQuery->set($tblTourPackage->sellingPeriod);
 		$sqlQuery->setNumber($tblTourPackage->tourLimit);
 		$sqlQuery->set($tblTourPackage->imagePath);
@@ -85,7 +86,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
  	 * @param TblTourPackageMySql tblTourPackage
  	 */
 	public function update($tblTourPackage){
-		$sql = 'UPDATE tbl_tour_package SET place_id = ?, name = ?, description = ?, travel_period_from_at = ?, travel_period_to_at = ?, selling_period = ?, tour_limit = ?, image_path = ?, image_public_path = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
+		$sql = 'UPDATE tbl_tour_package SET place_id = ?, name = ?, description = ?, travel_period_from_at = ?, travel_period_to_at = ?, downpayment_duration = ?, selling_period = ?, tour_limit = ?, image_path = ?, image_public_path = ?, status = ?, created_at = ?, updated_at = ?, deleted_at = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($tblTourPackage->placeId);
@@ -93,6 +94,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 		$sqlQuery->set($tblTourPackage->description);
 		$sqlQuery->set($tblTourPackage->travelPeriodFromAt);
 		$sqlQuery->set($tblTourPackage->travelPeriodToAt);
+		$sqlQuery->set($tblTourPackage->downpaymentDuration);
 		$sqlQuery->set($tblTourPackage->sellingPeriod);
 		$sqlQuery->setNumber($tblTourPackage->tourLimit);
 		$sqlQuery->set($tblTourPackage->imagePath);
@@ -145,6 +147,13 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 
 	public function queryByTravelPeriodToAt($value){
 		$sql = 'SELECT * FROM tbl_tour_package WHERE travel_period_to_at = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByDownpaymentDuration($value){
+		$sql = 'SELECT * FROM tbl_tour_package WHERE downpayment_duration = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -242,6 +251,13 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByDownpaymentDuration($value){
+		$sql = 'DELETE FROM tbl_tour_package WHERE downpayment_duration = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 	public function deleteBySellingPeriod($value){
 		$sql = 'DELETE FROM tbl_tour_package WHERE selling_period = ?';
 		$sqlQuery = new SqlQuery($sql);
@@ -314,6 +330,7 @@ class TblTourPackageMySqlDAO implements TblTourPackageDAO{
 		$tblTourPackage->description = $row['description'];
 		$tblTourPackage->travelPeriodFromAt = $row['travel_period_from_at'];
 		$tblTourPackage->travelPeriodToAt = $row['travel_period_to_at'];
+		$tblTourPackage->downpaymentDuration = $row['downpayment_duration'];
 		$tblTourPackage->sellingPeriod = $row['selling_period'];
 		$tblTourPackage->tourLimit = $row['tour_limit'];
 		$tblTourPackage->imagePath = $row['image_path'];

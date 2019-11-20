@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2019-11-14 06:33
+ * @date: 2019-11-19 12:59
  */
 interface TblBookingMetaDAO{
 
@@ -55,7 +55,7 @@ interface TblBookingMetaDAO{
 
 	public function queryByCompanionName($value);
 
-	public function queryByAge($value);
+	public function queryByBirthDate($value);
 
 	public function queryByCreatedAt($value);
 
@@ -68,7 +68,7 @@ interface TblBookingMetaDAO{
 
 	public function deleteByCompanionName($value);
 
-	public function deleteByAge($value);
+	public function deleteByBirthDate($value);
 
 	public function deleteByCreatedAt($value);
 

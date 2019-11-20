@@ -78,6 +78,13 @@ class DAOFactory{
 	}
 
 	/**
+	 * @return TblTourPackageImagesDAO
+	 */
+	public static function getTblTourPackageImagesDAO(){
+		return new TblTourPackageImagesMySqlExtDAO();
+	}
+
+	/**
 	 * @return TblTourPackageMetaDAO
 	 */
 	public static function getTblTourPackageMetaDAO(){

@@ -3,7 +3,7 @@
 	 * Object represents table 'tbl_tour_package'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2019-11-14 06:33	 
+     	 * @date: 2019-11-19 12:59	 
 	 */
 	class TblTourPackage{
 		
@@ -13,6 +13,7 @@
 		var $description;
 		var $travelPeriodFromAt;
 		var $travelPeriodToAt;
+		var $downpaymentDuration;
 		var $sellingPeriod;
 		var $tourLimit;
 		var $imagePath;
