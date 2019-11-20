@@ -19,7 +19,27 @@
             </div>
             <div class="row">
                 <div class="col-lg-7">
-                    <img class="img-fluid" src="<?= $v['image_public_path'] ?>" alt="<?= $v['name']?>">
+                    <img class="img-fluid" src="<?= $v['image_public_path'] ?>" alt="<?= $v['name']?>" data-render="image">
+                    <div class="row" style="margin-left: -5px; margin-right: -5px;">
+                        <div class="col-2 mt-3" style="padding-left: 5px;padding-right: 5px;">
+                            <a href="" data-preview="image">
+                                <img src="<?= $v['image_public_path'] ?>" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <?php
+                            if(count($v['images'])):
+                                foreach($v['images'] as $imageV):
+                        ?>
+                                    <div class="col-2 mt-3" style="padding-left: 5px;padding-right: 5px;">
+                                        <a href="" data-preview="image">
+                                            <img src="<?= $imageV->imagePublicPath?>" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                        <?php
+                                endforeach;
+                            endif;
+                        ?>
+                    </div>
                     <div class="mt-4 international-text">
                         <div class="mt-5">
                             <h2><?= $v['name'] ?></h2>
@@ -101,7 +121,7 @@
                                 </button>
                             </div>
                             <hr>
-                            <div class="form-group" data-invoice="false" hidden>
+                            <div class="form-group" data-invoice="false" >
                                 <h3>Invoice</h3>
                                 <div class="row">
                                     <div class="col-12 mb-1">
@@ -133,6 +153,11 @@
                                     </div>
                                     <div class="col-6 mb-1 font-size-15">
                                         Php.<span class="weight-600" data-detail="amount">0</span>
+                                    </div>
+                                    <div class="col-12 mt-3 alert alert-warning small">
+                                        50% down payment is required to confirm slots/booking and should be settled
+                                        <span class="weight-600 font-size-09"><?= $v['downpayment_duration'] ?> hour/s</span> after reserving the slot. Remaining balance
+                                        can be settled at least 2 weeks before the scheduled tour.
                                     </div>
                                 </div>
                             </div>

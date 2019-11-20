@@ -13,6 +13,8 @@ class Home extends Controller
 	{
 		$this->view->tours = $this->model->getTourData('domestic');
 		$this->view->international = $this->model->getTourData('international');
+		$this->view->toursRecent = $this->model->getTourDataRecent('domestic');
+		$this->view->internationalRecent = $this->model->getTourDataRecent('international');
 		$this->view->render('views/home/index.php');
 	}
 	

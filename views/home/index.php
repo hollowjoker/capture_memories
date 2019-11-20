@@ -1,6 +1,8 @@
 <?php 
 	$tours = $this->tours;
 	$international = $this->international;
+	$toursRecent = $this->toursRecent;
+	$internationalRecent = $this->internationalRecent;
 ?>
 <section class="header pb-5">
 	<div class="overlay"></div>
@@ -59,8 +61,8 @@
 					<div class="col-12">
 						<h4 class="text-light">Tours and Packages <span>(Local)</span></h4>
 					</div>
-					<?php if(count($tours)): ?>
-						<?php foreach($tours as $k => $v): ?>
+					<?php if(count($toursRecent)): ?>
+						<?php foreach($toursRecent as $k => $v): ?>
 							<div class="col-lg-4 custom-card paddingLR header-custom-card">
 								<div class="card">
 									<a href="<?= URL.'tour/domestic?id='.$v['id']?>">
@@ -84,8 +86,8 @@
 					<div class="col-12">
 						<h4 class="text-light">Tours and Packages <span>(International)</span></h4>
 					</div>
-					<?php if(count($international)): ?>
-						<?php foreach($international as $key_international => $value_international): ?>
+					<?php if(count($internationalRecent)): ?>
+						<?php foreach($internationalRecent as $key_international => $value_international): ?>
 							<div class="col-lg-4 paddingLR">
 								<a href="<?= URL.'tour/international?id='.$value_international['id']?>">
 									<div class="card">

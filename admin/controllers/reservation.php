@@ -33,6 +33,11 @@ class Reservation extends Controller
 		exit;
 	}
 
+	public function updateBookingStatus() {
+		$modelResult = $this->model->updateBookingStatus();
+		echo json_encode($modelResult);
+		exit;
+	}
 }
 
 ?>

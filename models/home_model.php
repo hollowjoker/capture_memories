@@ -12,7 +12,27 @@ class home_model extends Model
 		$option = [
 			'column' => 'tour.created_at',
 			'orderBy' => 'desc',
-			'limit' => 5
+			'limit' => 5,
+			'offset' => 2
+		];
+		$tour = DAOFactory::getTblTourPackageDAO()->getTourPlaceByType($tourType, $option);
+
+		$optionMeta = [
+			'column' => 'price',
+			'orderBy' => 'asc',
+			'limit' => 1
+		];
+		foreach($tour as $k => $v) {
+			$tour[$k]['meta'] = DAOFactory::getTblTourPackageMetaDAO()->getTourMeta($v['id'], $optionMeta);
+		}
+		return $tour;
+	}
+
+	public function getTourDataRecent($tourType) {
+		$option = [
+			'column' => 'tour.created_at',
+			'orderBy' => 'desc',
+			'limit' => 3
 		];
 		$tour = DAOFactory::getTblTourPackageDAO()->getTourPlaceByType($tourType, $option);
 

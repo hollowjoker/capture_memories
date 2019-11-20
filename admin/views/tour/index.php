@@ -48,6 +48,9 @@
 											</td>
 											<td><span class="<?= $v['status'] == 'active' ? 'text-success' : 'text-danger'?>"><?= $v['status'] ?></span></td>
 											<td>
+												<button type="button" class="btn btn-info btn-sm" data-action="openGallery" data-id="<?= $v['id'] ?>" data-gallery-url="<?= URL."tour/fetchGallery?id=".$v['id'] ?>">
+													<i class="now-ui-icons design_image"></i>
+												</button>
 												<button type="button" class="btn btn-info btn-sm" data-action="edit_tour" data-url="<?= URL.'tour/update?id='.$v['id']?>">
 													<i class="now-ui-icons design-2_ruler-pencil"></i>
 												</button>
@@ -129,7 +132,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<img src="<?= MAIN_URL.'public/images/placeholder-600x400.png'?>" class="img-fluid shadow" alt="" data-render="image">
+									<img src="<?= MAIN_URL.'public/images/placeholder-600x400.png'?>" default-src="<?= MAIN_URL.'public/images/placeholder-600x400.png'?>" class="img-fluid shadow" alt="" data-render="image">
 									<input type="file" name="imagePath" class="form-control" data-file="image_upload" required>
 								</div>
 								<div class="form-group">
@@ -198,6 +201,45 @@
 							</button>
 						</div>
 					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="galleryFormModal" tabindex="-1" role="dialog" aria-labelledby="galleryFormModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="galleryFormModalLabel">Tour Package Gallery</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-6">
+							<form action="<?= URL.'tour/imageStore'?>" data-form="tour_form_gallery" method="POST" data-redirect="<?= URL.'tour'?>"  enctype="multipart/form-data" data-main-url="<?= URL ?>">
+								<div class="form-group">
+									<img src="<?= MAIN_URL.'public/images/placeholder-600x400.png'?>" class="img-fluid shadow" alt="" data-render="image_gallery">
+									<input type="file" name="imagePath" class="form-control" data-file="image_upload_gallery" required>
+									<input type="hidden" name="tour_id_gallery">
+								</div>
+								<button class="btn btn-info">Upload</button>
+							</form>
+						</div>
+						<div class="col-md-6">
+							<img src="" class="img-fluid shadow" alt="" data-previewer="image">
+						</div>
+						<div class="col-md-12">
+							<hr>
+							<div class="row gallery_holder">
+								<div class="col-md-2 col-sm-3">
+									<a href="">
+										<img src="<?= MAIN_URL.'public/images/placeholder-600x400.png'?>" class="img-fluid" alt="">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

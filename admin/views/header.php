@@ -25,7 +25,9 @@
 			let initiateModule = "";
 		</script>  
 	</head>
-	<body>
+	<body
+		data-update-booking-status-url="<?= URL."reservation/updateBookingStatus"?>"
+	>
 		<div class="wrapper">
 			<div class="sidebar" data-color="orange">
 				<div class="logo">
@@ -85,6 +87,12 @@
 				</div>
 			</div>
 			<div class="main-panel" id="main-panel">
+				<div class="alert alert-warning alert-dismissible fade show" hidden data-alert="notif" role="alert">
+					You have <a href="<?= URL.'reservation'?>" class="alert-link"><span data-count-holder="notif">0</span> tour payment due</a> today. You should check it <a href="<?= URL.'reservation'?>" class="alert-link">Here</a>.
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 				<!-- Navbar -->
 				<nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
 					<div class="container-fluid">

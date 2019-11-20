@@ -57,6 +57,26 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 		return QueryExecutor::execute($sqlQuery);
 	}
 
+	public function fetchBookingByStatus($status) {
+		$sql = "
+			select
+			booking.created_at,
+			tour.downpayment_duration,
+			booking.id
+
+			from tbl_booking as booking
+			inner join tbl_tour_package_meta as meta
+			on booking.tbl_tour_package_meta_id = meta.id
+
+			inner join tbl_tour_package as tour
+			on meta.tbl_tour_package_id = tour.id
+
+			where booking.status = '".$status."'
+		";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
+
 	public function fetchTotalBookings($type) {
 		$place = "domestic";
 		if($type == "international") {
@@ -80,6 +100,12 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 			where place.type = '".$place."' &&
 			booking.status = 'approved'
 		";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
+
+	public function updateBookingStatusExpiration($ids) {
+		$sql = "update tbl_booking set status = 'declined' where id in (".implode(',',$ids).")";
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}

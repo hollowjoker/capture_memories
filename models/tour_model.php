@@ -20,6 +20,7 @@ class tour_model extends Model
 		];
 		foreach($tour as $k => $v) {
 			$tour[$k]['meta'] = DAOFactory::getTblTourPackageMetaDAO()->getTourMeta($v['id'], $optionMeta);
+			$tour[$k]['images'] = DAOFactory::getTblTourPackageImagesDAO()->queryByTblTourPackageId($v['id']);
 		}
 		return $tour;
 	}

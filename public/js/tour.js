@@ -8,15 +8,17 @@ tour = {
 		$pickGuest: $('[data-guest-pick="quantity"]'),
 		$bookingForm: $('#booking_form'),
 		$tourChecker: $('[data-tour-checker]'),
-		$tourCheckout: $('[data-checkout]')
+		$tourCheckout: $('[data-checkout]'),
+		$previewImage: $('[data-preview="image"]')
 	},
 	onInit: function() {
 		var self = this,
 		el = self.defaults
 		self.activatePickGuest(el.$pickGuest)
 		self.activateBookingForm(el.$bookingForm)
-		self.triggerCheckTour(el.$tourChecker),
+		self.triggerCheckTour(el.$tourChecker)
 		self.triggerCheckout(el.$tourCheckout)
+		self.activatePreviewImage(el.$previewImage)
 	},
 	onReady: function(e) {
 		var self = this,
@@ -190,6 +192,14 @@ tour = {
 		   return false;
 
 		return true;
+	},
+	activatePreviewImage(trigger) {
+		trigger.click(function (e) {
+			e.preventDefault();
+			let src = $(this).find('img').attr('src');
+			console.log(src);
+			$('[data-render="image"]').attr('src', src);
+		});
 	}
 }
 

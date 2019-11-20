@@ -18,7 +18,6 @@
 									<th>Name</th>
 									<th>Message</th>
 									<th>Package Reserve</th>
-									<th>Slot Available</th>
 									<th>Status</th>
 									<th>Received</th>
 									<th>Action</th>
@@ -43,9 +42,6 @@
 												</p>
 											</td>
 											<td>
-												8
-											</td>
-											<td>
 												<span class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-danger" : "text-success")))?>">
 													<?= strtoupper($v['status']) ?>
 												</span>
@@ -62,9 +58,11 @@
 													$hours = $dateInterference / 3600;
 													$duration = $hours > 0 ? gmdate("H:i", $dateInterference) : "Cancelled";
 												?>
-												<span class="clearfix badge badge-pill badge-<?= $duration != "Cancelled" ? "warning" : "danger"?> font-size-08">
-													<?= $duration ?>
-												</span>
+												<?php if($v['status'] != 'approved'): ?>
+													<span class="clearfix badge badge-pill badge-<?= $duration != "Cancelled" && $v['status'] != 'declined' ? "warning" : "danger"?> font-size-08">
+														<?= $v['status'] != 'declined' ? $duration : 'Cancelled' ?>
+													</span>
+												<?php endif; ?>
 											</td>
 											<td>
 												<?php if($v['status'] == "pending"): ?>

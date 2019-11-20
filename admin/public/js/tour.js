@@ -4,18 +4,24 @@ var tour = {}
 tour = {
 	defaults: {
 		$tourForm: $('[data-form="tour_form"]'),
+		$tourFormGallery: $('[data-form="tour_form_gallery"]'),
 		$imageUpload: $('[data-file="image_upload"]'),
+		$imageUploadGallery: $('[data-file="image_upload_gallery"]'),
 		$editTour: $('[data-action="edit_tour"]'),
 		$deleteTour: $('[data-action="delete_tour"]'),
-		$uploadFile: $('[name="file"]')
+		$uploadFile: $('[name="file"]'),
+		$openGallery: $('[data-action="openGallery"]')
 	},
 	onInit: function() {
 		var self = this,
 		el = self.defaults
 		self.activateTourForm(el.$tourForm)
+		self.activateTourFormGallery(el.$tourFormGallery)
 		self.activateImageUpload(el.$imageUpload)
+		self.activateImageUploadGallery(el.$imageUploadGallery)
 		self.activateEditTour(el.$editTour)
 		self.activateDeleteTour(el.$deleteTour)
+		self.activateOpenGallery(el.$openGallery)
 	},
 	onReady: function(e) {
 		var self = this,
@@ -23,6 +29,12 @@ tour = {
 		self.onInit()
 		
 		$('.dataTable').DataTable();
+
+		$('.modal').on('hidden.bs.modal', function (e) {
+			$('[data-render="image_gallery"]').attr('src', $('[default-src]').attr('default-src'));
+			$('[data-render="image"]').attr('src', $('[default-src]').attr('default-src'));
+			$('[data-previewer="image"]').attr('src', '');
+		})
 	},
 	activateTourForm: function(trigger) {
 		trigger.submit(function(e) {
@@ -54,6 +66,35 @@ tour = {
 			});
 		});
 	},
+	activateTourFormGallery: function(trigger) {
+		var self = this
+		trigger.submit(function(e) {
+			e.preventDefault();
+			let loader = $(this).find('.btn').attr('disabled',true);
+			let formUrl = $(this).attr('action');
+			let formMethod = $(this).attr('method');
+			let redirectUrl = $(this).attr('data-redirect');
+			let formData = new FormData(this);
+
+			$.ajax({
+				type: formMethod,
+				url: formUrl,
+				data: formData,
+				cache:false,
+				contentType: false,
+				processData: false,
+				dataType:'json',
+			}).done( resultData => {
+				loader.attr('disabled',false);
+				Swal.fire({
+					type: resultData.type,
+					title: resultData.messages
+				});
+				self.activateFetchGallery(resultData.url);
+				
+			});
+		});
+	},
 	activateImageUpload: function(trigger) {
 		trigger.change(function (e) {
 			e.preventDefault();
@@ -62,6 +103,20 @@ tour = {
 			if(imageFile) {
 				reader.onload = readerEvent => {
 					$('[data-render="image"]').attr('src', readerEvent.target.result);
+				}
+				reader.readAsDataURL(imageFile[0].files[0]);
+			}
+
+		});
+	},
+	activateImageUploadGallery: function(trigger) {
+		trigger.change(function (e) {
+			e.preventDefault();
+			var reader = new FileReader();
+			let imageFile = $(this);
+			if(imageFile) {
+				reader.onload = readerEvent => {
+					$('[data-render="image_gallery"]').attr('src', readerEvent.target.result);
 				}
 				reader.readAsDataURL(imageFile[0].files[0]);
 			}
@@ -149,6 +204,42 @@ tour = {
 			return false;
 
 		return true;
+	},
+	activateOpenGallery: function (target) {
+		var self = this
+		target.click(function (e) {
+			let id = $(this).attr('data-id');
+			let dataUrl = $(this).attr('data-gallery-url');
+			let mainUrl = $('[data-main-url]').attr('data-main-url');
+			$('[name="tour_id_gallery"]').val(id);
+			self.activateFetchGallery(dataUrl);
+			$('#galleryFormModal').modal('toggle');
+		});
+	},
+	activateFetchGallery(dataUrl) {
+		$.ajax({
+			url: dataUrl,
+			type: "GET"
+		}).done( resultData => {
+			let parsedData = JSON.parse(resultData);
+			let str = "";
+			if(parsedData.length) {
+				$.each(parsedData, function (k, v) {
+					str += 	'<div class="col-md-2 col-sm-3">' +
+								'<a href="#" onclick="tour.imagePreview(this)">' + 
+									'<img src="'+v.imagePublicPath+'" class="img-fluid" alt="">' +
+								'</a>' +
+							'</div>';
+				});
+			}
+			$('.gallery_holder').html(str);
+		});
+	},
+	imagePreview(that) {
+		let src = $(that).find('img').attr('src');
+		$('[data-previewer="image"]').attr('src', src);
+
+		return false;
 	}
 }
 

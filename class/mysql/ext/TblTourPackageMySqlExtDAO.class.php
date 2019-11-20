@@ -20,6 +20,7 @@ class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 			tour.travel_period_to_at,
 			tour.image_public_path,
 			tour.description,
+			tour.downpayment_duration,
 			place.name destination_name,
 			tour.tour_limit
 
@@ -65,7 +66,10 @@ class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 			$sql .= " order by ".$option['column']." ".$option['orderBy']." ";
 		}
 		if(isset($option['limit'])) {
-			$sql .= " limit ".$option['limit'];
+			$sql .= " limit ".$option['limit']." ";
+		}
+		if(isset($option['offset'])) {
+			$sql .= " offset ".$option['offset'];
 		}
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);

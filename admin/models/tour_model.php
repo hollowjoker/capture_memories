@@ -151,4 +151,78 @@ class Tour_model extends Model
 		];
 		return $result;
 	}
+
+	public function imageStore() {
+		$uploadOk = 1;
+		$target_dir = getcwd().DIRECTORY_SEPARATOR."../public/images/tour/".$_POST['tour_id_gallery']."/";
+		mkdir($target_dir,0777);
+		$target_file = null;
+		$public_file = null;
+		$check = true;
+
+		$result = [];
+		$result['type'] = 'error';
+
+		if($_FILES["imagePath"]["size"] > 0) {
+			$target_file = $target_dir . basename($_FILES["imagePath"]["name"]);
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			$target_public_dir = MAIN_URL."public/images/tour/";
+			$public_file = $target_public_dir . basename($_FILES["imagePath"]["name"]);
+			$check = getimagesize($_FILES["imagePath"]["tmp_name"]);
+
+			if($check === false && $_FILES["imagePath"]["size"] > 0) {
+				$result['messages'] = "File is not an image.";
+				$uploadOk = 0;
+				return $result;
+			}
+			if(file_exists($target_file) && $_FILES["imagePath"]["size"] > 0) {
+				$result['messages'] = "Sorry, file already exists.";
+				$uploadOk = 0;
+				return $result;
+			}
+			if($_FILES["imagePath"]["size"] > 5000000) {
+				$result['messages'] = "Sorry, your file is too large.";
+				$uploadOk = 0;
+				return $result;
+			}
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $_FILES["imagePath"]["size"] > 0) {
+				$result['messages'] = "Sorry, only JPG, JPEG & PNG files are allowed.";
+				$uploadOk = 0;
+				return $result;
+			}
+		}
+
+		if($uploadOk == 0 && $_FILES["imagePath"]["size"] > 0) {
+			$result['messages'] = "Sorry, your file was not uploaded.";
+			return $result;
+		} else {
+			if($_FILES["imagePath"]["size"] > 0) {
+				if(move_uploaded_file($_FILES["imagePath"]["tmp_name"], $target_file)) {
+				} else {
+					$result['messsages'] = "Sorry, there was an error uploading your file.";
+					return $result;
+				}
+			}
+		}
+		$tour = new TblTourPackageImage;
+		$tour->imagePath = $target_file;
+		$tour->imagePublicPath = $public_file;
+		$tour->tblTourPackageId = $_POST['tour_id_gallery'];
+		$tour = Controller::insertDate($tour);
+		$insertResult = DAOFactory::getTblTourPackageImagesDAO()->insert($tour);
+		$result = [
+			'type' => 'success',
+			'messages' => 'Submit Successful',
+			'image' => $public_file,
+			'id' => $insertResult,
+			'url' => URL."tour/fetchGallery?id=".$_POST['tour_id_gallery']
+		];
+
+		return $result;
+	}
+
+	public function fetchGallery() {
+		$data = DAOFactory::getTblTourPackageImagesDAO()->queryByTblTourPackageId($_GET['id']);
+		return $data;
+	}
 }
