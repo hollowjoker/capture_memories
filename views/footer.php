@@ -172,6 +172,7 @@
 					el = self.defaults
 					self.activateSignUpForm(el.$signUpForm)
 					self.activateLoginForm(el.$loginForm)
+					self.activateBookingCounter()
 				},
 				onReady: function(e) {
 					var self = this,
@@ -249,7 +250,21 @@
 						return false;
 
 					return true;
-				}
+				},
+				activateBookingCounter() {
+					$('[data-booking-counter]').each(function () {
+						let bookingHolder = $(this).attr('data-booking-counter');
+						let dataUrl = $(this).attr('data-counter-url');
+						console.log(dataUrl);
+						$.ajax({
+							url: dataUrl,
+							type: "GET"
+						}).done(function (returnData) {
+							let parsedData = JSON.parse(returnData);
+							$('[data-booking-counter="'+bookingHolder+'"]').text(parsedData);
+						});
+					});
+				},
 			}
 
 			doc.ready(function(){

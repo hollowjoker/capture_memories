@@ -23,5 +23,21 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}
+
+	public function fetchBookingCounter($userId) {
+		$sql = "
+			select
+			(select m1.tbl_receiver_id from tbl_message as m1 where m1.tbl_convo_id = convo.id order by m1.created_at desc limit 1) receiver,
+			booking.id
+
+			from tbl_booking as booking
+			inner join tbl_convo as convo
+			on booking.id = convo.tbl_booking_id
+			where booking.tbl_user_id = ".$userId."
+			group by convo.id
+		";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>

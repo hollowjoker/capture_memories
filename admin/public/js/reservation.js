@@ -71,7 +71,7 @@ reservation = {
 			e.preventDefault();
 			let dataUrl = $(this).attr('data-url');
 			let dataStatus = $(this).attr('data-status');
-			let redirectUrl = $('[data-redirect]').attr('data-redirect');
+			let redirectUrl = $(this).attr('data-redirect');
 
 			Swal.fire({
 				type: 'warning',

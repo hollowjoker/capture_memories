@@ -155,7 +155,9 @@ class Tour_model extends Model
 	public function imageStore() {
 		$uploadOk = 1;
 		$target_dir = getcwd().DIRECTORY_SEPARATOR."../public/images/tour/".$_POST['tour_id_gallery']."/";
-		mkdir($target_dir,0777);
+		if(!file_exists($target_dir)) {
+			mkdir($target_dir,0777);
+		}
 		$target_file = null;
 		$public_file = null;
 		$check = true;
@@ -166,7 +168,7 @@ class Tour_model extends Model
 		if($_FILES["imagePath"]["size"] > 0) {
 			$target_file = $target_dir . basename($_FILES["imagePath"]["name"]);
 			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-			$target_public_dir = MAIN_URL."public/images/tour/";
+			$target_public_dir = MAIN_URL."public/images/tour/".$_POST['tour_id_gallery']."/";
 			$public_file = $target_public_dir . basename($_FILES["imagePath"]["name"]);
 			$check = getimagesize($_FILES["imagePath"]["tmp_name"]);
 

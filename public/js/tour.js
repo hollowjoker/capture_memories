@@ -63,6 +63,7 @@ tour = {
 		}
 		guestTable.html(toAppend);
 		self.activateBirthPicker();
+		tour.validateCheckTour();
 	},
 	activatePickGuest: function (trigger) {
 		trigger.click(function (e) {
@@ -111,7 +112,11 @@ tour = {
 	},
 	triggerCheckTour: function (trigger) {
 		trigger.change(function (e) {
-			let departing = $('[name="departingAt"]').val();
+			tour.validateCheckTour();
+		});
+	},
+	validateCheckTour: function () {
+		let departing = $('[name="departingAt"]').val();
 			let returning = $('[name="returningAt"]').val();
 			let metaId = $('[name="metaId"]').val();
 			let dataUrl = $('[data-tour-checker-url]').attr('data-tour-checker-url');
@@ -140,7 +145,6 @@ tour = {
 					$('[data-checker-receiver]').text(textSlot);
 				});
 			}
-		});
 	},
 	triggerCheckout: function (trigger) {
 		trigger.click(function (e) {

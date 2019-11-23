@@ -109,7 +109,7 @@
 		</div>
 	</div>
 </section>
-<section class="home-body">
+<section class="home-body" hidden>
 	<div class="container-xl">
 		<h4>Tours and Packages <span class="text-muted">(Local)</span></h4>
 		<h5 class="">Available Packages recommended for you</h5>

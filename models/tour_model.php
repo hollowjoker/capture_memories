@@ -123,6 +123,23 @@ class tour_model extends Model
 			'slot' => $totalSlot
 		);
 	}
+
+	public function fetchBookingCounter() {
+
+		$user = Session::getSession('user');
+		$count = 0;
+		if(isset($user)) {
+			$data = DAOFactory::getTblBookingDAO()->fetchBookingCounter($user['id']);
+			if(count($data)) {
+				foreach($data as $k => $v) {
+					if($v['receiver'] == $user['id']) {
+						$count ++;
+					}
+				}
+			}
+		}
+		return $count;
+	}
 }
 
 ?>

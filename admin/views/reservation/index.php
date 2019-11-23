@@ -66,7 +66,7 @@
 											</td>
 											<td>
 												<?php if($v['status'] == "pending"): ?>
-													<button type="button" class="btn btn-success btn-sm" data-action="update_status" data-status="approve" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=approved' ?>">
+													<button type="button" class="btn btn-success btn-sm" data-action="update_status" data-status="approve" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=approved' ?>" data-redirect="<?= URL.'reservation/convo?id='.$v['id'] ?>">
 													<i class="now-ui-icons ui-2_like"></i>
 												</button>
 												<?php endif; ?>

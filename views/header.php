@@ -51,7 +51,10 @@
 						</li>
 					<?php else: ?>
 						<li class="nav-item">
-							<a class="nav-link" href="<?= URL.'message/?type=tour'?>">Messages</a>
+							<a class="nav-link" href="<?= URL.'message/?type=tour'?>">
+								Messages
+								<span class="badge badge-pill badge-info font-size-08" data-booking-counter="reservation" data-counter-url="<?= URL.'tour/fetchBookingCounter?countertype=reservation'?>">0</span>
+							</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

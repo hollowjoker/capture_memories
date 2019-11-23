@@ -60,6 +60,16 @@
 				<p style="margin-bottom: 30px;">Marian Rodriguez, CPA, MBA</p>
 				<p>📷 ©️2018</p>
 			</div>
+			<div class="col-md-8 offset-md-2">
+				<div class="row">
+						<div class="col-md-12">
+							<img src="<?= URL.'public/images/creds/IMG_9326.jpg' ?>" class="img-fluid" alt="">
+						</div>
+						<div class="col-md-12">
+							<img src="<?= URL.'public/images/creds/IMG_9403_!.jpg' ?>" class="img-fluid" alt="">
+						</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>

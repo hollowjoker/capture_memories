@@ -121,7 +121,7 @@
                                 </button>
                             </div>
                             <hr>
-                            <div class="form-group" data-invoice="false" >
+                            <div class="form-group" data-invoice="false" hidden>
                                 <h3>Invoice</h3>
                                 <div class="row">
                                     <div class="col-12 mb-1">
