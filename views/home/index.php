@@ -58,8 +58,11 @@
 			</div>
 			<div class="col-lg-8">
 				<div class="row header-card-holder marginNegLR">
-					<div class="col-12">
-						<h4 class="text-light">Tours and Packages <span>(Local)</span></h4>
+					<div class="col-12 mb-2">
+						<h4 class="text-light">
+							Tours and Packages <span>(Local)</span>
+						</h4>
+						<a href="<?= URL.'tour/?type=domestic'?>" class="text-light text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
 					</div>
 					<?php if(count($toursRecent)): ?>
 						<?php foreach($toursRecent as $k => $v): ?>
@@ -83,8 +86,11 @@
 					<?php endif ?>
 				</div>
 				<div class="row mt-5 marginNegLR">
-					<div class="col-12">
-						<h4 class="text-light">Tours and Packages <span>(International)</span></h4>
+					<div class="col-12 mb-2">
+						<h4 class="text-light">
+							Tours and Packages <span>(International)</span>
+						</h4>
+						<a href="<?= URL.'tour/?type=international'?>" class="text-light text-decoration-none">Show all Tour Packages <i class="fa fa-chevron-right"></i></a>
 					</div>
 					<?php if(count($internationalRecent)): ?>
 						<?php foreach($internationalRecent as $key_international => $value_international): ?>

@@ -162,7 +162,7 @@
                                 </div>
                             </div>
                             <?php if(isset($userSession['id'])):?>
-                                <div class="submit-btn" hidden>
+                                <div class="submit-btn" hidden data-reserve="button">
                                     <button class="btn btn-custom-success btn-block">RESERVE</button>
                                 </div>
                             <?php else: ?>

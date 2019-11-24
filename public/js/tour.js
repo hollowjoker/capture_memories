@@ -46,6 +46,8 @@ tour = {
 		let metaId = activePickedGuest.attr('data-meta-id');
 		let guestAppend = $('[data-companion]').find('tbody').html();
 		let guestTable = $('#guest_table').find('tbody');
+		$('[data-invoice="false"]').attr('hidden', true);
+		$('[data-reserve="button"]').attr('hidden', true);
 
 		$('.price-content').text(price);
 		$('[name="metaId"]').val(metaId);
@@ -113,6 +115,8 @@ tour = {
 	triggerCheckTour: function (trigger) {
 		trigger.change(function (e) {
 			tour.validateCheckTour();
+			$('[data-invoice="false"]').attr('hidden', true);
+			$('[data-reserve="button"]').attr('hidden', true);
 		});
 	},
 	validateCheckTour: function () {

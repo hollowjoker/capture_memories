@@ -16,8 +16,6 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 			on booking.tbl_tour_package_meta_id = meta.id
 
 			where
-			(booking.departing_at <= '".$params['departing']."' &&
-			booking.returning_at >= '".$params['departing']."') &&
 			booking.tbl_tour_package_meta_id = ".$params['metaId']."
 		";
 		$sqlQuery = new SqlQuery($sql);
