@@ -119,13 +119,13 @@ class message_model extends Model
 					$message = new TblMessage;
 					$message->tblConvoId = $_POST['tblConvoId'];
 					$message->description = $_POST['description'];
-					$message->tblSenderId = $admin['id'];
-					$message->tblReceiverId = $_POST['tblReceiverId'];
+					$message->tblSenderId = $user['id'];
+					$message->tblReceiverId = $admin[0]['id'];
 
 					$message = Controller::insertDate($message);
 					
 					$messageResult = DAOFactory::getTblMessageDAO()->insert($message);
-					
+
 					$loadMessageData = DAOFactory::getTblMessageDAO()->load($messageResult);
 					$loadMessageData->description = $public_file;
 					DAOFactory::getTblMessageDAO()->update($loadMessageData);
