@@ -23,7 +23,7 @@
 		data-update-booking-status-url="<?= URL."tour/updateBookingStatus"?>"
 	>
 		<div class="alert alert-warning alert-dismissible fade show"  data-alert="notif" role="alert">
-			You have <a href="<?= URL.'reservation'?>" class="alert-link"><span data-count-holder="notif">0</span> tour payment due</a> today. Please pay 2 hours before the due payment.
+			You have <a href="<?= URL.'message/?type=tour'?>" class="alert-link"><span data-count-holder="notif">0</span> tour payment due</a> today. Please pay 2 hours before the due payment.
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
