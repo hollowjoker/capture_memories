@@ -20,7 +20,8 @@ class TblTourPackageMySqlExtDAO extends TblTourPackageMySqlDAO{
 			tour.image_path,
 			tour.image_public_path,
 			place.name place_name,
-			place.type
+			place.type,
+			tour.tour_limit
 
 			from tbl_tour_package as tour
 			inner join tbl_place as place

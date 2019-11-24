@@ -44,6 +44,7 @@ class TblConvoMySqlExtDAO extends TblConvoMySqlDAO{
 			convo.id,
 			booking.departing_at,
 			booking.returning_at,
+			booking.created_at,
 			booking.status,
 			booking.transaction_no,
 			booking.id booking_id,
@@ -51,7 +52,8 @@ class TblConvoMySqlExtDAO extends TblConvoMySqlDAO{
 			tour.image_public_path,
 			tour.description,
 			tourMeta.price,
-			tourMeta.quantity
+			tourMeta.quantity,
+			tour.downpayment_duration
 
 			from tbl_convo as convo
 			inner join tbl_booking as booking

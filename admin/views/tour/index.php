@@ -22,6 +22,7 @@
 									<th>Name</th>
 									<th>Type</th>
 									<th>Amounts</th>
+									<th>Slot</th>
 									<th>Status</th>
 									<th>Action</th>
 								</tr>
@@ -45,6 +46,9 @@
 														</span>
 													<?php endforeach;?>
 												<?php endif;?>
+											</td>
+											<td>
+												<span class="badge badge-info badge-pill badge-lg badge-custombg"><?= $v['slot']?> available slot</span>
 											</td>
 											<td><span class="<?= $v['status'] == 'active' ? 'text-success' : 'text-danger'?>"><?= $v['status'] ?></span></td>
 											<td>

@@ -14,9 +14,11 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 			from tbl_booking as booking
 			inner join tbl_tour_package_meta as meta
 			on booking.tbl_tour_package_meta_id = meta.id
+			inner join tbl_tour_package as tour
+			on tour.id = meta.tbl_tour_package_id
 
 			where
-			booking.tbl_tour_package_meta_id = ".$params['metaId']."
+			tour.id = ".$params['tourId']."
 		";
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
@@ -33,6 +35,27 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 			on booking.id = convo.tbl_booking_id
 			where booking.tbl_user_id = ".$userId."
 			group by convo.id
+		";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
+
+	public function fetchBookingByStatus($status) {
+		$user = Session::getSession('user');
+		$sql = "
+			select
+			booking.created_at,
+			tour.downpayment_duration,
+			booking.id
+
+			from tbl_booking as booking
+			inner join tbl_tour_package_meta as meta
+			on booking.tbl_tour_package_meta_id = meta.id
+
+			inner join tbl_tour_package as tour
+			on meta.tbl_tour_package_id = tour.id
+
+			where booking.status = '".$status."' && booking.tbl_user_id = ".$user['id']."
 		";
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);

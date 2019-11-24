@@ -49,4 +49,10 @@ class Tour extends Controller
 		echo json_encode($modelResult);
 		exit;
 	}
+
+	public function updateBookingStatus() {
+		$modelResult = $this->model->updateBookingStatus();
+		echo json_encode($modelResult);
+		exit;
+	}
 }

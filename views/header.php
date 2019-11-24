@@ -19,7 +19,15 @@
 		<link rel="icon" href="<?=  URL."public/images/tour/captured_memories_new.png" ?>" type="image/png" sizes="16x16">
 		<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
 	</head>
-	<body>
+	<body
+		data-update-booking-status-url="<?= URL."tour/updateBookingStatus"?>"
+	>
+		<div class="alert alert-warning alert-dismissible fade show"  data-alert="notif" role="alert">
+			You have <a href="<?= URL.'reservation'?>" class="alert-link"><span data-count-holder="notif">0</span> tour payment due</a> today. Please pay 2 hours before the due payment.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
 		<nav class="navbar navbar-expand-lg navbar-light transparent <?= $module != '' ? "text-black border-bottom" : "nav_fixed" ?>">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>

@@ -18,6 +18,12 @@
                             <div class="text-center">
                                 <h5 class="font-weight-bold <?= (($v['status'] == "pending" ? "text-warning" : ($v['status'] == "declined" ? "text-danger" : "text-success")))?>"><?= strtoupper($v['status']) ?></h5>
                                 <h3 class="mt-2">Trip Details</h3>
+                                <span class="mt-2 badge-warning badge badge-pill font-size-08" <?= $v['status'] != "pending" ? 'hidden' : ''?>>
+                                    <?php
+                                        $dateDown = date('F d, Y H:i A', strtotime('+'.$v['downpayment_duration'].' hours', strtotime($v['created_at'])));
+                                    ?>
+                                    Due <?=  $dateDown ?>
+                                </span>
                             </div>
 
                             <div class="mt-4">

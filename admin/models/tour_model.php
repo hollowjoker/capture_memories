@@ -124,7 +124,17 @@ class Tour_model extends Model
 		$result = DAOFactory::getTblTourPackageDAO()->getTourPlaceData();
 		foreach($result as $k => $v) {
 			$result[$k]['meta'] = DAOFactory::getTblTourPackageMetaDAO()->getTourMetaData($v['id']);
+			$bookings = DAOFactory::getTblBookingDAO()->tourChecker($v['id']);
+			$count = 0;
+			if(count($bookings)) {
+				foreach($bookings as $bk => $bv) {
+					$count += $bv['quantity'];
+				}
+			}
+			$totalBooking = $v['tour_limit'] - $count;
+			$result[$k]['slot'] = $totalBooking >= 0 ? $totalBooking : 0;
 		}
+
 		return $result;
 	}
 	

@@ -116,6 +116,16 @@ class message_model extends Model
 		} else {
 			if($_FILES["file"]["size"] > 0) {
 				if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+					$message = new TblMessage;
+					$message->tblConvoId = $_POST['tblConvoId'];
+					$message->description = $_POST['description'];
+					$message->tblSenderId = $admin['id'];
+					$message->tblReceiverId = $_POST['tblReceiverId'];
+
+					$message = Controller::insertDate($message);
+					
+					$messageResult = DAOFactory::getTblMessageDAO()->insert($message);
+					
 					$loadMessageData = DAOFactory::getTblMessageDAO()->load($messageResult);
 					$loadMessageData->description = $public_file;
 					DAOFactory::getTblMessageDAO()->update($loadMessageData);

@@ -109,5 +109,22 @@ class TblBookingMySqlExtDAO extends TblBookingMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		return QueryExecutor::execute($sqlQuery);
 	}
+
+	public function tourChecker($params) {
+		$sql = "
+			select
+			meta.quantity
+			from tbl_booking as booking
+			inner join tbl_tour_package_meta as meta
+			on booking.tbl_tour_package_meta_id = meta.id
+			inner join tbl_tour_package as tour
+			on tour.id = meta.tbl_tour_package_id
+
+			where
+			tour.id = ".$params."
+		";
+		$sqlQuery = new SqlQuery($sql);
+		return QueryExecutor::execute($sqlQuery);
+	}
 }
 ?>

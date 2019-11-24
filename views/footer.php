@@ -173,6 +173,7 @@
 					self.activateSignUpForm(el.$signUpForm)
 					self.activateLoginForm(el.$loginForm)
 					self.activateBookingCounter()
+					self.activateUpdateBookingStatus()
 				},
 				onReady: function(e) {
 					var self = this,
@@ -265,6 +266,19 @@
 						});
 					});
 				},
+				activateUpdateBookingStatus() {
+					let dataUrl = $('[data-update-booking-status-url]').attr('data-update-booking-status-url');
+					$.ajax({
+						url: dataUrl,
+						type: "GET"
+					}).done(function (returnData) {
+						var parsedData = JSON.parse(returnData);
+						if(parsedData.count) {
+							$('[data-count-holder="notif"]').text(parsedData.count);
+							$('[data-alert="notif"]').attr('hidden', false);
+						}
+					});
+				}
 			}
 
 			doc.ready(function(){

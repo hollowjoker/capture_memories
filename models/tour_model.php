@@ -109,7 +109,7 @@ class tour_model extends Model
 		$params = [
 			'departing' => $departing,
 			'returning' => $returning,
-			'metaId' => $_POST['metaId']
+			'tourId' => $_POST['tourId']
 		];
 		$packageData = DAOFactory::getTblTourPackageMetaDAO()->fetchTour($_POST['metaId']);
 		$bookingData = DAOFactory::getTblBookingDAO()->tourChecker($params);
@@ -139,6 +139,34 @@ class tour_model extends Model
 			}
 		}
 		return $count;
+	}
+
+	public function updateBookingStatus() {
+		$dateNow = strtotime(date('Y-m-d H:i:s'));
+		$data = DAOFactory::getTblBookingDAO()->fetchBookingByStatus('pending');
+		$idArray = [];
+		$due = 0;
+		foreach($data as $k => $v) {
+			$dateDown = date('Y-m-d H:i:s', strtotime('+'.$v['downpayment_duration'].' hours', strtotime($v['created_at'])));
+			$dateInterference = strtotime($dateDown) - $dateNow;
+			$hours = $dateInterference / 3600;
+			if($hours <= 0) {
+				$idArray[$k] = $v['id'];
+			}
+			$date1 = date_create(date('Y-m-d H:i:s'));
+			$date2 = date_create($dateDown);
+			$dateDiff = date_diff($date2, $date1);
+			if($dateDiff->d == 0) {
+				$due++;
+			}
+		}
+		if(count($idArray)) {
+			$result = DAOFactory::getTblBookingDAO()->updateBookingStatusExpiration($idArray);
+		}
+		$return = [
+			'count' => $due
+		];
+		return $return;
 	}
 }
 

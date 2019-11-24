@@ -71,6 +71,7 @@
                             <div class="form-group pt-3">
                                 <label>Pick No. of Guest</label>
                                 <input type="hidden" name="metaId" class="form-control" value="">
+                                <input type="hidden" name="tourId" class="form-control" value="<?= $_GET['id']?>">
                                 <input type="hidden" name="quantity" class="form-control" value="">
                                 <input type="hidden" name="packageName" class="form-control" value="<?= $v['name']?>">
                                 <input type="hidden" name="referenceNo" class="form-control" value="<?= $referenceNo?>">

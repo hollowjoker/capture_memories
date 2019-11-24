@@ -122,13 +122,16 @@ tour = {
 	validateCheckTour: function () {
 		let departing = $('[name="departingAt"]').val();
 			let returning = $('[name="returningAt"]').val();
+			let tourId = $('[name="tourId"]').val();
 			let metaId = $('[name="metaId"]').val();
+			let quantity = $('[name="quantity"]').val();
 			let dataUrl = $('[data-tour-checker-url]').attr('data-tour-checker-url');
 
 			if(departing != "" && returning != "") {
 				let data = {
 					departing: departing,
 					returning: returning,
+					tourId: tourId,
 					metaId: metaId
 				};
 				$.ajax({
@@ -139,7 +142,7 @@ tour = {
 					let parsedData = JSON.parse(returnData);
 					let textSlot =  "";
 					$('[data-count-limit]').attr('data-count-limit',parsedData.slot);
-					if(parsedData.slot) {
+					if(parsedData.slot && (parseInt(parsedData.slot) - parseInt(quantity) >= 0)) {
 						textSlot = parsedData.slot+" more slot/s available";
 						$('[data-checkout="proceed"]').attr('hidden', false);
 					} else {
