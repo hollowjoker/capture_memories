@@ -33,9 +33,11 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<a class="navbar-brand" href="<?= URL ?>">
-				<img src="<?= URL."public/images/tour/captured_memories_new.png"?>" class="img-fluid mr-4" alt="logo" style="width: 100px;">
-				<span class="text-dark text-pacifico">Captured Memories Travel and Tours</span>
+				<img src="<?= URL."public/images/tour/captured_memories_new.png"?>" class="img-fluid mr-4" alt="logo" style="width: 200px; margin-top:-50px;">
+				<span class="text-dark text-pacifico" style="font-size:40px;">Captured Memories Travel and Tours</span>
 			</a>
+
+	
 
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				<ul class="navbar-nav mt-2 mt-lg-0 ml-auto">

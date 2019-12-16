@@ -14,6 +14,15 @@
 					<div class="table-responsive">
 						<table class="table table-custom small dataTable table-vertical-top" data-redirect="<?= URL.'reservation'?>">
 							<thead>
+							<style>
+							.table thead tr {font-size:15px; }
+
+							.table tbody tr td{
+								font-size:15px;
+
+
+							}
+							</style>
 								<tr>
 									<th>Name</th>
 									<th>Message</th>
@@ -71,8 +80,8 @@
 												</button>
 												<?php endif; ?>
 												<?php if($v['status'] != "declined"): ?>
-													<button type="button" class="btn btn-warning btn-sm" data-action="update_status" data-status="decline" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=declined' ?>">
-														<i class="now-ui-icons ui-1_simple-remove"></i>
+													<button type="button" class="btn btn-warning btn-sm" data-action="update_status" data-status="decline" data-url="<?= URL.'reservation/update?id='.$v['booking_id'].'&status=declined' ?>" data-redirect="<?= URL.'reservation' ?>">
+													<i class="now-ui-icons ui-1_simple-remove"></i>
 													</button>
 												<?php endif; ?>
 												<!-- <button type="button" class="btn btn-danger btn-sm" data-action="update_status" data-url="">

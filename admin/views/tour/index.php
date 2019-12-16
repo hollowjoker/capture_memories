@@ -17,6 +17,12 @@
 					<div class="table-responsive">
 						<table class="table table-custom small dataTable">
 							<thead>
+							<style>
+							 .table thead tr th{
+								font-size:15px; 
+							 }
+							
+							</style>
 								<tr>
 									<th></th>
 									<th>Name</th>
@@ -27,19 +33,25 @@
 									<th>Action</th>
 								</tr>
 							</thead>
+
+						
 							<tbody>
+							<style>
+							
+							
+							</style>
 								<?php if(count($tour)): ?>
 									<?php foreach($tour as $k => $v): ?>
 										<tr>
 											<td>
-												<img src="<?= $v['image_public_path']?>" alt="" class="fw-100">
+												<img style="height:70px;width:200px;" src="<?= $v['image_public_path']?>" alt="" class="fw-100">
 											</td>
-											<td><?= $v['tour_name']?></td>
-											<td><?= $v['type']?></td>
+											<td style="font-size:18px;"><?= $v['tour_name']?></td>
+											<td style="font-size:18px;"><?= $v['type']?></td>
 											<td>
 												<?php if(count($v['meta'])): ?>
 													<?php foreach($v['meta'] as $metaK => $metaV): ?>
-														<span class="badge badge-custombg badge-custombg-<?=$metaK?> badge-lg badge-pill"> 
+														<span style="font-size:14px;" class="badge badge-custombg badge-custombg-<?=$metaK?> badge-lg badge-pill"> 
 															<?= $metaV['quantity'] ?>
 															<i class="now-ui-icons users_single-02"></i>
 															<?= number_format($metaV['price'],0) ?>
@@ -48,9 +60,9 @@
 												<?php endif;?>
 											</td>
 											<td>
-												<span class="badge badge-info badge-pill badge-lg badge-custombg"><?= $v['slot']?> available slot</span>
+												<span style="font-size:18px;" class="badge badge-info badge-pill badge-lg badge-custombg"><?= $v['slot']?> available slot</span>
 											</td>
-											<td><span class="<?= $v['status'] == 'active' ? 'text-success' : 'text-danger'?>"><?= $v['status'] ?></span></td>
+											<td><span style="font-size:18px;" class="<?= $v['status'] == 'active' ? 'text-success' : 'text-danger'?>"><?= $v['status'] ?></span></td>
 											<td>
 												<button type="button" class="btn btn-info btn-sm" data-action="openGallery" data-id="<?= $v['id'] ?>" data-gallery-url="<?= URL."tour/fetchGallery?id=".$v['id'] ?>">
 													<i class="now-ui-icons design_image"></i>

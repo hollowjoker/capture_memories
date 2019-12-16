@@ -34,6 +34,16 @@
 					<!-- <a href="http://www.creative-tim.com" class="simple-text logo-mini">CAPTURE</a> -->
 					<a href="<?= URL ?>" class="simple-text logo-normal">CAPTURE MEMORIES</a>
 				</div>
+				<style>
+				.sidebar-wrapper ul li a p{
+					font-size:15px;
+				}
+
+				.sidebar-wrapper ul li a div{
+					font-size:15px;
+				}
+				
+				</style>
 				<div class="sidebar-wrapper" id="sidebar-wrapper">
 					<ul class="nav">
 						<li class="<?= $module == 'dashboard' ? 'active' : ''?>">

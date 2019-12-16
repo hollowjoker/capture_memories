@@ -26,6 +26,16 @@
 									<!-- <th>Action</th> -->
 								</tr>
 							</thead>
+
+							<style>
+							.table thead tr th {
+								font-size:15px;
+							}
+							.table tbody tr td {
+								font-size:15px;
+							}
+							
+							</style>
 							<tbody>
 								<?php
 									if(count($user)):
