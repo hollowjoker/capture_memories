@@ -158,18 +158,59 @@ tour = {
 			
 			let formData = $('#booking_form').serializeArray();
 			let proceed = true;
+			
+
+			var today = new Date();
+			var year = today.getFullYear();
+			var month = today.getMonth() + 1;
+			var day = today.getDate();
+			var dateToday = new Date(`${year},${month},${day}`);
+			var errorMessage = [];
+			var i = 0;
 			$.each(formData, function (k, v) {
 				if(v.value == "") {
-					proceed = false;	
+					proceed = false;
 				};
+				if(v.name == 'birthDate[]') {
+					var splittedData = v.value.split('/');
+					var dateFormatted = new Date(splittedData[2],splittedData[0]-1,splittedData[1]);
+					if(tour.diff_years(dateToday,dateFormatted) >= 2) {
+						errorMessage.push({
+							'id': i,
+							'message': 'success'
+						});
+					} else {
+						proceed = false;
+						errorMessage.push({
+							'id': i,
+							'message': 'error'
+						});
+					}
+					i++;
+				}
 			});
 
+			var ageerror = false;
 			if(!proceed) {
 				Swal.fire({
 					type: 'error',
 					title: 'Please complete the form'
 				});
+				$.each(errorMessage, function (k, v) {
+					if(v.message == 'error') {
+						$('[name="birthDate[]"]').addClass('is-invalid');
+						ageerror = true;
+					}
+				});
+				if(ageerror) {
+					$('[data-name="age-error"]').attr('hidden', false);
+				}
+				
 			} else {
+				if(!ageerror) {
+					$('[data-name="age-error"]').attr('hidden', true);
+					$('[name="birthDate[]"]').removeClass('is-invalid');
+				}
 				$(this).attr('hidden',true);
 				$('[data-invoice]').attr('hidden', false);
 				$('.submit-btn').attr('hidden', false);
@@ -211,6 +252,12 @@ tour = {
 			console.log(src);
 			$('[data-render="image"]').attr('src', src);
 		});
+	},
+	diff_years(dt2, dt1) 
+	{
+		var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+		diff /= (60 * 60 * 24);
+		return Math.abs(Math.round(diff/365.25));	
 	}
 }
 
