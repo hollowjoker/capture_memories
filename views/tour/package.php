@@ -99,6 +99,7 @@
                                     <tbody>
                                     </tbody>
                                 </table>
+                                <label hidden data-name="age-error" class="small text-danger">Should be 2 years above.</label>
                             </div>
                             <div class="form-group">
                                 <div class="card p-3 bg-dark text-white small">
