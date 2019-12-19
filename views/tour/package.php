@@ -117,7 +117,7 @@
                                 <textarea name="description" id="description" class="form-control" placeholder="Write your message here">Hi please see my reservation thanks!</textarea>
                             </div>
                             <div class="submit-btn">
-                                <button class="btn btn-custom-success btn-block" type="button" data-checkout="proceed" hidden>
+                                <button class="btn btn-custom-success btn-block" type="button" data-checkout="proceed" id="proceed"  hidden>
                                     Proceed
                                 </button>
                             </div>
@@ -193,3 +193,22 @@
         </tbody>
     </table>
 </div>
+
+
+<script>
+
+$(document).ready(function(){
+
+    $(document).on('click','#proceed',function(e){
+        e.preventDefault();
+        alert("wew");
+
+
+
+    })
+
+
+    
+})
+
+</script>
