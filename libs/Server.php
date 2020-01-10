@@ -8,15 +8,15 @@
 	ini_set('max_execution_time', 300);
 
 	// macos connection
-	define('DATABASE_HOST','localhost');
-	define('DATABASE_USER','root');
-	define('DATABASE_PASS','root');
-	define('DATABASE_NAME','capture_memories');
-	define('MAILHOST', 'http://localhost:8888/capture_memories/');
+	// define('DATABASE_HOST','localhost');
+	// define('DATABASE_USER','root');
+	// define('DATABASE_PASS','root');
+	// define('DATABASE_NAME','capture_memories');
+	// define('MAILHOST', 'http://localhost:8888/capture_memories/');
 	 
 	 // windows connection
-	//  define('DATABASE_HOST','localhost');
-	//  define('DATABASE_USER','root');
-	//  define('DATABASE_PASS','');
-	// define('DATABASE_NAME','capture_memories');
-	//  define('MAILHOST', 'http://localhost/capture_memories/');
+	 define('DATABASE_HOST','localhost');
+	  define('DATABASE_USER','root');
+	  define('DATABASE_PASS','');
+	 define('DATABASE_NAME','capture_memories');
+	 define('MAILHOST', 'http://localhost/capture_memories/');
