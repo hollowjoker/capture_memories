@@ -16,7 +16,7 @@
 	 
 	 // windows connection
 	 define('DATABASE_HOST','localhost');
-	  define('DATABASE_USER','root');
-	  define('DATABASE_PASS','');
+	 define('DATABASE_USER','root');
+	 define('DATABASE_PASS','');
 	 define('DATABASE_NAME','capture_memories');
 	 define('MAILHOST', 'http://localhost/capture_memories/');
